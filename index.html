@@ -132,10 +132,65 @@
           <h2 class="section__title contact__title">contact</h2>
         </section>
       </div>
+
+      <!-- Works Modal -->
+      <div class="works-modal" id="works-modal">
+        <div class="works-modal__overlay"></div>
+        <div class="works-modal__content">
+          <button class="works-modal__close" aria-label="閉じる">
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="works-modal__slider">
+            <div class="works-modal__slides">
+              <div class="works-modal__slide is-active" data-slide="1">
+                <h3 class="works-modal__title en">Project</h3>
+                <p class="works-modal__description"></p>
+              </div>
+              <div class="works-modal__slide" data-slide="2">
+                <h4 class="works-modal__subtitle en">Technologies</h4>
+                <ul class="works-modal__tech-list" aria-label="使用技術"></ul>
+              </div>
+              <div class="works-modal__slide" data-slide="3">
+                <div class="works-modal__image">
+                  <img src="https://placehold.co/800x500" alt="Project screenshot" width="800" height="500" />
+                </div>
+              </div>
+              <div class="works-modal__slide" data-slide="4">
+                <p class="works-modal__cta-text">プロジェクトの詳細をご覧ください</p>
+                <a href="#" class="works-modal__button en" target="_blank" rel="noopener">
+                  View Project
+                </a>
+              </div>
+            </div>
+
+            <div class="works-modal__nav">
+              <button class="works-modal__arrow works-modal__arrow--prev" aria-label="前へ">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15,18 9,12 15,6"></polyline>
+                </svg>
+              </button>
+              <div class="works-modal__dots">
+                <span class="works-modal__dot is-active" data-index="0"></span>
+                <span class="works-modal__dot" data-index="1"></span>
+                <span class="works-modal__dot" data-index="2"></span>
+                <span class="works-modal__dot" data-index="3"></span>
+              </div>
+              <button class="works-modal__arrow works-modal__arrow--next" aria-label="次へ">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9,6 15,12 9,18"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer class="footer"></footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <script src="./js/custom-cursor.js" defer></script>
     <script src="./js/script.js" defer></script>
+    <script src="./js/modal.js" defer></script>
   </body>
 </html>

@@ -211,6 +211,293 @@ html {
 .custom-cursor.is-hidden {
   opacity: 0;
 }
+/* ===================
+   Works Modal
+=================== */
+.works-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  visibility: hidden;
+  pointer-events: none;
+}
+.works-modal.is-visible {
+  visibility: visible;
+}
+.works-modal.is-open {
+  pointer-events: auto;
+}
+.works-modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.works-modal.is-open .works-modal__overlay {
+  opacity: 1;
+}
+.works-modal__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 85vh;
+  border-radius: 30px 30px 0 0;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-size-60) var(--spacing-size-40);
+}
+.works-modal.is-open .works-modal__content {
+  transform: translateY(0);
+  opacity: 1;
+}
+/* 閉じる時のアニメーション */
+.works-modal.is-closing .works-modal__content {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s ease;
+}
+.works-modal.is-closing .works-modal__overlay {
+  opacity: 0;
+}
+/* プロジェクトごとの背景色 */
+.works-modal.is-project-a .works-modal__content {
+  background-color: #51733f;
+}
+.works-modal.is-project-b .works-modal__content {
+  background-color: #8B4513;
+}
+.works-modal.is-project-c .works-modal__content {
+  background-color: #2c3e50;
+}
+.works-modal.is-project-d .works-modal__content {
+  background-color: #6B4C9A;
+}
+.works-modal.is-project-e .works-modal__content {
+  background-color: #b0bf9f;
+}
+.works-modal.is-project-f .works-modal__content {
+  background-color: #34495e;
+}
+/* 閉じるボタン */
+.works-modal__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+.works-modal__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.works-modal__close span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-white);
+}
+.works-modal__close span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.works-modal__close span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+/* スライダー */
+.works-modal__slider {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+.works-modal__slides {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.works-modal__slide {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  padding: var(--spacing-size-24);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(30px);
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+}
+.works-modal__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+/* スライドコンテンツ */
+.works-modal__title {
+  font-size: var(--font-size-3xl);
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-size-30);
+}
+.works-modal__description {
+  font-size: var(--font-size-la);
+  color: var(--color-white);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.works-modal__subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-size-24);
+}
+.works-modal__tech-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.works-modal__tech-list li {
+  font-size: var(--font-size-md);
+  color: var(--color-white);
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  font-family: var(--font-family-en);
+}
+.works-modal__image {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.works-modal__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+.works-modal__cta-text {
+  font-size: var(--font-size-la);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-size-40);
+}
+.works-modal__button {
+  display: inline-block;
+  padding: 18px 60px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  border-radius: 30px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.works-modal__button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+/* ナビゲーション */
+.works-modal__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-size-30);
+  padding-top: var(--spacing-size-24);
+}
+.works-modal__arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.works-modal__arrow:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.works-modal__arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.works-modal__dots {
+  display: flex;
+  gap: 12px;
+}
+.works-modal__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.works-modal__dot:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.works-modal__dot.is-active {
+  background-color: var(--color-white);
+  transform: scale(1.2);
+}
+/* レスポンシブ */
+@media screen and (max-width: 767px) {
+  .works-modal__content {
+    height: 92vh;
+    padding: var(--spacing-size-40) var(--spacing-size-20);
+    border-radius: 20px 20px 0 0;
+  }
+
+  .works-modal__close {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .works-modal__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .works-modal__description {
+    font-size: var(--font-size-md);
+  }
+
+  .works-modal__nav {
+    gap: var(--spacing-size-16);
+  }
+
+  .works-modal__arrow {
+    width: 44px;
+    height: 44px;
+  }
+}
 /* @import './components/button.css';
 @import './components/card.css'; */
 /* Layout */
