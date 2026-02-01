@@ -8,9 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho+B1&display=swap" rel="stylesheet" />
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="./js/script.js" defer></script>
-    <script src="./js/custom-cursor.js" defer></script>
 
     <link rel="stylesheet" href="./dist/styles/main.css" />
   </head>
@@ -18,13 +15,13 @@
     <header class="header">
       <div class="header__inner">
         <div class="header__logo">
-          <a href="/" class="header__logo-link">ocean</a>
+          <a href="/" class="header__logo-link en">ocean</a>
         </div>
         <nav class="header__nav" id="nav-menu">
           <ul class="header__nav-list">
-            <li class="header__nav-item"><a href="#works" class="header__nav-link">works</a></li>
-            <li class="header__nav-item"><a href="#about" class="header__nav-link">about</a></li>
-            <li class="header__nav-item"><a href="#contact" class="header__nav-link">contact</a></li>
+            <li class="header__nav-item"><a href="#works" class="header__nav-link en">works</a></li>
+            <li class="header__nav-item"><a href="#about" class="header__nav-link en">about</a></li>
+            <li class="header__nav-item"><a href="#contact" class="header__nav-link en">contact</a></li>
           </ul>
         </nav>
 
@@ -50,16 +47,83 @@
         </h1>
         <div class="scroll-container">
           <div class="scrolldown">
-            <span>scroll</span>
+            <span class="en">scroll</span>
           </div>
         </div>
       </section>
       <div class="section-card">
-        <section class="works">
-          <h2 class="section__title works__title">
-            <span class="section__title-main">works</span>
-            <span class="section__title-sub">works</span>
-          </h2>
+        <section class="works" id="works">
+          <div class="works__inner">
+            <h2 class="works__title en">Portfolio</h2>
+            <ul class="works__list">
+              <li class="works__item">
+                <a href="#" class="works__link">
+                  <div class="works__text">
+                    <h3 class="works__item-title en">Project A</h3>
+                    <p class="works__item-role">Web Design, Development</p>
+                  </div>
+                  <div class="works__thumbnail">
+                    <img src="https://placehold.co/600x600" alt="Project A" width="600" height="600" />
+                  </div>
+                </a>
+              </li>
+              <li class="works__item">
+                <a href="#" class="works__link">
+                  <div class="works__text">
+                    <h3 class="works__item-title en">Project B</h3>
+                    <p class="works__item-role">UI/UX Design</p>
+                  </div>
+                  <div class="works__thumbnail">
+                    <img src="https://placehold.co/600x600" alt="Project B" width="600" height="600" />
+                  </div>
+                </a>
+              </li>
+              <li class="works__item">
+                <a href="#" class="works__link">
+                  <div class="works__text">
+                    <h3 class="works__item-title en">Project C</h3>
+                    <p class="works__item-role">Branding, Web Design</p>
+                  </div>
+                  <div class="works__thumbnail">
+                    <img src="https://placehold.co/600x600" alt="Project C" width="600" height="600" />
+                  </div>
+                </a>
+              </li>
+              <li class="works__item">
+                <a href="#" class="works__link">
+                  <div class="works__text">
+                    <h3 class="works__item-title en">Project D</h3>
+                    <p class="works__item-role">Landing Page Design</p>
+                  </div>
+                  <div class="works__thumbnail">
+                    <img src="https://placehold.co/600x600" alt="Project D" width="600" height="600" />
+                  </div>
+                </a>
+              </li>
+              <li class="works__item">
+                <a href="#" class="works__link">
+                  <div class="works__text">
+                    <h3 class="works__item-title en">Project E</h3>
+                    <p class="works__item-role">WordPress Development</p>
+                  </div>
+                  <div class="works__thumbnail">
+                    <img src="https://placehold.co/600x600" alt="Project E" width="600" height="600" />
+                  </div>
+                </a>
+              </li>
+              <li class="works__item">
+                <a href="#" class="works__link">
+                  <div class="works__text">
+                    <h3 class="works__item-title en">Project F</h3>
+                    <p class="works__item-role">Corporate Site</p>
+                  </div>
+                  <div class="works__thumbnail">
+                    <img src="https://placehold.co/600x600" alt="Project F" width="600" height="600" />
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
         </section>
         <section class="about">
           <h2 class="section__title about__title">about</h2>
@@ -70,5 +134,8 @@
       </div>
     </main>
     <footer class="footer"></footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+    <script src="./js/custom-cursor.js" defer></script>
+    <script src="./js/script.js" defer></script>
   </body>
 </html>

@@ -215,7 +215,6 @@ html {
 @import './components/card.css'; */
 /* Layout */
 .header {
-    background-color: var(--color-white);
     width: 100%;
     position: fixed;
     top: 0;
@@ -225,28 +224,46 @@ html {
     display: grid;
 }
 .header__inner {
-    padding: var(--spacing-size-20) var(--spacing-size-24);
+    padding-inline: var(--spacing-size-24);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .header__logo {
+    background-color: var(--color-white);
+    padding: var(--spacing-size-16) var(--spacing-size-20);
+    border-radius: 30px;
 
 }
+.header__logo-link {
+    font-size: var(--font-size-semi-lg);
+    text-transform: uppercase;
+    color: var(--color-green-dark);
+}
 .header__nav {
+    
 
 }
 .header__nav-list {
     display: flex;
-    gap: 31px;
+    gap: 5px;
 
 }
 .header__nav-item {
+    background-color: var(--color-white);
+    padding: var(--spacing-size-16) var(--spacing-size-20);
 
 }
+.header__nav-item:nth-child(1) {
+        border-radius: 30px 0 0 30px;
+    }
+.header__nav-item:nth-child(3) {
+        border-radius: 0 30px 30px 0;
+    }
 .header__nav-link {
     color: var(--color-green-dark);
     text-transform: uppercase;
+    font-size: var(--font-size-semi-lg);
 
 }
 .fv {
@@ -261,12 +278,25 @@ html {
   width: 100%;
   height: 85vh;
 }
+@media screen and (max-width: 767px) {
+.fv__video-container {
+    background-image: url('../../assets/image/fv.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat
+}
+    }
 .fv__video {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
+@media screen and (max-width: 767px) {
+.fv__video {
+    display: none
+}
+    }
 .fv-overlay {
   position: absolute;
   top: 0;
@@ -400,3 +430,122 @@ html {
           top: 40px;
         }
       }
+.works {
+  background-color: #0a0a0a;
+  padding: var(--spacing-size-100) 0;
+}
+.works__inner {
+  max-width: var(--layout-content-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-size-24);
+}
+.works__title {
+  font-size: var(--font-size-3xl);
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-size-80);
+  text-align: center;
+}
+.works__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.works__item {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding: var(--spacing-size-40) 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.works__item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.works__link {
+  display: block;
+  text-decoration: none;
+}
+.works__text {
+  position: relative;
+  z-index: 2;
+}
+.works__item-title {
+  font-size: var(--font-size-2xl);
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+}
+.works__item-role {
+  font-size: var(--font-size-sm);
+  color: #999;
+  font-family: var(--font-family-en);
+  margin-top: 8px;
+}
+.works__thumbnail {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+@media screen and (max-width: 767px) {
+.works__thumbnail {
+    display: none
+}
+    }
+.works__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.works__item:hover .works__thumbnail {
+  opacity: 1;
+}
+.works__item:hover .works__thumbnail img {
+  transform: scale(1.15);
+}
+/* 各項目ごとのサムネイル位置 */
+.works__item:nth-child(1) .works__thumbnail {
+  top: -20%;
+  right: 5%;
+}
+.works__item:nth-child(2) .works__thumbnail {
+  top: 20%;
+  left: 5%;
+}
+.works__item:nth-child(3) .works__thumbnail {
+  bottom: -10%;
+  right: 10%;
+}
+.works__item:nth-child(4) .works__thumbnail {
+  top: -30%;
+  left: 8%;
+}
+.works__item:nth-child(5) .works__thumbnail {
+  top: 10%;
+  right: 3%;
+}
+.works__item:nth-child(6) .works__thumbnail {
+  bottom: 0%;
+  left: 5%;
+}
+/* SP対応 */
+@media screen and (max-width: 767px) {
+  .works__item {
+    padding: var(--spacing-size-24) 0;
+  }
+
+  .works__item-title {
+    font-size: var(--font-size-xl);
+  }
+    }

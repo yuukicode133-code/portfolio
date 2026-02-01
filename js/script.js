@@ -14,3 +14,28 @@
     switchViewport();
   })()
 
+// worksアイテムのスクロールアニメーション
+$(function() {
+  const $items = $('.works__item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const $item = $(entry.target);
+        const index = $items.index($item);
+        setTimeout(() => {
+          $item.addClass('is-visible');
+        }, index * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  $items.each(function() {
+    observer.observe(this);
+  });
+});
+

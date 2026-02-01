@@ -9,12 +9,23 @@
   left: 0;
   width: 100%;
   height: 85vh;
+
+  @mixin mq-sp {
+    background-image: url('../../assets/image/fv.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
 .fv__video {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+
+  @mixin mq-sp {
+    display: none;
+  }
 }
 .fv-overlay {
   position: absolute;
