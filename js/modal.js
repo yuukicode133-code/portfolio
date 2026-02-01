@@ -51,7 +51,7 @@ $(function() {
   // 変数定義
   // ===================
   var $modal = $('#works-modal');
-  var $overlay = $modal.find('.works-modal__overlay');
+  var modal = $modal[0]; // ネイティブのdialog要素
   var $closeBtn = $modal.find('.works-modal__close');
   var $slides = $modal.find('.works-modal__slide');
   var $dots = $modal.find('.works-modal__dot');
@@ -60,7 +60,6 @@ $(function() {
 
   var currentSlide = 0;
   var totalSlides = $slides.length;
-  var currentProject = null;
   var isAnimating = false;
 
   // ===================
@@ -82,7 +81,6 @@ $(function() {
     if (isAnimating) return;
     isAnimating = true;
 
-    currentProject = projectKey;
     currentSlide = 0;
 
     // プロジェクトクラスをリセット＆追加
@@ -95,13 +93,12 @@ $(function() {
     // スライドを初期化
     updateSlide();
 
-    // モーダル表示（visibility → is-open の順で適用）
-    $modal.addClass('is-visible');
+    // showModal()でモーダルを開く（背景のインタラクションをブロック）
+    modal.showModal();
 
     // 次のフレームでアニメーション開始
     requestAnimationFrame(function() {
       $modal.addClass('is-open');
-      $('body').css('overflow', 'hidden');
 
       setTimeout(function() {
         isAnimating = false;
@@ -119,7 +116,7 @@ $(function() {
     // 技術リスト
     var $techList = $modal.find('.works-modal__tech-list');
     $techList.empty();
-    $.each(data.technologies, function(i, tech) {
+    data.technologies.forEach(function(tech) {
       $techList.append('<li>' + tech + '</li>');
     });
 
@@ -140,17 +137,30 @@ $(function() {
     // 閉じるアニメーション開始
     $modal.addClass('is-closing');
     $modal.removeClass('is-open');
-    $('body').css('overflow', '');
 
-    // アニメーション完了後にクラスを削除
+    // アニメーション完了後にdialogを閉じる
     setTimeout(function() {
-      $modal.removeClass('is-visible is-closing');
+      modal.close();
+      $modal.removeClass('is-closing');
       isAnimating = false;
     }, 400);
   }
 
   $closeBtn.on('click', closeModal);
-  $overlay.on('click', closeModal);
+
+  // 背景（::backdrop）クリックで閉じる
+  $modal.on('click', function(e) {
+    // クリックがdialog自体（backdrop部分）の場合のみ閉じる
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Escapeキーでの閉じる処理をカスタマイズ（アニメーション付きで閉じる）
+  $modal.on('cancel', function(e) {
+    e.preventDefault();
+    closeModal();
+  });
 
   // ===================
   // スライド操作
@@ -196,12 +206,9 @@ $(function() {
   // キーボード操作
   // ===================
   $(document).on('keydown', function(e) {
-    if (!$modal.hasClass('is-open')) return;
+    if (!modal.open) return;
 
     switch(e.key) {
-      case 'Escape':
-        closeModal();
-        break;
       case 'ArrowRight':
         nextSlide();
         break;
