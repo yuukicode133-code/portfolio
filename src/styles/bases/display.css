@@ -1,0 +1,15 @@
+.pc-only {
+    display: block;
+
+  @mixin mq-pc {
+    display: none;
+  }
+}
+
+.sp-only {
+  display: none;
+
+  @mixin mq-sp {
+    display: block;
+  }
+}

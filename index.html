@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho+B1&display=swap" rel="stylesheet" />
+
+    <script src="./js/script.js" defer></script>
+    <script src="./js/custom-cursor.js" defer></script>
+
+    <link rel="stylesheet" href="./dist/styles/main.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__inner">
+        <div class="header__logo">
+          <a href="/" class="header__logo-link">ocean</a>
+        </div>
+        <nav class="header__nav" id="nav-menu">
+          <ul class="header__nav-list">
+            <li class="header__nav-item"><a href="#works" class="header__nav-link">works</a></li>
+            <li class="header__nav-item"><a href="#about" class="header__nav-link">about</a></li>
+            <li class="header__nav-item"><a href="#contact" class="header__nav-link">contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- ハンバーガーボタン（SPのみ表示） -->
+        <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="メニューを開く" class="sp-only">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+    <main class="main">
+      <section class="fv">
+        <div class="fv__video-container">
+          <video class="fv__video" autoplay muted loop playsinline aria-hidden="true" poster="./assets/image/fv.jpg">
+            <source src="./assets/video/fv-video.mp4" type="video/mp4" />
+          </video>
+          <div class="fv-overlay"></div>
+        </div>
+        <h1 class="fv__title">
+          <span class="fv__title-main">ocean</span>
+          <span class="fv__title-sub">web portfolio</span>
+        </h1>
+        <div class="scroll-container">
+          <div class="scrolldown">
+            <span>scroll</span>
+          </div>
+        </div>
+      </section>
+      <div class="section-card">
+        <section class="works">
+          <h2 class="section__title works__title">
+            <span class="section__title-main">works</span>
+            <span class="section__title-sub">works</span>
+          </h2>
+        </section>
+        <section class="about">
+          <h2 class="section__title about__title">about</h2>
+        </section>
+        <section class="contact">
+          <h2 class="section__title contact__title">contact</h2>
+        </section>
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </body>
+</html>

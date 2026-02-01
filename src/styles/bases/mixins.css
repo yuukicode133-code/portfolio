@@ -1,0 +1,25 @@
+/* レスポンシブ用mixin */
+@define-mixin mq-sp {
+    @media screen and (max-width: 767px) {
+      @mixin-content;
+    }
+  }
+  
+  @define-mixin mq-tab {
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      @mixin-content;
+    }
+  }
+  
+  @define-mixin mq-pc {
+    @media screen and (min-width: 1024px) {
+      @mixin-content;
+    }
+  }
+  
+  /* flexbox中央揃え */
+  @define-mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

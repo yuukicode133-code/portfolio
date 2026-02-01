@@ -1,0 +1,41 @@
+.header {
+    background-color: var(--color-white);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 80px;
+    display: grid;
+}
+.header__inner {
+    padding: var(--spacing-size-20) var(--spacing-size-24);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+
+}
+
+.header__nav {
+
+}
+
+.header__nav-list {
+    display: flex;
+    gap: 31px;
+
+}
+
+.header__nav-item {
+
+}
+
+.header__nav-link {
+    color: var(--color-green-dark);
+    text-transform: uppercase;
+
+}
+

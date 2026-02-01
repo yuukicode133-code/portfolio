@@ -1,0 +1,48 @@
+:root {
+    /* カラー */
+    --color-green-dark: #51733f;
+    --color-green: #b0bf9f;
+    --color-beige: #d2d3c4;;
+    --color-mint: #cfeada;
+    --color-white: #f5f5eb;
+    --color-black: #2b2b2b;
+    
+    /* フォントサイズ */
+    --font-size-xs: 11px;
+    --font-size-sm: 13px;
+    --font-size-md: 16px;
+    --font-size-semi-lg: clamp(1.125em, 1.0786em + 0.1905vw, 1.25em);
+    --font-size-la: clamp(1.25em, 0.381vw + 1.1571em, 1.5em);
+    --font-size-xl: clamp(1.75em, 0.381vw + 1.6571em, 2em);
+    --font-size-2xl: clamp(2.375em, 2.1429em + 0.9524vw, 3em);
+    --font-size-3xl: clamp(2.5em, 2.1286em + 1.5238vw, 3.5em);
+    --font-size-fv: clamp(7rem, 6.620rem + 3.756vw, 9rem);
+
+    /* フォントウェイト */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+
+    /* スペーシング */
+    --spacing-size-10: clamp(0.5em, 0.438em + 0.25vw, 0.625em);
+    --spacing-size-12: clamp(0.625em, 0.563em + 0.25vw, 0.75em);
+    --spacing-size-16: clamp(0.75em, 0.627em + 0.51vw, 1em);
+    --spacing-size-20: clamp(1em, 0.877em + 0.51vw, 1.25em);
+    --spacing-size-24: clamp(1.25em, 1.127em + 0.51vw, 1.5em);
+    --spacing-size-30: clamp(1.5em, 1.315em + 0.76vw, 1.875em);
+    --spacing-size-40: clamp(1.875em, 1.566em + 1.27vw, 2.5em);
+    --spacing-size-60: clamp(2.5em, 1.883em + 2.53vw, 3.75em);
+    --spacing-size-80: clamp(3.75em, 3.133em + 2.53vw, 5em);
+    --spacing-size-100: clamp(5em, 4.398em + 2.53vw, 6.25em);
+
+    /* レイアウト */
+    --layout-content-width: 1200px;
+    --layout-content-width-small: 980px;
+
+    /* フォント */
+    --font-family-jp: 'Shippori Mincho B1','Yu Mincho', serif;
+    --font-family-en: 'Playfair Display','Times New Roman', serif;
+
+    
+}
