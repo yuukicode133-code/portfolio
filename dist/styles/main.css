@@ -183,6 +183,34 @@ html {
 }
     }
 /* Components */
+/* デフォルトカーソルを非表示 */
+* {
+  cursor: none !important;
+}
+.custom-cursor {
+  position: fixed;
+  top: -20px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease, background-color 0.3s ease;
+  will-change: transform;
+}
+.custom-cursor.is-hover {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: -30px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.custom-cursor.is-hidden {
+  opacity: 0;
+}
 /* @import './components/button.css';
 @import './components/card.css'; */
 /* Layout */
