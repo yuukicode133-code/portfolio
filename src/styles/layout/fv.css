@@ -49,8 +49,8 @@
 
 .fv__title-sub {
   display: block;
-  font-size: var(--font-size-xl);
-  margin-top: var(--spacing-size-24);
+  /* font-size: var(--font-size-xl);
+  margin-top: var(--spacing-size-24); */
 }
 .scroll-container {
   position: absolute;
