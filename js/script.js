@@ -21,11 +21,7 @@ $(function() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const $item = $(entry.target);
-        const index = $items.index($item);
-        setTimeout(() => {
-          $item.addClass('is-visible');
-        }, index * 100);
+        $(entry.target).addClass('is-visible');
         observer.unobserve(entry.target);
       }
     });

@@ -35,6 +35,8 @@
     </header>
     <main class="main">
       <section class="fv">
+        <div class="section__bg-left"></div>
+        <div class="section__bg-right"></div>
         <div class="fv__video-container">
           <video class="fv__video" autoplay muted loop playsinline aria-hidden="true" poster="./assets/image/fv.jpg">
             <source src="./assets/video/fv-video.mp4" type="video/mp4" />
@@ -46,68 +48,89 @@
           <span class="fv__title-sub">web portfolio</span>
         </h1>
         <div class="scroll-container">
-          <div class="scrolldown">
-            <span class="en">scroll</span>
+          <div class="scroll-wrapper">
+            <div class="scroll-bg"></div>
+            <div class="scrolldown">
+              <span class="en">scroll</span>
+            </div>
           </div>
         </div>
       </section>
       <div class="section-card">
         <section class="works" id="works">
+          <div class="works__bg-left"></div>
+          <div class="works__bg-right"></div>
+          <div class="works__bg-title"></div>
           <div class="works__inner">
-            <h2 class="works__title en">Portfolio</h2>
+            <h2 class="works__title en">works</h2>
             <ul class="works__list">
               <li class="works__item">
                 <a href="#" class="works__link">
                   <div class="works__text">
-                    <h3 class="works__item-title en">Project A</h3>
+                    <h3 class="works__item-title en">project A</h3>
                     <p class="works__item-role">Web Design, Development</p>
                   </div>
                   <div class="works__thumbnail">
-                    <img src="https://placehold.co/600x600" alt="Project A" width="600" height="600" />
+                    <picture>
+                      <source srcset="./assets/image/works-a.webp" type="image/webp">
+                      <img src="./assets/image/works-a.jpg" alt="Project A" width="600" height="600" />
+                    </picture>
                   </div>
                 </a>
               </li>
               <li class="works__item">
                 <a href="#" class="works__link">
                   <div class="works__text">
-                    <h3 class="works__item-title en">Project B</h3>
+                    <h3 class="works__item-title en">project B</h3>
                     <p class="works__item-role">UI/UX Design</p>
                   </div>
                   <div class="works__thumbnail">
-                    <img src="https://placehold.co/600x600" alt="Project B" width="600" height="600" />
+                    <picture>
+                      <source srcset="./assets/image/works-b.webp" type="image/webp">
+                      <img src="./assets/image/works-b.jpg" alt="Project B" width="600" height="600" />
+                    </picture>
                   </div>
                 </a>
               </li>
               <li class="works__item">
                 <a href="#" class="works__link">
                   <div class="works__text">
-                    <h3 class="works__item-title en">Project C</h3>
+                    <h3 class="works__item-title en">project C</h3>
                     <p class="works__item-role">Branding, Web Design</p>
                   </div>
                   <div class="works__thumbnail">
-                    <img src="https://placehold.co/600x600" alt="Project C" width="600" height="600" />
+                    <picture>
+                      <source srcset="./assets/image/works-c.webp" type="image/webp">
+                      <img src="./assets/image/works-c.jpg" alt="Project C" width="600" height="600" />
+                    </picture>
                   </div>
                 </a>
               </li>
               <li class="works__item">
                 <a href="#" class="works__link">
                   <div class="works__text">
-                    <h3 class="works__item-title en">Project D</h3>
+                    <h3 class="works__item-title en">project D</h3>
                     <p class="works__item-role">Landing Page Design</p>
                   </div>
                   <div class="works__thumbnail">
-                    <img src="https://placehold.co/600x600" alt="Project D" width="600" height="600" />
+                    <picture>
+                      <source srcset="./assets/image/works-d.webp" type="image/webp">
+                      <img src="./assets/image/works-d.jpg" alt="Project D" width="600" height="600" />
+                    </picture>
                   </div>
                 </a>
               </li>
               <li class="works__item">
                 <a href="#" class="works__link">
                   <div class="works__text">
-                    <h3 class="works__item-title en">Project E</h3>
+                    <h3 class="works__item-title en">project E</h3>
                     <p class="works__item-role">WordPress Development</p>
                   </div>
                   <div class="works__thumbnail">
-                    <img src="https://placehold.co/600x600" alt="Project E" width="600" height="600" />
+                    <picture>
+                      <source srcset="./assets/image/works-e.webp" type="image/webp">
+                      <img src="./assets/image/works-e.jpg" alt="Project E" width="600" height="600" />
+                    </picture>
                   </div>
                 </a>
               </li>
@@ -118,7 +141,10 @@
                     <p class="works__item-role">Corporate Site</p>
                   </div>
                   <div class="works__thumbnail">
-                    <img src="https://placehold.co/600x600" alt="Project F" width="600" height="600" />
+                    <picture>
+                      <source srcset="./assets/image/works-f.webp" type="image/webp">
+                      <img src="./assets/image/works-f.jpg" alt="Project F" width="600" height="600" />
+                    </picture>
                   </div>
                 </a>
               </li>

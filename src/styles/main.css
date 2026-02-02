@@ -9,8 +9,7 @@
 /* Components */
 @import './components/custom-cursor.css';
 @import './components/modal.css';
-/* @import './components/button.css';
-@import './components/card.css'; */
+@import './components/global-section.css';
 
 /* Layout */
 @import './layout/header.css';

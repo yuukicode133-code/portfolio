@@ -2,8 +2,8 @@
     /* カラー */
     --color-green-dark: #51733f;
     --color-green: #b0bf9f;
-    --color-beige: #d2d3c4;;
-    --color-mint: #cfeada;
+    --color-beige: #d2d3c4;
+    --color-beige-dark: #d2c8a8;
     --color-white: #f5f5eb;
     --color-black: #2b2b2b;
     
@@ -44,5 +44,9 @@
     --font-family-jp: 'Shippori Mincho B1','Yu Mincho', serif;
     --font-family-en: 'Playfair Display','Times New Roman', serif;
 
+    /* アニメーション */
+    --transition-all: all 0.3s ease;
+
+    --transform-down: translateY(5px);
     
 }
