@@ -2,7 +2,7 @@
   overflow: hidden;
   position: relative;
 }
-/* .section__bg-left {
+.section__bg-left {
   background-image: url("../../../assets/image/dash.png");
   background-size: 20% 100%;
   background-position: left;
@@ -25,4 +25,4 @@
   position: absolute;
   right: 0;
   z-index: 1;
-} */
+}

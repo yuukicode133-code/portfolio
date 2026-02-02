@@ -498,7 +498,7 @@ html {
   overflow: hidden;
   position: relative;
 }
-/* .section__bg-left {
+.section__bg-left {
   background-image: url("../../../assets/image/dash.png");
   background-size: 20% 100%;
   background-position: left;
@@ -509,7 +509,6 @@ html {
   left: 0;
   z-index: 1;
 }
-
 .section__bg-right {
   background-image: url("../../../assets/image/dash.png");
   transform: scaleX(-1);
@@ -521,7 +520,7 @@ html {
   position: absolute;
   right: 0;
   z-index: 1;
-} */
+}
 /* Layout */
 .header {
     width: 100%;
