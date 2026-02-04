@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho+B1&display=swap" rel="stylesheet" />
 
-
     <link rel="stylesheet" href="./dist/styles/main.css" />
   </head>
   <body>
@@ -72,7 +71,7 @@
                   </div>
                   <div class="works__thumbnail">
                     <picture>
-                      <source srcset="./assets/image/works-a.webp" type="image/webp">
+                      <source srcset="./assets/image/works-a.webp" type="image/webp" />
                       <img src="./assets/image/works-a.jpg" alt="Project A" width="600" height="600" />
                     </picture>
                   </div>
@@ -86,7 +85,7 @@
                   </div>
                   <div class="works__thumbnail">
                     <picture>
-                      <source srcset="./assets/image/works-b.webp" type="image/webp">
+                      <source srcset="./assets/image/works-b.webp" type="image/webp" />
                       <img src="./assets/image/works-b.jpg" alt="Project B" width="600" height="600" />
                     </picture>
                   </div>
@@ -100,7 +99,7 @@
                   </div>
                   <div class="works__thumbnail">
                     <picture>
-                      <source srcset="./assets/image/works-c.webp" type="image/webp">
+                      <source srcset="./assets/image/works-c.webp" type="image/webp" />
                       <img src="./assets/image/works-c.jpg" alt="Project C" width="600" height="600" />
                     </picture>
                   </div>
@@ -114,7 +113,7 @@
                   </div>
                   <div class="works__thumbnail">
                     <picture>
-                      <source srcset="./assets/image/works-d.webp" type="image/webp">
+                      <source srcset="./assets/image/works-d.webp" type="image/webp" />
                       <img src="./assets/image/works-d.jpg" alt="Project D" width="600" height="600" />
                     </picture>
                   </div>
@@ -128,7 +127,7 @@
                   </div>
                   <div class="works__thumbnail">
                     <picture>
-                      <source srcset="./assets/image/works-e.webp" type="image/webp">
+                      <source srcset="./assets/image/works-e.webp" type="image/webp" />
                       <img src="./assets/image/works-e.jpg" alt="Project E" width="600" height="600" />
                     </picture>
                   </div>
@@ -142,7 +141,7 @@
                   </div>
                   <div class="works__thumbnail">
                     <picture>
-                      <source srcset="./assets/image/works-f.webp" type="image/webp">
+                      <source srcset="./assets/image/works-f.webp" type="image/webp" />
                       <img src="./assets/image/works-f.jpg" alt="Project F" width="600" height="600" />
                     </picture>
                   </div>
@@ -151,8 +150,27 @@
             </ul>
           </div>
         </section>
-        <section class="about">
-          <h2 class="section__title about__title">about</h2>
+        <section id="about" class="about">
+          <div class="about__container">
+            <!-- 人物画像の円形 -->
+            <div class="about__image-circle">
+              <picture>
+                <source srcset="./assets/image/about.webp" type="image/webp">
+                <img src="./assets/image/about.jpg" alt="プロフィール画像" width="500" height="500">
+              </picture>
+            </div>
+
+            <!-- テキストの白い円形（スクロールで拡大） -->
+            <div class="about__text-circle">
+              <div class="about__text-content">
+                <h2 class="about__title en">About</h2>
+                <p class="about__description">
+                  ここに自己紹介テキストが入ります。
+                  フリーランスのWeb制作者として活動しています。
+                </p>
+              </div>
+            </div>
+          </div>
         </section>
         <section class="contact">
           <h2 class="section__title contact__title">contact</h2>
@@ -184,9 +202,7 @@
               </div>
               <div class="works-modal__slide" data-slide="4">
                 <p class="works-modal__cta-text">プロジェクトの詳細をご覧ください</p>
-                <a href="#" class="works-modal__button en" target="_blank" rel="noopener">
-                  View Project
-                </a>
+                <a href="#" class="works-modal__button en" target="_blank" rel="noopener"> View Project </a>
               </div>
             </div>
 
@@ -217,5 +233,6 @@
     <script src="./js/custom-cursor.js" defer></script>
     <script src="./js/script.js" defer></script>
     <script src="./js/modal.js" defer></script>
+    <script src="./js/about-animation.js" defer></script>
   </body>
 </html>

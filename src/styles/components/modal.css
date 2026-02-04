@@ -13,7 +13,16 @@
   padding: 0;
   margin: 0;
   background: transparent;
-  overflow: visible;
+
+}
+.works-modal:not([open]) {
+  display: none;
+}
+
+/* 開いている時のレイアウト */
+.works-modal[open] {
+  display: grid;
+  place-items: center;
 }
 
 /* 背景のオーバーレイ（::backdrop） */
@@ -27,9 +36,6 @@
 }
 
 .works-modal__content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
   height: 85vh;
   border-radius: 30px 30px 0 0;
@@ -38,7 +44,7 @@
   transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.4s ease;
   display: flex;
   flex-direction: column;
-  padding: var(--spacing-size-60) var(--spacing-size-40);
+  padding: var(--spacing-size-60) 0;
 }
 
 .works-modal.is-open .works-modal__content {

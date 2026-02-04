@@ -82,13 +82,13 @@ $(function () {
     isAnimating = true;
 
     currentSlide = 0;
-    
+
     // カスタムカーソルをモーダル内に移動
     var $cursor = $(".custom-cursor");
     if ($cursor.length) {
       $modal.append($cursor);
     }
-    
+
     // プロジェクトクラスをリセット＆追加
     $modal.removeClass("is-project-a is-project-b is-project-c is-project-d is-project-e is-project-f is-closing");
     $modal.addClass("is-project-" + projectKey);
