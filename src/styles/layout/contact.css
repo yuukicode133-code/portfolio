@@ -1,0 +1,348 @@
+.contact {
+  position: relative;
+  background-color: #f9f9f9;
+  padding: var(--spacing-size-80) var(--spacing-size-24);
+
+  @mixin mq-sp {
+    padding: var(--spacing-size-48) var(--spacing-size-16);
+  }
+
+  &__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-black);
+    text-align: center;
+    margin-bottom: var(--spacing-size-48);
+    letter-spacing: 0.1em;
+    text-transform: capitalize;
+
+    @mixin mq-sp {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-size-32);
+    }
+  }
+
+  /* 流体シェイプ - フォームのコンテナとして機能 */
+  &__blob {
+    background-color: #f5f0e8;
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+    padding: var(--spacing-size-48);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+
+    /* PCのみアニメーション */
+    @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+      animation: blob-morph 15s ease-in-out infinite;
+    }
+
+    @mixin mq-sp {
+      border-radius: 30px;
+      padding: var(--spacing-size-32) var(--spacing-size-24);
+      max-width: 100%;
+      /* スマホではアニメーション無効 */
+      animation: none;
+    }
+  }
+
+  /* フォームラッパー */
+  &__form-wrapper {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      pointer-events: none;
+    }
+  }
+
+  &__form {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  /* フォームグループ */
+  &__form-group {
+    margin-bottom: var(--spacing-size-20);
+
+    @mixin mq-sp {
+      margin-bottom: var(--spacing-size-16);
+    }
+
+    &--checkbox {
+      margin-top: var(--spacing-size-24);
+      margin-bottom: var(--spacing-size-24);
+
+      @mixin mq-sp {
+        margin-top: var(--spacing-size-20);
+        margin-bottom: var(--spacing-size-20);
+      }
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-black);
+    margin-bottom: var(--spacing-size-8);
+    font-family: var(--font-family-jp);
+  }
+
+  &__required {
+    color: #c0392b;
+    font-size: var(--font-size-xs);
+  }
+
+  &__optional {
+    color: #777;
+    font-size: var(--font-size-xs);
+  }
+
+  /* 入力フィールド */
+  &__input,
+  &__textarea {
+    width: 100%;
+    padding: var(--spacing-size-12) var(--spacing-size-16);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family-jp);
+    color: var(--color-black);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: #aaa;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-black);
+    }
+
+    @mixin mq-sp {
+      padding: var(--spacing-size-12);
+      font-size: var(--font-size-base);
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 120px;
+
+    @mixin mq-sp {
+      min-height: 100px;
+    }
+  }
+
+  /* チェックボックス */
+  &__checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-size-10);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-family: var(--font-family-jp);
+    line-height: 1.5;
+  }
+
+  &__checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .contact__checkbox-custom {
+      background-color: var(--color-black);
+      border-color: var(--color-black);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &:focus + .contact__checkbox-custom {
+      border-color: var(--color-black);
+    }
+  }
+
+  &__checkbox-custom {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #bbb;
+    border-radius: 3px;
+    position: relative;
+    transition: all 0.2s ease;
+    margin-top: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 5px;
+      width: 4px;
+      height: 8px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+  }
+
+  &__checkbox-text {
+    color: var(--color-black);
+  }
+
+  &__privacy-link {
+    color: var(--color-black);
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  /* 送信ボタン */
+  &__submit {
+    width: 100%;
+    padding: var(--spacing-size-14) var(--spacing-size-24);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-jp);
+    color: #fff;
+    background-color: var(--color-black);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    position: relative;
+
+    &:hover:not(:disabled) {
+      opacity: 0.8;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &.is-loading {
+      .contact__submit-text {
+        visibility: hidden;
+      }
+      .contact__submit-loading {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__submit-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  /* 送信完了画面 */
+  &__complete {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &.is-visible {
+      opacity: 1;
+      visibility: visible;
+      position: relative;
+    }
+  }
+
+  &__complete-content {
+    text-align: center;
+    padding: var(--spacing-size-24);
+  }
+
+  &__complete-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-size-20);
+    background-color: #27ae60;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    @mixin mq-sp {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  &__complete-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-black);
+    margin-bottom: var(--spacing-size-12);
+    font-family: var(--font-family-jp);
+  }
+
+  &__complete-message {
+    font-size: var(--font-size-sm);
+    color: var(--color-black);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-size-24);
+    font-family: var(--font-family-jp);
+  }
+
+  &__back-button {
+    padding: var(--spacing-size-10) var(--spacing-size-20);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-family-jp);
+    color: var(--color-black);
+    background: transparent;
+    border: 1px solid var(--color-black);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: var(--color-black);
+      color: #fff;
+    }
+  }
+}
+
+/* ブロブのモーフィングアニメーション - PCのみ */
+@keyframes blob-morph {
+  0%, 100% {
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+  }
+  33% {
+    border-radius: 50% 60% 40% 60% / 60% 40% 60% 40%;
+  }
+  66% {
+    border-radius: 40% 50% 60% 40% / 40% 60% 50% 60%;
+  }
+}

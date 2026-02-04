@@ -931,7 +931,8 @@ html {
 .about {
   background-color: var(--color-white);
   position: relative;
-  padding: var(--spacing-size-80) 0;
+  overflow: hidden; /* 拡大した円形がセクション外に出ないよう */
+  min-height: 150vh; /* スクロール量を確保するため */
 }
 .about__container {
     position: relative;
@@ -984,27 +985,27 @@ html {
     height: clamp(350px, 40vw, 600px);
     background: #fff;
     border-radius: 50%;
-    overflow: hidden;
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    /* JSで制御するため、CSSでの初期値 */
     transform: scale(0.6);
     opacity: 0;
-    transition: transform 0.8s ease-out, opacity 0.6s ease-out;
+    transform-origin: center center;
+    will-change: transform, opacity; /* パフォーマンス向上 */
+
+    /* 拡大時の影 */
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
   }
-.about__text-circle.is-visible {
-      transform: scale(1);
-      opacity: 1;
-    }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 .about__text-circle {
       width: clamp(300px, 35vw, 500px);
       height: clamp(300px, 35vw, 500px);
       top: 25%;
-      left: 20%;
-    
-    }
+      left: 20%
+  }
     }
 @media screen and (max-width: 767px) {
 .about__text-circle {
@@ -1013,18 +1014,15 @@ html {
       left: 50%;
       transform: translateX(-50%) scale(0.6);
       width: clamp(280px, 80vw, 350px);
-      height: clamp(280px, 80vw, 350px);
-    
-    }
-
-      .about__text-circle.is-visible {
-        transform: translateX(-50%) scale(1);
-      }
+      height: clamp(280px, 80vw, 350px)
+  }
     }
 .about__text-content {
     padding: var(--spacing-size-40);
     text-align: center;
     max-width: 80%;
+    /* 円形が大きく拡大してもテキストは固定サイズを維持 */
+    will-change: transform;
   }
 .about__title {
     font-size: var(--font-size-2xl);
@@ -1040,3 +1038,322 @@ html {
     line-height: 2;
     font-family: var(--font-family-jp);
   }
+.contact {
+  position: relative;
+  background-color: #f9f9f9;
+  padding: var(--spacing-size-80) var(--spacing-size-24);
+}
+@media screen and (max-width: 767px) {
+.contact {
+    padding: var(--spacing-size-48) var(--spacing-size-16);
+}
+    }
+.contact__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+.contact__title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-black);
+    text-align: center;
+    margin-bottom: var(--spacing-size-48);
+    letter-spacing: 0.1em;
+    text-transform: capitalize;
+  }
+@media screen and (max-width: 767px) {
+.contact__title {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-size-32)
+  }
+    }
+/* 流体シェイプ - フォームのコンテナとして機能 */
+.contact__blob {
+    background-color: #f5f0e8;
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+    padding: var(--spacing-size-48);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+  }
+/* PCのみアニメーション */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+.contact__blob {
+      animation: blob-morph 15s ease-in-out infinite
+  }
+    }
+@media screen and (max-width: 767px) {
+.contact__blob {
+      border-radius: 30px;
+      padding: var(--spacing-size-32) var(--spacing-size-24);
+      max-width: 100%;
+      /* スマホではアニメーション無効 */
+      animation: none;
+    
+    }
+    }
+/* フォームラッパー */
+.contact__form-wrapper {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+.contact__form-wrapper.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      pointer-events: none;
+    }
+.contact__form {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+/* フォームグループ */
+.contact__form-group {
+    margin-bottom: var(--spacing-size-20);
+  }
+@media screen and (max-width: 767px) {
+.contact__form-group {
+      margin-bottom: var(--spacing-size-16);
+  }
+    }
+.contact__form-group--checkbox {
+      margin-top: var(--spacing-size-24);
+      margin-bottom: var(--spacing-size-24);
+    }
+@media screen and (max-width: 767px) {
+.contact__form-group--checkbox {
+        margin-top: var(--spacing-size-20);
+        margin-bottom: var(--spacing-size-20)
+    }
+    }
+.contact__label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-black);
+    margin-bottom: var(--spacing-size-8);
+    font-family: var(--font-family-jp);
+  }
+.contact__required {
+    color: #c0392b;
+    font-size: var(--font-size-xs);
+  }
+.contact__optional {
+    color: #777;
+    font-size: var(--font-size-xs);
+  }
+/* 入力フィールド */
+.contact__input,
+  .contact__textarea {
+    width: 100%;
+    padding: var(--spacing-size-12) var(--spacing-size-16);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family-jp);
+    color: var(--color-black);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+.contact__input::placeholder, .contact__textarea::placeholder {
+      color: #aaa;
+    }
+.contact__input:focus, .contact__textarea:focus {
+      outline: none;
+      border-color: var(--color-black);
+    }
+@media screen and (max-width: 767px) {
+.contact__input,
+  .contact__textarea {
+      padding: var(--spacing-size-12);
+      font-size: var(--font-size-base);
+    
+    }
+    }
+.contact__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+@media screen and (max-width: 767px) {
+.contact__textarea {
+      min-height: 100px
+  }
+    }
+/* チェックボックス */
+.contact__checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-size-10);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-family: var(--font-family-jp);
+    line-height: 1.5;
+  }
+.contact__checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+.contact__checkbox:checked + .contact__checkbox-custom {
+      background-color: var(--color-black);
+      border-color: var(--color-black);
+    }
+.contact__checkbox:checked + .contact__checkbox-custom::after {
+        opacity: 1;
+      }
+.contact__checkbox:focus + .contact__checkbox-custom {
+      border-color: var(--color-black);
+    }
+.contact__checkbox-custom {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #bbb;
+    border-radius: 3px;
+    position: relative;
+    transition: all 0.2s ease;
+    margin-top: 2px;
+  }
+.contact__checkbox-custom::after {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 5px;
+      width: 4px;
+      height: 8px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+.contact__checkbox-text {
+    color: var(--color-black);
+  }
+.contact__privacy-link {
+    color: var(--color-black);
+    text-decoration: underline;
+  }
+.contact__privacy-link:hover {
+      text-decoration: none;
+    }
+/* 送信ボタン */
+.contact__submit {
+    width: 100%;
+    padding: var(--spacing-size-14) var(--spacing-size-24);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-jp);
+    color: #fff;
+    background-color: var(--color-black);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    position: relative;
+  }
+.contact__submit:hover:not(:disabled) {
+      opacity: 0.8;
+    }
+.contact__submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+.contact__submit.is-loading .contact__submit-text {
+        visibility: hidden;
+      }
+.contact__submit.is-loading .contact__submit-loading {
+        opacity: 1;
+      }
+.contact__submit-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+/* 送信完了画面 */
+.contact__complete {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+.contact__complete.is-visible {
+      opacity: 1;
+      visibility: visible;
+      position: relative;
+    }
+.contact__complete-content {
+    text-align: center;
+    padding: var(--spacing-size-24);
+  }
+.contact__complete-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-size-20);
+    background-color: #27ae60;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+@media screen and (max-width: 767px) {
+.contact__complete-icon {
+      width: 56px;
+      height: 56px
+  }
+    }
+.contact__complete-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-black);
+    margin-bottom: var(--spacing-size-12);
+    font-family: var(--font-family-jp);
+  }
+.contact__complete-message {
+    font-size: var(--font-size-sm);
+    color: var(--color-black);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-size-24);
+    font-family: var(--font-family-jp);
+  }
+.contact__back-button {
+    padding: var(--spacing-size-10) var(--spacing-size-20);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-family-jp);
+    color: var(--color-black);
+    background: transparent;
+    border: 1px solid var(--color-black);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+.contact__back-button:hover {
+      background-color: var(--color-black);
+      color: #fff;
+    }
+/* ブロブのモーフィングアニメーション - PCのみ */
+@keyframes blob-morph {
+  0%, 100% {
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+  }
+  33% {
+    border-radius: 50% 60% 40% 60% / 60% 40% 60% 40%;
+  }
+  66% {
+    border-radius: 40% 50% 60% 40% / 40% 60% 50% 60%;
+  }
+}
