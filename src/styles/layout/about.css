@@ -1,23 +1,23 @@
 .about {
-  background-color: var(--color-white);
+  background-color: var(--color-beige);
   position: relative;
   overflow: hidden; /* 拡大した円形がセクション外に出ないよう */
-  min-height: 150vh; /* スクロール量を確保するため */
+  padding: var(--spacing-size-80) 0;
 
   &__container {
     position: relative;
     max-width: var(--layout-content-width);
     margin: 0 auto;
     padding: 0 var(--spacing-size-24);
-    min-height: 80vh;
+    min-height: 1000px;
   }
 
   &__image-circle {
     position: absolute;
     top: 10%;
-    left: 10%;
-    width: clamp(300px, 35vw, 500px);
-    height: clamp(300px, 35vw, 500px);
+    left: 5%;
+    width: clamp(21.875rem, -16.457rem + 59.952vw, 37.5rem);
+    height: clamp(21.875rem, -16.457rem + 59.952vw, 37.5rem);
     border-radius: 50%;
     overflow: hidden;
     z-index: 2;
@@ -49,15 +49,14 @@
   &__text-circle {
     position: absolute;
     top: 30%;
-    left: 25%;
+    left: 50%;
     width: clamp(350px, 40vw, 600px);
     height: clamp(350px, 40vw, 600px);
     background: #fff;
     border-radius: 50%;
     z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 
     /* JSで制御するため、CSSでの初期値 */
     transform: scale(0.6);
@@ -88,9 +87,12 @@
   &__text-content {
     padding: var(--spacing-size-40);
     text-align: center;
-    max-width: 80%;
+    width: 100%;
     /* 円形が大きく拡大してもテキストは固定サイズを維持 */
     will-change: transform;
+    /* position: fixed;
+    top: 50%;
+    left: 50%; */
   }
 
   &__title {
@@ -107,5 +109,30 @@
     color: var(--color-black);
     line-height: 2;
     font-family: var(--font-family-jp);
+  }
+  &__skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-size-16);
+    margin-top: var(--spacing-size-40);
+  }
+  &__skill-item {
+    background-color: var(--color-white);
+    padding: var(--spacing-size-16);
+    border-radius: var(--spacing-size-16);
+    text-transform: capitalize;
+    background-color: var(--color-green);
+    color: var(--color-white);
+
+    &:nth-child(1) {
+      text-transform: uppercase;
+    }
+    &:nth-child(2) {
+      text-transform: uppercase;
+    }
+    &:nth-child(4) {
+      text-transform: uppercase;
+    }
+
   }
 }

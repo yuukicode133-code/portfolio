@@ -37,7 +37,7 @@
     --spacing-size-100: clamp(5em, 4.398em + 2.53vw, 6.25em);
 
     /* レイアウト */
-    --layout-content-width: 1200px;
+    --layout-content-width: 1300px;
     --layout-content-width-small: 980px;
 
     /* フォント */

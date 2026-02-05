@@ -1,67 +1,77 @@
-# Contactセクションの実装
+# Contact セクションの実装
 
 ## 概要
-背景に流体シェイプ（有機的な曲線のブロブ形状）を配置し、その中央にお問い合わせフォームを設置します。
-フォーム送信はEmailJSを使用し、送信後は画面切り替えで完了メッセージを表示します。
 
-※ EmailJSのPublic Key, Service ID, Template IDは後から手動で設定するため、
-  コード内にはプレースホルダー（'YOUR_PUBLIC_KEY'等）を記述してください。
+背景に流体シェイプ（有機的な曲線のブロブ形状）を配置し、その中央にお問い合わせフォームを設置します。
+フォーム送信は EmailJS を使用し、送信後は画面切り替えで完了メッセージを表示します。
+
+※ EmailJS の Public Key, Service ID, Template ID は後から手動で設定するため、
+コード内にはプレースホルダー（'YOUR_PUBLIC_KEY'等）を記述してください。
 
 ## レイアウト構成
 
 ### 全体
+
 - 通常のセクション程度の高さ（フルスクリーンではない）
-- padding: 上下80px〜100px程度
+- padding: 上下 80px〜100px 程度
 - セクション背景：白または薄いグレー（#f9f9f9）
 - 中央に流体シェイプを配置し、その中にフォームを収める
 
 ### 流体シェイプ（ブロブ）
+
 - フォームを包み込む程度のサイズ（フォームより一回り大きい）
 - 有機的な曲線を持つ形状
 - 背景色：薄いベージュ系（#f5f0e8）
-- PC: 最大幅700px程度、高さは内容に応じて可変
-- スマホ: 幅100%、画面幅に合わせて縮小
+- PC: 最大幅 700px 程度、高さは内容に応じて可変
+- スマホ: 幅 100%、画面幅に合わせて縮小
 - **スマホではアニメーションを無効化**（パフォーマンス考慮）
 
 ### フォーム
+
 - 流体シェイプの中央に配置
-- 最大幅: 450px程度
+- 最大幅: 450px 程度
 - **必ず流体シェイプ内に収まるよう調整**
 - 画面幅が狭い場合は適切に縮小
 
 ## レスポンシブ対応の重要ポイント
 
 ### フォームがはみ出さないための対策
+
 1. フォームの最大幅を流体シェイプより小さく設定
-2. padding, marginを画面幅に応じて縮小
+2. padding, margin を画面幅に応じて縮小
 3. 流体シェイプはフォームのコンテナとして機能させる
 4. box-sizing: border-box を確実に適用
 
 ### スマホでのパフォーマンス対策
-1. ブロブのモーフィングアニメーションはPCのみ（prefers-reduced-motionも考慮）
-2. SVGではなくborder-radiusでシンプルに実装
-3. box-shadowは控えめに
+
+1. ブロブのモーフィングアニメーションは PC のみ（prefers-reduced-motion も考慮）
+2. SVG ではなく border-radius でシンプルに実装
+3. box-shadow は控えめに
 
 ## フォーム入力項目
 
 1. **名前**（必須）
+
    - type="text"
    - name="user_name"
    - placeholder: "お名前"
    - required
 
 2. **法人名**（任意）
+
    - type="text"
    - name="company_name"
    - placeholder: "法人名（任意）"
 
 3. **メールアドレス**（必須）
+
    - type="email"
    - name="user_email"
    - placeholder: "メールアドレス"
    - required
 
 4. **お問い合わせ内容**（必須）
+
    - textarea
    - name="message"
    - placeholder: "お問い合わせ内容をご記入ください"
@@ -69,6 +79,7 @@
    - required
 
 5. **プライバシーポリシー同意**（必須）
+
    - type="checkbox"
    - name="privacy_agreement"
    - 「プライバシーポリシーに同意する」ラベル
@@ -78,89 +89,43 @@
    - type="submit"
    - テキスト: "送信する"
 
-## HTML構造
+## HTML 構造
+
 ```html
 <section id="contact" class="contact">
   <div class="contact__inner">
     <h2 class="contact__title en">Contact</h2>
-    
+
     <!-- 流体シェイプ（フォームのコンテナ） -->
     <div class="contact__blob">
-      
       <!-- フォーム画面 -->
       <div class="contact__form-wrapper" id="contact-form-view">
         <form class="contact__form" id="contact-form">
           <div class="contact__form-group">
-            <label for="contact-name" class="contact__label">
-              お名前 <span class="contact__required">*</span>
-            </label>
-            <input 
-              type="text" 
-              id="contact-name" 
-              name="user_name" 
-              class="contact__input" 
-              placeholder="お名前"
-              autocomplete="name"
-              required
-            >
+            <label for="contact-name" class="contact__label"> お名前 <span class="contact__required">*</span> </label>
+            <input type="text" id="contact-name" name="user_name" class="contact__input" placeholder="お名前" autocomplete="name" required />
           </div>
 
           <div class="contact__form-group">
-            <label for="contact-company" class="contact__label">
-              法人名 <span class="contact__optional">（任意）</span>
-            </label>
-            <input 
-              type="text" 
-              id="contact-company" 
-              name="company_name" 
-              class="contact__input" 
-              placeholder="法人名（任意）"
-              autocomplete="organization"
-            >
+            <label for="contact-company" class="contact__label"> 法人名 <span class="contact__optional">（任意）</span> </label>
+            <input type="text" id="contact-company" name="company_name" class="contact__input" placeholder="法人名（任意）" autocomplete="organization" />
           </div>
 
           <div class="contact__form-group">
-            <label for="contact-email" class="contact__label">
-              メールアドレス <span class="contact__required">*</span>
-            </label>
-            <input 
-              type="email" 
-              id="contact-email" 
-              name="user_email" 
-              class="contact__input" 
-              placeholder="メールアドレス"
-              autocomplete="email"
-              required
-            >
+            <label for="contact-email" class="contact__label"> メールアドレス <span class="contact__required">*</span> </label>
+            <input type="email" id="contact-email" name="user_email" class="contact__input" placeholder="メールアドレス" autocomplete="email" required />
           </div>
 
           <div class="contact__form-group">
-            <label for="contact-message" class="contact__label">
-              お問い合わせ内容 <span class="contact__required">*</span>
-            </label>
-            <textarea 
-              id="contact-message" 
-              name="message" 
-              class="contact__textarea" 
-              placeholder="お問い合わせ内容をご記入ください"
-              rows="5"
-              required
-            ></textarea>
+            <label for="contact-message" class="contact__label"> お問い合わせ内容 <span class="contact__required">*</span> </label>
+            <textarea id="contact-message" name="message" class="contact__textarea" placeholder="お問い合わせ内容をご記入ください" rows="5" required></textarea>
           </div>
 
           <div class="contact__form-group contact__form-group--checkbox">
             <label class="contact__checkbox-label">
-              <input 
-                type="checkbox" 
-                id="contact-privacy" 
-                name="privacy_agreement" 
-                class="contact__checkbox"
-                required
-              >
+              <input type="checkbox" id="contact-privacy" name="privacy_agreement" class="contact__checkbox" required />
               <span class="contact__checkbox-custom"></span>
-              <span class="contact__checkbox-text">
-                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" class="contact__privacy-link">プライバシーポリシー</a>に同意する
-              </span>
+              <span class="contact__checkbox-text"> <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" class="contact__privacy-link">プライバシーポリシー</a>に同意する </span>
             </label>
           </div>
 
@@ -181,21 +146,19 @@
           </div>
           <h3 class="contact__complete-title">送信完了</h3>
           <p class="contact__complete-message">
-            お問い合わせありがとうございます。<br>
+            お問い合わせありがとうございます。<br />
             内容を確認の上、折り返しご連絡いたします。
           </p>
-          <button type="button" class="contact__back-button" id="contact-back">
-            フォームに戻る
-          </button>
+          <button type="button" class="contact__back-button" id="contact-back">フォームに戻る</button>
         </div>
       </div>
-      
     </div>
   </div>
 </section>
 ```
 
-## CSS実装（CSS/components/contact.css）
+## CSS 実装（CSS/components/contact.css）
+
 ```css
 .contact {
   position: relative;
@@ -386,7 +349,7 @@
     margin-top: 2px;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 1px;
       left: 5px;
@@ -535,7 +498,8 @@
 
 /* ブロブのモーフィングアニメーション - PCのみ */
 @keyframes blob-morph {
-  0%, 100% {
+  0%,
+  100% {
     border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
   }
   33% {
@@ -547,104 +511,100 @@
 }
 ```
 
-## JavaScript実装（js/contact.js 新規作成）
+## JavaScript 実装（js/contact.js 新規作成）
+
 ```javascript
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('contact-form');
-  const formView = document.getElementById('contact-form-view');
-  const completeView = document.getElementById('contact-complete-view');
-  const submitButton = document.getElementById('contact-submit');
-  const backButton = document.getElementById('contact-back');
-  const privacyCheckbox = document.getElementById('contact-privacy');
-  
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+  const formView = document.getElementById("contact-form-view");
+  const completeView = document.getElementById("contact-complete-view");
+  const submitButton = document.getElementById("contact-submit");
+  const backButton = document.getElementById("contact-back");
+  const privacyCheckbox = document.getElementById("contact-privacy");
+
   if (!form) return;
-  
+
   // EmailJS初期化
   // ※ 後から手動で設定してください
-  if (typeof emailjs !== 'undefined') {
-    emailjs.init('YOUR_PUBLIC_KEY');
+  if (typeof emailjs !== "undefined") {
+    emailjs.init("YOUR_PUBLIC_KEY");
   }
-  
+
   // フォーム送信処理
-  form.addEventListener('submit', async function(e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    
+
     // バリデーション
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
-    
+
     // 送信中状態
     submitButton.disabled = true;
-    submitButton.classList.add('is-loading');
-    
+    submitButton.classList.add("is-loading");
+
     // フォームデータ取得
     const formData = {
       user_name: form.user_name.value,
-      company_name: form.company_name.value || '（未入力）',
+      company_name: form.company_name.value || "（未入力）",
       user_email: form.user_email.value,
-      message: form.message.value
+      message: form.message.value,
     };
-    
+
     try {
       // EmailJS送信
       // ※ Service ID と Template ID は後から手動で設定してください
-      if (typeof emailjs !== 'undefined') {
-        await emailjs.send(
-          'YOUR_SERVICE_ID',
-          'YOUR_TEMPLATE_ID',
-          formData
-        );
+      if (typeof emailjs !== "undefined") {
+        await emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData);
       }
-      
+
       // 成功：画面切り替え
       showCompleteView();
       form.reset();
-      
     } catch (error) {
-      console.error('送信エラー:', error);
-      alert('送信に失敗しました。しばらく経ってから再度お試しください。');
+      console.error("送信エラー:", error);
+      alert("送信に失敗しました。しばらく経ってから再度お試しください。");
     } finally {
       submitButton.disabled = false;
-      submitButton.classList.remove('is-loading');
+      submitButton.classList.remove("is-loading");
     }
   });
-  
+
   // 完了画面を表示
   function showCompleteView() {
-    formView.classList.add('is-hidden');
-    formView.setAttribute('aria-hidden', 'true');
-    
-    setTimeout(function() {
-      completeView.classList.add('is-visible');
-      completeView.setAttribute('aria-hidden', 'false');
+    formView.classList.add("is-hidden");
+    formView.setAttribute("aria-hidden", "true");
+
+    setTimeout(function () {
+      completeView.classList.add("is-visible");
+      completeView.setAttribute("aria-hidden", "false");
     }, 150);
   }
-  
+
   // フォーム画面に戻る
   function showFormView() {
-    completeView.classList.remove('is-visible');
-    completeView.setAttribute('aria-hidden', 'true');
-    
-    setTimeout(function() {
-      formView.classList.remove('is-hidden');
-      formView.setAttribute('aria-hidden', 'false');
+    completeView.classList.remove("is-visible");
+    completeView.setAttribute("aria-hidden", "true");
+
+    setTimeout(function () {
+      formView.classList.remove("is-hidden");
+      formView.setAttribute("aria-hidden", "false");
     }, 150);
   }
-  
+
   // 戻るボタン
   if (backButton) {
-    backButton.addEventListener('click', showFormView);
+    backButton.addEventListener("click", showFormView);
   }
-  
+
   // チェックボックスのカスタムバリデーションメッセージ
   if (privacyCheckbox) {
-    privacyCheckbox.addEventListener('invalid', function() {
-      this.setCustomValidity('プライバシーポリシーへの同意が必要です');
+    privacyCheckbox.addEventListener("invalid", function () {
+      this.setCustomValidity("プライバシーポリシーへの同意が必要です");
     });
-    privacyCheckbox.addEventListener('change', function() {
-      this.setCustomValidity('');
+    privacyCheckbox.addEventListener("change", function () {
+      this.setCustomValidity("");
     });
   }
 });
@@ -653,36 +613,41 @@ document.addEventListener('DOMContentLoaded', function() {
 ## ファイル構成
 
 ### 新規作成
+
 - CSS/components/contact.css
 - js/contact.js
 
 ### 編集
+
 - CSS/main.css → @import './components/contact.css'; を追加
-- index.html → contactセクションのHTMLを置き換え、script読み込み追加
+- index.html → contact セクションの HTML を置き換え、script 読み込み追加
 
-## index.htmlへの追加
+## index.html への追加
 
-### head内（EmailJS SDK）
+### head 内（EmailJS SDK）
+
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 ```
 
-### body終了前
+### body 終了前
+
 ```html
 <script src="./js/contact.js" defer></script>
 ```
 
-## EmailJS設定箇所（後から手動で設定）
+## EmailJS 設定箇所（後から手動で設定）
 
-js/contact.js 内の以下3箇所を実際の値に置き換え：
+js/contact.js 内の以下 3 箇所を実際の値に置き換え：
 
-1. `emailjs.init('YOUR_PUBLIC_KEY');` → Public Keyを設定
-2. `'YOUR_SERVICE_ID'` → Service IDを設定  
-3. `'YOUR_TEMPLATE_ID'` → Template IDを設定
+1. `emailjs.init('YOUR_PUBLIC_KEY');` → Public Key を設定
+2. `'YOUR_SERVICE_ID'` → Service ID を設定
+3. `'YOUR_TEMPLATE_ID'` → Template ID を設定
 
 ## 注意事項
-- EmailJSの各IDはプレースホルダーのまま実装し、後から手動で設定
+
+- EmailJS の各 ID はプレースホルダーのまま実装し、後から手動で設定
 - 流体シェイプはスマホでは角丸の四角形に変更（パフォーマンス対策）
-- モーフィングアニメーションはPC + prefers-reduced-motion: no-preference の場合のみ
-- フォームは必ず流体シェイプ内に収まるようmax-width, paddingを調整済み
+- モーフィングアニメーションは PC + prefers-reduced-motion: no-preference の場合のみ
+- フォームは必ず流体シェイプ内に収まるよう max-width, padding を調整済み
 - box-sizing: border-box を適用し、はみ出しを防止

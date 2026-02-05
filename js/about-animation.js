@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // アニメーションパラメータ
   const config = {
-    initialScale: 0.6,
-    maxScale: 5,        // 画面を覆うための最大scale
+    initialScale: 0.5,
+    maxScale: 6,        // 画面を覆うための最大scale
     startOffset: 0,     // セクション上端からどれだけ前でアニメーション開始するか
-    endOffset: 0.6      // セクションのどの位置でアニメーション完了するか（0.6 = 60%地点）
+    endOffset: 0.3    // セクションのどの位置でアニメーション完了するか（0.6 = 60%地点）
   };
 
   function updateCircleScale() {
