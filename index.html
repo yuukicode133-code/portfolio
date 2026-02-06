@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho+B1&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="./dist/styles/main.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   </head>
   <body>
     <header class="header">
@@ -209,11 +208,8 @@
           <div class="contact__inner">
             <h2 class="contact__title en">Contact</h2>
 
-            <!-- 流体シェイプ（フォームのコンテナ） -->
             <div class="contact__blob">
-
-              <!-- フォーム画面 -->
-              <div class="contact__form-wrapper" id="contact-form-view">
+              <div class="contact__form-wrapper">
                 <form class="contact__form" id="contact-form">
                   <div class="contact__form-group">
                     <label for="contact-name" class="contact__label">
@@ -227,20 +223,6 @@
                       placeholder="お名前"
                       autocomplete="name"
                       required
-                    >
-                  </div>
-
-                  <div class="contact__form-group">
-                    <label for="contact-company" class="contact__label">
-                      法人名 <span class="contact__optional">（任意）</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="contact-company"
-                      name="company_name"
-                      class="contact__input"
-                      placeholder="法人名（任意）"
-                      autocomplete="organization"
                     >
                   </div>
 
@@ -273,7 +255,7 @@
                     ></textarea>
                   </div>
 
-                  <div class="contact__form-group contact__form-group--checkbox">
+                  <div class="contact__form-group contact__form-group--privacy">
                     <label class="contact__checkbox-label">
                       <input
                         type="checkbox"
@@ -283,38 +265,16 @@
                         required
                       >
                       <span class="contact__checkbox-custom"></span>
-                      <span class="contact__checkbox-text">
-                        <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" class="contact__privacy-link">プライバシーポリシー</a>に同意する
-                      </span>
+                      <span class="contact__checkbox-text">プライバシーポリシーに同意する</span>
                     </label>
+                    <p class="contact__privacy-note">※このサイトはサンプルサイトです。<br>フォームから送信された内容は制作者に届きます。送信ボタンをクリックするとメールアプリが起動します。</p>
                   </div>
 
-                  <button type="submit" class="contact__submit" id="contact-submit">
-                    <span class="contact__submit-text">送信する</span>
-                    <span class="contact__submit-loading">送信中...</span>
+                  <button type="submit" class="contact__submit">
+                    送信する
                   </button>
                 </form>
               </div>
-
-              <!-- 送信完了画面 -->
-              <div class="contact__complete" id="contact-complete-view" aria-hidden="true">
-                <div class="contact__complete-content">
-                  <div class="contact__complete-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
-                  </div>
-                  <h3 class="contact__complete-title">送信完了</h3>
-                  <p class="contact__complete-message">
-                    お問い合わせありがとうございます。<br>
-                    内容を確認の上、折り返しご連絡いたします。
-                  </p>
-                  <button type="button" class="contact__back-button" id="contact-back">
-                    フォームに戻る
-                  </button>
-                </div>
-              </div>
-
             </div>
           </div>
         </section>

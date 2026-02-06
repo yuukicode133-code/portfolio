@@ -985,7 +985,7 @@ html {
     left: 50%;
     width: clamp(350px, 40vw, 600px);
     height: clamp(350px, 40vw, 600px);
-    background: #fff;
+    background: var(--color-white);
     border-radius: 50%;
     z-index: 1;
     display: grid;
@@ -1068,7 +1068,7 @@ html {
     }
 .contact {
   position: relative;
-  background-color: #f9f9f9;
+  background-color: var(--color-white);
   padding: var(--spacing-size-80) var(--spacing-size-24);
 }
 @media screen and (max-width: 767px) {
@@ -1097,7 +1097,7 @@ html {
     }
 /* 流体シェイプ - フォームのコンテナとして機能 */
 .contact__blob {
-    background-color: #f5f0e8;
+    background-color: var(--color-green);
     border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
     padding: var(--spacing-size-48);
     max-width: 600px;

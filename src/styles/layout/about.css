@@ -52,7 +52,7 @@
     left: 50%;
     width: clamp(350px, 40vw, 600px);
     height: clamp(350px, 40vw, 600px);
-    background: #fff;
+    background: var(--color-white);
     border-radius: 50%;
     z-index: 1;
     display: grid;
