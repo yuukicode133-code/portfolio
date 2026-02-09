@@ -1,24 +1,25 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('contact-form');
+$(document).ready(function() {
+  const $form = $('#contact-form');
 
-  if (!form) return;
+  if (!$form.length) return;
 
   // 宛先メールアドレス（※ご自身のメールアドレスに変更してください）
-  const toEmail = 'your-email@example.com';
+  const toEmail = 'pandashirokuma@gmail.com';
 
-  form.addEventListener('submit', function(e) {
+  $form.on('submit', function(e) {
     e.preventDefault();
 
     // バリデーション
-    if (!form.checkValidity()) {
-      form.reportValidity();
+    const formElement = this;
+    if (!formElement.checkValidity()) {
+      formElement.reportValidity();
       return;
     }
 
     // フォームの値を取得
-    const userName = form.user_name.value;
-    const userEmail = form.user_email.value;
-    const message = form.message.value;
+    const userName = $('[name="user_name"]').val();
+    const userEmail = $('[name="user_email"]').val();
+    const message = $('[name="message"]').val();
 
     // メールの件名と本文を作成
     const subject = 'ポートフォリオからのお問い合わせ';

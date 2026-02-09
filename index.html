@@ -40,7 +40,7 @@
           <video class="fv__video" autoplay muted loop playsinline aria-hidden="true" poster="./assets/image/fv.jpg">
             <source src="./assets/video/fv-video.mp4" type="video/mp4" />
           </video>
-          <div class="fv-overlay"></div>
+          <!-- <div class="fv-overlay"></div> -->
         </div>
         <h1 class="fv__title">
           <span class="fv__title-main">ocean</span>
@@ -194,6 +194,9 @@
                     <span class="about__skill-name">figma</span>
                   </li>
                   <li class="about__skill-item">
+                    <span class="about__skill-name">studio</span>
+                  </li>
+                  <li class="about__skill-item">
                     <span class="about__skill-name">git</span>
                   </li>
                   <li class="about__skill-item">
@@ -270,9 +273,11 @@
                     <p class="contact__privacy-note">※このサイトはサンプルサイトです。<br>フォームから送信された内容は制作者に届きます。送信ボタンをクリックするとメールアプリが起動します。</p>
                   </div>
 
-                  <button type="submit" class="contact__submit">
-                    送信する
-                  </button>
+                  <div class="contact__submit-wrapper">
+                    <button type="submit" class="contact__submit">
+                      送信する
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -331,7 +336,23 @@
         </div>
       </dialog>
     </main>
-    <footer class="footer"></footer>
+    <footer class="footer">
+      <div class="footer__inner">
+        <nav class="footer__nav">
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item"><a href="#works" class="footer__nav-link en">works</a></li>
+            <li class="footer__nav-item"><a href="#about" class="footer__nav-link en">about</a></li>
+            <li class="footer__nav-item"><a href="#contact" class="footer__nav-link en">contact</a></li>
+          </ul>
+      </nav>
+        <small class="footer__copyright">
+          <span class="footer__copyright-text">
+            &copy; 2026 Ocean. All rights reserved. inspired by <a href="https://olhauzhykova.com/" target="_blank" rel="noopener" class="footer__copyright-link">olhauzhykova</a>
+          </span>
+        </small>
+        
+      </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <script src="./js/custom-cursor.js" defer></script>
     <script src="./js/script.js" defer></script>

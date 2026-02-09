@@ -1,37 +1,36 @@
 // ビューポートの設定
 !(function () {
-    const viewport = document.querySelector('meta[name="viewport"]');
-    function switchViewport() {
-      const value =
-        window.outerWidth > 360
-          ? "width=device-width,initial-scale=1"
-          : "width=360";
-      if (viewport.getAttribute("content") !== value) {
-        viewport.setAttribute("content", value);
-      }
+  const viewport = document.querySelector('meta[name="viewport"]');
+  function switchViewport() {
+    const value = window.outerWidth > 360 ? "width=device-width,initial-scale=1" : "width=360";
+    if (viewport.getAttribute("content") !== value) {
+      viewport.setAttribute("content", value);
     }
-    addEventListener("resize", switchViewport, false);
-    switchViewport();
-  })()
+  }
+  addEventListener("resize", switchViewport, false);
+  switchViewport();
+})();
 
 // worksアイテムのスクロールアニメーション
-$(function() {
-  const $items = $('.works__item');
+$(function () {
+  const $items = $(".works__item");
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        $(entry.target).addClass('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          $(entry.target).addClass("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    },
+  );
 
-  $items.each(function() {
+  $items.each(function () {
     observer.observe(this);
   });
 });
-

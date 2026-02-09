@@ -1,7 +1,12 @@
 .fv {
   height: 85vh;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  will-change: transform;
 }
 .fv__video-container {
   position: absolute;

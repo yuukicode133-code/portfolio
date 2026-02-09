@@ -502,6 +502,10 @@ html {
 .section-card {
   overflow: hidden;
   position: relative;
+  z-index: 10;
+  margin-top: 85vh;
+  margin-bottom: 103px;
+  background-color: var(--color-beige);
 }
 .section__bg-left {
   background-image: url("../../../assets/image/dash.png");
@@ -581,10 +585,91 @@ html {
     font-size: var(--font-size-semi-lg);
 
 }
+.footer {
+  background-color: var(--color-green-dark);
+  padding: var(--spacing-size-24) var(--spacing-size-24);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+@media screen and (max-width: 767px) {
+.footer {
+    padding: var(--spacing-size-20) var(--spacing-size-16)
+}
+    }
+.footer__inner {
+  max-width: var(--layout-content-width);
+  display: grid;
+  row-gap: var(--spacing-size-24);
+  margin: 0 auto;
+}
+.footer__nav {
+}
+.footer__nav-list {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-size-24);
+}
+@media screen and (max-width: 767px) {
+.footer__nav-list {
+    gap: var(--spacing-size-16)
+}
+    }
+.footer__nav-item {
+  list-style: none;
+}
+.footer__nav-link {
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-en);
+  color: var(--color-white);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
+}
+.footer__nav-link:hover {
+    opacity: 0.7;
+  }
+@media screen and (max-width: 767px) {
+.footer__nav-link {
+    font-size: var(--font-size-xs);
+    
+    }
+    }
+.footer__copyright {
+  display: block;
+  text-align: center;
+}
+.footer__copyright-text {
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-en);
+  color: var(--color-white);
+  letter-spacing: 0.05em;
+}
+@media screen and (max-width: 767px) {
+.footer__copyright-text {
+    font-size: var(--font-size-xs)
+}
+    }
+.footer__copyright-link {
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+.footer__copyright-link:hover {
+    opacity: 0.7;
+  }
 .fv {
   height: 85vh;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  will-change: transform;
 }
 .fv__video-container {
   position: absolute;
@@ -936,6 +1021,15 @@ html {
   overflow: hidden; /* 拡大した円形がセクション外に出ないよう */
   padding: var(--spacing-size-80) 0;
 }
+.about::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-beige);
+  }
 .about__container {
     position: relative;
     max-width: var(--layout-content-width);
@@ -1067,7 +1161,7 @@ html {
       text-transform: uppercase;
     }
 .contact {
-  position: relative;
+  /* position: relative; */
   background-color: var(--color-white);
   padding: var(--spacing-size-80) var(--spacing-size-24);
 }
@@ -1077,7 +1171,7 @@ html {
 }
     }
 .contact__inner {
-    max-width: 800px;
+    max-width: var(--layout-content-width);
     margin: 0 auto;
   }
 .contact__title {
@@ -1099,10 +1193,10 @@ html {
 .contact__blob {
     background-color: var(--color-green);
     border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
-    padding: var(--spacing-size-48);
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
+    max-width: 980px;
+    height: 650px;
+    margin-top: var(--spacing-size-60);
+    margin-inline: auto;
   }
 /* PCのみアニメーション */
 @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
@@ -1122,19 +1216,18 @@ html {
     }
 /* フォームラッパー */
 .contact__form-wrapper {
+    position: relative;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    width: 100%;
+    height: 100%;
   }
-.contact__form-wrapper.is-hidden {
-      opacity: 0;
-      visibility: hidden;
-      position: absolute;
-      pointer-events: none;
-    }
 .contact__form {
     max-width: 450px;
-    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 /* フォームグループ */
 .contact__form-group {
@@ -1142,18 +1235,8 @@ html {
   }
 @media screen and (max-width: 767px) {
 .contact__form-group {
-      margin-bottom: var(--spacing-size-16);
+      margin-bottom: var(--spacing-size-16)
   }
-    }
-.contact__form-group--checkbox {
-      margin-top: var(--spacing-size-24);
-      margin-bottom: var(--spacing-size-24);
-    }
-@media screen and (max-width: 767px) {
-.contact__form-group--checkbox {
-        margin-top: var(--spacing-size-20);
-        margin-bottom: var(--spacing-size-20)
-    }
     }
 .contact__label {
     display: block;
@@ -1165,10 +1248,6 @@ html {
   }
 .contact__required {
     color: #c0392b;
-    font-size: var(--font-size-xs);
-  }
-.contact__optional {
-    color: #777;
     font-size: var(--font-size-xs);
   }
 /* 入力フィールド */
@@ -1209,11 +1288,16 @@ html {
       min-height: 100px
   }
     }
-/* チェックボックス */
+/* プライバシーポリシー */
+.contact__form-group--privacy {
+    margin-top: var(--spacing-size-24);
+    text-align: center;
+  }
 .contact__checkbox-label {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-size-10);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-size-8);
     cursor: pointer;
     font-size: var(--font-size-sm);
     font-family: var(--font-family-jp);
@@ -1243,7 +1327,7 @@ html {
     border-radius: 3px;
     position: relative;
     transition: all 0.2s ease;
-    margin-top: 2px;
+    background-color: #fff;
   }
 .contact__checkbox-custom::after {
       content: '';
@@ -1261,17 +1345,23 @@ html {
 .contact__checkbox-text {
     color: var(--color-black);
   }
-.contact__privacy-link {
-    color: var(--color-black);
-    text-decoration: underline;
+.contact__privacy-note {
+    margin-top: var(--spacing-size-12);
+    font-size: var(--font-size-xs);
+    font-family: var(--font-family-jp);
+    color: var(--color-white);
+    line-height: 1.8;
+    text-align: center;
   }
-.contact__privacy-link:hover {
-      text-decoration: none;
-    }
 /* 送信ボタン */
+.contact__submit-wrapper {
+    text-align: center;
+    margin-top: var(--spacing-size-24);
+    margin-inline: auto; 
+  }
 .contact__submit {
-    width: 100%;
-    padding: var(--spacing-size-14) var(--spacing-size-24);
+    width: fit-content;
+    padding: var(--spacing-size-10) var(--spacing-size-24);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-jp);
@@ -1281,97 +1371,15 @@ html {
     border-radius: 50px;
     cursor: pointer;
     transition: opacity 0.2s ease;
-    position: relative;
   }
-.contact__submit:hover:not(:disabled) {
+.contact__submit:hover {
       opacity: 0.8;
     }
-.contact__submit:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-.contact__submit.is-loading .contact__submit-text {
-        visibility: hidden;
-      }
-.contact__submit.is-loading .contact__submit-loading {
-        opacity: 1;
-      }
-.contact__submit-loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-/* 送信完了画面 */
-.contact__complete {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-.contact__complete.is-visible {
-      opacity: 1;
-      visibility: visible;
-      position: relative;
-    }
-.contact__complete-content {
-    text-align: center;
-    padding: var(--spacing-size-24);
-  }
-.contact__complete-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto var(--spacing-size-20);
-    background-color: #27ae60;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-  }
 @media screen and (max-width: 767px) {
-.contact__complete-icon {
-      width: 56px;
-      height: 56px
-  }
+.contact__submit {
+      margin-top: var(--spacing-size-20);
+    
     }
-.contact__complete-title {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-black);
-    margin-bottom: var(--spacing-size-12);
-    font-family: var(--font-family-jp);
-  }
-.contact__complete-message {
-    font-size: var(--font-size-sm);
-    color: var(--color-black);
-    line-height: 1.8;
-    margin-bottom: var(--spacing-size-24);
-    font-family: var(--font-family-jp);
-  }
-.contact__back-button {
-    padding: var(--spacing-size-10) var(--spacing-size-20);
-    font-size: var(--font-size-sm);
-    font-family: var(--font-family-jp);
-    color: var(--color-black);
-    background: transparent;
-    border: 1px solid var(--color-black);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
-.contact__back-button:hover {
-      background-color: var(--color-black);
-      color: #fff;
     }
 /* ブロブのモーフィングアニメーション - PCのみ */
 @keyframes blob-morph {

@@ -1,0 +1,24 @@
+# .claudeignore
+
+# 依存関係(変更しないので読み込み不要)
+node_modules/
+
+# ビルド成果物(src から生成されるので不要)
+dist/
+
+# アセット(画像・動画は重いので除外)
+assets/image/
+assets/video/
+
+# ログファイル
+*.log
+
+# Git関連
+.git/
+
+# エディタ設定
+.vscode/
+.idea/
+
+# その他
+.DS_Store

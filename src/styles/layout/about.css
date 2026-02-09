@@ -4,6 +4,17 @@
   overflow: hidden; /* 拡大した円形がセクション外に出ないよう */
   padding: var(--spacing-size-80) 0;
 
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-beige);
+  }
+
   &__container {
     position: relative;
     max-width: var(--layout-content-width);
