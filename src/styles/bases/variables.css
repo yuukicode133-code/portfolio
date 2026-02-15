@@ -35,6 +35,7 @@
     --spacing-size-60: clamp(2.5em, 1.883em + 2.53vw, 3.75em);
     --spacing-size-80: clamp(3.75em, 3.133em + 2.53vw, 5em);
     --spacing-size-100: clamp(5em, 4.398em + 2.53vw, 6.25em);
+    --spacing-size-120: clamp(6.25em, 5.497em + 2.53vw, 7.5em);
 
     /* レイアウト */
     --layout-content-width: 1300px;

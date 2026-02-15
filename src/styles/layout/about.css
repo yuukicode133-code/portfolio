@@ -25,7 +25,7 @@
 
   &__image-circle {
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 5%;
     width: clamp(21.875rem, -16.457rem + 59.952vw, 37.5rem);
     height: clamp(21.875rem, -16.457rem + 59.952vw, 37.5rem);
@@ -47,7 +47,7 @@
     }
 
     @mixin mq-sp {
-      position: relative;
+      position: absolute;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
@@ -59,18 +59,16 @@
 
   &__text-circle {
     position: absolute;
-    top: 30%;
-    left: 50%;
-    width: clamp(350px, 40vw, 600px);
-    height: clamp(350px, 40vw, 600px);
+    top: 0%;
+    left: 30%;
+    width: 100vw;
+    height: 100vw;
     background: var(--color-white);
     border-radius: 50%;
     z-index: 1;
-    display: grid;
-    place-items: center;
 
     /* JSで制御するため、CSSでの初期値 */
-    transform: scale(0.6);
+    transform: scale(0.3);
     opacity: 0;
     transform-origin: center center;
     will-change: transform, opacity; /* パフォーマンス向上 */
@@ -79,31 +77,32 @@
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
 
     @mixin mq-tab {
-      width: clamp(300px, 35vw, 500px);
-      height: clamp(300px, 35vw, 500px);
+      width: 100vw;
+      height: 100vw;
       top: 25%;
       left: 20%;
     }
 
     @mixin mq-sp {
-      position: relative;
+      position: absolute;
       top: 0;
       left: 50%;
       transform: translateX(-50%) scale(0.6);
-      width: clamp(280px, 80vw, 350px);
-      height: clamp(280px, 80vw, 350px);
+      width: 100vw;
+      height: 100vw;
     }
   }
 
   &__text-content {
     padding: var(--spacing-size-40);
     text-align: center;
-    width: 100%;
-    /* 円形が大きく拡大してもテキストは固定サイズを維持 */
-    will-change: transform;
-    /* position: fixed;
-    top: 50%;
-    left: 50%; */
+    width: fit-content;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 55%;
+    left: 30%;
+    z-index: 3;
   }
 
   &__title {

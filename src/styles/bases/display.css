@@ -1,7 +1,7 @@
 .pc-only {
     display: block;
 
-  @mixin mq-pc {
+  @mixin mq-sp {
     display: none;
   }
 }

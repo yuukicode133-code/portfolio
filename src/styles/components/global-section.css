@@ -1,9 +1,10 @@
 .section-card {
+  border-radius: 0 0 50px 50px;
   overflow: hidden;
   position: relative;
-  z-index: 10;
-  margin-top: 85vh;
-  margin-bottom: 103px;
+  z-index: 20;
+  /* margin-top: 100vh; */
+  margin-bottom: 135px;
   background-color: var(--color-beige);
 }
 .section__bg-left {

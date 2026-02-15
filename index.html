@@ -16,7 +16,7 @@
         <div class="header__logo">
           <a href="/" class="header__logo-link en">ocean</a>
         </div>
-        <nav class="header__nav" id="nav-menu">
+        <nav class="header__nav pc-only" id="nav-menu">
           <ul class="header__nav-list">
             <li class="header__nav-item"><a href="#works" class="header__nav-link en">works</a></li>
             <li class="header__nav-item"><a href="#about" class="header__nav-link en">about</a></li>
@@ -25,7 +25,7 @@
         </nav>
 
         <!-- ハンバーガーボタン（SPのみ表示） -->
-        <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="メニューを開く" class="sp-only">
+        <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="メニューを開く" class="header__menu-button sp-only">
           <span></span>
           <span></span>
           <span></span>
@@ -153,6 +153,8 @@
         <section id="about" class="about">
           <div class="section__bg-left"></div>
           <div class="section__bg-right"></div>
+          <!-- テキストの白い円形（スクロールで拡大） -->
+          <div class="about__text-circle"></div>
           <div class="about__container">
             <!-- 人物画像の円形 -->
             <div class="about__image-circle">
@@ -162,48 +164,46 @@
               </picture>
             </div>
 
-            <!-- テキストの白い円形（スクロールで拡大） -->
-            <div class="about__text-circle">
-              <div class="about__text-content">
-                <h2 class="about__title en">About</h2>
-                <p class="about__description">
-                  ここに自己紹介テキストが入ります。
-                  フリーランスのWeb制作者として活動しています。
-                  ここに自己紹介テキストが入ります。
-                  フリーランスのWeb制作者として活動しています。
-                  ここに自己紹介テキストが入ります。
-                  フリーランスのWeb制作者として活動しています。
-                </p>
-                <ul class="about__skill-list">
-                  <li class="about__skill-item">
-                    <span class="about__skill-name">html</span>
-                  </li>
-                  <li class="about__skill-item">
-                    <span class="about__skill-name">css</span>
-                  </li>
-                  <li class="about__skill-item">
-                    <span class="about__skill-name">JavaScript</span>
-                  </li>
-                  <li class="about__skill-item">
-                    <span class="about__skill-name">php</span>
-                  </li>
-                  <li class="about__skill-item">
-                    <span class="about__skill-name">wordpress</span>
-                  </li>
-                  <li class="about__skill-item">
-                    <span class="about__skill-name">figma</span>
-                  </li>
-                  <li class="about__skill-item">
-                    <span class="about__skill-name">studio</span>
-                  </li>
-                  <li class="about__skill-item">
-                    <span class="about__skill-name">git</span>
-                  </li>
-                  <li class="about__skill-item">
-                    <span class="about__skill-name">vite</span>
-                  </li>
-                </ul>
-              </div>
+            
+            <div class="about__text-content">
+              <h2 class="about__title en">About</h2>
+              <p class="about__description">
+                ここに自己紹介テキストが入ります。
+                フリーランスのWeb制作者として活動しています。
+                ここに自己紹介テキストが入ります。
+                フリーランスのWeb制作者として活動しています。
+                ここに自己紹介テキストが入ります。
+                フリーランスのWeb制作者として活動しています。
+              </p>
+              <ul class="about__skill-list">
+                <li class="about__skill-item">
+                  <span class="about__skill-name">html</span>
+                </li>
+                <li class="about__skill-item">
+                  <span class="about__skill-name">css</span>
+                </li>
+                <li class="about__skill-item">
+                  <span class="about__skill-name">JavaScript</span>
+                </li>
+                <li class="about__skill-item">
+                  <span class="about__skill-name">php</span>
+                </li>
+                <li class="about__skill-item">
+                  <span class="about__skill-name">wordpress</span>
+                </li>
+                <li class="about__skill-item">
+                  <span class="about__skill-name">figma</span>
+                </li>
+                <li class="about__skill-item">
+                  <span class="about__skill-name">studio</span>
+                </li>
+                <li class="about__skill-item">
+                  <span class="about__skill-name">git</span>
+                </li>
+                <li class="about__skill-item">
+                  <span class="about__skill-name">vite</span>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
