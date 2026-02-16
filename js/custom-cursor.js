@@ -1,3 +1,4 @@
+import $ from 'jquery';
 (function($) {
   'use strict';
 
@@ -62,4 +63,4 @@
 
   // アニメーション開始
   animate();
-})(jQuery);
+})($);

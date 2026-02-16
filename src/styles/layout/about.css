@@ -1,7 +1,6 @@
 .about {
   background-color: var(--color-beige);
   position: relative;
-  overflow: hidden; /* 拡大した円形がセクション外に出ないよう */
   padding: var(--spacing-size-80) 0;
 
 

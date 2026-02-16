@@ -2,6 +2,8 @@
   /* position: relative; */
   background-color: var(--color-white);
   padding: var(--spacing-size-80) var(--spacing-size-24);
+  z-index: 3;
+  position: relative;
 
   @mixin mq-sp {
     padding: var(--spacing-size-48) var(--spacing-size-16);

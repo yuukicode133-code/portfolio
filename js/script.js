@@ -1,3 +1,4 @@
+import $ from 'jquery';
 // ビューポートの設定
 !(function () {
   const viewport = document.querySelector('meta[name="viewport"]');

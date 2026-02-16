@@ -1,3 +1,4 @@
+import $ from 'jquery';
 $(document).ready(function() {
   const $aboutSection = $('.about');
   const $textCircle = $('.about__text-circle');
