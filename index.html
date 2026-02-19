@@ -7,8 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho+B1&display=swap" rel="stylesheet" />
-
-    <link rel="stylesheet" href="./dist/styles/main.css" />
+    <link rel="stylesheet" href="./src/styles/main.css">
   </head>
   <body>
     <header class="header">
@@ -25,13 +24,42 @@
         </nav>
 
         <!-- ハンバーガーボタン（SPのみ表示） -->
-        <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="メニューを開く" class="header__menu-button sp-only">
+        <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="メニューを開く" class="header__menu-button visually-hidden--pc" aria-hidden="true">
           <span></span>
           <span></span>
           <span></span>
         </button>
       </div>
     </header>
+
+    <!-- ドロワーオーバーレイ -->
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <!-- SVGパスモーフィングによるblob背景 -->
+      <svg class="drawer__blob" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path id="drawer-blob-path" d="M 95 1 C 98 1 99 3 99 5 C 99 7 97 9 95 9 C 93 9 91 7 91 5 C 91 3 92 1 95 1 Z" fill="#1a1a2e"/>
+      </svg>
+      <button type="button" class="drawer__close" id="drawer-close" aria-label="メニューを閉じる">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="drawer__nav">
+        <ul class="drawer__nav-list">
+          <li class="drawer__nav-item">
+            <a href="#" class="drawer__nav-link en">Home</a>
+          </li>
+          <li class="drawer__nav-item">
+            <a href="#works" class="drawer__nav-link en">Works</a>
+          </li>
+          <li class="drawer__nav-item">
+            <a href="#about" class="drawer__nav-link en">About</a>
+          </li>
+          <li class="drawer__nav-item">
+            <a href="#contact" class="drawer__nav-link en">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
     <main class="main">
       <section class="fv">
         <div class="section__bg-left"></div>
@@ -353,6 +381,6 @@
         
       </div>
     </footer>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="./src/js/main.js"></script>
   </body>
 </html>

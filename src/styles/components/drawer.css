@@ -1,0 +1,71 @@
+/* ドロワーオーバーレイ */
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVGパスによるblob背景 */
+.drawer__blob {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+/* 閉じるボタン（×） */
+.drawer__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.drawer__close span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-white);
+}
+
+.drawer__close span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.drawer__close span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* ナビゲーション */
+.drawer__nav {
+  position: relative;
+  z-index: 1;
+}
+
+.drawer__nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-size-40);
+}
+
+.drawer__nav-link {
+  font-size: var(--font-size-3xl);
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0;                  /* GSAP初期状態 */
+  transform: translateY(30px); /* GSAP初期状態 */
+  display: block;
+}

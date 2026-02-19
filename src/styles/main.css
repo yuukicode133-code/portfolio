@@ -9,6 +9,7 @@
 /* Components */
 @import './components/custom-cursor.css';
 @import './components/modal.css';
+@import './components/drawer.css';
 @import './components/global-section.css';
 
 /* Layout */
