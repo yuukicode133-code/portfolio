@@ -17,16 +17,16 @@ const isSP = window.matchMedia('(max-width: 767px)').matches;
  */
 function generateInkPath(progress, waveOffset) {
   const N = 12;
-  const cx = 95; // ハンバーガーボタンのx位置（%）
-  const cy = 5;  // ハンバーガーボタンのy位置（%）
-  const maxRadius = 150; // 全コーナーをカバーするのに十分な最大半径
+  const cx = 100; // ハンバーガーボタンのx位置（%）
+  const cy = 0;  // ハンバーガーボタンのy位置（%）
+  const maxRadius = 105; // 全コーナーをカバーするのに十分な最大半径
 
   // 各点の座標を計算
   const pts = new Array(N);
   for (let i = 0; i < N; i++) {
     const angle = (i / N) * Math.PI * 2;
     // 輪郭のうねり（wave）: 角度と waveOffset で変化
-    const wave = Math.sin(angle * 3 + waveOffset) * progress * 18;
+    const wave = Math.sin(angle * 3.5 + waveOffset) * progress * 24;
     // 重力バイアス: 下方向への広がりを上方向より大きく
     const gravity = Math.sin(angle - Math.PI * 0.5) * progress * 12;
     const r = progress * maxRadius + wave + gravity;
@@ -57,7 +57,7 @@ if (isSP) {
   // SP: シンプルな円形拡大（低スペック端末向けフォールバック）
   blobSvg.style.display = 'none';
   gsap.set(drawer, {
-    backgroundColor: '#1a1a2e',
+    backgroundColor: '#51733f',
     clipPath: 'circle(0% at calc(100% - 40px) 40px)',
   });
 

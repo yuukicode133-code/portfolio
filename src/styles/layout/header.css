@@ -26,7 +26,8 @@
     color: var(--color-green-dark);
 }
 
-.header__nav {
+
+/* .header__nav {
     
 
 }
@@ -56,7 +57,7 @@
     text-transform: uppercase;
     font-size: var(--font-size-semi-lg);
 
-}
+} */
 
 .header__menu-button {
     width: 44px;
@@ -67,6 +68,8 @@
     align-items: center;
     gap: 6px;
     z-index: 1002; /* ドロワーより前面 */
+    background-color: var(--color-white);
+    border-radius: 30px;
 }
 
 .header__menu-button span {
