@@ -1,0 +1,137 @@
+/* ローディング画面 */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #f4f1e8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 紙のノイズテクスチャ */
+.noise-texture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 1;
+  z-index: 1;
+}
+
+/* コンテンツ */
+.loading-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* テキストリビール */
+.text-reveal-container {
+  width: min(90vw, 700px);
+}
+
+.text-reveal-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.text-shadow {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 48px;
+  fill: rgba(10, 38, 21, 0.15);
+  filter: blur(4px);
+}
+
+.text-fill {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 48px;
+  fill: #0a2615;
+}
+
+.text-stroke {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 48px;
+  fill: none;
+  stroke: #0a2615;
+  stroke-width: 0.5;
+  opacity: 0.3;
+}
+
+#cursor-line {
+  opacity: 0;
+}
+
+/* ステータステキスト */
+.status-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(10, 38, 21, 0.35);
+  text-align: center;
+}
+
+/* プログレスバー */
+.progress-container {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 1.5px;
+  background: rgba(10, 38, 21, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: #0a2615;
+}
+
+.progress-percentage {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.6rem;
+  color: rgba(10, 38, 21, 0.25);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .text-shadow,
+  .text-fill,
+  .text-stroke {
+    font-size: 32px;
+  }
+
+  .status-text {
+    font-size: 0.65rem;
+  }
+
+  .progress-percentage {
+    font-size: 0.55rem;
+  }
+}

@@ -1,3 +1,6 @@
+// ローディング画面を最初に読み込み
+import './loading.js';
+
 // 既存のJSファイルを読み込み
 import './script.js';
 import './about-animation.js';

@@ -6,7 +6,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 5;
 
   @mixin mq-sp {
     padding: var(--spacing-size-20) var(--spacing-size-16);

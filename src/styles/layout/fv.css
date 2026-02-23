@@ -1,11 +1,9 @@
 .fv {
   height: 100vh;
   overflow: hidden;
-  /* position: fixed;
-  top: 0;
-  left: 0; */
   width: 100%;
-  z-index: 2;
+  z-index: 10;
+  position: relative;
   will-change: transform;
 }
 .fv__video-container {

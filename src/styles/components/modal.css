@@ -13,7 +13,8 @@
   padding: 0;
   margin: 0;
   background: transparent;
-
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .works-modal:not([open]) {
   display: none;
@@ -38,24 +39,27 @@
 .works-modal__content {
   width: 100%;
   height: 85vh;
-  border-radius: 30px 30px 0 0;
+  border-radius: 30px 30px 30px 30px;
   transform: translateY(100%);
   opacity: 0;
   transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.4s ease;
   display: flex;
   flex-direction: column;
   padding: var(--spacing-size-60) 0;
+  overflow: hidden;
 }
 
 .works-modal.is-open .works-modal__content {
   transform: translateY(0);
   opacity: 1;
+  overflow: auto;
 }
 
 /* 閉じる時のアニメーション */
 .works-modal.is-closing .works-modal__content {
   transform: translateY(100%);
   opacity: 0;
+  overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s ease;
 }
 
@@ -132,6 +136,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .works-modal__slide {

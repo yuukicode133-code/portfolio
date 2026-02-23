@@ -60,12 +60,22 @@ form textarea {
   caret-color: auto;
 }
 
-main {
-  overflow: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
-}
+
 html {
   touch-action: manipulation;
+  overscroll-behavior-y: none;
+  scrollbar-gutter: stable;
 }
+/* ダイアログが開いている時、bodyを固定 */
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+/* Firefox */
+html {
+  scrollbar-width: none; 
+}
+/* Chrome, Safari, Edge */
+html::-webkit-scrollbar {
+  display: none;
+}
+
