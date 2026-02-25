@@ -1,3 +1,29 @@
+/* スキップリンク */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 10000;
+  font-size: var(--font-size-md);
+
+  &:focus {
+    top: 0;
+  }
+}
+
+/* エラーメッセージ */
+.error-message {
+  display: block;
+  color: var(--color-contact-required);
+  font-size: var(--font-size-xs);
+  margin-top: 4px;
+  min-height: 1em;
+}
+
 p {
   font-size: var(--font-size-md);
   line-height: 1.5;

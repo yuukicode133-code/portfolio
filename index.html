@@ -3,18 +3,220 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio</title>
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta name="description" content="greenのWebポートフォリオサイト。Web制作、UI/UXデザイン、フロントエンド開発の実績をご紹介します。" />
+    <meta name="keywords" content="Webデザイン,Web制作,UI/UXデザイン,フロントエンド開発,ポートフォリオ,HTML,CSS,JavaScript" />
+    <meta name="author" content="green" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:title" content="green - Web Portfolio" />
+    <meta property="og:description" content="greenのWebポートフォリオサイト。Web制作、UI/UXデザイン、フロントエンド開発の実績をご紹介します。" />
+    <meta property="og:image" content="https://example.com/assets/image/ogp.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://example.com/" />
+    <meta name="twitter:title" content="green - Web Portfolio" />
+    <meta name="twitter:description" content="greenのWebポートフォリオサイト。Web制作、UI/UXデザイン、フロントエンド開発の実績をご紹介します。" />
+    <meta name="twitter:image" content="https://example.com/assets/image/ogp.jpg" />
+
+    <title>green - Web Portfolio | フリーランスWeb制作者</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/image/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./assets/image/favicon/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="./assets/image/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/image/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <meta name="theme-color" content="#51733f" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho+B1&family=Inter:wght@500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./src/styles/main.css" />
+
+    <!-- JSON-LD構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://example.com/#website",
+          "url": "https://example.com/",
+          "name": "green - Web Portfolio",
+          "description": "greenのWebポートフォリオサイト。Web制作、UI/UXデザイン、フロントエンド開発の実績をご紹介します。",
+          "inLanguage": "ja-JP",
+          "publisher": {
+            "@id": "https://example.com/#person"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://example.com/#person",
+          "name": "green",
+          "url": "https://example.com/",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://example.com/assets/image/about.jpg",
+            "width": 500,
+            "height": 500
+          },
+          "description": "フリーランスのWeb制作者として活動しています。Webデザイン、UI/UXデザイン、フロントエンド開発を得意としています。",
+          "jobTitle": "Web制作者・デザイナー",
+          "knowsAbout": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "PHP",
+            "WordPress",
+            "Figma",
+            "Studio",
+            "Git",
+            "Vite",
+            "GSAP"
+          ],
+          "sameAs": [
+            "https://example.com/"
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://example.com/#webpage",
+          "url": "https://example.com/",
+          "name": "green - Web Portfolio",
+          "description": "greenのWebポートフォリオサイト。Web制作、UI/UXデザイン、フロントエンド開発の実績をご紹介します。",
+          "inLanguage": "ja-JP",
+          "isPartOf": {
+            "@id": "https://example.com/#website"
+          },
+          "about": {
+            "@id": "https://example.com/#person"
+          },
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://example.com/assets/image/fv.jpg"
+          },
+          "datePublished": "2026-01-01",
+          "dateModified": "2026-02-25"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://example.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "ホーム",
+              "item": "https://example.com/"
+            }
+          ]
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://example.com/#works",
+          "url": "https://example.com/#works",
+          "name": "Works - 制作実績",
+          "description": "Web制作、UI/UXデザインの制作実績をご紹介します。",
+          "isPartOf": {
+            "@id": "https://example.com/#website"
+          },
+          "hasPart": [
+            {
+              "@type": "CreativeWork",
+              "name": "Project A",
+              "description": "Web Design, Development",
+              "image": "https://example.com/assets/image/works-a.jpg",
+              "creator": {
+                "@id": "https://example.com/#person"
+              }
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Project B",
+              "description": "UI/UX Design",
+              "image": "https://example.com/assets/image/works-b.jpg",
+              "creator": {
+                "@id": "https://example.com/#person"
+              }
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Project C",
+              "description": "Branding, Web Design",
+              "image": "https://example.com/assets/image/works-c.jpg",
+              "creator": {
+                "@id": "https://example.com/#person"
+              }
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Project D",
+              "description": "Landing Page Design",
+              "image": "https://example.com/assets/image/works-d.jpg",
+              "creator": {
+                "@id": "https://example.com/#person"
+              }
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Project E",
+              "description": "WordPress Development",
+              "image": "https://example.com/assets/image/works-e.jpg",
+              "creator": {
+                "@id": "https://example.com/#person"
+              }
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Project F",
+              "description": "Corporate Site",
+              "image": "https://example.com/assets/image/works-f.jpg",
+              "creator": {
+                "@id": "https://example.com/#person"
+              }
+            }
+          ]
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://example.com/#about",
+          "url": "https://example.com/#about",
+          "name": "About - 自己紹介",
+          "description": "greenのプロフィールとスキルをご紹介します。",
+          "isPartOf": {
+            "@id": "https://example.com/#website"
+          },
+          "mainEntity": {
+            "@id": "https://example.com/#person"
+          }
+        },
+        {
+          "@type": "ContactPage",
+          "@id": "https://example.com/#contact",
+          "url": "https://example.com/#contact",
+          "name": "Contact - お問い合わせ",
+          "description": "お仕事のご依頼やご相談はこちらからお問い合わせください。",
+          "isPartOf": {
+            "@id": "https://example.com/#website"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
-     <div id="loading-screen">
+     <!-- スキップリンク -->
+     <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+
+     <!-- ローディング画面 -->
+     <div id="loading-screen" role="status" aria-live="polite" aria-label="ページ読み込み中">
           <div class="loader-content">
-            <p id="reveal-text">green</p>
+            <p id="reveal-text" aria-hidden="true">green</p>
             <div class="status-text" id="status-text">Loading...</div>
-            <div class="progress-area">
+            <div class="progress-area" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="読み込み進捗">
               <div class="progress-track">
                 <div class="progress-fill" id="progress-fill"></div>
               </div>
@@ -24,45 +226,46 @@
        </div>
 
 
-    <header class="header">
+    <header class="header" role="banner">
       <div class="header__inner">
         <div class="header__logo">
-          <a href="/" class="header__logo-link en">green</a>
+          <a href="/" class="header__logo-link en" aria-label="greenホームページ">green</a>
         </div>
         <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="drawer" aria-label="メニューを開く" class="header__menu-button">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </button>
       </div>
     </header>
 
-    <div class="drawer" id="drawer" aria-hidden="true">
+    <!-- ドロワーメニュー -->
+    <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="ナビゲーションメニュー">
       <svg class="drawer__blob" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         <path id="drawer-blob-path" d="M 95 1 C 98 1 99 3 99 5 C 99 7 97 9 95 9 C 93 9 91 7 91 5 C 91 3 92 1 95 1 Z" fill="#51733f" stroke="#d2d3c4" stroke-width="1" />
       </svg>
-      <nav class="drawer__nav">
+      <nav class="drawer__nav" aria-label="メインナビゲーション">
         <ul class="drawer__nav-list">
           <li class="drawer__nav-item">
-            <a href="#" class="drawer__nav-link en">Home</a>
+            <a href="#" class="drawer__nav-link en" aria-label="ホームへ移動">Home</a>
           </li>
           <li class="drawer__nav-item">
-            <a href="#works" class="drawer__nav-link en">Works</a>
+            <a href="#works" class="drawer__nav-link en" aria-label="作品一覧へ移動">Works</a>
           </li>
           <li class="drawer__nav-item">
-            <a href="#about" class="drawer__nav-link en">About</a>
+            <a href="#about" class="drawer__nav-link en" aria-label="自己紹介へ移動">About</a>
           </li>
           <li class="drawer__nav-item">
-            <a href="#contact" class="drawer__nav-link en">Contact</a>
+            <a href="#contact" class="drawer__nav-link en" aria-label="お問い合わせへ移動">Contact</a>
           </li>
         </ul>
       </nav>
     </div>
 
-    <main class="main">
-      <section class="fv">
-        <div class="section__bg-left"></div>
-        <div class="section__bg-right"></div>
+    <main class="main" id="main-content" role="main">
+      <section class="fv" aria-label="メインビジュアル">
+        <div class="section__bg-left" aria-hidden="true"></div>
+        <div class="section__bg-right" aria-hidden="true"></div>
         <div class="fv__video-container">
           <video class="fv__video" autoplay muted loop playsinline aria-hidden="true" poster="./assets/image/fv.jpg" >
             <source src="./assets/video/fv-video.mp4" type="video/mp4" />
@@ -72,7 +275,7 @@
           <span class="fv__title-main">green</span>
           <span class="fv__title-sub">web portfolio</span>
         </h1>
-        <div class="scroll-container">
+        <div class="scroll-container" aria-hidden="true">
           <div class="scroll-wrapper">
             <div class="scroll-bg"></div>
             <div class="scrolldown">
@@ -82,93 +285,93 @@
         </div>
       </section>
       <div class="section-card">
-        <section class="works" id="works">
-          <div class="works__bg-left"></div>
-          <div class="works__bg-right"></div>
-          <div class="works__bg-title"></div>
+        <section class="works" id="works" aria-labelledby="works-title">
+          <div class="works__bg-left" aria-hidden="true"></div>
+          <div class="works__bg-right" aria-hidden="true"></div>
+          <div class="works__bg-title" aria-hidden="true"></div>
           <div class="works__inner">
-            <h2 class="works__title en">works</h2>
-            <ul class="works__list">
+            <h2 class="works__title en" id="works-title">works</h2>
+            <ul class="works__list" aria-label="作品一覧">
               <li class="works__item">
-                <a href="#" class="works__link">
+                <a href="#" class="works__link" aria-label="Project A - Web Design, Development の詳細を見る">
                   <div class="works__text">
                     <h3 class="works__item-title en">project A</h3>
                     <p class="works__item-role">Web Design, Development</p>
                   </div>
-                  <div class="works__thumbnail">
+                  <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-a.webp" type="image/webp" />
-                      <img src="./assets/image/works-a.jpg" alt="Project A" width="600" height="600" />
+                      <img src="./assets/image/works-a.jpg" alt="" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
               </li>
               <li class="works__item">
-                <a href="#" class="works__link">
+                <a href="#" class="works__link" aria-label="Project B - UI/UX Design の詳細を見る">
                   <div class="works__text">
                     <h3 class="works__item-title en">project B</h3>
                     <p class="works__item-role">UI/UX Design</p>
                   </div>
-                  <div class="works__thumbnail">
+                  <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-b.webp" type="image/webp" />
-                      <img src="./assets/image/works-b.jpg" alt="Project B" width="600" height="600" />
+                      <img src="./assets/image/works-b.jpg" alt="" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
               </li>
               <li class="works__item">
-                <a href="#" class="works__link">
+                <a href="#" class="works__link" aria-label="Project C - Branding, Web Design の詳細を見る">
                   <div class="works__text">
                     <h3 class="works__item-title en">project C</h3>
                     <p class="works__item-role">Branding, Web Design</p>
                   </div>
-                  <div class="works__thumbnail">
+                  <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-c.webp" type="image/webp" />
-                      <img src="./assets/image/works-c.jpg" alt="Project C" width="600" height="600" />
+                      <img src="./assets/image/works-c.jpg" alt="" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
               </li>
               <li class="works__item">
-                <a href="#" class="works__link">
+                <a href="#" class="works__link" aria-label="Project D - Landing Page Design の詳細を見る">
                   <div class="works__text">
                     <h3 class="works__item-title en">project D</h3>
                     <p class="works__item-role">Landing Page Design</p>
                   </div>
-                  <div class="works__thumbnail">
+                  <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-d.webp" type="image/webp" />
-                      <img src="./assets/image/works-d.jpg" alt="Project D" width="600" height="600" />
+                      <img src="./assets/image/works-d.jpg" alt="" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
               </li>
               <li class="works__item">
-                <a href="#" class="works__link">
+                <a href="#" class="works__link" aria-label="Project E - WordPress Development の詳細を見る">
                   <div class="works__text">
                     <h3 class="works__item-title en">project E</h3>
                     <p class="works__item-role">WordPress Development</p>
                   </div>
-                  <div class="works__thumbnail">
+                  <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-e.webp" type="image/webp" />
-                      <img src="./assets/image/works-e.jpg" alt="Project E" width="600" height="600" />
+                      <img src="./assets/image/works-e.jpg" alt="" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
               </li>
               <li class="works__item">
-                <a href="#" class="works__link">
+                <a href="#" class="works__link" aria-label="Project F - Corporate Site の詳細を見る">
                   <div class="works__text">
                     <h3 class="works__item-title en">Project F</h3>
                     <p class="works__item-role">Corporate Site</p>
                   </div>
-                  <div class="works__thumbnail">
+                  <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-f.webp" type="image/webp" />
-                      <img src="./assets/image/works-f.jpg" alt="Project F" width="600" height="600" />
+                      <img src="./assets/image/works-f.jpg" alt="" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
@@ -176,22 +379,22 @@
             </ul>
           </div>
         </section>
-        <section id="about" class="about">
-          <div class="section__bg-left"></div>
-          <div class="section__bg-right"></div>
-          <div class="about__text-circle"></div>
+        <section id="about" class="about" aria-labelledby="about-title">
+          <div class="section__bg-left" aria-hidden="true"></div>
+          <div class="section__bg-right" aria-hidden="true"></div>
+          <div class="about__text-circle" aria-hidden="true"></div>
           <div class="about__container">
             <div class="about__image-circle">
               <picture>
                 <source srcset="./assets/image/about.webp" type="image/webp" />
-                <img src="./assets/image/about.jpg" alt="プロフィール画像" width="500" height="500" />
+                <img src="./assets/image/about.jpg" alt="Web制作者のプロフィール写真" width="500" height="500" />
               </picture>
             </div>
 
             <div class="about__text-content">
-              <h2 class="about__title en">About</h2>
+              <h2 class="about__title en" id="about-title">About</h2>
               <p class="about__description">ここに自己紹介テキストが入ります。 フリーランスのWeb制作者として活動しています。 ここに自己紹介テキストが入ります。 フリーランスのWeb制作者として活動しています。 ここに自己紹介テキストが入ります。 フリーランスのWeb制作者として活動しています。</p>
-              <ul class="about__skill-list">
+              <ul class="about__skill-list" aria-label="スキル一覧">
                 <li class="about__skill-item">
                   <span class="about__skill-name">html</span>
                 </li>
@@ -226,39 +429,75 @@
             </div>
           </div>
         </section>
-        <section id="contact" class="contact">
+        <section id="contact" class="contact" aria-labelledby="contact-title">
           <div class="contact__inner">
-            <h2 class="contact__title en">Contact</h2>
+            <h2 class="contact__title en" id="contact-title">Contact</h2>
 
-            <div class="contact__blob">
+            <div class="contact__blob" aria-hidden="true">
               <div class="contact__form-wrapper">
-                <form class="contact__form" id="contact-form">
+                <form class="contact__form" id="contact-form" novalidate aria-label="お問い合わせフォーム">
                   <div class="contact__form-group">
-                    <label for="contact-name" class="contact__label"> お名前 <span class="contact__required">*</span> </label>
-                    <input type="text" id="contact-name" name="user_name" class="contact__input" placeholder="お名前" autocomplete="name" required />
+                    <label for="contact-name" class="contact__label"> お名前 <span class="contact__required" aria-label="必須">*</span> </label>
+                    <input
+                      type="text"
+                      id="contact-name"
+                      name="user_name"
+                      class="contact__input"
+                      placeholder="お名前"
+                      autocomplete="name"
+                      required
+                      aria-required="true"
+                      aria-describedby="contact-name-error" />
+                    <span id="contact-name-error" class="error-message" role="alert" aria-live="polite"></span>
                   </div>
 
                   <div class="contact__form-group">
-                    <label for="contact-email" class="contact__label"> メールアドレス <span class="contact__required">*</span> </label>
-                    <input type="email" id="contact-email" name="user_email" class="contact__input" placeholder="メールアドレス" autocomplete="email" required />
+                    <label for="contact-email" class="contact__label"> メールアドレス <span class="contact__required" aria-label="必須">*</span> </label>
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="user_email"
+                      class="contact__input"
+                      placeholder="メールアドレス"
+                      autocomplete="email"
+                      required
+                      aria-required="true"
+                      aria-describedby="contact-email-error" />
+                    <span id="contact-email-error" class="error-message" role="alert" aria-live="polite"></span>
                   </div>
 
                   <div class="contact__form-group">
-                    <label for="contact-message" class="contact__label"> お問い合わせ内容 <span class="contact__required">*</span> </label>
-                    <textarea id="contact-message" name="message" class="contact__textarea" placeholder="お問い合わせ内容をご記入ください" rows="5" required></textarea>
+                    <label for="contact-message" class="contact__label"> お問い合わせ内容 <span class="contact__required" aria-label="必須">*</span> </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      class="contact__textarea"
+                      placeholder="お問い合わせ内容をご記入ください"
+                      rows="5"
+                      required
+                      aria-required="true"
+                      aria-describedby="contact-message-error"></textarea>
+                    <span id="contact-message-error" class="error-message" role="alert" aria-live="polite"></span>
                   </div>
 
                   <div class="contact__form-group contact__form-group--privacy">
                     <label class="contact__checkbox-label">
-                      <input type="checkbox" id="contact-privacy" name="privacy_agreement" class="contact__checkbox" required />
-                      <span class="contact__checkbox-custom"></span>
+                      <input
+                        type="checkbox"
+                        id="contact-privacy"
+                        name="privacy_agreement"
+                        class="contact__checkbox"
+                        required
+                        aria-required="true"
+                        aria-describedby="privacy-note" />
+                      <span class="contact__checkbox-custom" aria-hidden="true"></span>
                       <span class="contact__checkbox-text">プライバシーポリシーに同意する</span>
                     </label>
-                    <p class="contact__privacy-note">※このサイトはサンプルサイトです。<br />フォームから送信された内容は制作者に届きます。送信ボタンをクリックするとメールアプリが起動します。</p>
+                    <p class="contact__privacy-note" id="privacy-note">※このサイトはサンプルサイトです。<br />フォームから送信された内容は制作者に届きます。送信ボタンをクリックするとメールアプリが起動します。</p>
                   </div>
 
                   <div class="contact__submit-wrapper">
-                    <button type="submit" class="contact__submit">送信する</button>
+                    <button type="submit" class="contact__submit" aria-label="お問い合わせを送信">送信する</button>
                   </div>
                 </form>
               </div>
@@ -268,66 +507,66 @@
       </div>
 
     </main>
-    <dialog class="works-modal" id="works-modal">
+    <dialog class="works-modal" id="works-modal" aria-modal="true" aria-labelledby="modal-title" role="dialog">
       <div class="works-modal__content">
-        <button class="works-modal__close" aria-label="閉じる">
-          <span></span>
-          <span></span>
+        <button class="works-modal__close" aria-label="モーダルを閉じる" type="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </button>
 
-        <div class="works-modal__slider">
-          <div class="works-modal__slides">
-            <div class="works-modal__slide is-active" data-slide="1">
-              <h3 class="works-modal__title en">Project</h3>
+        <div class="works-modal__slider" role="region" aria-label="プロジェクト詳細スライダー">
+          <div class="works-modal__slides" aria-live="polite" aria-atomic="true">
+            <div class="works-modal__slide is-active" data-slide="1" role="group" aria-label="スライド 1 of 4">
+              <h3 class="works-modal__title en" id="modal-title">Project</h3>
               <p class="works-modal__description"></p>
             </div>
-            <div class="works-modal__slide" data-slide="2">
+            <div class="works-modal__slide" data-slide="2" role="group" aria-label="スライド 2 of 4" aria-hidden="true">
               <h4 class="works-modal__subtitle en">Technologies</h4>
-              <ul class="works-modal__tech-list" aria-label="使用技術"></ul>
+              <ul class="works-modal__tech-list" aria-label="使用技術一覧"></ul>
             </div>
-            <div class="works-modal__slide" data-slide="3">
+            <div class="works-modal__slide" data-slide="3" role="group" aria-label="スライド 3 of 4" aria-hidden="true">
               <div class="works-modal__image">
-                <img src="https://placehold.co/800x500" alt="Project screenshot" width="800" height="500" />
+                <img src="https://placehold.co/800x500" alt="プロジェクトのスクリーンショット" width="800" height="500" />
               </div>
             </div>
-            <div class="works-modal__slide" data-slide="4">
+            <div class="works-modal__slide" data-slide="4" role="group" aria-label="スライド 4 of 4" aria-hidden="true">
               <p class="works-modal__cta-text">プロジェクトの詳細をご覧ください</p>
-              <a href="#" class="works-modal__button en" target="_blank" rel="noopener"> View Project </a>
+              <a href="#" class="works-modal__button en" target="_blank" rel="noopener" aria-label="プロジェクトの詳細ページを新しいタブで開く"> View Project </a>
             </div>
           </div>
 
-          <div class="works-modal__nav">
-            <button class="works-modal__arrow works-modal__arrow--prev" aria-label="前へ">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <nav class="works-modal__nav" aria-label="スライドナビゲーション">
+            <button class="works-modal__arrow works-modal__arrow--prev" aria-label="前のスライドへ" type="button">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <polyline points="15,18 9,12 15,6"></polyline>
               </svg>
             </button>
-            <div class="works-modal__dots">
-              <span class="works-modal__dot is-active" data-index="0"></span>
-              <span class="works-modal__dot" data-index="1"></span>
-              <span class="works-modal__dot" data-index="2"></span>
-              <span class="works-modal__dot" data-index="3"></span>
+            <div class="works-modal__dots" role="tablist" aria-label="スライドページネーション">
+              <button class="works-modal__dot is-active" data-index="0" role="tab" aria-label="スライド 1" aria-selected="true" type="button"></button>
+              <button class="works-modal__dot" data-index="1" role="tab" aria-label="スライド 2" aria-selected="false" type="button"></button>
+              <button class="works-modal__dot" data-index="2" role="tab" aria-label="スライド 3" aria-selected="false" type="button"></button>
+              <button class="works-modal__dot" data-index="3" role="tab" aria-label="スライド 4" aria-selected="false" type="button"></button>
             </div>
-            <button class="works-modal__arrow works-modal__arrow--next" aria-label="次へ">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <button class="works-modal__arrow works-modal__arrow--next" aria-label="次のスライドへ" type="button">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <polyline points="9,6 15,12 9,18"></polyline>
               </svg>
             </button>
-          </div>
+          </nav>
         </div>
       </div>
     </dialog>
     <footer class="footer">
       <div class="footer__inner">
-        <nav class="footer__nav">
+        <nav class="footer__nav" aria-label="フッターナビゲーション">
           <ul class="footer__nav-list">
-            <li class="footer__nav-item"><a href="#works" class="footer__nav-link en">works</a></li>
-            <li class="footer__nav-item"><a href="#about" class="footer__nav-link en">about</a></li>
-            <li class="footer__nav-item"><a href="#contact" class="footer__nav-link en">contact</a></li>
+            <li class="footer__nav-item"><a href="#works" class="footer__nav-link en" aria-label="作品一覧へ">works</a></li>
+            <li class="footer__nav-item"><a href="#about" class="footer__nav-link en" aria-label="自己紹介へ">about</a></li>
+            <li class="footer__nav-item"><a href="#contact" class="footer__nav-link en" aria-label="お問い合わせへ">contact</a></li>
           </ul>
         </nav>
         <small class="footer__copyright">
-          <span class="footer__copyright-text"> &copy; 2026 green. All rights reserved. inspired by <a href="https://olhauzhykova.com/" target="_blank" rel="noopener" class="footer__copyright-link">olhauzhykova</a> </span>
+          <span class="footer__copyright-text"> &copy; 2026 green. All rights reserved. inspired by <a href="https://olhauzhykova.com/" target="_blank" rel="noopener" class="footer__copyright-link" aria-label="olhauzhykovaのサイトを新しいタブで開く">olhauzhykova</a> </span>
         </small>
       </div>
     </footer>
