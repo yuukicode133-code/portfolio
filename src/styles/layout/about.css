@@ -3,6 +3,11 @@
   position: relative;
   padding: var(--spacing-size-80) 0;
 
+  @mixin mq-sp {
+    padding-top: var(--spacing-size-40);
+    padding-bottom: 0;
+  }
+
 
   &::after {
     content: '';
@@ -30,7 +35,7 @@
     height: clamp(21.875rem, -16.457rem + 59.952vw, 37.5rem);
     border-radius: 50%;
     overflow: hidden;
-    z-index: 2;
+    z-index: var(--z-index-layer-2);
 
     img {
       width: 100%;
@@ -64,15 +69,11 @@
     height: 100vw;
     background: var(--color-white);
     border-radius: 50%;
-    z-index: 1;
-
-    /* JSで制御するため、CSSでの初期値 */
+    z-index: var(--z-index-layer-1);
     transform: scale(0.3);
     opacity: 0;
     transform-origin: center center;
-    will-change: transform, opacity; /* パフォーマンス向上 */
-
-    /* 拡大時の影 */
+    will-change: transform, opacity; 
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
 
     @mixin mq-tab {
@@ -101,7 +102,17 @@
     position: absolute;
     top: 55%;
     left: 30%;
-    z-index: 3;
+    z-index: var(--z-index-layer-3);
+
+    @mixin mq-tab {
+      top: 55%;
+      left: 30%;
+    }
+
+    @mixin mq-sp {
+      top: 26%;
+      left: 0%;
+    }
   }
 
   &__title {

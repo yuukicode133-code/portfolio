@@ -6,6 +6,7 @@
     --color-beige-dark: #d2c8a8;
     --color-white: #f5f5eb;
     --color-black: #2b2b2b;
+    --color-contact-required: #c0392b;
     
     /* フォントサイズ */
     --font-size-xs: 11px;
@@ -16,7 +17,7 @@
     --font-size-xl: clamp(1.75em, 0.381vw + 1.6571em, 2em);
     --font-size-2xl: clamp(2.375em, 2.1429em + 0.9524vw, 3em);
     --font-size-3xl: clamp(2.5em, 2.1286em + 1.5238vw, 3.5em);
-    --font-size-fv: clamp(7rem, 6.620rem + 3.756vw, 9rem);
+    --font-size-fv: clamp(7.5rem, 6.620rem + 3.756vw, 10rem);
 
     /* フォントウェイト */
     --font-weight-regular: 400;
@@ -47,7 +48,19 @@
 
     /* アニメーション */
     --transition-all: all 0.3s ease;
-
     --transform-down: translateY(5px);
-    
+
+    /* z-index階層管理 */
+    --z-index-loading: 9999;
+    --z-index-cursor: 500;
+    --z-index-header: 200;
+    --z-index-drawer: 100;
+    --z-index-section: 70;
+    --z-index-modal: 60;
+    --z-index-fv: 60;
+    --z-index-footer: 50;
+    --z-index-layer-3: 30;
+    --z-index-layer-2: 20;
+    --z-index-layer-1: 10;
+
 }

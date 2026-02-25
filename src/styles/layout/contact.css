@@ -1,8 +1,7 @@
 .contact {
-  /* position: relative; */
   background-color: var(--color-white);
   padding: var(--spacing-size-80) var(--spacing-size-24);
-  z-index: 3;
+  z-index: var(--z-index-layer-3);
   position: relative;
 
   @mixin mq-sp {
@@ -29,7 +28,7 @@
     }
   }
 
-  /* 流体シェイプ - フォームのコンテナとして機能 */
+  /* 流体シェイプ */
   &__blob {
     background-color: var(--color-green);
     border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
@@ -45,9 +44,8 @@
 
     @mixin mq-sp {
       border-radius: 30px;
-      padding: var(--spacing-size-32) var(--spacing-size-24);
+      padding: var(--spacing-size-30) var(--spacing-size-24);
       max-width: 100%;
-      /* スマホではアニメーション無効 */
       animation: none;
     }
   }
@@ -59,6 +57,10 @@
     visibility: visible;
     width: 100%;
     height: 100%;
+
+    @mixin mq-sp {
+      border-radius: 30px;
+    }
   }
 
   &__form {
@@ -67,10 +69,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @mixin mq-sp {
+      width: 100%;
+      max-width: 100%;
+    }
+
   }
 
-  /* フォームグループ */
   &__form-group {
+    display: grid;
+    row-gap: var(--spacing-size-10);
     margin-bottom: var(--spacing-size-20);
 
     @mixin mq-sp {
@@ -88,11 +97,10 @@
   }
 
   &__required {
-    color: #c0392b;
+    color: var(--color-contact-required);
     font-size: var(--font-size-xs);
   }
 
-  /* 入力フィールド */
   &__input,
   &__textarea {
     width: 100%;
@@ -100,14 +108,14 @@
     font-size: var(--font-size-md);
     font-family: var(--font-family-jp);
     color: var(--color-black);
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: var(--color-white);
+    border: 1px solid color-mix(in srgb, var(--color-black) 15%, transparent);
     border-radius: 6px;
     transition: border-color 0.2s ease;
     box-sizing: border-box;
 
     &::placeholder {
-      color: #aaa;
+      color: color-mix(in srgb, var(--color-black) 50%, transparent);
     }
 
     &:focus {
@@ -130,7 +138,6 @@
     }
   }
 
-  /* プライバシーポリシー */
   &__form-group--privacy {
     margin-top: var(--spacing-size-24);
     text-align: center;
@@ -171,11 +178,11 @@
     flex-shrink: 0;
     width: 18px;
     height: 18px;
-    border: 2px solid #bbb;
+    border: 2px solid color-mix(in srgb, var(--color-black) 15%, transparent);
     border-radius: 3px;
     position: relative;
     transition: all 0.2s ease;
-    background-color: #fff;
+    background-color: var(--color-white);
 
     &::after {
       content: '';
@@ -184,7 +191,7 @@
       left: 5px;
       width: 4px;
       height: 8px;
-      border: solid #fff;
+      border: solid var(--color-white);
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
       opacity: 0;
@@ -205,7 +212,6 @@
     text-align: center;
   }
 
-  /* 送信ボタン */
   &__submit-wrapper {
     text-align: center;
     margin-top: var(--spacing-size-24);
@@ -218,7 +224,7 @@
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-jp);
-    color: #fff;
+    color: var(--color-white);
     background-color: var(--color-black);
     border: none;
     border-radius: 50px;

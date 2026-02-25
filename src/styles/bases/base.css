@@ -5,17 +5,26 @@ p {
   font-family: var(--font-family-jp);
   color: var(--color-white);
 }
+
 a {
   text-decoration: none;
 }
-h1,h2,h3,h4,h5,h6 {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-family-en);
   text-transform: capitalize;
   letter-spacing: 0.1em;
 }
+
 .en {
   font-family: var(--font-family-en);
 }
+
 .jp {
   font-family: var(--font-family-jp);
 }
@@ -29,14 +38,10 @@ button {
   cursor: pointer;
   border: none;
   background: none;
-
-  &:hover {
-    cursor: default;
-  }
 }
 
 /* aタグ以外のhover時のcursorをdefaultに統一 */
-*:hover:not(a) {
+*:hover:not(a, button) {
   cursor: default;
 }
 
@@ -52,30 +57,39 @@ h6 {
   caret-color: transparent;
 }
 
-form input {
-  caret-color: auto;
-}
+form {
+  input {
+    caret-color: auto;
+  }
 
-form textarea {
-  caret-color: auto;
+  textarea {
+    caret-color: auto;
+  }
 }
-
 
 html {
   touch-action: manipulation;
   overscroll-behavior-y: none;
   scrollbar-gutter: stable;
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* Chrome, Safari, Edge */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
-/* ダイアログが開いている時、bodyを固定 */
-body:has(dialog[open]) {
-  overflow: hidden;
+
+body {
+  isolation: isolate;
+
+  /* ダイアログが開いている時、bodyを固定 */
+  &:has(dialog[open]) {
+    overflow: hidden;
+  }
 }
-/* Firefox */
-html {
-  scrollbar-width: none; 
-}
-/* Chrome, Safari, Edge */
-html::-webkit-scrollbar {
-  display: none;
+
+main {
+  background: var(--color-green-dark);
 }
 

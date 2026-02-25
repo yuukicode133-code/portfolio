@@ -2,76 +2,81 @@
   height: 100vh;
   overflow: hidden;
   width: 100%;
-  z-index: 10;
+  z-index: var(--z-index-fv);
   position: relative;
   will-change: transform;
-}
-.fv__video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
 
-  @mixin mq-sp {
-    background-image: url('../../assets/image/fv.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  &__video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    @mixin mq-sp {
+      background-image: url('../../assets/image/fv.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @mixin mq-sp {
+      display: none;
+    }
+  }
+
+  &-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--color-black);
+    width: 100%;
+    z-index: var(--z-index-fv);
+  }
+
+  &__title-main {
+    display: block;
+    font-size: clamp(7.5rem, 6.620rem + 3.756vw, 10rem);
+    text-transform: uppercase;
+    font-weight: var(--font-weight-bold);
+    text-indent: 0.3em;
+    letter-spacing: 0.3em;
+
+    @mixin mq-sp {
+      font-size: clamp(3.75rem, 2.980rem + 3.286vw, 5.938rem);
+    }
+  }
+
+  &__title-sub {
+    display: block;
+    font-size: var(--font-size-xl);
+    margin-top: var(--spacing-size-24);
   }
 }
-.fv__video {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 
-  @mixin mq-sp {
-    display: none;
-  }
-}
-.fv-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.fv__title {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: var(--color-black);
-  width: 100%;
-  z-index: 10;
-}
 
-.fv__title-main {
-  display: block;
-  font-size: clamp(7.5rem, 6.620rem + 3.756vw, 10rem);
-  text-transform: uppercase;
-  font-weight: var(--font-weight-bold);
-  text-indent: 0.3em;
-  letter-spacing: 0.3em;
-
-  @mixin mq-sp {
-    font-size: clamp(5rem, 4.457rem + 2.315vw, 5.938rem);
-  }
-}
-
-.fv__title-sub {
-  display: block;
-  font-size: var(--font-size-xl);
-  margin-top: var(--spacing-size-24);
-}
 .scroll-container {
   position: absolute;
   bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
-
+}
 
 .scroll-wrapper {
   position: relative;
@@ -95,31 +100,7 @@
   color: var(--color-black);
   position: relative;
   text-transform: uppercase;
-  -webkit-animation: 1.6s ease-in-out 0s infinite normal none running mousemove;
-          animation: 1.6s ease-in-out 0s infinite normal none running mousemove;
-
-  @-webkit-keyframes mousemove {
-    0% {
-      bottom:0px;
-    }
-    50% {
-      bottom:-10px;
-    }
-    100% {
-      bottom:0px;
-    }
-}
-@keyframes mousemove {
-  0% {
-    bottom:0px;
-  }
-  50% {
-    bottom:-10px;
-  }
-  100% {
-    bottom:0px;
-  }
-}
+  animation: 1.6s ease-in-out 0s infinite normal none running mousemove;
 
   &::after {
     content: "";
@@ -129,9 +110,10 @@
     transform: translateX(-50%);
     width: 5px;
     height: 5px;
-    border-radius: 50%; 
+    border-radius: 50%;
     background-color: var(--color-black);
   }
+
   &::before {
     content: "";
     position: absolute;
@@ -144,7 +126,6 @@
     border-radius: 10px;
   }
 
-
   span {
     &::after {
       content: "";
@@ -156,39 +137,34 @@
       height: 15px;
       background-color: var(--color-black);
       opacity: 0;
-      -webkit-animation: mousepathmove 1.4s linear infinite;
       animation: mousepathmove 1.4s linear infinite;
-
-      @-webkit-keyframes mousepathmove {
-        0% {
-          opacity: 0;
-          top: 15px;
-        }
-        50% {
-          opacity: 1;
-          top: 25px;
-        }
-        100% {
-          opacity: 0;
-          top: 40px;
-        }
-      }
-
-      @keyframes mousepathmove {
-        0% {
-          opacity: 0;
-          top: 15px;
-        }
-        50% {
-          opacity: 1;
-          top: 25px;
-        }
-        100% {
-          opacity: 0;
-          top: 40px;
-        }
-      }
     }
   }
 }
+
+@keyframes mousemove {
+  0% {
+    bottom: 0px;
+  }
+  50% {
+    bottom: -10px;
+  }
+  100% {
+    bottom: 0px;
+  }
+}
+
+@keyframes mousepathmove {
+  0% {
+    opacity: 0;
+    top: 15px;
+  }
+  50% {
+    opacity: 1;
+    top: 25px;
+  }
+  100% {
+    opacity: 0;
+    top: 40px;
+  }
 }

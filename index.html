@@ -10,78 +10,26 @@
     <link rel="stylesheet" href="./src/styles/main.css" />
   </head>
   <body>
-    <!-- ローディング画面 -->
-    <div id="loading-screen">
-      <!-- 紙のノイズテクスチャ -->
-      <svg class="noise-texture" xmlns="http://www.w3.org/2000/svg">
-        <filter id="paper-noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" />
-          <feColorMatrix in="noise" type="saturate" values="0" />
-          <feComponentTransfer>
-            <feFuncA type="discrete" tableValues="0 0.015" />
-          </feComponentTransfer>
-        </filter>
-        <rect width="100%" height="100%" filter="url(#paper-noise)" />
-      </svg>
-
-      <div class="loading-content">
-        <!-- テキストリビール -->
-        <div class="text-reveal-container">
-          <svg class="text-reveal-svg" viewBox="0 0 700 80" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <clipPath id="reveal-clip">
-                <rect id="clip-rect" x="0" y="0" width="0" height="80" />
-              </clipPath>
-            </defs>
-
-            <!-- Shadow層 -->
-            <text x="350" y="50" text-anchor="middle" class="text-shadow" clip-path="url(#reveal-clip)">
-              Chlorophyll Index
-            </text>
-
-            <!-- Fill層 -->
-            <text x="350" y="50" text-anchor="middle" class="text-fill" clip-path="url(#reveal-clip)">
-              Chlorophyll Index
-            </text>
-
-            <!-- Stroke層 -->
-            <text x="350" y="50" text-anchor="middle" class="text-stroke" clip-path="url(#reveal-clip)">
-              Chlorophyll Index
-            </text>
-
-            <!-- カーソル線 -->
-            <line id="cursor-line" x1="0" y1="10" x2="0" y2="70" stroke="#0a2615" stroke-width="1.5" opacity="0.6" />
-          </svg>
-        </div>
-
-        <!-- ステータステキスト -->
-        <div class="status-text" id="status-text">Mixing pigments</div>
-
-        <!-- プログレスバー -->
-        <div class="progress-container">
-          <div class="progress-track">
-            <div class="progress-fill" id="progress-fill"></div>
+     <div id="loading-screen">
+          <div class="loader-content">
+            <p id="reveal-text">green</p>
+            <div class="status-text" id="status-text">Loading...</div>
+            <div class="progress-area">
+              <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
+              <div class="progress-pct" id="progress-pct">0%</div>
+            </div>
           </div>
-          <div class="progress-percentage" id="progress-percentage">0%</div>
-        </div>
-      </div>
-    </div>
+       </div>
+
 
     <header class="header">
       <div class="header__inner">
         <div class="header__logo">
-          <a href="/" class="header__logo-link en">ocean</a>
+          <a href="/" class="header__logo-link en">green</a>
         </div>
-        <!-- <nav class="header__nav pc-only" id="nav-menu">
-          <ul class="header__nav-list">
-            <li class="header__nav-item"><a href="#works" class="header__nav-link en">works</a></li>
-            <li class="header__nav-item"><a href="#about" class="header__nav-link en">about</a></li>
-            <li class="header__nav-item"><a href="#contact" class="header__nav-link en">contact</a></li>
-          </ul>
-        </nav> -->
-
-        <!-- ハンバーガーボタン（SPのみ表示） -->
-        <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="メニューを開く" class="header__menu-button" aria-hidden="true">
+        <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="drawer" aria-label="メニューを開く" class="header__menu-button">
           <span></span>
           <span></span>
           <span></span>
@@ -89,16 +37,10 @@
       </div>
     </header>
 
-    <!-- ドロワーオーバーレイ -->
     <div class="drawer" id="drawer" aria-hidden="true">
-      <!-- SVGパスモーフィングによるblob背景 -->
       <svg class="drawer__blob" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         <path id="drawer-blob-path" d="M 95 1 C 98 1 99 3 99 5 C 99 7 97 9 95 9 C 93 9 91 7 91 5 C 91 3 92 1 95 1 Z" fill="#51733f" stroke="#d2d3c4" stroke-width="1" />
       </svg>
-      <button type="button" class="drawer__close" id="drawer-close" aria-label="メニューを閉じる">
-        <span></span>
-        <span></span>
-      </button>
       <nav class="drawer__nav">
         <ul class="drawer__nav-list">
           <li class="drawer__nav-item">
@@ -122,13 +64,12 @@
         <div class="section__bg-left"></div>
         <div class="section__bg-right"></div>
         <div class="fv__video-container">
-          <video class="fv__video" autoplay muted loop playsinline aria-hidden="true" poster="./assets/image/fv.jpg">
+          <video class="fv__video" autoplay muted loop playsinline aria-hidden="true" poster="./assets/image/fv.jpg" >
             <source src="./assets/video/fv-video.mp4" type="video/mp4" />
           </video>
-          <!-- <div class="fv-overlay"></div> -->
         </div>
         <h1 class="fv__title">
-          <span class="fv__title-main">ocean</span>
+          <span class="fv__title-main">green</span>
           <span class="fv__title-sub">web portfolio</span>
         </h1>
         <div class="scroll-container">
@@ -238,10 +179,8 @@
         <section id="about" class="about">
           <div class="section__bg-left"></div>
           <div class="section__bg-right"></div>
-          <!-- テキストの白い円形（スクロールで拡大） -->
           <div class="about__text-circle"></div>
           <div class="about__container">
-            <!-- 人物画像の円形 -->
             <div class="about__image-circle">
               <picture>
                 <source srcset="./assets/image/about.webp" type="image/webp" />
@@ -279,6 +218,9 @@
                 </li>
                 <li class="about__skill-item">
                   <span class="about__skill-name">vite</span>
+                </li>
+                <li class="about__skill-item">
+                  <span class="about__skill-name">gsap</span>
                 </li>
               </ul>
             </div>
@@ -326,7 +268,6 @@
       </div>
 
     </main>
-    <!-- Works Modal -->
     <dialog class="works-modal" id="works-modal">
       <div class="works-modal__content">
         <button class="works-modal__close" aria-label="閉じる">
@@ -386,7 +327,7 @@
           </ul>
         </nav>
         <small class="footer__copyright">
-          <span class="footer__copyright-text"> &copy; 2026 Ocean. All rights reserved. inspired by <a href="https://olhauzhykova.com/" target="_blank" rel="noopener" class="footer__copyright-link">olhauzhykova</a> </span>
+          <span class="footer__copyright-text"> &copy; 2026 green. All rights reserved. inspired by <a href="https://olhauzhykova.com/" target="_blank" rel="noopener" class="footer__copyright-link">olhauzhykova</a> </span>
         </small>
       </div>
     </footer>

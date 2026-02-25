@@ -2,34 +2,35 @@
   border-radius: 0 0 50px 50px;
   overflow: hidden;
   position: relative;
-  z-index: 20;
-  /* margin-top: 100vh; */
-  margin-bottom: 135px;
+  z-index: var(--z-index-section);
   background-color: var(--color-beige);
 }
-.section__bg-left {
-  background-image: url("../../../assets/image/dash.png");
-  background-size: 20% 100%;
-  background-position: left;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-}
 
-.section__bg-right {
-  background-image: url("../../../assets/image/dash.png");
-  transform: scaleX(-1);
-  background-size: 20% 100%;
-  background-position: left;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 1;
+.section {
+  &__bg-left {
+    background-image: url("../../../assets/image/dash.png");
+    background-size: 20% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: var(--z-index-layer-1);
+  }
+
+  &__bg-right {
+    background-image: url("../../../assets/image/dash.png");
+    transform: scaleX(-1);
+    background-size: 20% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: var(--z-index-layer-1);
+  }
 }

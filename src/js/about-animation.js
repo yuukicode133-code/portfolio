@@ -13,6 +13,12 @@ $(document).ready(function() {
     endOffset: 0.3      // セクションのどの位置でアニメーション完了するか（0.6 = 60%地点）
   };
 
+  // ウィンドウ幅に応じてmaxScaleを更新
+  function updateConfig() {
+    const windowWidth = $(window).width();
+    config.maxScale = windowWidth <= 768 ? 6 : 4;
+  }
+
   function updateCircleScale() {
     const rect = $aboutSection[0].getBoundingClientRect();
     const viewportHeight = $(window).height();
@@ -56,8 +62,12 @@ $(document).ready(function() {
   });
 
   // 初期状態を設定
+  updateConfig();
   updateCircleScale();
 
   // リサイズ時も再計算
-  $(window).on('resize', updateCircleScale);
+  $(window).on('resize', function() {
+    updateConfig();
+    updateCircleScale();
+  });
 });

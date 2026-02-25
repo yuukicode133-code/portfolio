@@ -21,7 +21,7 @@ import $ from 'jquery';
   const speed = 0.15;
 
   // ホバー対象の要素
-  // const hoverTargets = 'a,button, [role="button"], input[type="submit"], input[type="button"]';
+  const hoverTargets = 'a,button, [role="button"], input[type="submit"], input[type="button"],input[type="text"],input[type="email"],#contact-message';
 
   // マウス移動を監視
   $(document).on('mousemove', function(e) {
@@ -30,13 +30,13 @@ import $ from 'jquery';
   });
 
   // ホバー状態の管理
-  // $(document).on('mouseover', hoverTargets, function() {
-  //   $cursor.addClass('is-hover');
-  // });
+  $(document).on('mouseover', hoverTargets, function() {
+    $cursor.addClass('is-hover');
+  });
 
-  // $(document).on('mouseout', hoverTargets, function() {
-  //   $cursor.removeClass('is-hover');
-  // });
+  $(document).on('mouseout', hoverTargets, function() {
+    $cursor.removeClass('is-hover');
+  });
 
   // 画面外に出たらカーソルを非表示
   $(document).on('mouseleave', function() {

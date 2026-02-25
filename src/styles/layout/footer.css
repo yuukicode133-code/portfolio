@@ -1,84 +1,82 @@
 .footer {
   background-color: var(--color-green-dark);
-  padding-top: var(--spacing-size-120);
+  padding-top: var(--spacing-size-30);
   padding-bottom: var(--spacing-size-30);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 5;
+  position: sticky;
+  inset: 0;
+  z-index: -1;
 
   @mixin mq-sp {
     padding: var(--spacing-size-20) var(--spacing-size-16);
   }
-}
 
-.footer__inner {
-  max-width: var(--layout-content-width);
-  display: grid;
-  row-gap: var(--spacing-size-24);
-  margin: 0 auto;
-}
-
-.footer__nav {
-}
-
-.footer__nav-list {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-size-24);
-
-  @mixin mq-sp {
-    gap: var(--spacing-size-16);
-  }
-}
-
-.footer__nav-item {
-  list-style: none;
-}
-
-.footer__nav-link {
-  font-size: var(--font-size-md);
-  font-family: var(--font-family-en);
-  color: var(--color-white);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: opacity 0.2s ease;
-
-  &:hover {
-    opacity: 0.7;
+  &__inner {
+    max-width: var(--layout-content-width);
+    display: grid;
+    row-gap: var(--spacing-size-24);
+    margin: 0 auto;
   }
 
-  @mixin mq-sp {
-    font-size: var(--font-size-xs);
+  &__nav {
   }
-}
 
-.footer__copyright {
-  display: block;
-  text-align: center;
-}
+  &__nav-list {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-size-24);
 
-.footer__copyright-text {
-  font-size: var(--font-size-md);
-  font-family: var(--font-family-en);
-  color: var(--color-white);
-  letter-spacing: 0.05em;
-
-  @mixin mq-sp {
-    font-size: var(--font-size-xs);
+    @mixin mq-sp {
+      gap: var(--spacing-size-16);
+    }
   }
-}
 
-.footer__copyright-link {
-  color: var(--color-white);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: opacity 0.2s ease;
+  &__nav-item {
+    list-style: none;
+  }
 
-  &:hover {
-    opacity: 0.7;
+  &__nav-link {
+    font-size: var(--font-size-md);
+    font-family: var(--font-family-en);
+    color: var(--color-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    @mixin mq-sp {
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  &__copyright {
+    display: block;
+    text-align: center;
+  }
+
+  &__copyright-text {
+    font-size: var(--font-size-md);
+    font-family: var(--font-family-en);
+    color: var(--color-white);
+    letter-spacing: 0.05em;
+
+    @mixin mq-sp {
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  &__copyright-link {
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
 

@@ -1,7 +1,6 @@
 import { gsap } from 'gsap';
 
 const menuToggle = document.getElementById('menu-toggle');
-const drawerClose = document.getElementById('drawer-close');
 const drawer = document.getElementById('drawer');
 const blobSvg = drawer.querySelector('.drawer__blob');
 const blobPath = document.getElementById('drawer-blob-path');
@@ -96,25 +95,59 @@ tl.to(navLinks, {
   ease: 'power2.out',
 });
 
-// 開く
-menuToggle.addEventListener('click', () => {
+// 状態管理フラグを追加
+let isDrawerOpen = false;
+
+/**
+ * ドロワーを開く処理
+ */
+function openDrawer() {
+  isDrawerOpen = true;
   document.body.style.overflow = 'hidden';
   drawer.setAttribute('aria-hidden', 'false');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  menuToggle.setAttribute('aria-label', 'メニューを閉じる');
+  menuToggle.classList.add('is-open');
   tl.play();
-});
+}
 
-// 閉じる（逆再生 — 右上に吸い込まれるように収縮）
-drawerClose.addEventListener('click', () => {
+/**
+ * ドロワーを閉じる処理
+ */
+function closeDrawer() {
+  isDrawerOpen = false;
   tl.reverse();
   tl.eventCallback('onReverseComplete', () => {
     document.body.style.overflow = '';
     drawer.setAttribute('aria-hidden', 'true');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'メニューを開く');
+    menuToggle.classList.remove('is-open');
   });
+}
+
+// トグル機能（開閉を1つのボタンで制御）
+menuToggle.addEventListener('click', () => {
+  // アニメーション中のクリックを無視
+  if (tl.isActive()) return;
+
+  if (isDrawerOpen) {
+    closeDrawer();
+  } else {
+    openDrawer();
+  }
 });
 
 // ドロワー内リンクをクリックしたら閉じる
 navLinks.forEach((link) => {
   link.addEventListener('click', () => {
-    drawerClose.click();
+    closeDrawer();
   });
+});
+
+// Escキーでドロワーを閉じる
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && isDrawerOpen) {
+    closeDrawer();
+  }
 });
