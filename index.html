@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta name="format-detection" content="telephone=no,address=no,email=no" />
     <meta name="description" content="greenのWebポートフォリオサイト。Web制作、UI/UXデザイン、フロントエンド開発の実績をご紹介します。" />
     <meta name="keywords" content="Webデザイン,Web制作,UI/UXデザイン,フロントエンド開発,ポートフォリオ,HTML,CSS,JavaScript" />
     <meta name="author" content="green" />
+    <link rel="canonical" href="https://example.com/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -39,194 +40,180 @@
 
     <!-- JSON-LD構造化データ -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://example.com/#website",
-          "url": "https://example.com/",
-          "name": "green - Web Portfolio",
-          "description": "greenのWebポートフォリオサイト。Web制作、UI/UXデザイン、フロントエンド開発の実績をご紹介します。",
-          "inLanguage": "ja-JP",
-          "publisher": {
-            "@id": "https://example.com/#person"
-          }
-        },
-        {
-          "@type": "Person",
-          "@id": "https://example.com/#person",
-          "name": "green",
-          "url": "https://example.com/",
-          "image": {
-            "@type": "ImageObject",
-            "url": "https://example.com/assets/image/about.jpg",
-            "width": 500,
-            "height": 500
-          },
-          "description": "フリーランスのWeb制作者として活動しています。Webデザイン、UI/UXデザイン、フロントエンド開発を得意としています。",
-          "jobTitle": "Web制作者・デザイナー",
-          "knowsAbout": [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "PHP",
-            "WordPress",
-            "Figma",
-            "Studio",
-            "Git",
-            "Vite",
-            "GSAP"
-          ],
-          "sameAs": [
-            "https://example.com/"
-          ]
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://example.com/#webpage",
-          "url": "https://example.com/",
-          "name": "green - Web Portfolio",
-          "description": "greenのWebポートフォリオサイト。Web制作、UI/UXデザイン、フロントエンド開発の実績をご紹介します。",
-          "inLanguage": "ja-JP",
-          "isPartOf": {
-            "@id": "https://example.com/#website"
-          },
-          "about": {
-            "@id": "https://example.com/#person"
-          },
-          "primaryImageOfPage": {
-            "@type": "ImageObject",
-            "url": "https://example.com/assets/image/fv.jpg"
-          },
-          "datePublished": "2026-01-01",
-          "dateModified": "2026-02-25"
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://example.com/#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "ホーム",
-              "item": "https://example.com/"
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://example.com/#website",
+            "url": "https://example.com/",
+            "name": "green - Web Portfolio",
+            "description": "greenのWebポートフォリオサイト。Web制作、UI/UXデザイン、フロントエンド開発の実績をご紹介します。",
+            "inLanguage": "ja-JP",
+            "publisher": {
+              "@id": "https://example.com/#person"
             }
-          ]
-        },
-        {
-          "@type": "CollectionPage",
-          "@id": "https://example.com/#works",
-          "url": "https://example.com/#works",
-          "name": "Works - 制作実績",
-          "description": "Web制作、UI/UXデザインの制作実績をご紹介します。",
-          "isPartOf": {
-            "@id": "https://example.com/#website"
           },
-          "hasPart": [
-            {
-              "@type": "CreativeWork",
-              "name": "Project A",
-              "description": "Web Design, Development",
-              "image": "https://example.com/assets/image/works-a.jpg",
-              "creator": {
-                "@id": "https://example.com/#person"
-              }
+          {
+            "@type": "Person",
+            "@id": "https://example.com/#person",
+            "name": "green",
+            "url": "https://example.com/",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://example.com/assets/image/about.jpg",
+              "width": 500,
+              "height": 500
             },
-            {
-              "@type": "CreativeWork",
-              "name": "Project B",
-              "description": "UI/UX Design",
-              "image": "https://example.com/assets/image/works-b.jpg",
-              "creator": {
-                "@id": "https://example.com/#person"
-              }
+            "description": "フリーランスのWeb制作者として活動しています。Webデザイン、UI/UXデザイン、フロントエンド開発を得意としています。",
+            "jobTitle": "Web制作者・デザイナー",
+            "knowsAbout": ["HTML", "CSS", "JavaScript", "PHP", "WordPress", "Figma", "Studio", "Git", "Vite", "GSAP"],
+            "sameAs": ["https://example.com/"]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://example.com/#webpage",
+            "url": "https://example.com/",
+            "name": "green - Web Portfolio",
+            "description": "greenのWebポートフォリオサイト。Web制作、UI/UXデザイン、フロントエンド開発の実績をご紹介します。",
+            "inLanguage": "ja-JP",
+            "isPartOf": {
+              "@id": "https://example.com/#website"
             },
-            {
-              "@type": "CreativeWork",
-              "name": "Project C",
-              "description": "Branding, Web Design",
-              "image": "https://example.com/assets/image/works-c.jpg",
-              "creator": {
-                "@id": "https://example.com/#person"
-              }
+            "about": {
+              "@id": "https://example.com/#person"
             },
-            {
-              "@type": "CreativeWork",
-              "name": "Project D",
-              "description": "Landing Page Design",
-              "image": "https://example.com/assets/image/works-d.jpg",
-              "creator": {
-                "@id": "https://example.com/#person"
-              }
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://example.com/assets/image/fv.jpg"
             },
-            {
-              "@type": "CreativeWork",
-              "name": "Project E",
-              "description": "WordPress Development",
-              "image": "https://example.com/assets/image/works-e.jpg",
-              "creator": {
-                "@id": "https://example.com/#person"
+            "datePublished": "2026-01-01",
+            "dateModified": "2026-02-25"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://example.com/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "ホーム",
+                "item": "https://example.com/"
               }
+            ]
+          },
+          {
+            "@type": "CollectionPage",
+            "@id": "https://example.com/#works",
+            "url": "https://example.com/#works",
+            "name": "Works - 制作実績",
+            "description": "Web制作、UI/UXデザインの制作実績をご紹介します。",
+            "isPartOf": {
+              "@id": "https://example.com/#website"
             },
-            {
-              "@type": "CreativeWork",
-              "name": "Project F",
-              "description": "Corporate Site",
-              "image": "https://example.com/assets/image/works-f.jpg",
-              "creator": {
-                "@id": "https://example.com/#person"
+            "hasPart": [
+              {
+                "@type": "CreativeWork",
+                "name": "Project A",
+                "description": "Web Design, Development",
+                "image": "https://example.com/assets/image/works-a.jpg",
+                "creator": {
+                  "@id": "https://example.com/#person"
+                }
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Project B",
+                "description": "UI/UX Design",
+                "image": "https://example.com/assets/image/works-b.jpg",
+                "creator": {
+                  "@id": "https://example.com/#person"
+                }
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Project C",
+                "description": "Branding, Web Design",
+                "image": "https://example.com/assets/image/works-c.jpg",
+                "creator": {
+                  "@id": "https://example.com/#person"
+                }
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Project D",
+                "description": "Landing Page Design",
+                "image": "https://example.com/assets/image/works-d.jpg",
+                "creator": {
+                  "@id": "https://example.com/#person"
+                }
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Project E",
+                "description": "WordPress Development",
+                "image": "https://example.com/assets/image/works-e.jpg",
+                "creator": {
+                  "@id": "https://example.com/#person"
+                }
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Project F",
+                "description": "Corporate Site",
+                "image": "https://example.com/assets/image/works-f.jpg",
+                "creator": {
+                  "@id": "https://example.com/#person"
+                }
               }
+            ]
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://example.com/#about",
+            "url": "https://example.com/#about",
+            "name": "About - 自己紹介",
+            "description": "greenのプロフィールとスキルをご紹介します。",
+            "isPartOf": {
+              "@id": "https://example.com/#website"
+            },
+            "mainEntity": {
+              "@id": "https://example.com/#person"
             }
-          ]
-        },
-        {
-          "@type": "ProfilePage",
-          "@id": "https://example.com/#about",
-          "url": "https://example.com/#about",
-          "name": "About - 自己紹介",
-          "description": "greenのプロフィールとスキルをご紹介します。",
-          "isPartOf": {
-            "@id": "https://example.com/#website"
           },
-          "mainEntity": {
-            "@id": "https://example.com/#person"
+          {
+            "@type": "ContactPage",
+            "@id": "https://example.com/#contact",
+            "url": "https://example.com/#contact",
+            "name": "Contact - お問い合わせ",
+            "description": "お仕事のご依頼やご相談はこちらからお問い合わせください。",
+            "isPartOf": {
+              "@id": "https://example.com/#website"
+            }
           }
-        },
-        {
-          "@type": "ContactPage",
-          "@id": "https://example.com/#contact",
-          "url": "https://example.com/#contact",
-          "name": "Contact - お問い合わせ",
-          "description": "お仕事のご依頼やご相談はこちらからお問い合わせください。",
-          "isPartOf": {
-            "@id": "https://example.com/#website"
-          }
-        }
-      ]
-    }
+        ]
+      }
     </script>
   </head>
   <body>
-     <!-- スキップリンク -->
-     <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+    <!-- スキップリンク -->
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
 
-     <!-- ローディング画面 -->
-     <div id="loading-screen" role="status" aria-live="polite" aria-label="ページ読み込み中">
-          <div class="loader-content">
-            <p id="reveal-text" aria-hidden="true">green</p>
-            <div class="status-text" id="status-text">Loading...</div>
-            <div class="progress-area" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="読み込み進捗">
-              <div class="progress-track">
-                <div class="progress-fill" id="progress-fill"></div>
-              </div>
-              <div class="progress-pct" id="progress-pct">0%</div>
-            </div>
+    <!-- ローディング画面 -->
+    <div id="loading-screen" role="status" aria-live="polite" aria-label="ページ読み込み中">
+      <div class="loader-content">
+        <p id="reveal-text" aria-hidden="true">green</p>
+        <div class="status-text" id="status-text">Loading...</div>
+        <div class="progress-area" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="読み込み進捗">
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
           </div>
-       </div>
+          <div class="progress-pct" id="progress-pct">0%</div>
+        </div>
+      </div>
+    </div>
 
-
-    <header class="header" role="banner">
+    <header class="header">
       <div class="header__inner">
         <div class="header__logo">
           <a href="/" class="header__logo-link en" aria-label="greenホームページ">green</a>
@@ -267,7 +254,7 @@
         <div class="section__bg-left" aria-hidden="true"></div>
         <div class="section__bg-right" aria-hidden="true"></div>
         <div class="fv__video-container">
-          <video class="fv__video" autoplay muted loop playsinline aria-hidden="true" poster="./assets/image/fv.jpg" >
+          <video class="fv__video" autoplay muted loop playsinline aria-hidden="true" poster="./assets/image/fv.jpg">
             <source src="./assets/video/fv-video.mp4" type="video/mp4" />
           </video>
         </div>
@@ -301,7 +288,7 @@
                   <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-a.webp" type="image/webp" />
-                      <img src="./assets/image/works-a.jpg" alt="" width="600" height="600" />
+                      <img src="./assets/image/works-a.jpg" alt="project A" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
@@ -315,7 +302,7 @@
                   <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-b.webp" type="image/webp" />
-                      <img src="./assets/image/works-b.jpg" alt="" width="600" height="600" />
+                      <img src="./assets/image/works-b.jpg" alt="project B" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
@@ -329,7 +316,7 @@
                   <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-c.webp" type="image/webp" />
-                      <img src="./assets/image/works-c.jpg" alt="" width="600" height="600" />
+                      <img src="./assets/image/works-c.jpg" alt="project C" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
@@ -343,7 +330,7 @@
                   <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-d.webp" type="image/webp" />
-                      <img src="./assets/image/works-d.jpg" alt="" width="600" height="600" />
+                      <img src="./assets/image/works-d.jpg" alt="project D" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
@@ -357,7 +344,7 @@
                   <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-e.webp" type="image/webp" />
-                      <img src="./assets/image/works-e.jpg" alt="" width="600" height="600" />
+                      <img src="./assets/image/works-e.jpg" alt="project E" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
@@ -371,7 +358,7 @@
                   <div class="works__thumbnail" aria-hidden="true">
                     <picture>
                       <source srcset="./assets/image/works-f.webp" type="image/webp" />
-                      <img src="./assets/image/works-f.jpg" alt="" width="600" height="600" />
+                      <img src="./assets/image/works-f.jpg" alt="project F" width="600" height="600" />
                     </picture>
                   </div>
                 </a>
@@ -438,58 +425,25 @@
                 <form class="contact__form" id="contact-form" novalidate aria-label="お問い合わせフォーム">
                   <div class="contact__form-group">
                     <label for="contact-name" class="contact__label"> お名前 <span class="contact__required" aria-label="必須">*</span> </label>
-                    <input
-                      type="text"
-                      id="contact-name"
-                      name="user_name"
-                      class="contact__input"
-                      placeholder="お名前"
-                      autocomplete="name"
-                      required
-                      aria-required="true"
-                      aria-describedby="contact-name-error" />
+                    <input type="text" id="contact-name" name="user_name" class="contact__input" placeholder="お名前" autocomplete="name" required aria-required="true" aria-describedby="contact-name-error" />
                     <span id="contact-name-error" class="error-message" role="alert" aria-live="polite"></span>
                   </div>
 
                   <div class="contact__form-group">
                     <label for="contact-email" class="contact__label"> メールアドレス <span class="contact__required" aria-label="必須">*</span> </label>
-                    <input
-                      type="email"
-                      id="contact-email"
-                      name="user_email"
-                      class="contact__input"
-                      placeholder="メールアドレス"
-                      autocomplete="email"
-                      required
-                      aria-required="true"
-                      aria-describedby="contact-email-error" />
+                    <input type="email" id="contact-email" name="user_email" class="contact__input" placeholder="メールアドレス" autocomplete="email" required aria-required="true" aria-describedby="contact-email-error" />
                     <span id="contact-email-error" class="error-message" role="alert" aria-live="polite"></span>
                   </div>
 
                   <div class="contact__form-group">
                     <label for="contact-message" class="contact__label"> お問い合わせ内容 <span class="contact__required" aria-label="必須">*</span> </label>
-                    <textarea
-                      id="contact-message"
-                      name="message"
-                      class="contact__textarea"
-                      placeholder="お問い合わせ内容をご記入ください"
-                      rows="5"
-                      required
-                      aria-required="true"
-                      aria-describedby="contact-message-error"></textarea>
+                    <textarea id="contact-message" name="message" class="contact__textarea" placeholder="お問い合わせ内容をご記入ください" rows="5" required aria-required="true" aria-describedby="contact-message-error"></textarea>
                     <span id="contact-message-error" class="error-message" role="alert" aria-live="polite"></span>
                   </div>
 
                   <div class="contact__form-group contact__form-group--privacy">
                     <label class="contact__checkbox-label">
-                      <input
-                        type="checkbox"
-                        id="contact-privacy"
-                        name="privacy_agreement"
-                        class="contact__checkbox"
-                        required
-                        aria-required="true"
-                        aria-describedby="privacy-note" />
+                      <input type="checkbox" id="contact-privacy" name="privacy_agreement" class="contact__checkbox" required aria-required="true" aria-describedby="privacy-note" />
                       <span class="contact__checkbox-custom" aria-hidden="true"></span>
                       <span class="contact__checkbox-text">プライバシーポリシーに同意する</span>
                     </label>
@@ -505,7 +459,6 @@
           </div>
         </section>
       </div>
-
     </main>
     <dialog class="works-modal" id="works-modal" aria-modal="true" aria-labelledby="modal-title" role="dialog">
       <div class="works-modal__content">
