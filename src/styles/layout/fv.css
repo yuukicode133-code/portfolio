@@ -71,6 +71,10 @@
 }
 
 
+.fv__title-sub {
+  display: block;
+}
+
 .scroll-container {
   position: absolute;
   bottom: 100px;
