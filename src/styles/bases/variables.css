@@ -26,6 +26,7 @@
 
 
     /* スペーシング */
+    --spacing-size-4: clamp(0.25em, 0.219em + 0.125vw, 0.375em);
     --spacing-size-10: clamp(0.5em, 0.438em + 0.25vw, 0.625em);
     --spacing-size-12: clamp(0.625em, 0.563em + 0.25vw, 0.75em);
     --spacing-size-16: clamp(0.75em, 0.627em + 0.51vw, 1em);
