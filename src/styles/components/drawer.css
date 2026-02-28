@@ -7,6 +7,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: clip-path, visibility;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 
   /* SVGパスによるblob背景 */
   &__blob {
@@ -35,16 +38,19 @@
     color: var(--color-white);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    opacity: 0;                  /* GSAP初期状態 */
-    transform: translateY(30px); /* GSAP初期状態 */
+    opacity: 0;
+    transform: translateY(30px);
     display: block;
     padding: 5px 10px;
+    will-change: opacity, transform;
 
-    &:hover {
-      border-radius: 20px;
-      background-color: var(--color-white);
-      color: var(--color-green-dark);
-      transition: all 0.3s ease;
+    @media (hover: hover) {
+      &:hover {
+        border-radius: 20px;
+        background-color: var(--color-white);
+        color: var(--color-green-dark);
+        transition: all 0.3s ease;
+      }
     }
   }
 }

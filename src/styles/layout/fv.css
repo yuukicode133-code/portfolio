@@ -1,5 +1,5 @@
 .fv {
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   width: 100%;
   z-index: var(--z-index-fv);

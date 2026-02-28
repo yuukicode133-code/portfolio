@@ -95,7 +95,7 @@ form {
 
 html {
   touch-action: manipulation;
-  overscroll-behavior-y: none;
+  overscroll-behavior: none;
   scrollbar-gutter: stable;
   /* Firefox */
   scrollbar-width: none;
