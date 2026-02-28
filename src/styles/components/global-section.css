@@ -1,6 +1,6 @@
 .section-card {
   border-radius: 0 0 50px 50px;
-  overflow: hidden;
+  overflow: clip;
   position: relative;
   z-index: var(--z-index-section);
   background-color: var(--color-beige);
