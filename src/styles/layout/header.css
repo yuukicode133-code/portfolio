@@ -53,11 +53,13 @@
     transition: var(--transition-all);
     cursor: pointer !important;
 
-    &:not(.is-open):hover {
-      background-color: var(--color-green-dark);
+    @media (hover: hover) {
+      &:not(.is-open):hover {
+        background-color: var(--color-green-dark);
 
-      span {
-        background-color: var(--color-white);
+        span {
+          background-color: var(--color-white);
+        }
       }
     }
 
@@ -74,13 +76,15 @@
     &.is-open {
       gap: 0;
 
-      &:hover {
-        background-color: var(--color-green-dark);
-        border: 2px solid var(--color-white);
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--color-green-dark);
+          border: 2px solid var(--color-white);
 
-        span:nth-child(1),
-        span:nth-child(3) {
-          background-color: var(--color-white);
+          span:nth-child(1),
+          span:nth-child(3) {
+            background-color: var(--color-white);
+          }
         }
       }
 
