@@ -1,5 +1,6 @@
 .fv {
-  height: 100dvh;
+  min-height: 100svh;
+  height: 100svh;
   overflow: hidden;
   width: 100%;
   z-index: var(--z-index-fv);
@@ -11,7 +12,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100dvh;
+    min-height: 100svh;
+    height: 100svh;
 
     @mixin mq-sp {
       background-image: url('/assets/image/fv.jpg');
