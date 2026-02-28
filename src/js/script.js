@@ -55,7 +55,7 @@ if (isLINE) {
   banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#51733f;color:#fff;padding:16px;text-align:center;z-index:9998;font-size:13px;font-family:sans-serif;';
   banner.innerHTML = `
     <p style="color:#fff;margin:0 0 4px;">より快適にご覧いただけます</p>
-    <p style="color:rgba(255,255,255,0.8);margin:0;font-size:12px;">右上の <strong>⋯</strong> → <strong>「Safariで開く」</strong> をタップ</p>
+    <p style="color:rgba(255,255,255,0.8);margin:0;font-size:12px;">メニューの <strong>⋯</strong> から <strong>「ブラウザで開く」</strong> をタップ</p>
     <button style="position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:20px;cursor:pointer;" onclick="this.parentElement.remove()">×</button>
   `;
   document.body.appendChild(banner);
