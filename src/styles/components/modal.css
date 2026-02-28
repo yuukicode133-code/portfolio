@@ -1,8 +1,9 @@
 
 .works-modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
   max-width: 100%;
@@ -13,6 +14,7 @@
   background: transparent;
   overflow: hidden;
   box-sizing: border-box;
+  will-change: transform, opacity;
 
   &:not([open]) {
     display: none;
@@ -34,7 +36,7 @@
 
   &__content {
     width: 100%;
-    height: 85vh;
+    height: 85dvh;
     border-radius: 30px 30px 30px 30px;
     transform: translateY(100%);
     opacity: 0;
@@ -43,9 +45,10 @@
     flex-direction: column;
     padding: var(--spacing-size-60) 0;
     overflow: hidden;
+    will-change: transform, opacity;
 
     @media screen and (max-width: 767px) {
-      height: 92vh;
+      height: 65dvh;
       padding: var(--spacing-size-40) var(--spacing-size-20);
       border-radius: 20px 20px 0 0;
     }
