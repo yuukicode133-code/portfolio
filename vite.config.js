@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/green-portfolio/',
-  root: './',          // HTMLファイルがあるディレクトリ
+  base: '/portfolio/',
   build: {
     outDir: 'dist',    // ビルド出力先
   },
