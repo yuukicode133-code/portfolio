@@ -22,11 +22,13 @@
     transition: var(--transition-all);
     cursor: pointer !important;
 
-    &:hover {
-      background-color: var(--color-green-dark);
-
-      .header__logo-link {
-        color: var(--color-white);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-green-dark);
+  
+        .header__logo-link {
+          color: var(--color-white);
+        }
       }
     }
   }
