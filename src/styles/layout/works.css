@@ -151,11 +151,13 @@
       &:hover .works__item-title {
         color: var(--color-green-dark);
         transform: var(--transform-down);
+        cursor: pointer !important;
       }
 
       &:hover .works__item-role {
         color: var(--color-green-dark);
         transform: var(--transform-down);
+        cursor: pointer !important;
       }
     }
   }

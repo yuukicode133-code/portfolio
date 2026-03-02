@@ -59,6 +59,7 @@
 
         span {
           background-color: var(--color-white);
+          cursor: pointer !important;
         }
       }
     }
@@ -84,6 +85,7 @@
           span:nth-child(1),
           span:nth-child(3) {
             background-color: var(--color-white);
+            cursor: pointer !important;
           }
         }
       }

@@ -6,6 +6,10 @@
   inset: 0;
   z-index: -1;
 
+  &:focus-within {
+    z-index: var(--z-index-focus-within-footer);
+  }
+
   @mixin mq-sp {
     padding: var(--spacing-size-20) var(--spacing-size-16);
   }

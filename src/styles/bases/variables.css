@@ -56,6 +56,7 @@
     --z-index-cursor: 500;
     --z-index-header: 200;
     --z-index-drawer: 100;
+    --z-index-focus-within-footer: 90;
     --z-index-section: 70;
     --z-index-modal: 60;
     --z-index-fv: 60;

@@ -97,18 +97,48 @@ tl.to(navLinks, {
 
 // 状態管理フラグを追加
 let isDrawerOpen = false;
+let lastFocusedElement = null;
+
+function getFocusableElements() {
+  const focusableSelectors = [
+    'a[href]',
+    'button:not([disabled])',
+    'input:not([disabled]):not([type="hidden"])',
+    'textarea:not([disabled])',
+    'select:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])',
+  ];
+  const nodes = drawer.querySelectorAll(focusableSelectors.join(','));
+  const elements = Array.from(nodes).filter(
+    (el) => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true'
+  );
+
+  // 閉じるボタン（メニューボタン）もループ対象に含める
+  if (menuToggle && !menuToggle.hasAttribute('disabled')) {
+    elements.unshift(menuToggle);
+  }
+
+  return elements;
+}
 
 /**
  * ドロワーを開く処理
  */
 function openDrawer() {
   isDrawerOpen = true;
+  lastFocusedElement =
+    document.activeElement instanceof HTMLElement ? document.activeElement : null;
   document.body.style.overflow = 'hidden';
   drawer.setAttribute('aria-hidden', 'false');
   menuToggle.setAttribute('aria-expanded', 'true');
   menuToggle.setAttribute('aria-label', 'メニューを閉じる');
   menuToggle.classList.add('is-open');
   tl.play();
+
+  const focusable = getFocusableElements();
+  if (focusable.length) {
+    focusable[0].focus();
+  }
 }
 
 /**
@@ -123,6 +153,9 @@ function closeDrawer() {
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.setAttribute('aria-label', 'メニューを開く');
     menuToggle.classList.remove('is-open');
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+    }
   });
 }
 
@@ -145,9 +178,44 @@ navLinks.forEach((link) => {
   });
 });
 
-// Escキーでドロワーを閉じる
+function handleDrawerFocusTrap(e) {
+  if (e.key !== 'Tab') return;
+
+  const focusable = getFocusableElements();
+  if (!focusable.length) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  const activeElement = document.activeElement;
+
+  // ドロワー外（かつメニューボタン以外）にフォーカスがある場合は最初の要素に移動
+  if (!drawer.contains(activeElement) && activeElement !== menuToggle) {
+    e.preventDefault();
+    first.focus();
+    return;
+  }
+
+  if (e.shiftKey) {
+    if (activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    }
+  } else if (activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
+
+// Escキー / Tabキーでのキーボード操作
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && isDrawerOpen) {
+  if (!isDrawerOpen) return;
+
+  if (e.key === 'Escape') {
     closeDrawer();
+    return;
+  }
+
+  if (e.key === 'Tab') {
+    handleDrawerFocusTrap(e);
   }
 });

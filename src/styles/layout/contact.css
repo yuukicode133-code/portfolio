@@ -101,6 +101,14 @@
     font-size: var(--font-size-xs);
   }
 
+  /* &__input  {
+    @media (hover: hover) {
+      &:hover {
+        cursor: pointer !important;
+      }
+    }
+  } */
+
   &__input,
   &__textarea {
     width: 100%;
@@ -121,6 +129,12 @@
     &:focus {
       outline: none;
       border-color: var(--color-black);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        cursor: pointer !important;
+      }
     }
 
     @mixin mq-sp {
@@ -184,6 +198,12 @@
     transition: all 0.2s ease;
     background-color: var(--color-white);
 
+    @media (hover: hover) {
+      &:hover {
+        cursor: pointer !important;
+      }
+    }
+
     &::after {
       content: '';
       position: absolute;
@@ -201,6 +221,12 @@
 
   &__checkbox-text {
     color: var(--color-black);
+
+    @media (hover: hover) {
+      &:hover {
+        cursor: pointer !important;
+      }
+    }
   }
 
   &__privacy-note {
