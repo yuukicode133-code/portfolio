@@ -138,6 +138,8 @@ $(document).ready(function () {
     // ボタンを無効化（二重送信防止）
     $submitButton.prop("disabled", true).text("送信中...");
 
+    formData['g-recaptcha-response'] = grecaptcha.getResponse();
+
     // EmailJSで送信
     emailjs.send(SERVICE_ID, TEMPLATE_ID, formData).then(
       function (response) {
