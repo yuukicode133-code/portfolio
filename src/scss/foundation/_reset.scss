@@ -1,0 +1,67 @@
+/* 1. box-sizingを直感的に */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. デフォルトmarginを除去（dialogは除外） */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. キーワードアニメーションを有効化 */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. 読みやすいline-height */
+  line-height: 1.5;
+  /* 5. テキストレンダリング改善 */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. メディア要素のデフォルト改善 */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. フォーム要素にフォントを継承 */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. テキストのはみ出し防止 */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. テキスト折り返しの改善 */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
