@@ -1,8 +1,13 @@
 .p-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
 
 }
 
 .p-header__title {
+    
 
 }
 
@@ -11,10 +16,13 @@
 }
 
 .p-header__nav {
+    
 
 }
 
 .p-header__nav-list {
+    display: flex;
+    gap: 20px;
 
 }
 

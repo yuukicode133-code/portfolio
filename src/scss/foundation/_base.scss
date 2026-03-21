@@ -1,8 +1,20 @@
+@use "../global/variables" as *;
+
+body {
+    font-family: $font-family-ja;
+    background-color: $white-color;
+}
 
 a {
     text-decoration: none;
     color: inherit;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-en;
+    text-transform: capitalize;
+}
+
 li {
     list-style: none;
 }
