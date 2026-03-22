@@ -11,4 +11,17 @@ $accent-color:#f7a849;
 $white-color:#fff;
 $green-light-color:#17b582;
 
-/* Breakpoint */
+/* font awesome */
+$fa-font-family: "Font Awesome 7 Free";
+$fa-github: "\f09b";
+$fa-x: "\e61b";
+$fa-mail: "\f0e0";
+
+/* breakpoint */
+$breakpoints: (
+  sp: "screen and (max-width: 767px)",
+  tab: "screen and (min-width: 768px) and (max-width: 1023px)",
+  pc: "screen and (min-width: 1024px)",
+) !default;
+
+

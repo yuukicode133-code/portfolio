@@ -1,0 +1,44 @@
+// _mixins.scss
+@use "variables" as *;
+
+/* ================================
+   レスポンシブ
+================================ */
+@mixin mq($breakpoint: pc) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+/* ================================
+   レイアウト
+================================ */
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================================
+   Font Awesome
+================================ */
+@mixin fa-icon($type: "solid") {
+  display: inline-block;
+  vertical-align: middle;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+
+  @if $type == "brands" {
+    font-family: "Font Awesome 7 Brands";
+    font-weight: 400;
+  } @else {
+    font-family: "Font Awesome 7 Free";
+    font-weight: 900;
+  }
+}

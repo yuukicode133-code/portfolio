@@ -1,5 +1,9 @@
 @use "../global/variables" as *;
 
+* {
+    cursor: none !important;
+  }
+
 body {
     font-family: $font-family-ja;
     background-color: $white-color;
