@@ -10,6 +10,7 @@ $green-color: #249384;
 $accent-color:#f7a849;
 $white-color:#fff;
 $green-light-color:#17b582;
+$black-color:#000;
 
 /* font awesome */
 $fa-font-family: "Font Awesome 7 Free";
@@ -25,3 +26,28 @@ $breakpoints: (
 ) !default;
 
 
+
+/* z-index */
+$z-index-header: 100;
+$z-index-custom-cursor: 9000;
+$z-index-custom-cursor-dot: 9999;
+$z-index-fv__blob: 80;
+$z-index-fv__title: 90;
+// $z-index-footer: 10;
+// $z-index-modal: 20;
+// $z-index-overlay: 30;
+// $z-index-popup: 40;
+// $z-index-tooltip: 50;
+// $z-index-toast: 60;
+// $z-index-loading: 70;
+// $z-index-sidebar: 80;
+
+/* font-size */
+$font-size-base: 16px;
+$font-size-sm: 14px;
+$font-size-md: 18px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+$font-size-2xl: 32px;
+$font-size-fv-title-main: clamp(1em, 0.721em + 1.143vw, 1.75em);
+$font-size-fv-title-sub: clamp(2em, 1.257em + 3.048vw, 4em);

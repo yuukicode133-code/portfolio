@@ -35,6 +35,16 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
     const dot = document.createElement('div');
     dot.className = 'cursor-dot';
     document.body.appendChild(dot);
+
+    const dot2 = document.createElement('div');
+    dot2.className = 'cursor-dot2';
+    document.body.appendChild(dot2);
+
+    const dot3 = document.createElement('div');
+    dot3.className = 'cursor-dot3';
+    document.body.appendChild(dot3);
+
+    const cursorParts = [cursor, dot, dot2, dot3];
   
     // マウス位置とカーソル位置
     let mouseX = 0;
@@ -43,7 +53,7 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
     let cursorY = 0;
   
     // 追従速度
-    const speed = 0.15;
+    const speed = 0.3;
   
     // マウス移動を監視
     document.addEventListener('mousemove', (e) => {
@@ -52,6 +62,8 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
   
       // ドットは即座に追従
       dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      dot2.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      dot3.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
     });
   
     // ホバー対象の要素
@@ -61,12 +73,18 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
     document.addEventListener('mouseover', (e) => {
       if (e.target.closest(hoverTargets)) {
         cursor.classList.add('is-hover');
+        dot.classList.add('is-hover');
+        dot2.classList.add('is-hover');
+        dot3.classList.add('is-hover');
       }
     });
   
     document.addEventListener('mouseout', (e) => {
       if (e.target.closest(hoverTargets)) {
         cursor.classList.remove('is-hover');
+        dot.classList.remove('is-hover');
+        dot2.classList.remove('is-hover');
+        dot3.classList.remove('is-hover');
       }
     });
   
@@ -74,11 +92,15 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
     document.addEventListener('mouseleave', () => {
       cursor.classList.add('is-hidden');
       dot.classList.add('is-hidden');
+      dot2.classList.add('is-hidden');
+      dot3.classList.add('is-hidden');
     });
   
     document.addEventListener('mouseenter', () => {
       cursor.classList.remove('is-hidden');
       dot.classList.remove('is-hidden');
+      dot2.classList.remove('is-hidden');
+      dot3.classList.remove('is-hidden');
     });
   
     // アニメーションループ（custom-cursorの遅延追従）
@@ -87,7 +109,7 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
       cursorY += (mouseY - cursorY) * speed;
   
       cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-  
+
       requestAnimationFrame(animate);
     }
   
