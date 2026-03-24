@@ -1,0 +1,149 @@
+@use "../../global/_variables.scss" as *;
+@use "../../global/_mixins.scss" as *;
+
+.p-fv-section {
+    height: 100svh;
+    max-height: 48rem;
+    position: relative;
+    margin-top: 6.25rem;
+
+}
+
+
+.p-fv-section__inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.p-fv-section__title {
+    z-index: $z-index-fv__title;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+
+.p-fv-section__title-main {
+    font-size: $font-size-fv-title-main;
+    display: block;
+    background-color: $white-color;
+    width: fit-content;
+    padding-inline: 5px;
+    border-radius: 20px;
+
+}
+
+.p-fv-section__title-sub {
+    font-size: $font-size-fv-title-sub;
+    display: block;
+    background-color: $white-color;
+    width: fit-content;
+    border-radius: 20px;
+    padding-inline: 5px;
+
+
+}
+
+.p-fv__blob {
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 100%;
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+    max-width: 980px;
+    height: 650px;
+    margin-inline: auto;
+    background: $main-color;
+    z-index: $z-index-fv__blob;
+
+    @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+        animation: blob-morph 15s ease-in-out infinite;
+    }
+
+    @include  mq(sp) {
+        animation: none;
+    }
+
+    @keyframes blob-morph {
+        0%, 100% {
+          border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+        }
+        33% {
+          border-radius: 50% 60% 40% 60% / 60% 40% 60% 40%;
+        }
+        66% {
+          border-radius: 40% 50% 60% 40% / 40% 60% 50% 60%;
+        }
+      }
+
+}
+
+.p-fv__blob-accent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 50%;
+    height: 50%;
+    background-color: transparent;
+    border: 2px solid $white-color;
+    border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
+
+    @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+        animation: blob-accent-morph 15s ease-in-out infinite;
+    }
+
+    @include  mq(sp) {
+        animation: none;
+    }
+
+    @keyframes blob-accent-morph {
+        0%, 100% {
+          border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
+        }
+        33% {
+          border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
+        }
+        66% {
+          border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+        }
+    }
+}
+
+.p-fv__blob-accent-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 50%;
+    height: 50%;
+    background-color: $accent-color;
+    border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
+
+    @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+        animation: blob-accent-circle-morph 15s ease-in-out infinite;
+    }
+
+    @include  mq(sp) {
+        animation: none;
+    }
+
+    @keyframes blob-accent-circle-morph {
+        0%, 100% {
+          border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
+        }
+        33% {
+          border-radius: 60% 40% 50% 60% / 50% 50% 40% 60%;
+        }
+        66% {
+          border-radius: 50% 60% 40% 60% / 40% 60% 50% 60%;
+        }
+    }
+}
+
+
