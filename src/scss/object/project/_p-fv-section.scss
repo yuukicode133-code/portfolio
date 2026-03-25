@@ -3,9 +3,8 @@
 
 .p-fv-section {
     height: 100svh;
-    max-height: 48rem;
     position: relative;
-    margin-top: 6.25rem;
+    // margin-top: 6.25rem;
 
 }
 
@@ -22,49 +21,49 @@
     z-index: $z-index-fv__title;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.7rem;
 
 }
 
-.p-fv-section__title-main {
+.p-fv-section__title-head {
     font-size: $font-size-fv-title-main;
     display: block;
     background-color: $white-color;
     width: fit-content;
-    padding-inline: 5px;
+    padding-inline: 16px;
     border-radius: 20px;
+    border: 2px solid $black-color;
     box-shadow: 0 0 10px 0 rgba($black-color, 0.1);
 
 }
 
-.p-fv-section__title-sub {
+.p-fv-section__title-body {
     font-size: $font-size-fv-title-sub;
     display: block;
-    background-color: $white-color;
+    background-color: rgba($white-color, 0.7);
     width: fit-content;
     border-radius: 20px;
     padding-inline: 5px;
-    box-shadow: 0 0 10px 0 rgba($black-color, 0.1);
+
 
 
 }
 
 .p-fv__blob {
-    overflow: hidden;
     position: absolute;
     top: 50%;
-    left: 50%;
-    translate: -50% -50%;
+    right: 0;
     width: 100%;
+    translate: 0 -50%;
     border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
-    max-width: 980px;
-    height: 650px;
+    max-width: clamp(25rem, 17.877rem + 14.859vw, 31.25rem);
+    height: clamp(25rem, 17.877rem + 14.859vw, 31.25rem);
     margin-inline: auto;
     background: $main-color;
     z-index: $z-index-fv__blob;
 
     @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-        animation: blob-morph 15s ease-in-out infinite;
+        animation: blob-morph 10s ease-in-out infinite;
     }
 
     @include  mq(sp) {
@@ -87,17 +86,16 @@
 
 .p-fv__blob-accent {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    width: 50%;
-    height: 50%;
-    background-color: transparent;
-    border: 2px solid $white-color;
+    top: 20%;
+    left: -20%;
+    width: clamp(9.375rem, 5.814rem + 7.429vw, 12.5rem);
+    height: clamp(9.375rem, 5.814rem + 7.429vw, 12.5rem);
+    z-index: $z-index-fv__blob-accent;
+    background-color: $accent-color;
     border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
 
     @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-        animation: blob-accent-morph 15s ease-in-out infinite;
+        animation: blob-accent-morph 10s ease-in-out infinite;
     }
 
     @include  mq(sp) {
@@ -117,18 +115,18 @@
     }
 }
 
-.p-fv__blob-accent-circle {
+.p-fv__blob-mint {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    width: 50%;
-    height: 50%;
-    background-color: $accent-color;
+    bottom: -20%;
+    right: 10%;
+    width: clamp(12.5rem, 5.377rem + 14.859vw, 18.75rem);
+    height: clamp(12.5rem, 5.377rem + 14.859vw, 18.75rem);
+    background-color: $mint-color;
+    z-index: $z-index-fv__blob-mint;
     border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
 
     @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-        animation: blob-accent-circle-morph 15s ease-in-out infinite;
+        animation: blob-accent-circle-morph 10s ease-in-out infinite;
     }
 
     @include  mq(sp) {
@@ -148,4 +146,31 @@
     }
 }
 
+// .p-fv__blob-green {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     translate: -50% -50%;
+//     width: 20%;
+//     height: 20%;
+//     background-color: $green-light-color;
+//     z-index: $z-index-fv__blob-green;
+//     border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
+//     animation: blob-green-morph 15s ease-in-out infinite;
+//     @include  mq(sp) {
+//         animation: none;
+//     }
+
+//     @keyframes blob-green-morph {
+//         0%, 100% {
+//           border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
+//         }
+//         33% {
+//             border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
+//         }
+//         66% {
+//             border-radius: 60% 40% 50% 60% / 50% 50% 40% 60%;
+//         }
+//     }
+// }
 

@@ -53,7 +53,7 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
     let cursorY = 0;
   
     // 追従速度
-    const speed = 0.3;
+    const speed = 0.15;
   
     // マウス移動を監視
     document.addEventListener('mousemove', (e) => {
@@ -62,8 +62,8 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
   
       // ドットは即座に追従
       dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-      dot2.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-      dot3.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      // dot2.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      // dot3.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
     });
   
     // ホバー対象の要素
@@ -74,8 +74,8 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
       if (e.target.closest(hoverTargets)) {
         cursor.classList.add('is-hover');
         dot.classList.add('is-hover');
-        dot2.classList.add('is-hover');
-        dot3.classList.add('is-hover');
+        // dot2.classList.add('is-hover');
+        // dot3.classList.add('is-hover');
       }
     });
   
@@ -83,8 +83,8 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
       if (e.target.closest(hoverTargets)) {
         cursor.classList.remove('is-hover');
         dot.classList.remove('is-hover');
-        dot2.classList.remove('is-hover');
-        dot3.classList.remove('is-hover');
+        // dot2.classList.remove('is-hover');
+        // dot3.classList.remove('is-hover');
       }
     });
   
@@ -92,15 +92,15 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
     document.addEventListener('mouseleave', () => {
       cursor.classList.add('is-hidden');
       dot.classList.add('is-hidden');
-      dot2.classList.add('is-hidden');
-      dot3.classList.add('is-hidden');
+      // dot2.classList.add('is-hidden');
+      // dot3.classList.add('is-hidden');
     });
   
     document.addEventListener('mouseenter', () => {
       cursor.classList.remove('is-hidden');
       dot.classList.remove('is-hidden');
-      dot2.classList.remove('is-hidden');
-      dot3.classList.remove('is-hidden');
+      // dot2.classList.remove('is-hidden');
+      // dot3.classList.remove('is-hidden');
     });
   
     // アニメーションループ（custom-cursorの遅延追従）

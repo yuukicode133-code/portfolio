@@ -35,13 +35,13 @@
   .cursor-dot {
     mix-blend-mode: difference;
     will-change: transform;
-    width: 7px;
+    width: 8px;
     height: 8px;
     background: $white-color;
     border-radius: 50%;
     position: fixed;
-    top: -5px;
-    left: -5px;
+    top: 0px;
+    left: 0px;
     pointer-events: none;
     z-index: $z-index-custom-cursor-dot;
     translate: -50% -50%;
@@ -56,51 +56,51 @@
       opacity: 0;
     }
   }
-  .cursor-dot2 {
-    mix-blend-mode: difference;
-    will-change: transform;
-    width: 7px;
-    height: 8px;
-    background: $white-color;
-    border-radius: 50%;
-    position: fixed;
-    top: -5px;
-    left: 5px;
-    pointer-events: none;
-    z-index: $z-index-custom-cursor-dot;
-    translate: -50% -50%;
-    transition: width 0.3s ease, height 0.3s ease;
+  // .cursor-dot2 {
+  //   mix-blend-mode: difference;
+  //   will-change: transform;
+  //   width: 7px;
+  //   height: 8px;
+  //   background: $white-color;
+  //   border-radius: 50%;
+  //   position: fixed;
+  //   top: -5px;
+  //   left: 5px;
+  //   pointer-events: none;
+  //   z-index: $z-index-custom-cursor-dot;
+  //   translate: -50% -50%;
+  //   transition: width 0.3s ease, height 0.3s ease;
 
-    &.is-hover {
-      width: 0;
-      height: 0;
-    }
+  //   &.is-hover {
+  //     width: 0;
+  //     height: 0;
+  //   }
   
-    &.is-hidden {
-      opacity: 0;
-    }
-  }
-  .cursor-dot3 {
-    mix-blend-mode: difference;
-    will-change: transform;
-    width: 8px;
-    height: 3px;
-    background: $white-color;
-    border-radius: 0 0 50px 50px;
-    position: fixed;
-    top: 5px;
-    left: 0px;
-    pointer-events: none;
-    z-index: $z-index-custom-cursor-dot;
-    translate: -50% -50%;
-    transition: width 0.3s ease, height 0.3s ease;
+  //   &.is-hidden {
+  //     opacity: 0;
+  //   }
+  // }
+  // .cursor-dot3 {
+  //   mix-blend-mode: difference;
+  //   will-change: transform;
+  //   width: 8px;
+  //   height: 3px;
+  //   background: $white-color;
+  //   border-radius: 0 0 50px 50px;
+  //   position: fixed;
+  //   top: 5px;
+  //   left: 0px;
+  //   pointer-events: none;
+  //   z-index: $z-index-custom-cursor-dot;
+  //   translate: -50% -50%;
+  //   transition: width 0.3s ease, height 0.3s ease;
 
-    &.is-hover {
-      width: 0px;
-      height: 0px;
-    }
+  //   &.is-hover {
+  //     width: 0px;
+  //     height: 0px;
+  //   }
   
-    &.is-hidden {
-      opacity: 0;
-    }
-  }
+  //   &.is-hidden {
+  //     opacity: 0;
+  //   }
+  // }
