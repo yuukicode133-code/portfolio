@@ -47,11 +47,11 @@ $z-index-fv__title: 90;
 // $z-index-sidebar: 80;
 
 /* font-size */
-$font-size-base: 16px;
-$font-size-sm: 14px;
-$font-size-md: 18px;
-$font-size-lg: 20px;
-$font-size-xl: 24px;
-$font-size-2xl: 32px;
+$font-size-14: 0.875rem;
+$font-size-16: 1rem;
+$font-size-18: 1.125rem;
+$font-size-20: 1.25rem;
+$font-size-24: 1.5rem;
+$font-size-32: 2rem;
 $font-size-fv-title-main: clamp(1em, 0.721em + 1.143vw, 1.75em);
 $font-size-fv-title-sub: clamp(2em, 1.257em + 3.048vw, 4em);
