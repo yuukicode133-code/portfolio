@@ -12,6 +12,7 @@ export default defineConfig({
   server: {
     open: true,
   },
+  publicDir: '../public',
   plugins: [
     handlebars({
       partialDirectory: resolve(__dirname, 'src/partials'),

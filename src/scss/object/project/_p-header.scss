@@ -11,6 +11,10 @@
 }
 
 .p-header__title-link {
+
+  img {
+    border-radius: 20px;
+  }
 }
 
 
@@ -42,6 +46,16 @@
 
 .p-header__nav-item {
     font-weight: bold;
+    background-color: $white-color;
+    border-radius: 20px;
+    padding: 10px 20px;
+    transition: background 0.5s ease, transform 0.5s ease;
+
+    &:hover {
+      background: $main-color;
+      color: $white-color;
+      transform: translateY(-2px);
+    }
 }
 
 .p-header__nav-link {
