@@ -1,0 +1,35 @@
+@use "variables" as *;
+
+
+:root {
+  // colors
+  --color-main: #{$main-color};
+  --color-green: #{$green-color};
+  --color-accent: #{$accent-color};
+  --color-white: #{$white-color};
+  --color-green-light: #{$green-light-color};
+  --color-mint: #{$mint-color};
+  --color-black: #{$black-color};
+
+  //color-fv
+  --color-fv-title-body: color-mix(in srgb, var(--color-white) 70%, transparent);
+
+  //color-works
+  --color-works-card: #{$pure-white-color};
+
+
+
+  // 見出し
+  --font-size-heading-primary: clamp(2rem, 1.257rem + 3.048vw, 4rem);
+  --font-size-heading-secondary: clamp(1rem, 0.721rem + 1.143vw, 1.75rem);
+  --font-size-heading-section: calc(#{$font-size-32} * 2);
+  --font-size-heading-section-sub: #{font-size-16};
+
+  // 本文
+  --font-size-body: #{$font-size-16};
+  --font-size-body-sm: #{$font-size-14};
+  --font-size-body-lg: #{$font-size-18};
+  --font-size-body-h3: #{$font-size-20};
+  --font-size-body-2xl: #{$font-size-24};
+  --font-size-body-3xl: #{$font-size-32};
+}

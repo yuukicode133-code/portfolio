@@ -1,32 +1,36 @@
 @use "../global/variables" as *;
 
 * {
-    cursor: none !important;
-  }
+  cursor: none !important;
+}
 
 body {
-    font-family: $font-family-ja;
-    background-color: $white-color;
+  font-family: $font-family-ja;
+  background-color: var(--color-white);
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: $font-family-en;
-    text-transform: capitalize;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-en;
+  text-transform: capitalize;
 }
-
 
 li {
-    list-style: none;
+  list-style: none;
 }
 img {
-    height: auto;
-  }
+  object-fit: cover;
+}
 ul {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }

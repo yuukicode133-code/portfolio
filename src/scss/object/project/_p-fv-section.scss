@@ -2,148 +2,140 @@
 @use "../../global/_mixins.scss" as *;
 
 .p-fv-section {
-    height: 100svh;
-    position: relative;
-    // margin-top: 6.25rem;
-
+  height: 100svh;
+  position: relative;
 }
 
-
 .p-fv-section__inner {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .p-fv-section__title {
-    z-index: $z-index-fv__title;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-
+  z-index: $z-index-fv__title;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
 }
 
 .p-fv-section__title-head {
-    font-size: $font-size-fv-title-main;
-    display: block;
-    background-color: $white-color;
-    width: fit-content;
-    padding-inline: 16px;
-    border-radius: 20px;
-    border: 2px solid $black-color;
-    box-shadow: 0 0 10px 0 rgba($black-color, 0.1);
-
+  font-size: var(--font-size-heading-secondary);
+  display: block;
+  background-color: var(--color-white);
+  width: fit-content;
+  padding-inline: 16px;
+  border-radius: 20px;
+  border: 2px solid $black-color;
 }
 
 .p-fv-section__title-body {
-    font-size: $font-size-fv-title-sub;
-    display: block;
-    background-color: rgba($white-color, 0.7);
-    width: fit-content;
-    border-radius: 20px;
-    padding-inline: 5px;
-
-
-
+  font-size: var(--font-size-heading-primary);
+  display: block;
+  background-color: var(--color-fv-title-body);
+  width: fit-content;
+  border-radius: 20px;
+  padding-inline: 5px;
 }
 
 .p-fv__blob {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    width: 100%;
-    translate: 0 -50%;
-    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
-    max-width: clamp(25rem, 17.877rem + 14.859vw, 31.25rem);
-    height: clamp(25rem, 17.877rem + 14.859vw, 31.25rem);
-    margin-inline: auto;
-    background: $main-color;
-    z-index: $z-index-fv__blob;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 100%;
+  translate: 0 -50%;
+  border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+  max-width: clamp(25rem, 17.877rem + 14.859vw, 31.25rem);
+  height: clamp(25rem, 17.877rem + 14.859vw, 31.25rem);
+  margin-inline: auto;
+  background: var(--color-main);
+  z-index: $z-index-fv__blob;
 
-    @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-        animation: blob-morph 10s ease-in-out infinite;
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    animation: blob-morph 10s ease-in-out infinite;
+  }
+
+  @include mq(sp) {
+    animation: none;
+  }
+
+  @keyframes blob-morph {
+    0%,
+    100% {
+      border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
     }
-
-    @include  mq(sp) {
-        animation: none;
+    33% {
+      border-radius: 50% 60% 40% 60% / 60% 40% 60% 40%;
     }
-
-    @keyframes blob-morph {
-        0%, 100% {
-          border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
-        }
-        33% {
-          border-radius: 50% 60% 40% 60% / 60% 40% 60% 40%;
-        }
-        66% {
-          border-radius: 40% 50% 60% 40% / 40% 60% 50% 60%;
-        }
-      }
-
+    66% {
+      border-radius: 40% 50% 60% 40% / 40% 60% 50% 60%;
+    }
+  }
 }
 
 .p-fv__blob-accent {
-    position: absolute;
-    top: 20%;
-    left: -20%;
-    width: clamp(9.375rem, 5.814rem + 7.429vw, 12.5rem);
-    height: clamp(9.375rem, 5.814rem + 7.429vw, 12.5rem);
-    z-index: $z-index-fv__blob-accent;
-    background-color: $accent-color;
-    border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
+  position: absolute;
+  top: 20%;
+  left: -20%;
+  width: clamp(9.375rem, 5.814rem + 7.429vw, 12.5rem);
+  height: clamp(9.375rem, 5.814rem + 7.429vw, 12.5rem);
+  z-index: $z-index-fv__blob-accent;
+  background-color: var(--color-accent);
+  border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
 
-    @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-        animation: blob-accent-morph 10s ease-in-out infinite;
-    }
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    animation: blob-accent-morph 10s ease-in-out infinite;
+  }
 
-    @include  mq(sp) {
-        animation: none;
-    }
+  @include mq(sp) {
+    animation: none;
+  }
 
-    @keyframes blob-accent-morph {
-        0%, 100% {
-          border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
-        }
-        33% {
-          border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
-        }
-        66% {
-          border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
-        }
+  @keyframes blob-accent-morph {
+    0%,
+    100% {
+      border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
     }
+    33% {
+      border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
+    }
+    66% {
+      border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+    }
+  }
 }
 
 .p-fv__blob-mint {
-    position: absolute;
-    bottom: -20%;
-    right: 10%;
-    width: clamp(12.5rem, 5.377rem + 14.859vw, 18.75rem);
-    height: clamp(12.5rem, 5.377rem + 14.859vw, 18.75rem);
-    background-color: $mint-color;
-    z-index: $z-index-fv__blob-mint;
-    border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
+  position: absolute;
+  bottom: -20%;
+  right: 10%;
+  width: clamp(12.5rem, 5.377rem + 14.859vw, 18.75rem);
+  height: clamp(12.5rem, 5.377rem + 14.859vw, 18.75rem);
+  background-color: var(--color-mint);
+  z-index: $z-index-fv__blob-mint;
+  border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
 
-    @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-        animation: blob-accent-circle-morph 10s ease-in-out infinite;
-    }
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    animation: blob-accent-circle-morph 10s ease-in-out infinite;
+  }
 
-    @include  mq(sp) {
-        animation: none;
-    }
+  @include mq(sp) {
+    animation: none;
+  }
 
-    @keyframes blob-accent-circle-morph {
-        0%, 100% {
-          border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
-        }
-        33% {
-          border-radius: 60% 40% 50% 60% / 50% 50% 40% 60%;
-        }
-        66% {
-          border-radius: 50% 60% 40% 60% / 40% 60% 50% 60%;
-        }
+  @keyframes blob-accent-circle-morph {
+    0%,
+    100% {
+      border-radius: 40% 60% 50% 60% / 60% 50% 50% 40%;
     }
+    33% {
+      border-radius: 60% 40% 50% 60% / 50% 50% 40% 60%;
+    }
+    66% {
+      border-radius: 50% 60% 40% 60% / 40% 60% 50% 60%;
+    }
+  }
 }
 
 // .p-fv__blob-green {
@@ -173,4 +165,3 @@
 //         }
 //     }
 // }
-

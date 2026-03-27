@@ -1,17 +1,18 @@
-
 /* Font */
-$font-family-en: 'Red Hat Display', sans-serif;
-$font-family-ja: 'Zen Kaku Gothic New', sans-serif;
-
+$font-family-en: "Red Hat Display", sans-serif;
+$font-family-ja: "Zen Kaku Gothic New", sans-serif;
 
 /* Color */
 $main-color: linear-gradient(to right, #24a19c 0%, #00c194 100%);
 $green-color: #019c6a;
-$accent-color:#f7a849;
-$white-color:#fff;
-$green-light-color:#03c794;
-$mint-color:#cceae2;
-$black-color:#000;
+$accent-color: #f7a849;
+$white-color: #f3f1ef;
+$pure-white-color: #fff;
+$green-light-color: #03c794;
+$mint-color: #cceae2;
+$black-color: #000;
+
+
 
 /* font awesome */
 $fa-font-family: "Font Awesome 7 Free";
@@ -25,8 +26,6 @@ $breakpoints: (
   tab: "screen and (min-width: 768px) and (max-width: 1023px)",
   pc: "screen and (min-width: 1024px)",
 ) !default;
-
-
 
 /* z-index */
 $z-index-header: 100;
@@ -53,5 +52,3 @@ $font-size-18: 1.125rem;
 $font-size-20: 1.25rem;
 $font-size-24: 1.5rem;
 $font-size-32: 2rem;
-$font-size-fv-title-main: clamp(1em, 0.721em + 1.143vw, 1.75em);
-$font-size-fv-title-sub: clamp(2em, 1.257em + 3.048vw, 4em);

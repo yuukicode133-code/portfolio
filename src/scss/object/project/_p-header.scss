@@ -7,56 +7,52 @@
 }
 
 .p-header__title {
-    font-family: $font-family-en;
+  font-family: $font-family-en;
+  width: 16.25rem;
+  background-color: var(--color-white);
 }
 
 .p-header__title-link {
-
+  font-size: var(--font-size-body);
   img {
     border-radius: 20px;
+    height: 100%;
   }
 }
 
-
-
-.p-header__nav {
-    
-}
-
 .p-header__nav-list {
-@include flex-between;
+  @include flex-between;
   gap: 20px;
 
   .p-header__nav-item:nth-child(4) {
-    background: $main-color;
+    background: var(--color-main);
     border-radius: 10px;
     padding: 10px 20px;
-    color: $white-color;
-
+    color: var(--color-white);
 
     &::after {
       @include fa-icon("solid");
       content: $fa-mail;
       font-size: 20px;
-      color: $white-color;
+      color: var(--color-white);
       margin-left: 10px;
     }
   }
 }
 
 .p-header__nav-item {
-    font-weight: bold;
-    background-color: $white-color;
-    border-radius: 20px;
-    padding: 10px 20px;
-    transition: background 0.5s ease, transform 0.5s ease;
+  font-weight: bold;
+  background-color: var(--color-white);
+  border-radius: 20px;
+  padding: 10px 20px;
+  transition:
+    background 0.5s ease,
+    transform 0.5s ease;
 
-    &:hover {
-      background: $main-color;
-      color: $white-color;
-      transform: translateY(-2px);
-    }
+  &:hover {
+    background: var(--color-main);
+    color: var(--color-white);
+    transform: translateY(-2px);
+  }
 }
 
-.p-header__nav-link {
-}
