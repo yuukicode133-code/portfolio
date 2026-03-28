@@ -10,10 +10,15 @@
   font-family: $font-family-en;
   width: 16.25rem;
   background-color: var(--color-white);
+  border-radius: 20px;
+  padding: 0.6rem 1.2rem;
 }
 
 .p-header__title-link {
   font-size: var(--font-size-body);
+  border-radius: 20px;
+
+
   img {
     border-radius: 20px;
     height: 100%;
