@@ -38,7 +38,11 @@
   border-radius: 20px;
   padding-inline: 5px;
 }
-
+.p-fv__blob,
+.p-fv__blob-accent,
+.p-fv__blob-mint {
+  will-change: transform;
+}
 .p-fv__blob {
   position: fixed;
   top: 50vh;
@@ -105,6 +109,7 @@
     }
   }
 }
+
 
 .p-fv__blob-mint {
   position: fixed;
