@@ -7,7 +7,7 @@
 }
 
 .p-header__title {
-  font-family: $font-family-en;
+  font-family: var(--font-family-en);
   width: 16.25rem;
   background-color: var(--color-white);
   border-radius: 20px;
@@ -37,7 +37,7 @@
 
     &::after {
       @include fa-icon("solid");
-      content: $fa-mail;
+      content: var(--fa-mail);
       font-size: 20px;
       color: var(--color-white);
       margin-left: 10px;

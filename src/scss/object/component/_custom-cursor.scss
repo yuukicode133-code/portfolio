@@ -19,7 +19,7 @@
   height: 40px;
   border: 1.5px solid var(--color-white);
 
-  z-index: $z-index-custom-cursor;
+  z-index: var(--z-index-custom-cursor);
   translate: -50% -50%;
   opacity: 0.6;
 
@@ -44,7 +44,7 @@
   top: 0px;
   left: 0px;
   pointer-events: none;
-  z-index: $z-index-custom-cursor-dot;
+  z-index: var(--z-index-custom-cursor-dot);
   translate: -50% -50%;
   transition:
     width 0.3s ease,

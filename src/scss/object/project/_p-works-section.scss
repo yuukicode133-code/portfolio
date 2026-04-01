@@ -2,21 +2,17 @@
 @use "../../global/_mixins.scss" as *;
 
 .p-works-section {
-  z-index: $z-index-works__section;
+  z-index: var(--z-index-works-section);
   position: relative;
 }
 
-.p-works-section__wrapper {
-}
 
 .p-works-section__title {
-    position: sticky;
-    top: 0;
 }
 
 .p-works__contents {
   display: flex;
-  // align-items: center;
+  align-items: flex-start;
   margin-top: 3rem;
   gap: 2rem;
 }
@@ -24,11 +20,17 @@
 .p-works__left {
   flex: 1;
   position: sticky;
-  top: 0;
+  top: var(--sticky-top);
+  height: 574px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .p-works__button {
   padding: 0.7rem 2rem;
+  margin-top: 2rem;
+  width: fit-content;
 }
 
 .p-works__right {
@@ -42,21 +44,15 @@
 .p-works__card-wrapper {
     height: 100svh;
     position: sticky;
-    top: 0;
+    top: var(--sticky-top);
 }
 
 .p-works__card {
-    // opacity: 0;
-    // transform: translateY(30px);
-    
-    // // JS無効時はアニメーションなしで表示
-    // .no-js & {
-    //   opacity: 1;
-    //   transform: none;
-    // }
   background-color: var(--color-works-card);
-  box-shadow: 5px 5px 23px -15px var(--color-black);
+  box-shadow: var(--box-shadow-works-card);
   border-radius: 22px;
+
+  transform-origin: top center;
 }
 
 .p-works__card-image {

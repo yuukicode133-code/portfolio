@@ -10,7 +10,7 @@
 .scroll-down__text {
   font-size: $font-size-18;
   font-weight: 700;
-  font-family: $font-family-en;
+  font-family: var(--font-family-en);
   text-transform: uppercase;
   position: relative;
 

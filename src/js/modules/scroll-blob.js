@@ -6,9 +6,9 @@ gsap.registerPlugin(ScrollTrigger);
 // ▼▼▼ 【追加】blob のアニメーション設定値
 const blobConfig = {
   pc: {
-    ".p-fv__blob":        { fv: { x: -200, y: 40, scale: 2 },    works: { x: -350, y: 200, scale: 2.5 } },
-    ".p-fv__blob-accent": { fv: { x: 180, y: -150, scale: 1.5 }, works: { x: 300, y: -100, scale: 1.8 } },
-    ".p-fv__blob-mint":   { fv: { x: -300, y: 120, scale: 1.3 }, works: { x: -400, y: 250, scale: 1.5 } },
+    ".p-blob-green":  { fv: { x: -200, y: 100, scale:  1}, works: { x: -350, y: 200, scale: 0.5 } },
+    ".p-blob-accent": { fv: { x: 500, y: -150, scale: 1.5 }, works: { x: 300, y: -100, scale: 1 } },
+    ".p-blob-mint":   { fv: { x: -750, y: 100, scale: 1.3 }, works: { x: -350, y: -250, scale: 6 } },
   },
   // tablet: { ... },  ← 後で追加可能
 };

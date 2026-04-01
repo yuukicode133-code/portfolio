@@ -14,8 +14,8 @@
     border-radius: 20px;
     font-weight: bold;
     display: inline-block;
-    box-shadow: 6px 8px 12px -6px  var(--color-black);
-    transition: color 0.3s ease-in-out,  border 0.3s ease-in-out, transform 0.3s ease-in-out;
+    box-shadow: var(--box-shadow-button);
+    transition: transform 0.3s ease-in-out;
 
     &:hover {
         background: var(--color-main);
