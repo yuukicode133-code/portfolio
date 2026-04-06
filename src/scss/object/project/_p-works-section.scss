@@ -2,7 +2,6 @@
 @use "../../global/_mixins.scss" as *;
 
 .p-works-section {
-  z-index: var(--z-index-works-section);
   position: relative;
 }
 

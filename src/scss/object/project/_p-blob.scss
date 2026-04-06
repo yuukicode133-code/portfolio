@@ -80,12 +80,12 @@
 
 .p-blob-mint {
   position: absolute;
-  bottom:clamp(50px, calc(-66.667px + 16.667vh), 150px);
+  bottom: clamp(50px, calc(-66.667px + 16.667vh), 150px);
   right: clamp(130px, 158.571px + -3.72vw, 105px);
-    width: clamp(50rem, 0.000rem + 104.167vw, 93.75rem);
-    height: clamp(50rem, 0.000rem + 104.167vw, 93.75rem);
-    scale: 0.2;
-    transform-origin: bottom right;
+  width: clamp(50rem, 0rem + 104.167vw, 93.75rem);
+  height: clamp(50rem, 0rem + 104.167vw, 93.75rem);
+  scale: 0.2;
+  transform-origin: bottom right;
   background-color: var(--color-mint);
   z-index: var(--z-index-blob-mint);
   border-radius: 72% 28% 45% 55% / 62% 43% 57% 38%;
