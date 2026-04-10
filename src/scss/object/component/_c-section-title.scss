@@ -1,7 +1,34 @@
 @use "../../global/_variables.scss" as *;
+@use "../../global/_mixins.scss" as *;
 
 .c-section-title {
-    
+    width: fit-content;
+    position: relative;
+
+    &::before {
+        content: "";
+        background-color: var(--color-fv-title-body);
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        width:  500px;
+        height: 500px;
+        z-index: var(--z-index-section-title-bg);
+        border-radius: 100%;
+
+
+        @include mq(tab) {
+            width: 400px;
+            height: 400px;
+        }
+
+        @include mq(sp) {
+            width: 200px;
+            height: 200px;
+        }
+    }
+
 
 }
 
@@ -10,11 +37,27 @@
     font-size: var(--font-size-heading-section);
     display: block;
 
+    @include mq(tab) {
+        font-size: var(--font-size-heading-section-tab);
+    }
+
+    @include mq(sp) {
+        font-size: var(--font-size-heading-section-sp);
+    }
+
 }
 
 .c-section-title__ja {
     font-size: var(--font-size-heading-section-sub);
     display: block;
+
+    @include mq(tab) {
+        font-size: var(--font-size-heading-section-sub-tab);
+    }
+
+    @include mq(sp) {
+        font-size: var(--font-size-heading-section-sub-sp);
+    }
 
 }
 

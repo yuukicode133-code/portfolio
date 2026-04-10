@@ -37,12 +37,17 @@
   --z-index-blob: 55;
   --z-index-fv-title: 90;
   --z-index-section: 60;
+  --z-index-section-title-bg: -1;
 
   // 見出し
   --font-size-heading-primary: clamp(2rem, 1.257rem + 3.048vw, 4rem);
   --font-size-heading-secondary: clamp(1rem, 0.721rem + 1.143vw, 1.75rem);
   --font-size-heading-section: calc(#{$font-size-32} * 2);
+  --font-size-heading-section-tab: calc(#{$font-size-32} * 1.6);
+  --font-size-heading-section-sp: calc(#{$font-size-32} * 1.4);
   --font-size-heading-section-sub: #{font-size-16};
+  --font-size-heading-section-sub-tab: #{font-size-14};
+  --font-size-heading-section-sub-sp: #{font-size-14};
 
   // 本文
   --font-size-body: #{$font-size-16};
