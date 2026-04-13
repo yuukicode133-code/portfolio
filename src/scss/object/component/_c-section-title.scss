@@ -2,62 +2,59 @@
 @use "../../global/_mixins.scss" as *;
 
 .c-section-title {
-    width: fit-content;
-    position: relative;
+  width: fit-content;
+  position: relative;
 
-    &::before {
-        content: "";
-        background-color: var(--color-fv-title-body);
-        position: absolute;
-        top: 50%;
-        left: 20%;
-        transform: translate(-50%, -50%);
-        width:  500px;
-        height: 500px;
-        z-index: var(--z-index-section-title-bg);
-        border-radius: 100%;
+  &::before {
+    content: "";
+    background-color: var(--color-fv-title-body);
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    z-index: var(--z-index-section-title-bg);
+    border-radius: 60% 40% 51% 49% / 46% 64% 36% 54%;
 
-
-        @include mq(tab) {
-            width: 400px;
-            height: 400px;
-        }
-
-        @include mq(sp) {
-            width: 200px;
-            height: 200px;
-        }
-    }
-
-
-}
-
-
-.c-section-title__en {
-    font-size: var(--font-size-heading-section);
-    display: block;
 
     @include mq(tab) {
-        font-size: var(--font-size-heading-section-tab);
+      width: 400px;
+      height: 400px;
     }
 
     @include mq(sp) {
-        font-size: var(--font-size-heading-section-sp);
+      width: 200px;
+      height: 200px;
     }
+  }
+  &.p-works-section__title::before {
+    border-radius: 40% 60% 36% 64% / 54% 46% 54% 46%;
+  }
+}
 
+.c-section-title__en {
+  font-size: var(--font-size-heading-section);
+  display: block;
+
+  @include mq(tab) {
+    font-size: var(--font-size-heading-section-tab);
+  }
+
+  @include mq(sp) {
+    font-size: var(--font-size-heading-section-sp);
+  }
 }
 
 .c-section-title__ja {
-    font-size: var(--font-size-heading-section-sub);
-    display: block;
+  font-size: var(--font-size-heading-section-sub);
+  display: block;
 
-    @include mq(tab) {
-        font-size: var(--font-size-heading-section-sub-tab);
-    }
+  @include mq(tab) {
+    font-size: var(--font-size-heading-section-sub-tab);
+  }
 
-    @include mq(sp) {
-        font-size: var(--font-size-heading-section-sub-sp);
-    }
-
+  @include mq(sp) {
+    font-size: var(--font-size-heading-section-sub-sp);
+  }
 }
-
