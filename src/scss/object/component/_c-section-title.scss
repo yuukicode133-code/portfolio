@@ -15,7 +15,6 @@
     width: 500px;
     height: 500px;
     z-index: var(--z-index-section-title-bg);
-    border-radius: 60% 40% 51% 49% / 46% 64% 36% 54%;
 
 
     @include mq(tab) {
@@ -30,6 +29,15 @@
   }
   &.p-works-section__title::before {
     border-radius: 40% 60% 36% 64% / 54% 46% 54% 46%;
+  }
+  &.p-service-section__title::before {
+    border-radius: 60% 40% 51% 49% / 46% 64% 36% 54%;
+  }
+  &.p-about-section__title::before {
+    border-radius: 34% 66% 46% 54% / 57% 58% 42% 43%;
+  }
+  &.p-contact-section__title::before {
+    border-radius: 59% 41% 55% 45% / 45% 50% 50% 55%;
   }
 }
 
