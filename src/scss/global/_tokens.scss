@@ -12,10 +12,13 @@
   --color-black: #{$black-color};
 
   //color-fv
-  --color-fv-title-body: color-mix(in srgb, var(--color-white) 70%, transparent);
+  --color-fv-title-body: color-mix(in srgb, var(--color-white) 74%, transparent);
 
   //color-works
   --color-works-card: #{$pure-white-color};
+
+  //color-service
+  --color-service-card: #{$pure-white-color};
 
   // font family
   --font-family-en: "Red Hat Display", sans-serif;

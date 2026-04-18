@@ -16,7 +16,6 @@
     height: 500px;
     z-index: var(--z-index-section-title-bg);
 
-
     @include mq(tab) {
       width: 400px;
       height: 400px;

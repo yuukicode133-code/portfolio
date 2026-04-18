@@ -1,0 +1,135 @@
+@use "../../global/_variables.scss" as *;
+@use "../../global/_mixins.scss" as *;
+
+.p-service-section {
+}
+
+.p-service-section__wrapper {
+}
+
+.p-service-section__title {
+}
+
+.p-service-section__contents {
+  margin-top: 3.125rem;
+  margin-inline: auto;
+  padding-inline: 3.75rem;
+}
+
+.p-service-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.p-service-section__card {
+  background-color: var(--color-service-card);
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-inline: 1.75rem;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow-works-card);
+}
+
+.p-service-section__card-title {
+  margin-bottom: 1.25rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 2px;
+    background: var(--color-main);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 2px;
+    background: var(--color-main);
+    position: absolute;
+    right: 1px;
+    top: 49%;
+    transform: translateY(-50%);
+    rotate: 90deg;
+  }
+}
+
+.p-service-section__card-button {
+  display: flex;
+  gap: 0.625rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.p-service-section__card-button-head {
+  padding-inline: 1.25rem;
+  padding-top: 0.313rem;
+  padding-bottom: 0.313rem;
+  background: var(--color-main);
+  color: var(--color-white);
+  font-size: var(--font-size-body-lg);
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.p-service-section__card-button-body {
+  font-weight: bold;
+  font-size: var(--font-size-body-lg);
+  flex: 1;
+}
+
+.p-service-section__card-content {
+  padding-left: 1.863rem;
+}
+
+.p-service-section__card-text {
+  font-size: var(--font-size-body-lg);
+  position: relative;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 2px;
+    background: var(--color-main);
+    position: absolute;
+    left: -25px;
+    top: 60%;
+    transform: translateY(-50%);
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 2px;
+    background: var(--color-main);
+    position: absolute;
+    left: -19px;
+    top: 42%;
+    rotate: 45deg;
+  }
+}
+
+.p-service-section__card-tags {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.p-service-section__card-tag {
+  background: var(--color-main);
+  color: var(--color-white);
+  padding-inline: 0.625rem;
+  padding-top: 0.188rem;
+  padding-bottom: 0.188rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: var(--font-size-body-sm);
+
+}

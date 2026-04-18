@@ -1,0 +1,64 @@
+@use "../../global/_mixins.scss" as *;
+
+.u-hidden-pc {
+  display: none;
+
+  @include mq(sp) {
+    display: block;
+  }
+}
+
+.u-hidden-sp {
+  display: block;
+
+  @include mq(pc) {
+    display: none;
+  }
+}
+
+.u-hidden-visually {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+}
+.u-hidden-visually-pc {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+
+  @include mq(sp) {
+    display: block;
+  }
+}
+.u-hidden-visually-sp {
+    display: block;
+
+  @include mq(sp) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+  }
+}
+
+
+
+
+
