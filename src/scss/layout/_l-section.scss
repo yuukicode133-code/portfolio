@@ -2,4 +2,8 @@
     padding-top: 7.5rem;
     z-index: var(--z-index-section);
     position: relative;
+
+    &.p-service-section {
+        padding-top: 0rem;
+    }
 }

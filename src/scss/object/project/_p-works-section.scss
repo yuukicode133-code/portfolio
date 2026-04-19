@@ -40,10 +40,11 @@
   }
 }
 
-.p-works__card-wrapper {
+.p-works__card-link {
     height: 100svh;
     position: sticky;
     top: var(--sticky-top);
+    display: block;
 }
 
 .p-works__card {

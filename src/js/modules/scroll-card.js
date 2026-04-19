@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 (function () {
   "use strict";
 
-  const cardWrappers = gsap.utils.toArray(".p-works__card-wrapper");
+  const cardWrappers = gsap.utils.toArray(".p-works__card-link");
 
   cardWrappers.forEach((wrapper, i) => {
     const card = wrapper.querySelector(".p-works__card");
@@ -52,7 +52,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function syncLeftHeight() {
   const left = document.querySelector('.p-works__left');
-  const wrapper = document.querySelector('.p-works__card-wrapper');
+  const wrapper = document.querySelector('.p-works__card-link');
   const card = document.querySelector('.p-works__card');
   if (!left || !wrapper || !card) return;
 
@@ -60,7 +60,7 @@ function syncLeftHeight() {
   const gap = wrapper.offsetHeight - card.offsetHeight;
 
   // カード枚数分の余白（最後の1枚は固定で止まるので除外してもよい）
-  const wrappers = document.querySelectorAll('.p-works__card-wrapper');
+  const wrappers = document.querySelectorAll('.p-works__card-link');
   left.style.marginBottom = gap + 'px';
 
   ScrollTrigger.refresh();
