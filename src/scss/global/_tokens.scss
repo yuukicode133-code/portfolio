@@ -10,9 +10,12 @@
   --color-green-light: #{$green-light-color};
   --color-mint: #{$mint-color};
   --color-black: #{$black-color};
-
+  --color-pure-white: #{$pure-white-color};
+  --color-gray: #{$gray-color};
+  
   //color-fv
   --color-fv-title-body: color-mix(in srgb, var(--color-white) 74%, transparent);
+  --color-fv-white-blob:  #{$pure-white-color};
 
   //color-works
   --color-works-card: #{$pure-white-color};
@@ -31,17 +34,21 @@
   --fa-mail: "\f0e0";
 
   // z-index
-  --z-index-header: 100;
+  --z-index-header: 500;
   --z-index-custom-cursor: 9000;
   --z-index-custom-cursor-dot: 9999;
-  --z-index-blob-green: 50;
-  --z-index-blob-accent: 51;
-  --z-index-blob-mint: 52;
-  --z-index-blob: 55;
-  --z-index-fv-title: 90;
-  --z-index-section: 70;
+  --z-index-fv-title: 400;
+  --z-index-section: 300;
+  --z-index-blob-green: 200;
+  --z-index-blob-accent: 201;
+  --z-index-blob-mint: 202;
+  --z-index-blob: 205;
   --z-index-section-title-bg: -1;
-  --z-index-service-image: 60;
+  --z-index-service-section-card: 100;
+  --z-index-service-section-card-circle: 110;
+  --z-index-service-section-card-button: 120;
+  --z-index-service-section-card-batch: 140;
+  --z-index-service-section-card-batch-sub: 130;
 
   // 見出し
   --font-size-heading-primary: clamp(2rem, 1.257rem + 3.048vw, 4rem);
@@ -60,6 +67,10 @@
   --font-size-body-h3: #{$font-size-20};
   --font-size-body-2xl: #{$font-size-24};
   --font-size-body-3xl: #{$font-size-32};
+
+  //service-section
+  --font-size-service-section-button-head-text: #{$font-size-14};
+  --font-size-service-section-button-head-number: #{$font-size-32};
 
   //box-shadow
   --box-shadow-works-card: 5px 5px 23px -15px var(--color-black);

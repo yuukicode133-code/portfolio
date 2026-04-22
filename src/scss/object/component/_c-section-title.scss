@@ -10,7 +10,7 @@
     background-color: var(--color-fv-title-body);
     position: absolute;
     top: 50%;
-    left: 20%;
+    left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
     height: 500px;
@@ -41,6 +41,42 @@
 }
 
 .c-section-title__en {
+  font-size: var(--font-size-heading-section-sub);
+  display: block;
+  color: var(--color-green-light);
+
+  @include mq(tab) {
+    font-size: var(--font-size-heading-section-sub-tab);
+  }
+
+  @include mq(sp) {
+    font-size: var(--font-size-heading-section-sub-sp);
+  }
+}
+
+.c-section-title__ja {
+  font-size: var(--font-size-heading-section-sub);
+  display: block;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: -10%;
+    bottom: 20%;
+    width: 15px;
+    height: 15px;
+    background: var(--color-main);
+
+  }
+
+  @include mq(tab) {
+    font-size: var(--font-size-heading-section-sub-tab);
+  }
+
+  @include mq(sp) {
+    font-size: var(--font-size-heading-section-sub-sp);
+  }
   font-size: var(--font-size-heading-section);
   display: block;
 
@@ -50,18 +86,5 @@
 
   @include mq(sp) {
     font-size: var(--font-size-heading-section-sp);
-  }
-}
-
-.c-section-title__ja {
-  font-size: var(--font-size-heading-section-sub);
-  display: block;
-
-  @include mq(tab) {
-    font-size: var(--font-size-heading-section-sub-tab);
-  }
-
-  @include mq(sp) {
-    font-size: var(--font-size-heading-section-sub-sp);
   }
 }

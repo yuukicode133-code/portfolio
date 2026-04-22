@@ -115,15 +115,16 @@
   }
 }
 
-// .p-fv__blob-green {
+// .p-blob-white {
 //     position: absolute;
 //     top: 50%;
-//     left: 50%;
-//     translate: -50% -50%;
-//     width: 20%;
-//     height: 20%;
-//     background-color: $green-light-color;
-//     z-index: $z-index-fv__blob-green;
+//     right: 3%;
+//     translate: 0 -50%;
+//     width: clamp(25rem, 17.877rem + 14.859vw, 27.25rem);
+//     height: clamp(25rem, 17.877rem + 14.859vw, 27.25rem);
+//     background-color: transparent;
+//     border: 3px solid var(--color-fv-white-blob);
+//     z-index: var(--z-index-blob-white);
 //     border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
 //     animation: blob-green-morph 15s ease-in-out infinite;
 //     @include  mq(sp) {
