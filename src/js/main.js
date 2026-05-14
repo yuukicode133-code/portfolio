@@ -14,6 +14,4 @@ import "@fortawesome/fontawesome-free/css/brands.css";      // fa-brands
 
 
 // modules
-import './modules/custom-cursor.js';
-import './modules/scroll-blob.js';
 import './modules/scroll-card.js';

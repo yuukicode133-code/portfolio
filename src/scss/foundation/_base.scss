@@ -1,42 +1,21 @@
-@use "../global/variables" as *;
+// ============================================================
+// Base
+// HTMLタグレベルの最低限の規定
+// body / 見出し / リンク等の規定は _typography.scss に分離した
+// ============================================================
 
-* {
-  cursor: none !important;
-}
+// カスタムカーソルは廃止したので、cursor: none は削除
+// 旧: * { cursor: none !important; }
 
-body {
-  font-family: var(--font-family-ja);
-  background-color: var(--color-white);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-family-en);
-  text-transform: capitalize;
-}
-
-li {
-  list-style: none;
-}
 img {
   object-fit: cover;
 }
-ul {
-  padding: 0;
-  margin: 0;
-}
+
 button {
-  background-color: #fff;
+  background-color: transparent;
   border: none;
-  cursor: pointer;
   padding: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
 }

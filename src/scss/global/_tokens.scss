@@ -2,38 +2,31 @@
 
 
 :root {
+  // ============================================================
+  // 旧トークン(段階的廃止予定、Phase 7で削除)
+  // ============================================================
   // colors
   --color-main: #{$main-color};
   --color-green: #{$green-color};
-  --color-accent: #{$accent-color};
-  --color-white: #{$white-color};
+  --color-accent-old: #{$accent-color};  // ← 旧accent(オレンジ #f7a849)、新accentと区別
+  --color-white-old: #{$white-color};    // ← 旧white(#f3f1ef)、新と区別
   --color-green-light: #{$green-light-color};
   --color-mint: #{$mint-color};
   --color-black: #{$black-color};
   --color-pure-white: #{$pure-white-color};
   --color-gray: #{$gray-color};
-  
-  //color-fv
-  --color-fv-title-body: color-mix(in srgb, var(--color-white) 74%, transparent);
+
+  //color-fv(削除予定)
+  --color-fv-title-body: color-mix(in srgb, var(--color-white-old) 74%, transparent);
   --color-fv-white-blob:  #{$pure-white-color};
 
-  //color-works
+  //color-works(後で新トークン参照に置換予定)
   --color-works-card: #{$pure-white-color};
 
-  //color-service
+  //color-service(削除予定)
   --color-service-card: #{$pure-white-color};
 
-  // font family
-  --font-family-en: "Red Hat Display", sans-serif;
-  --font-family-ja: "Zen Kaku Gothic New", sans-serif;
-
-  // font awesome
-  --fa-font-family: "Font Awesome 7 Free";
-  --fa-github: "\f09b";
-  --fa-x: "\e61b";
-  --fa-mail: "\f0e0";
-
-  // z-index
+  // z-index(blob/cursor関連は削除予定)
   --z-index-header: 500;
   --z-index-custom-cursor: 9000;
   --z-index-custom-cursor-dot: 9999;
@@ -50,7 +43,7 @@
   --z-index-service-section-card-batch: 140;
   --z-index-service-section-card-batch-sub: 130;
 
-  // 見出し
+  // 見出し(削除予定、新サイズスケールへ移行)
   --font-size-heading-primary: clamp(2rem, 1.257rem + 3.048vw, 4rem);
   --font-size-heading-secondary: clamp(1rem, 0.721rem + 1.143vw, 1.75rem);
   --font-size-heading-section: calc(#{$font-size-32} * 2);
@@ -60,7 +53,7 @@
   --font-size-heading-section-sub-tab: #{font-size-14};
   --font-size-heading-section-sub-sp: #{font-size-14};
 
-  // 本文
+  // 本文(新スケール移行後に統合予定)
   --font-size-body: #{$font-size-16};
   --font-size-body-sm: #{$font-size-14};
   --font-size-body-lg: #{$font-size-18};
@@ -68,19 +61,99 @@
   --font-size-body-2xl: #{$font-size-24};
   --font-size-body-3xl: #{$font-size-32};
 
-  //service-section
+  //service-section(削除予定)
   --font-size-service-section-button-head-text: #{$font-size-14};
   --font-size-service-section-button-head-number: #{$font-size-32};
 
-  //box-shadow
+  //box-shadow(WorksカードはPhase 7で再評価)
   --box-shadow-works-card: 5px 5px 23px -15px var(--color-black);
-  --box-shadow-button: 6px 8px 12px -6px  var(--color-black); 
+  --box-shadow-button: 6px 8px 12px -6px  var(--color-black);
 
-  // works-sticky
+  // works-sticky(数値は実装時に調整)
   --header-height: 100px;
   --card-height: 615px;
   --sticky-top: calc(
-    var(--header-height) 
+    var(--header-height)
     + (100vh - var(--header-height) - var(--card-height)) / 2
   );
+
+  // Font Awesome(廃止予定、Lucide Icons移行)
+  --fa-font-family: "Font Awesome 7 Free";
+  --fa-github: "\f09b";
+  --fa-x: "\e61b";
+  --fa-mail: "\f0e0";
+
+
+  // ============================================================
+  // 新トークン体系(ステップ3で確定)
+  // ============================================================
+
+  // ----- Primitive: Color -----
+  --color-white:    #FFFFFF;
+  --color-gray-50:  #FAFAFA;
+  --color-gray-900: #141417;
+  --color-orange-700: #C0501F;   // Burnt Sienna(現行採用)
+  --color-green-700:  #1F6B5E;   // Forest Teal(切替候補、Phase 7で判断)
+
+  // ----- Primitive: Spacing -----
+  --space-xs:  0.5rem;     //   8px
+  --space-sm:  1rem;       //  16px
+  --space-md:  1.5rem;     //  24px
+  --space-lg:  2.5rem;     //  40px
+  --space-xl:  4rem;       //  64px
+  --space-2xl: 6rem;       //  96px
+  --space-3xl: 8rem;       // 128px
+
+  // ----- Primitive: Typography -----
+  --font-en: "Source Serif 4", Georgia, serif;
+  --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+
+  // ----- Primitive: Border Radius -----
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg: 16px;
+
+  // ----- Semantic: Color -----
+  --color-bg-main:       var(--color-white);
+  --color-bg-sub:        var(--color-gray-50);
+  --color-text:          var(--color-gray-900);
+  --color-text-muted:    rgba(20, 20, 23, 0.6);
+  --color-border:        rgba(20, 20, 23, 0.08);
+  --color-border-strong: rgba(20, 20, 23, 0.15);
+
+  // 差し色(ここを切り替えれば全画面の差し色が変わる)
+  --color-accent: var(--color-orange-700);
+
+  // 装飾色(差し色とは独立)
+  --color-decorative-numeral: rgba(20, 20, 23, 0.07);
+  --color-decorative-arc:     rgba(20, 20, 23, 0.04);
+
+  // ----- Semantic: Border Width -----
+  --border-width:    0.5px;
+  --border-width-md: 1px;
+
+  // ----- Typography Scale -----
+  --fs-numeral: clamp(6rem, 15vw, 12.5rem);              // 巨大ナンバー
+  --fs-h1: clamp(2rem, 4vw + 1rem, 2.5rem);              // 32〜40px
+  --fs-h2: clamp(1.625rem, 3vw + 0.8rem, 2rem);          // 26〜32px
+  --fs-h3: 1.5rem;                                       // 24px
+  --fs-h4: 1.25rem;                                      // 20px
+  --fs-body: 1rem;                                       // 16px(基準)
+  --fs-small: 0.875rem;                                  // 14px
+  --fs-tag: 0.8125rem;                                   // 13px
+
+  // line-height
+  --lh-body:    1.8;
+  --lh-heading: 1.4;
+  --lh-numeral: 1;
+
+  // letter-spacing
+  --ls-body:        0.05em;
+  --ls-heading-en: -0.01em;
+
+  // ----- z-index(新体系、シンプル化) -----
+  --z-header:     100;
+  --z-numeral:      1;   // 巨大ナンバー(コンテンツ背面・装飾)
+  --z-arc:          1;   // 円弧(コンテンツ背面・装飾)
+  --z-content:      2;   // 通常コンテンツ
 }

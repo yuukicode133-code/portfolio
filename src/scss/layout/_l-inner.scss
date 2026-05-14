@@ -1,5 +1,11 @@
+@use "../global/mixins" as *;
+
 .l-inner {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-sm);  // SP: 16px
+
+  @include mq(pc) {
+    padding-inline: var(--space-lg);  // PC: 40px
   }
+}
