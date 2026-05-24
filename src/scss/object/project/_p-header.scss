@@ -1,0 +1,187 @@
+@use "../../global/mixins" as *;
+
+// ============================================================
+// .p-header: ヘッダー内のコンテンツ配置
+// ============================================================
+//
+// typography.scss でベースが定義されているプロパティは省略している:
+//   h1, h2, ...     : font-family / font-weight / line-height / letter-spacing
+//   body            : font-family / color / etc.
+//   a               : color: inherit / transition: color 0.2s ease / hover: accent
+// ここでは「役割固有のサイズ」「レイアウト」「ベース上書き」のみ記述する。
+// ============================================================
+
+.p-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;  // 親 .l-header の高さに合わせる
+}
+
+// ----- ロゴ -----
+.p-header__logo {
+  font-size: var(--fs-h4);          // 役割固有のサイズ
+}
+
+.p-header__logo-heading {
+  // トップの <h1>。文書構造のためだけの薄い器。
+  // 見た目は下の p-header__logo-link(<a>)が持つので、
+  // ここでは <h1> のデフォルトマージンを打ち消すだけ。
+  margin: 0;
+}
+
+.p-header__logo-link {
+  display: inline-block;
+
+  // --- 英字タイポグラフィの明示(重要) ---
+  // この <a> は親要素タイプが環境で変わる：
+  //   トップ   … <h1 class="p-header__logo-heading"> の中
+  //   下層ページ … <div class="p-header__logo"> の直下（<h1> なし）
+  // <h1> 経由の継承に頼ると、<h1> がいない下層ページで
+  // ロゴが和文フォント(body の --font-jp)になってしまう。
+  // よって継承に頼らず、<a> 自身に明示する（記述原則4：
+  // 要素タイプが違う場合は防御的に明示）。
+  font-family: var(--font-en);
+  font-weight: 400;
+  letter-spacing: var(--ls-heading-en);
+
+  // typography.scss の a:hover { color: var(--color-accent); } を打ち消す。
+  // ロゴ全体は色変化させず、子要素の .p-header__logo-accent だけが accent 化する設計。
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+.p-header__logo-accent {
+  // .p-header__logo-link:hover の時だけ accent 化(打ち消しを更に上書き)
+  .p-header__logo-link:hover & {
+    color: var(--color-accent);
+  }
+}
+
+// ============================================================
+// .p-header__nav: ナビゲーション本体(PC/SPで見た目を切替)
+// ============================================================
+
+.p-header__nav {
+  // ----- SP時(767px以下)----- 初期非表示、フルスクリーン展開
+  @include mq(sp) {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 72px);
+    height: calc(100svh - 72px);
+    background-color: var(--color-bg-main);
+    z-index: var(--z-header-nav);
+
+    // 初期状態: 非表示
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease;
+  }
+}
+
+// SP時、JS で .is-open クラスが付与されたらナビを開く
+.p-header__nav.is-open {
+  @include mq(sp) {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+// ----- ナビリスト -----
+.p-header__nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-40);
+
+  @include mq(sp) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-40);
+    padding: var(--space-64) var(--space-16);
+  }
+}
+
+// ----- ナビリンク(サイズの出し分けのみ。color/transition/hover は a タグから継承)-----
+.p-header__nav-link {
+    font-size: var(--fs-small);
+
+  @include mq(sp) {
+    font-size: var(--fs-h4);
+  }
+}
+
+// ============================================================
+// .p-header__hamburger: SP用ハンバーガーボタン(span 3本構成)
+// ============================================================
+
+.p-header__hamburger {
+    display: none;
+
+  @include mq(sp) {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    position: relative;
+    z-index: var(--z-header);
+  }
+}
+
+// ----- 3本のバー -----
+$bar-width: 24px;
+$bar-height: 1.5px;
+$bar-gap: 7px;
+
+.p-header__hamburger-bar {
+  display: block;
+  position: absolute;
+  left: 50%;
+  width: $bar-width;
+  height: $bar-height;
+  background-color: var(--color-text);
+  transform-origin: center;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease,
+    top 0.3s ease;
+
+  // ----- 閉じ状態: 3本線 -----
+  &:nth-child(1) {
+    top: calc(50% - #{$bar-gap});
+    transform: translateX(-50%);
+  }
+  &:nth-child(2) {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &:nth-child(3) {
+    top: calc(50% + #{$bar-gap});
+    transform: translateX(-50%);
+  }
+}
+
+// ----- 開き状態(aria-expanded="true"): × 形状に変形 -----
+.p-header__hamburger[aria-expanded="true"] {
+  .p-header__hamburger-bar {
+    &:nth-child(1) {
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}

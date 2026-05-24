@@ -1,13 +1,13 @@
 @use "../global/mixins" as *;
 
 .l-section {
-  padding-top: var(--space-2xl);     // SP: 96px
-  padding-bottom: var(--space-2xl);
+  padding-top: var(--space-96);     // SP: 96px
+  padding-bottom: var(--space-96);
   position: relative;
   overflow: hidden;  // 巨大ナンバー・円弧モチーフの見切れを実現
 
   @include mq(pc) {
-    padding-top: var(--space-3xl);   // PC: 128px
-    padding-bottom: var(--space-3xl);
+    padding-top: var(--space-128);   // PC: 128px
+    padding-bottom: var(--space-128);
   }
 }

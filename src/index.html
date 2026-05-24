@@ -2,15 +2,30 @@
 
 <main>
   <!-- FV -->
-  <section class="l-inner p-fv-section">
-    <div class="p-fv-section__inner">
-      <h2 class="p-fv-section__title">
-        <span class="p-fv-section__title-head">portfolio / 2025</span>
-        <span class="p-fv-section__title-body">つくること<span class="p-fv-section__title-body-dot">。</span>考えること<span class="p-fv-section__title-body-dot">。</span></span>
-      </h2>
-      <div class="scroll-down">
-        <span class="scroll-down__text">scroll</span>
-      </div>
+  <section class="p-fv">
+    <!-- 装飾レイヤー: 円弧(下から・大)。c-arc は見た目のみ、配置は p-fv 側 -->
+    <div class="c-arc p-fv__arc" aria-hidden="true"></div>
+    <!-- 装飾レイヤー: 巨大ナンバー(右上・LG)。意味はタグが担う -->
+    <span class="c-numeral c-numeral--top-right p-fv__numeral" aria-hidden="true">01</span>
+
+    <div class="l-inner p-fv__inner">
+      <!-- タグ: 巨大ナンバー「01」に意味を与えるラベル -->
+      <span class="c-tag p-fv__tag">
+        <span class="c-tag__num">&#8470;01</span> &#8212; PORTFOLIO
+      </span>
+
+      <!-- 見出し: トップの主題はサイト名(ロゴ=h1)が担うため、ここは h2。
+           視覚的には最も大きく最初に置き、人にとっての主役にする -->
+      <h2 class="p-fv__title">デザインの意図をくみ取り、丁寧にかたちにします。</h2>
+
+      <!-- サブテキスト -->
+      <p class="p-fv__lead">Webコーダーとして正社員を志望しています。HTML/CSS・jQuery・WordPress・GSAPを使ったサイト制作が得意です。</p>
+
+      <!-- scroll 誘導: 「scroll」+ 縦線(ハイライトが流れる)。CSSのみ -->
+      <span class="p-fv__scroll" aria-hidden="true">
+        <span class="p-fv__scroll-text">scroll</span>
+        <span class="p-fv__scroll-line"></span>
+      </span>
     </div>
   </section>
 

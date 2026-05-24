@@ -1,0 +1,87 @@
+@use "../../global/mixins" as *;
+
+// ============================================================
+// .p-footer: フッター内のコンテンツ配置
+//
+// typography.scss でベースが定義されているプロパティは省略している。
+// 詳細は _p-header.scss の冒頭コメントを参照。
+// ============================================================
+
+.p-footer {
+  padding-top: var(--space-96);
+  padding-bottom: var(--space-40);
+
+  @include mq(pc) {
+    padding-top: var(--space-96);
+    padding-bottom: var(--space-40);
+  }
+}
+
+// ----- 上段: ロゴ + リンク群 -----
+.p-footer__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-24);
+  padding-bottom: var(--space-64);
+  border-bottom: var(--border-width) solid var(--color-border);
+
+  @media (-webkit-min-device-pixel-ratio: 2) {
+    border-bottom-width: 0.5px;
+  }
+}
+
+.p-footer__logo {
+  margin: 0;                  // p のデフォルトmargin打消
+  font-family: var(--font-en); // p は <p> 要素なので英字フォントを明示指定
+  font-size: var(--fs-h4);
+  font-weight: 400;
+  letter-spacing: var(--ls-heading-en);
+}
+
+.p-footer__logo-link {
+  display: inline-block;
+
+  // typography.scss の a:hover { color: var(--color-accent); } を打ち消す。
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+.p-footer__logo-accent {
+  .p-footer__logo-link:hover & {
+    color: var(--color-accent);
+  }
+}
+
+// ----- リンク群: Contact + GitHub + X -----
+.p-footer__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+.p-footer__links-link {
+  // a 要素なので color/transition/hover は typography.scss から継承される
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+// ----- 下段: コピーライト -----
+.p-footer__copyright {
+  margin: 0;
+  margin-top: var(--space-24);
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  text-align: left;
+}

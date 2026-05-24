@@ -23,8 +23,8 @@
 .p-works__contents {
   display: flex;
   align-items: flex-start;
-  margin-top: var(--space-lg);  // 旧: 3rem(48px) → 新: 40px(--space-lg)
-  gap: var(--space-md);          // 旧: 2rem(32px) → 新: 24px(--space-md)
+  margin-top: var(--space-40);  // 40px
+  gap: var(--space-24);          // 24px
 }
 
 .p-works__left {
@@ -39,7 +39,7 @@
 
 .p-works__button {
   padding: 0.7rem 2rem;
-  margin-top: var(--space-md);
+  margin-top: var(--space-24);
   width: fit-content;
 }
 
@@ -59,9 +59,9 @@
 }
 
 .p-works__card {
-  background-color: var(--color-bg-main);          // 旧: --color-works-card(白)
-  box-shadow: var(--box-shadow-works-card);        // 影は据え置き
-  border-radius: var(--radius-lg);                  // 旧: 22px → 16px
+  background-color: var(--color-bg-main);
+  box-shadow: var(--box-shadow-works-card);
+  border-radius: var(--radius-lg);
   transform-origin: top center;
 }
 
@@ -79,29 +79,29 @@
 }
 
 .p-works__card-content {
-  margin-top: var(--space-sm);
-  padding-inline: var(--space-sm);
+  margin-top: var(--space-16);
+  padding-inline: var(--space-16);
   padding-bottom: 1.25rem;
 }
 
 .p-works__card-title {
-  font-size: var(--fs-h4);                          // 旧: --font-size-body-h3(20px) → 新: --fs-h4(20px、同値)
+  font-size: var(--fs-h4);
   color: var(--color-text);
 }
 
 .p-works__card-tags {
-  margin-top: var(--space-sm);
+  margin-top: var(--space-16);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xs);
+  gap: var(--space-8);
 }
 
 .p-works__card-tag {
-  font-size: var(--fs-tag);                         // 旧: --font-size-body-sm(14px) → 新: --fs-tag(13px)
+  font-size: var(--fs-tag);
   font-weight: bold;
-  border-radius: var(--radius-sm);                   // 旧: 5px → 4px
-  border: var(--border-width-md) solid var(--color-text);  // 旧: 1px solid var(--color-black)(#000) → 新: --color-text(#141417)
+  border-radius: var(--radius-sm);
+  border: var(--border-width-md) solid var(--color-text);
   width: fit-content;
-  padding: 0.125rem var(--space-xs);
+  padding: 0.125rem var(--space-8);
   text-transform: capitalize;
 }

@@ -16,6 +16,11 @@ export default defineConfig({
   plugins: [
     handlebars({
       partialDirectory: resolve(__dirname, 'src/partials'),
+      context(pagePath) {
+        return {
+          isTop: pagePath === '/index.html',
+        };
+      },
     }),
   ],
 });
