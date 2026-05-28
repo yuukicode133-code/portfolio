@@ -12,7 +12,7 @@
 <header class="l-header">
   <div class="l-inner p-header">
 
-    {{!--
+    <!--
       ロゴ: トップと下層でマークアップを出し分ける。
       ・トップ(isTop: true)  … ページ主題をサイト名とみなし <h1> を被せる
       ・下層(isTop: false)   … ロゴは主題でないため <h1> なし。<a> 単体。
@@ -31,8 +31,7 @@
 
       ※ if と else でロゴ中身(span 3つ)が重複。Handlebars はタグ名だけの
         動的化ができないための妥協。span 構成を変えるときは両方を同期させること。
-    --}}
-    <div class="p-header__logo">
+    -->
       {{#if isTop}}
         <h1 class="p-header__logo-heading">
           <a href="/" class="p-header__logo-link" aria-label="Yuuki Oozora — ホームへ">
@@ -44,8 +43,6 @@
           <span>Yuuk</span><span class="p-header__logo-accent">i</span><span>&nbsp;Oozora</span>
         </a>
       {{/if}}
-    </div>
-
     <nav
       id="global-nav"
       class="p-header__nav"

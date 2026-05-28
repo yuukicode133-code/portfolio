@@ -93,6 +93,7 @@
   --color-bg-main:       var(--color-white);
   --color-bg-sub:        var(--color-gray-50);
   --color-text:          var(--color-gray-900);
+  --color-fv-bg:    rgba(255, 255, 255, 0.45);
   --color-text-muted:    rgba(20, 20, 23, 0.6);
   --color-border:        rgba(20, 20, 23, 0.08);
   --color-border-strong: rgba(20, 20, 23, 0.15);
@@ -114,8 +115,8 @@
   --fs-h3:    var(--fs-24);
 
   // 流動サイズ(レスポンシブの clamp は Semantic 段階で組む)
-  --fs-h2: clamp(1.625rem, 3vw + 0.8rem, 2rem);          // 26〜32px
-  --fs-h1: clamp(2rem, 4vw + 1rem, 2.5rem);              // 32〜40px
+  --fs-h2: clamp(1.5rem, 1.412rem + 0.376vw, 1.75rem);         // 24〜28px
+  --fs-h1:  clamp(1.5rem, 1.324rem + 0.751vw, 2rem);         // 24〜32px
   --fs-numeral: clamp(6rem, 15vw, 12.5rem);              // 巨大ナンバー
 
 

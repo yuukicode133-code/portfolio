@@ -2,22 +2,46 @@
 @use "../../global/_mixins.scss" as *;
 
 // ============================================================
-// 注意:
-// .l-section に overflow: hidden が付いているが、
-// .p-works-section ではこれを上書きして visible にする。
-// 理由: 子要素の .p-works__card-link が position: sticky で動作する必要があり、
-//       祖先に overflow: hidden があると sticky が機能しなくなるため。
+// .p-works-section
+// ============================================================
+// overflow について:
+//   .l-section は overflow: clip(hidden ではない)。clip はスクロール
+//   コンテナを生成しないため、子孫の .p-works__card-link(position:
+//   sticky)を壊さない。よって以前あった overflow: visible での打ち消しは
+//   不要になり、削除した。
+//   巨大ナンバー・円弧の見切れは .l-section の clip がそのまま担うため、
+//   装飾専用ラッパーも不要(Phase 1-5 で想定していた対応は clip により解消)。
 //
-// 巨大ナンバー / 円弧モチーフの見切れは、別途このセクション内で
-// overflow: clip を持つラッパー要素を作って実現する(後のフェーズで対応)。
+// position: relative は、このセクション内に装飾(c-numeral / c-arc)を
+// position: absolute で重ねるための基準として残す。
 // ============================================================
 
 .p-works-section {
   position: relative;
-  overflow: visible;  // ← l-section の overflow: hidden を上書き
 }
 
 .p-works-section__title {
+}
+
+// --- 装飾: 巨大ナンバー(右上)。c-numeral は見た目のみ、位置をここで指定 ---
+// .l-section の overflow: clip により、セクション端から少しはみ出して見切れる。
+// 下記は初期値。実画面を見て微調整すること。
+.p-works-section__numeral {
+  top: var(--space-48);
+  right: var(--space-40);
+}
+
+// --- 装飾: 円弧(左から・中)。c-arc は見た目のみ、サイズ・位置をここで指定 ---
+// 設計(Phase 1-4):トップWorksの円弧は「左から・中」。
+// 円を左へ寄せ、右端のカーブだけをセクション内に覗かせる。
+// translate の % は要素自身(=円)基準なので、見え方が安定する。
+// 下記は初期値。実画面を見て width と translate を微調整すること。
+.p-works-section__arc {
+  width: min(70vw, 640px);   // 直径(「中」サイズ)
+  aspect-ratio: 1;           // 正円
+  left: 0;
+  top: 50%;
+  translate: -72% -50%;      // X:円の幅の72%ぶん左へ沈め右端の弧を見せる / Y:縦中央
 }
 
 .p-works__contents {
@@ -38,7 +62,8 @@
 }
 
 .p-works__button {
-  padding: 0.7rem 2rem;
+  // c-button が padding / border / font などボタンの見た目を持つ。
+  // ここは Works セクション固有の配置(左カラム内での余白)のみ。
   margin-top: var(--space-24);
   width: fit-content;
 }

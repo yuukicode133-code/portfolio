@@ -16,3 +16,5 @@ import "@fontsource/zen-kaku-gothic-new/700.css";
 // modules
 import './modules/scroll-card.js';
 import './modules/hamburger-menu.js';
+import './modules/viewport-switch.js';
+

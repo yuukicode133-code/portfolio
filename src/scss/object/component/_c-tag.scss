@@ -39,6 +39,7 @@
     line-height: var(--lh-body);
     letter-spacing: var(--ls-heading-en); // 英字見出し系の字間
     color: var(--color-text-muted); // タグは控えめに。地の文より弱いトーン
+    text-transform: capitalize;
   
     // タグの「囲み」(背景・枠線)は付けない。
     // ワイヤーフレームの囲みは作図用の便宜であり、設計思想3
@@ -55,5 +56,6 @@
     &__num {
       color: var(--color-text);     // 差し色にしない。地のテキスト色
       font-variant-numeric: tabular-nums; // 数字幅を揃える(2桁の安定)
+      text-transform: uppercase;
     }
   }

@@ -1,0 +1,78 @@
+// ============================================================
+// c-button  --  ボタン / CTA リンク
+// ============================================================
+// 役割: サイト内の行動喚起(CTA)。Works「全ての実績を見る」、
+//       Contact「フォームへ進む」、Single「サイトを見る」など共通利用。
+//
+// マークアップ前提:
+//   <a href="..." class="c-button c-button--primary">フォームへ進む</a>
+//   <a href="..." class="c-button c-button--secondary">全ての実績を見る</a>
+//   ボタン要素にも使える:
+//   <button type="..." class="c-button c-button--primary">送信する</button>
+//
+// modifier の考え方(役割で命名、見た目で命名しない):
+//   --primary   … 主たる行動。塗りつぶし。
+//   --secondary … 副次的な行動。白背景 + 枠線。
+//   「--white」のような見た目ベースの名前は使わない。配色を変えた
+//   ときに名前が嘘になるため、役割ベースの名前にする(トークン設計
+//   思想:値ではなく役割で管理)。
+//
+// 配色ルール(引き継ぎ資料の配色ルールに厳格に従う):
+//   通常状態では差し色(--color-accent)を使わない。無彩色で構成する。
+//   差し色は hover / focus-visible のときだけ出す。
+//   「差し色を使う5箇所」の筆頭=「CTAボタンのホバー/フォーカス状態」。
+// ------------------------------------------------------------
+
+.c-button {
+    // --- 共通の骨格 ---
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    // タップターゲット最低44px(WCAG)。padding と min-height で確保。
+    min-height: 44px;
+    padding-block: var(--space-8);
+    padding-inline: var(--space-32);
+    font-family: var(--font-en);
+    font-size: var(--fs-body);
+    letter-spacing: var(--ls-heading-en);
+    border: var(--border-width-md) solid var(--color-text);
+    border-radius: var(--radius-md);
+    // 色の変化を滑らかに(ホバー/フォーカスの差し色遷移用)。
+    transition: color 0.2s ease, background-color 0.2s ease,
+                border-color 0.2s ease;
+  
+    // ----------------------------------------------------------
+    // --primary : 主たる行動。塗りつぶし。
+    // ----------------------------------------------------------
+    &--primary {
+      color: var(--color-bg-main);          // 濃い地に対する白文字
+      background-color: var(--color-text);
+      border-color: var(--color-text);
+  
+      // ホバー/フォーカスで差し色(枠線と背景をアクセントへ)。
+      &:hover,
+      &:focus-visible {
+        background-color: var(--color-accent);
+        border-color: var(--color-accent);
+      }
+    }
+  
+    // ----------------------------------------------------------
+    // --secondary : 副次的な行動。白背景 + 枠線。
+    // ----------------------------------------------------------
+    &--secondary {
+      color: var(--color-text);
+      background-color: var(--color-bg-main);
+      border-color: var(--color-text);
+  
+      // ホバー/フォーカスで差し色(文字と枠線をアクセントへ)。
+      &:hover,
+      &:focus-visible {
+        color: var(--color-accent);
+        border-color: var(--color-accent);
+      }
+    }
+  
+    // _typography.scss の a:hover { color: var(--color-accent) } とは
+    // 別に、上記で modifier ごとに hover を明示しているため打ち消しは不要。
+  }

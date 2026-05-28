@@ -3,19 +3,13 @@
 <main>
   <!-- FV -->
   <section class="p-fv">
-    <!-- 装飾レイヤー: 円弧(下から・大)。c-arc は見た目のみ、配置は p-fv 側 -->
+    <!-- 装飾レイヤー: 円弧。c-arc は見た目のみ、配置は p-fv 側で指定 -->
     <div class="c-arc p-fv__arc" aria-hidden="true"></div>
-    <!-- 装飾レイヤー: 巨大ナンバー(右上・LG)。意味はタグが担う -->
-    <span class="c-numeral c-numeral--top-right p-fv__numeral" aria-hidden="true">01</span>
 
     <div class="l-inner p-fv__inner">
-      <!-- タグ: 巨大ナンバー「01」に意味を与えるラベル -->
-      <span class="c-tag p-fv__tag">
-        <span class="c-tag__num">&#8470;01</span> &#8212; PORTFOLIO
-      </span>
-
       <!-- 見出し: トップの主題はサイト名(ロゴ=h1)が担うため、ここは h2。
-           視覚的には最も大きく最初に置き、人にとっての主役にする -->
+           視覚的には最も大きく最初に置き、人にとっての主役にする。
+           FV はセクション番号体系の外に置くため、タグ・巨大ナンバーは持たない -->
       <h2 class="p-fv__title">デザインの意図をくみ取り、丁寧にかたちにします。</h2>
 
       <!-- サブテキスト -->
@@ -30,70 +24,77 @@
   </section>
 
   <!-- Works -->
-  <section class="l-inner p-works-section l-section">
-    <div class="p-works__contents">
-      <div class="p-works__left">
-        <h2 class="c-section-title p-works-section__title">
-          <span class="c-section-title__en">works</span>
-          <span class="c-section-title__ja">制作実績</span>
-        </h2>
-        <a href="" class="p-works__button c-button--white">全ての実績を見る</a>
-      </div>
-      <div class="p-works__right">
-        <!-- wordpress -->
-        <a href="" class="p-works__card-link">
-          <div class="p-works__card">
-            <div class="p-works__card-image">
-              <picture>
-                <source srcset="/images/test-wp.webp" type="image/webp" />
-                <img src="/images/test-wp.png" alt="ポートフォリオサイトのサムネイル画像" width="1978" height="1930" />
-              </picture>
-            </div>
-            <div class="p-works__card-content">
-              <h3 class="p-works__card-title">ポートフォリオサイト</h3>
-              <ul class="p-works__card-tags">
-                <li class="p-works__card-tag">WordPress</li>
-                <li class="p-works__card-tag">ポートフォリオサイト</li>
-              </ul>
-            </div>
-          </div>
-        </a>
+  <section class="p-works-section l-section">
+    <!-- 装飾レイヤー: セクション全幅基準で配置。.l-section の overflow:clip で
+         セクション端を見切れる。c-numeral / c-arc は見た目のみ、配置は p 層 -->
+    <span class="c-numeral c-numeral--md c-numeral--top-right p-works-section__numeral" aria-hidden="true">01</span>
+    <div class="c-arc p-works-section__arc" aria-hidden="true"></div>
 
-        <!-- green -->
-          <a href="" class="p-works__card-link">
-          <div class="p-works__card">
-            <div class="p-works__card-image">
-              <picture>
-                <source srcset="/images/green.webp" type="image/webp" />
-                <img src="/images/green.png" alt="ポートフォリオサイトのサムネイル画像" width="375" height="250" />
-              </picture>
+    <div class="l-inner">
+      <div class="p-works__contents">
+        <div class="p-works__left">
+          <h2 class="c-section-title p-works-section__title">
+            <span class="c-section-title__en">works</span>
+            <span class="c-section-title__ja">制作実績</span>
+          </h2>
+          <a href="/works/" class="c-button c-button--secondary p-works__button">全ての実績を見る</a>
+        </div>
+        <div class="p-works__right">
+          <!-- wordpress -->
+          <a href="/works/" class="p-works__card-link">
+            <div class="p-works__card">
+              <div class="p-works__card-image">
+                <picture>
+                  <source srcset="/images/test-wp.webp" type="image/webp" />
+                  <img src="/images/test-wp.png" alt="ポートフォリオサイトのサムネイル画像" width="1978" height="1930" />
+                </picture>
+              </div>
+              <div class="p-works__card-content">
+                <h3 class="p-works__card-title">ポートフォリオサイト</h3>
+                <ul class="p-works__card-tags">
+                  <li class="p-works__card-tag">WordPress</li>
+                  <li class="p-works__card-tag">ポートフォリオサイト</li>
+                </ul>
+              </div>
             </div>
-            <div class="p-works__card-content">
-              <h3 class="p-works__card-title">[架空] green 海外デザイナーのポートフォリオ</h3>
-              <ul class="p-works__card-tags">
-                <li class="p-works__card-tag">ポートフォリオサイト</li>
-              </ul>
-            </div>
-          </div>
-        </a>
+          </a>
 
-        <!-- oha -->
-        <a href="" class="p-works__card-link">
-          <div class="p-works__card">
-            <div class="p-works__card-image">
-              <picture>
-                <source srcset="/images/oha.webp" type="image/webp" />
-                <img src="/images/oha.png" alt="LPサイトのサムネイル画像" width="375" height="250" />
-              </picture>
+          <!-- green -->
+          <a href="/works/" class="p-works__card-link">
+            <div class="p-works__card">
+              <div class="p-works__card-image">
+                <picture>
+                  <source srcset="/images/green.webp" type="image/webp" />
+                  <img src="/images/green.png" alt="ポートフォリオサイトのサムネイル画像" width="375" height="250" />
+                </picture>
+              </div>
+              <div class="p-works__card-content">
+                <h3 class="p-works__card-title">[架空] green 海外デザイナーのポートフォリオ</h3>
+                <ul class="p-works__card-tags">
+                  <li class="p-works__card-tag">ポートフォリオサイト</li>
+                </ul>
+              </div>
             </div>
-            <div class="p-works__card-content">
-              <h3 class="p-works__card-title">oha!</h3>
-              <ul class="p-works__card-tags">
-                <li class="p-works__card-tag">LP</li>
-              </ul>
+          </a>
+
+          <!-- oha -->
+          <a href="/works/" class="p-works__card-link">
+            <div class="p-works__card">
+              <div class="p-works__card-image">
+                <picture>
+                  <source srcset="/images/oha.webp" type="image/webp" />
+                  <img src="/images/oha.png" alt="LPサイトのサムネイル画像" width="375" height="250" />
+                </picture>
+              </div>
+              <div class="p-works__card-content">
+                <h3 class="p-works__card-title">oha!</h3>
+                <ul class="p-works__card-tags">
+                  <li class="p-works__card-tag">LP</li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
   </section>

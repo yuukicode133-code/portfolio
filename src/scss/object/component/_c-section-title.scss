@@ -1,0 +1,44 @@
+// ============================================================
+// c-section-title  --  セクションタイトル(英字 + 和文ペア)
+// ============================================================
+// 役割: 各セクションの見出し。英字ラベルと和文見出しを縦に重ねた
+//       ペア構造。Works / Service / About で共通利用する。
+//
+// マークアップ前提:
+//   <h2 class="c-section-title">
+//     <span class="c-section-title__en">works</span>
+//     <span class="c-section-title__ja">制作実績</span>
+//   </h2>
+//
+//   ・__en … 英字。HTML には小文字で記述し、表示の大文字化は
+//            CSS の text-transform: uppercase で行う。
+//            uppercase は単語構造に依存しない安全な変換であり、
+//            かつ DOM 上は小文字のままなのでスクリーンリーダーが
+//            「単語」として正しく読み上げる(全大文字直書きだと
+//            1文字ずつ読まれる事故があるため、CSS変換が望ましい)。
+//   ・__ja … 和文見出し。<h2> は _typography.scss で英字フォントが
+//            付くため、和文フォントへ明示的に上書きする
+//            (ベースの打ち消し = CSS記述原則2 に沿う正当な明示)。
+// ------------------------------------------------------------
+
+.c-section-title {
+    // <h2> 自体は _typography.scss から font-weight / line-height /
+    // letter-spacing を継承する。ここでは構造(子要素を縦に積む)のみ規定。
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  
+    &__en {
+      font-family: var(--font-en);          // <h2> 継承と同じだが役割明示
+      font-size: var(--fs-h3);
+      text-transform: uppercase;            // 表示のみ大文字化(安全な変換)
+      letter-spacing: var(--ls-heading-en);
+      color: var(--color-text);
+    }
+  
+    &__ja {
+      font-family: var(--font-jp);          // ベース(英字)を和文へ打ち消し
+      font-size: var(--fs-small);
+      color: var(--color-text-muted);       // 英字より一段控えめなトーン
+    }
+  }

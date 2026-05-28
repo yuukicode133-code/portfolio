@@ -19,15 +19,16 @@
 }
 
 // ----- ロゴ -----
-.p-header__logo {
-  font-size: var(--fs-h4);          // 役割固有のサイズ
-}
+// .p-header__logo {
+//   font-size: var(--fs-h4);         
+// }
 
 .p-header__logo-heading {
   // トップの <h1>。文書構造のためだけの薄い器。
   // 見た目は下の p-header__logo-link(<a>)が持つので、
   // ここでは <h1> のデフォルトマージンを打ち消すだけ。
   margin: 0;
+  font-size: var(--fs-h1);
 }
 
 .p-header__logo-link {
@@ -42,13 +43,13 @@
   // よって継承に頼らず、<a> 自身に明示する（記述原則4：
   // 要素タイプが違う場合は防御的に明示）。
   font-family: var(--font-en);
-  font-weight: 400;
   letter-spacing: var(--ls-heading-en);
 
   // typography.scss の a:hover { color: var(--color-accent); } を打ち消す。
   // ロゴ全体は色変化させず、子要素の .p-header__logo-accent だけが accent 化する設計。
   &:hover {
     color: var(--color-text);
+    opacity: 0.7;
   }
 }
 
@@ -56,6 +57,7 @@
   // .p-header__logo-link:hover の時だけ accent 化(打ち消しを更に上書き)
   .p-header__logo-link:hover & {
     color: var(--color-accent);
+    transition: color 0.35s ease;
   }
 }
 
@@ -112,7 +114,7 @@
 
 // ----- ナビリンク(サイズの出し分けのみ。color/transition/hover は a タグから継承)-----
 .p-header__nav-link {
-    font-size: var(--fs-small);
+    font-weight: bold;
 
   @include mq(sp) {
     font-size: var(--fs-h4);

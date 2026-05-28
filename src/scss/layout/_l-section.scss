@@ -4,7 +4,14 @@
   padding-top: var(--space-96);     // SP: 96px
   padding-bottom: var(--space-96);
   position: relative;
-  overflow: hidden;  // 巨大ナンバー・円弧モチーフの見切れを実現
+  overflow: clip;  // 巨大ナンバー・円弧モチーフの見切れを実現。
+                   // hidden ではなく clip:
+                   //  ・clip も hidden 同様「はみ出しを切り取る」
+                   //  ・ただし clip はスクロールコンテナを生成しないため、
+                   //    子孫の position: sticky を壊さない
+                   //    (hidden はスクロールコンテナになり sticky を壊す)
+                   //  ・このセクションにスクロール機能の意図は無く、
+                   //    見切れだけが目的なので clip が正しい
 
   @include mq(pc) {
     padding-top: var(--space-128);   // PC: 128px
