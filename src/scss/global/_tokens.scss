@@ -1,5 +1,5 @@
 @use "variables" as *;
-
+@use "mixins" as *;
 
 :root {
   // ============================================================
@@ -8,8 +8,8 @@
   // colors
   --color-main: #{$main-color};
   --color-green: #{$green-color};
-  --color-accent-old: #{$accent-color};  // 旧accent(オレンジ #f7a849)、新accentと区別
-  --color-white-old: #{$white-color};    // 旧white(#f3f1ef)、新と区別
+  --color-accent-old: #{$accent-color}; // 旧accent(オレンジ #f7a849)、新accentと区別
+  --color-white-old: #{$white-color}; // 旧white(#f3f1ef)、新と区別
   --color-green-light: #{$green-light-color};
   --color-mint: #{$mint-color};
   --color-black: #{$black-color};
@@ -27,23 +27,19 @@
   --box-shadow-works-card: 5px 5px 23px -15px var(--color-black);
 
   // works-sticky(数値は実装時に調整)
-  --header-height: 100px;
-  --card-height: 615px;
-  --sticky-top: calc(
-    var(--header-height)
-    + (100vh - var(--header-height) - var(--card-height)) / 2
-  );
+  // --header-height: 72px;
+  // --card-height: 615px;
+  // --sticky-top: calc(var(--header-height) + (100vh - var(--header-height) - var(--card-height)) / 2);
 
   // 旧Spacing(T-shirt記法)— 既存ファイルで使用中、段階的廃止予定
   // 各 .scss を新名(--space-NN)に書き換え次第、削除
-  --space-xs:  var(--space-8);
-  --space-sm:  var(--space-16);
-  --space-md:  var(--space-24);
-  --space-lg:  var(--space-40);
-  --space-xl:  var(--space-64);
+  --space-xs: var(--space-8);
+  --space-sm: var(--space-16);
+  --space-md: var(--space-24);
+  --space-lg: var(--space-40);
+  --space-xl: var(--space-64);
   --space-2xl: var(--space-96);
   --space-3xl: var(--space-128);
-
 
   // ============================================================
   // ▼ 新トークン体系 ▼
@@ -54,35 +50,35 @@
   // ============================================================
 
   // ----- Color Primitive -----
-  --color-white:      #FFFFFF;
-  --color-gray-50:    #FAFAFA;
-  --color-gray-900:   #141417;
-  --color-orange-700: #C0501F;   // Burnt Sienna(現行)
-  --color-green-700:  #1F6B5E;   // Forest Teal(候補)
+  --color-white: #ffffff;
+  --color-gray-50: #fafafa;
+  --color-gray-900: #141417;
+  --color-orange-700: #c0501f; // Burnt Sienna(現行)
+  --color-green-700: #1f6b5e; // Forest Teal(候補)
 
   // ----- Font Size Primitive -----
   // 連続した数値スケールとして用意し、Semantic で意味付けする
-  --fs-13: 0.8125rem;   // 13px
-  --fs-14: 0.875rem;    // 14px
-  --fs-16: 1rem;        // 16px(基準)
-  --fs-20: 1.25rem;     // 20px
-  --fs-24: 1.5rem;      // 24px
-  --fs-32: 2rem;        // 32px
-  --fs-40: 2.5rem;      // 40px
+  --fs-13: 0.8125rem; // 13px
+  --fs-14: 0.875rem; // 14px
+  --fs-16: 1rem; // 16px(基準)
+  --fs-20: 1.25rem; // 20px
+  --fs-24: 1.5rem; // 24px
+  --fs-32: 2rem; // 32px
+  --fs-40: 2.5rem; // 40px
 
   // ----- Spacing Primitive -----
   // 8の倍数を基本とした数値スケール
   // 必要な端数(例: 12px, 20px, 23px)は適宜追加してよい
-  --space-8:   0.5rem;     //   8px
-  --space-16:  1rem;       //  16px
-  --space-24:  1.5rem;     //  24px
-  --space-32:  2rem;       //  32px
-  --space-40:  2.5rem;     //  40px
-  --space-48:  3rem;       //  48px
-  --space-64:  4rem;       //  64px
-  --space-96:  6rem;       //  96px
-  --space-128: 8rem;       // 128px
-
+  --space-8: 0.5rem; //   8px
+  --space-16: 1rem; //  16px
+  --space-24: 1.5rem; //  24px
+  --space-32: 2rem; //  32px
+  --space-40: 2.5rem; //  40px
+  --space-48: 3rem; //  48px
+  --space-64: 4rem; //  64px
+  --space-96: 6rem; //  96px
+  --space-128: 8rem; // 128px
+  --space-144: 9rem; // 144px
 
   // ============================================================
   // [2] Semantic Tokens  --  意味の語彙
@@ -90,12 +86,12 @@
   // ============================================================
 
   // ----- Color Semantic -----
-  --color-bg-main:       var(--color-white);
-  --color-bg-sub:        var(--color-gray-50);
-  --color-text:          var(--color-gray-900);
-  --color-fv-bg:    rgba(255, 255, 255, 0.45);
-  --color-text-muted:    rgba(20, 20, 23, 0.6);
-  --color-border:        rgba(20, 20, 23, 0.08);
+  --color-bg-main: var(--color-white);
+  --color-bg-sub: var(--color-gray-50);
+  --color-text: var(--color-gray-900);
+  --color-fv-bg: rgba(255, 255, 255, 0.45);
+  --color-text-muted: rgba(20, 20, 23, 0.6);
+  --color-border: rgba(20, 20, 23, 0.08);
   --color-border-strong: rgba(20, 20, 23, 0.15);
 
   // 差し色(ここを切り替えれば全画面の差し色が変わる)
@@ -103,22 +99,21 @@
 
   // 装飾色(差し色とは独立。意味として独立しているのでここに置く)
   --color-decorative-numeral: rgba(20, 20, 23, 0.07);
-  --color-decorative-arc:     rgba(20, 20, 23, 0.04);
+  --color-decorative-arc: rgba(20, 20, 23, 0.04);
 
   // ----- Font Size Semantic -----
   // よく使う「役割」だけを Semantic 化する
   // これに該当しないサイズが必要な時は、Primitive(--fs-XX)を直接参照する
-  --fs-body:  var(--fs-16);
+  --fs-body: var(--fs-16);
   --fs-small: var(--fs-14);
-  --fs-tag:   var(--fs-13);
-  --fs-h4:    var(--fs-20);
-  --fs-h3:    var(--fs-24);
+  --fs-tag: var(--fs-13);
+  --fs-h4: var(--fs-20);
+  --fs-h3: var(--fs-24);
 
   // 流動サイズ(レスポンシブの clamp は Semantic 段階で組む)
-  --fs-h2: clamp(1.5rem, 1.412rem + 0.376vw, 1.75rem);         // 24〜28px
-  --fs-h1:  clamp(1.5rem, 1.324rem + 0.751vw, 2rem);         // 24〜32px
-  --fs-numeral: clamp(6rem, 15vw, 12.5rem);              // 巨大ナンバー
-
+  --fs-h2: clamp(1.5rem, 1.412rem + 0.376vw, 1.75rem); // 24〜28px
+  --fs-h1: clamp(1.5rem, 1.324rem + 0.751vw, 2rem); // 24〜32px
+  --fs-numeral: clamp(6rem, 15vw, 12.5rem); // 巨大ナンバー
 
   // ============================================================
   // [3] その他(意味的に1層で十分なもの)
@@ -128,21 +123,21 @@
   // ============================================================
 
   // ----- Border Radius(角丸) -----
-  --radius-sm:  4px;       // ボタン、フォームフィールド
-  --radius-md:  8px;       // カード
-  --radius-lg: 16px;       // 大きなコンテナ
+  --radius-sm: 4px; // ボタン、フォームフィールド
+  --radius-md: 8px; // カード
+  --radius-lg: 16px; // 大きなコンテナ
 
   // ----- Border Width(罫線の太さ) -----
-  --border-width:    0.5px;     // 標準
-  --border-width-md: 1px;       // 強調・非Retina対応
+  --border-width: 0.5px; // 標準
+  --border-width-md: 1px; // 強調・非Retina対応
 
   // ----- Line Height(行間) -----
-  --lh-body:    1.8;
+  --lh-body: 1.8;
   --lh-heading: 1.4;
   --lh-numeral: 1;
 
   // ----- Letter Spacing(字間) -----
-  --ls-body:        0.05em;
+  --ls-body: 0.05em;
   --ls-heading-en: -0.01em;
 
   // ----- Font Family -----
@@ -150,9 +145,20 @@
   --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
 
   // ----- Z-index -----
-  --z-header:    100;
+  --z-header: 100;
   --z-header-nav: 90;
-  --z-numeral:     1;   // 巨大ナンバー(コンテンツ背面・装飾)
-  --z-arc:         1;   // 円弧モチーフ(コンテンツ背面・装飾)
-  --z-content:     2;   // 通常コンテンツ
+  --z-numeral: 1; // 巨大ナンバー(コンテンツ背面・装飾)
+  --z-arc: 1; // 円弧モチーフ(コンテンツ背面・装飾)
+  --z-content: 2; // 通常コンテンツ
+
+  // ----header-height-----
+  --header-height: 72px;// SP/PC共通(必要なら後で調整)
 }
+// @include mq(sp) {
+//   :root {
+//     --card-height: clamp(24.44313rem, 3.34948rem + 43.9451vw, 31.44688rem);
+//     --card-wrapper-height-sp: clamp(50svh, calc(50svh + 20svh * (100vw - 390px) / 377px), 70svh); //SP時のカードの高さは767~390で可変
+//     // works-sticky(数値は実装時に調整)
+//     --sticky-top--left: calc(var(--header-height) + (var(--card-wrapper-height-sp) - var(--header-height) - var(--card-height)) / 2);
+//   }
+// }

@@ -1,0 +1,38 @@
+@use "../../global/_variables.scss" as *;
+@use "../../global/_mixins.scss" as *;
+
+// ============================================================
+// c-skill — スキル名チップ
+// ----------------------------------------------------------------
+// 役割: Service / About でスキル名を列挙するときの単一チップ。
+//      pill / 角丸矩形の枠線スタイル、番号なし。
+//
+// c-tag(№付き)とは別物として独立させた理由:
+//   c-tag は「№XX label」の組み合わせを前提とした設計。Service の
+//   スキル列は番号もラベル前置詞も持たない単純なチップなので、
+//   c-tag に modifier を生やすより別コンポーネントの方が意味が
+//   ぼやけない。
+//
+// 部品の責務はあくまで「見た目」のみ。配置(余白・並び・gap)は
+// 利用側 Project 層で <ul class="...skills"> に指定する。
+// ============================================================
+
+.c-skill {
+  // li / span どちらに当てても破綻しないよう inline-flex で固定
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.125rem var(--space-8);
+
+  font-family: var(--font-jp); // HTML/CSS のように英字混在もあるが、ベースは和文側を採用
+  font-size: var(--fs-tag);
+  font-weight: bold;
+  line-height: var(--lh-heading);
+  color: var(--color-text);
+
+  background-color: transparent;
+  border: var(--border-width-md) solid var(--color-text);
+  border-radius: var(--radius-sm);
+
+  white-space: nowrap;
+}

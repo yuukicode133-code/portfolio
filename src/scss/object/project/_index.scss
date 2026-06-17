@@ -1,3 +1,13 @@
-@forward "p-works-section";
+// Project 層 _index.scss
+// ----------------------------------------------------------------
+// Phase 4-3 で追加: p-service-section
+// 併せて積み残し対応: p-footer の @forward 漏れ疑いを解消
+// ----------------------------------------------------------------
+// 既存に p-footer が既に書かれている場合はその行はそのまま。
+// 書かれていなかった場合(積み残し疑い)はこの内容で置き換える。
+
 @forward "p-header";
+@forward "p-footer";
 @forward "p-fv";
+@forward "p-works-section";
+@forward "p-service-section";

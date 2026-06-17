@@ -13,7 +13,7 @@
       <h2 class="p-fv__title">デザインの意図をくみ取り、丁寧にかたちにします。</h2>
 
       <!-- サブテキスト -->
-      <p class="p-fv__lead">Webコーダーとして正社員を志望しています。HTML/CSS・jQuery・WordPress・GSAPを使ったサイト制作が得意です。</p>
+      <p class="p-fv__lead">Webコーダーとして正社員を志望しています。<br>HTML/CSS・jQuery・WordPress・GSAPを使ったサイト制作が得意です。</p>
 
       <!-- scroll 誘導: 「scroll」+ 縦線(ハイライトが流れる)。CSSのみ -->
       <span class="p-fv__scroll" aria-hidden="true">
@@ -27,18 +27,25 @@
   <section class="p-works-section l-section">
     <!-- 装飾レイヤー: セクション全幅基準で配置。.l-section の overflow:clip で
          セクション端を見切れる。c-numeral / c-arc は見た目のみ、配置は p 層 -->
-    <span class="c-numeral c-numeral--md c-numeral--top-right p-works-section__numeral" aria-hidden="true">01</span>
-    <div class="c-arc p-works-section__arc" aria-hidden="true"></div>
+    <div class="p-works-section__arc-wrapper">
+      <span class="c-numeral c-numeral--md c-numeral--top-right p-works-section__numeral" aria-hidden="true">01</span>
+    </div>
+    
 
     <div class="l-inner">
+      <!--
+        [変更]
+        旧構造: .p-works__contents > [.p-works__left(タイトル+ボタン) , .p-works__right(カード)]
+        新構造: .p-works__contents > [.p-works__title , .p-works__right , .p-works__button] の3兄弟
+        理由: タイトルとボタンを「左カラム」という運命共同体から解放するため。
+              SP時に縦並び(タイトル→カード→ボタン)、PC時にGridで2カラム再構築できる。
+              タイトルだけ sticky、ボタンはsticky不要(left廃止)。
+      -->
       <div class="p-works__contents">
-        <div class="p-works__left">
-          <h2 class="c-section-title p-works-section__title">
-            <span class="c-section-title__en">works</span>
-            <span class="c-section-title__ja">制作実績</span>
-          </h2>
-          <a href="/works/" class="c-button c-button--secondary p-works__button">全ての実績を見る</a>
-        </div>
+        <h2 class="c-section-title p-works__title">
+          <span class="c-section-title__en">works</span>
+          <span class="c-section-title__ja">制作実績</span>
+        </h2>
         <div class="p-works__right">
           <!-- wordpress -->
           <a href="/works/" class="p-works__card-link">
@@ -69,7 +76,7 @@
                 </picture>
               </div>
               <div class="p-works__card-content">
-                <h3 class="p-works__card-title">[架空] green 海外デザイナーのポートフォリオ</h3>
+                <h3 class="p-works__card-title">[架空] green デザイナーのポートフォリオ</h3>
                 <ul class="p-works__card-tags">
                   <li class="p-works__card-tag">ポートフォリオサイト</li>
                 </ul>
@@ -95,105 +102,82 @@
             </div>
           </a>
         </div>
+        <div class="p-works__button-wrapper">
+          <a href="/works/" class="c-button c-button--secondary p-works__button">全ての実績を見る</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Service -->
-  <section class="l-inner p-service-section l-section">
-    <div class="p-service-section__wrapper">
+  <!--
+    Phase 4-3:
+      ・旧アコーディオン構造(<dl>/<dt>/<dd> + <button>)を全廃
+      ・4ブロックは <ol> + CSS counter で「番号は見た目、HTMLには書かない」
+      ・スキル一覧は <ul> + c-skill チップ。Top では名前のみ列挙
+        (詳細掘り下げは About スキル節に持たせる、確認5 α案の二段構成)
+      ・セクション直に l-inner を付ける旧パターンをやめ、Works と同じく
+        全幅セクション + 内側 .l-inner の入れ子構造に整える
+  -->
+  <section id="service" class="p-service-section l-section">
+    <!-- 装飾: 巨大ナンバー(左上 MD・番号 02) -->
+    <span class="c-numeral c-numeral--md c-numeral--top-left p-service-section__numeral" aria-hidden="true">02</span>
+
+    <!-- 装飾: 円弧(右から・中) -->
+    <div class="c-arc p-service-section__arc" aria-hidden="true"></div>
+
+    <div class="l-inner">
       <h2 class="c-section-title p-service-section__title">
         <span class="c-section-title__en">service</span>
         <span class="c-section-title__ja">できること</span>
       </h2>
-      <div class="p-service-section__image"></div>
+
       <div class="p-service-section__contents">
-        <dl class="p-service-section__list">
-          <div class="p-service-section__card">
-            <div class="p-service-section__card-circle"></div>
-            <dt class="p-service-section__card-title">
-              <button class="p-service-section__card-button">
-                <span class="p-service-section__card-button-head">
-                  <span class="p-service-section__card-button-head-text">課題</span>
-                  <span class="p-service-section__card-button-head-number">01</span>
-                </span>
-                <span class="p-service-section__card-button-body">デザインカンプはあるけど、コーダーがいない</span>
-              </button>
-            </dt>
-            <dd class="p-service-section__card-content">
-              <span class="u-hidden-visually">アプローチ</span>
-              <p class="p-service-section__card-text">Figmaからの正確なコーディング。SCSS / FLOCSS設計で保守しやすいサイトを構築します。</p>
-              <ul class="p-service-section__card-tags">
-                <li class="p-service-section__card-tag">HTML / CSS</li>
-                <li class="p-service-section__card-tag">SCSS / FLOCSS</li>
-                <li class="p-service-section__card-tag">Figma</li>
-              </ul>
-            </dd>
-          </div>
-          <div class="p-service-section__card">
-            <div class="p-service-section__card-circle"></div>
-            <dt class="p-service-section__card-title">
-              <button class="p-service-section__card-button">
-                <span class="p-service-section__card-button-head">
-                  <span class="p-service-section__card-button-head-text">課題</span>
-                  <span class="p-service-section__card-button-head-number">01</span>
-                </span>
-                <span class="p-service-section__card-button-body">デザインカンプはあるけど、コーダーがいない</span>
-              </button>
-            </dt>
-            <dd class="p-service-section__card-content">
-              <span class="u-hidden-visually">アプローチ</span>
-              <p class="p-service-section__card-text">Figmaからの正確なコーディング。SCSS / FLOCSS設計で保守しやすいサイトを構築します。</p>
-              <ul class="p-service-section__card-tags">
-                <li class="p-service-section__card-tag">HTML / CSS</li>
-                <li class="p-service-section__card-tag">SCSS / FLOCSS</li>
-                <li class="p-service-section__card-tag">Figma</li>
-              </ul>
-            </dd>
-          </div>
-          <div class="p-service-section__card">
-            <div class="p-service-section__card-circle"></div>
-            <dt class="p-service-section__card-title">
-              <button class="p-service-section__card-button">
-                <span class="p-service-section__card-button-head">
-                  <span class="p-service-section__card-button-head-text">課題</span>
-                  <span class="p-service-section__card-button-head-number">01</span>
-                </span>
-                <span class="p-service-section__card-button-body">デザインカンプはあるけど、コーダーがいない</span>
-              </button>
-            </dt>
-            <dd class="p-service-section__card-content">
-              <span class="u-hidden-visually">アプローチ</span>
-              <p class="p-service-section__card-text">Figmaからの正確なコーディング。SCSS / FLOCSS設計で保守しやすいサイトを構築します。</p>
-              <ul class="p-service-section__card-tags">
-                <li class="p-service-section__card-tag">HTML / CSS</li>
-                <li class="p-service-section__card-tag">SCSS / FLOCSS</li>
-                <li class="p-service-section__card-tag">Figma</li>
-              </ul>
-            </dd>
-          </div>
-          <div class="p-service-section__card">
-            <div class="p-service-section__card-circle"></div>
-            <dt class="p-service-section__card-title">
-              <button class="p-service-section__card-button">
-                <span class="p-service-section__card-button-head">
-                  <span class="p-service-section__card-button-head-text">課題</span>
-                  <span class="p-service-section__card-button-head-number">01</span>
-                </span>
-                <span class="p-service-section__card-button-body">デザインカンプはあるけど、コーダーがいない</span>
-              </button>
-            </dt>
-            <dd class="p-service-section__card-content">
-              <span class="u-hidden-visually">アプローチ</span>
-              <p class="p-service-section__card-text">Figmaからの正確なコーディング。SCSS / FLOCSS設計で保守しやすいサイトを構築します。</p>
-              <ul class="p-service-section__card-tags">
-                <li class="p-service-section__card-tag">HTML / CSS</li>
-                <li class="p-service-section__card-tag">SCSS / FLOCSS</li>
-                <li class="p-service-section__card-tag">Figma</li>
-              </ul>
-            </dd>
-          </div>
-        </dl>
+        <!-- 4ブロック(価値提案):「何を提供できるか」 -->
+        <ol class="p-service-section__list">
+          <li class="p-service-section__item">
+            <div class="p-service-section__item-body">
+              <h3 class="p-service-section__item-heading">デザインカンプから、忠実に組みます。</h3>
+              <p class="p-service-section__item-text">Figmaのカンプを読み取り、HTML/CSSで白紙の状態から実装できます。SCSS(FLOCSS設計)によるファイル分割と命名の一貫性を意識し、保守しやすいコードを心がけています。</p>
+            </div>
+          </li>
+          <li class="p-service-section__item">
+            <div class="p-service-section__item-body">
+              <h3 class="p-service-section__item-heading">動きのある表現で、印象をつくります。</h3>
+              <p class="p-service-section__item-text">GSAP・ScrollTriggerを使ったスクロール連動アニメーションの実装経験があります。このサイト自体が、その実装力の証拠です。派手な3D系の表現はまだこれからですが、タイムライン制御やスクロール駆動のアニメーションは対応可能です。</p>
+            </div>
+          </li>
+          <li class="p-service-section__item">
+            <div class="p-service-section__item-body">
+              <h3 class="p-service-section__item-heading">WordPressで、更新しやすいサイトを構築します。</h3>
+              <p class="p-service-section__item-text">PHPによるオリジナルテーマの作成、カスタム投稿タイプやACF(カスタムフィールド)の導入、お問い合わせフォームやパンくずリストの実装経験があります。運用する方が更新しやすい設計を目指しています。</p>
+            </div>
+          </li>
+          <li class="p-service-section__item">
+            <div class="p-service-section__item-body">
+              <h3 class="p-service-section__item-heading">品質チェックの仕組みを持っています。</h3>
+              <p class="p-service-section__item-text">SEO施策(画像最適化・メタ情報・構造化データ)とアクセシビリティ対応(WAI-ARIA・キーボード操作・スキップリンク)のチェックリストを整備し、公開前の品質管理に活用しています。</p>
+            </div>
+          </li>
+        </ol>
+
+        <!-- スキル一覧:「何を使えるか」(名前のみ。詳細は About スキル節へ) -->
+        <ul class="p-service-section__skills">
+          <li class="c-skill">HTML</li>
+          <li class="c-skill">CSS</li>
+          <li class="c-skill">SCSS(FLOCSS)</li>
+          <li class="c-skill">jQuery</li>
+          <li class="c-skill">JavaScript</li>
+          <li class="c-skill">GSAP</li>
+          <li class="c-skill">ScrollTrigger</li>
+          <li class="c-skill">WordPress</li>
+          <li class="c-skill">PHP</li>
+          <li class="c-skill">Vite</li>
+          <li class="c-skill">Git</li>
+          <li class="c-skill">GitHub</li>
+          <li class="c-skill">Figma</li>
+        </ul>
+      </div>
     </div>
   </section>
 

@@ -1,0 +1,178 @@
+@use "../../global/_variables.scss" as *;
+@use "../../global/_mixins.scss" as *;
+
+// ============================================================
+// .p-service-section
+// ----------------------------------------------------------------
+// Phase 4-3:
+//   ・FV / Works と同じく全幅セクション + .l-inner で内側を絞る
+//   ・装飾: 巨大ナンバー「02・左上 MD」、円弧「右から・中」
+//     (Phase 1-4 + 番号繰り下げ)
+//   ・4ブロックは静的な番号付きリスト(<ol> + CSS counter)
+//   ・スキル一覧はチップ列(c-skill)。Top では「使える技術名」のみ列挙、
+//     詳細(経験・対応範囲)は About スキル節に持たせる二段構成
+//
+// overflow: .l-section が overflow: clip。装飾の見切れはそこで担保。
+//
+// position: relative はセクション内に装飾(c-numeral / c-arc)を
+// position: absolute で重ねるための基準。
+// ============================================================
+
+// ローカル Sass 変数(コンパイル時定数)
+$section-padding-block: var(--space-128);
+$section-padding-block-sp: var(--space-96);
+
+$item-number-col-width: 4rem;        // PCで番号列の幅
+$item-number-col-width-sp: 2.5rem;   // SPで番号列の幅
+$item-gap-pc: var(--space-32);
+$item-gap-sp: var(--space-16);
+
+.p-service-section {
+  position: relative;
+  padding-block: $section-padding-block;
+
+  @include mq(sp) {
+    padding-block: $section-padding-block-sp;
+  }
+}
+
+// ----------------------------------------------------------------
+// 装飾: 巨大ナンバー(左上 MD)
+// c-numeral / c-numeral--md / c-numeral--top-left の3クラスで
+// 見た目とおおまかな位置は組み立てつつ、最終 offset は P 層で詰める。
+// Works と違って sticky 不要(scroll-card がないため)。
+// ----------------------------------------------------------------
+.p-service-section .p-service-section__numeral {
+  position: absolute;
+  top: var(--space-24);
+  left: var(--space-24);
+  z-index: var(--z-numeral);
+
+  @include mq(sp) {
+    top: var(--space-16);
+    left: var(--space-16);
+  }
+}
+
+// ----------------------------------------------------------------
+// 装飾: 円弧(右から・中)
+// 巨大な正円を画面右端から見切れさせる。.l-section の overflow: clip が
+// セクション外へのはみ出しを切り取る。
+//
+// 注意: Works では現在コメントアウト中。Service 以降の全セクション
+// 実装後に「円弧を全ページで貫徹するか / 一部に絞るか」を再判断する
+// (引き継ぎ資料 5章「円弧モチーフ」)。ここでは仕様通り入れておく。
+// ----------------------------------------------------------------
+.p-service-section__arc {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: clamp(36rem, 90vw, 72rem); // FV と同じ流儀。最終値は実機で調整
+  aspect-ratio: 1;
+  z-index: var(--z-arc);
+  pointer-events: none;
+}
+
+// ----------------------------------------------------------------
+// セクションタイトル(c-section-title の配置オフセットだけ P 層で持つ)
+// ----------------------------------------------------------------
+.p-service-section__title {
+  position: relative; // z-index 効かせるため
+  z-index: var(--z-content);
+}
+
+// ----------------------------------------------------------------
+// コンテンツ領域
+// ----------------------------------------------------------------
+.p-service-section__contents {
+  position: relative;
+  z-index: var(--z-content);
+  margin-top: var(--space-64);
+
+  @include mq(sp) {
+    margin-top: var(--space-40);
+  }
+}
+
+// ============================================================
+// 4ブロックリスト(価値提案)
+// ----------------------------------------------------------------
+// HTMLは <ol> で「4つの提供価値の列挙」を意味的に表現し、
+// 番号(01..04)は CSS counter + ::before で描画する。
+// → HTML側に "01" など重複した文字を書かずに済む
+// → スクリーンリーダーは <ol> として読み上げる
+// ============================================================
+.p-service-section__list {
+  counter-reset: service-item;
+  list-style: none;
+}
+
+.p-service-section__item {
+  counter-increment: service-item;
+
+  display: grid;
+  grid-template-columns: $item-number-col-width 1fr;
+  column-gap: $item-gap-pc;
+  padding-block: var(--space-40);
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:not(:last-child) {
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  @include mq(sp) {
+    grid-template-columns: $item-number-col-width-sp 1fr;
+    column-gap: $item-gap-sp;
+    padding-block: var(--space-32);
+  }
+
+  // 番号(01 / 02 / 03 / 04)を CSS counter で描画
+  // decimal-leading-zero で 01..09 を生成(01〜04 のみ使用)
+  &::before {
+    content: counter(service-item, decimal-leading-zero);
+    font-family: var(--font-en);
+    font-style: italic;
+    font-size: var(--fs-h2); // 24〜28px 流動
+    line-height: 1;
+    color: var(--color-text-muted);
+    padding-top: 0.25em; // 見出し1行目のベースラインに目視で揃える
+  }
+}
+
+.p-service-section__item-heading {
+  // h3 のベースは英字フォントを継承するため、和文に明示打ち消し
+  font-family: var(--font-jp);
+  font-size: var(--fs-h3);
+  font-weight: bold;
+  line-height: var(--lh-heading);
+  color: var(--color-text);
+}
+
+.p-service-section__item-text {
+  margin-top: var(--space-16);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text);
+}
+
+// ============================================================
+// スキル一覧(チップ列)
+// ----------------------------------------------------------------
+// 役割分担(確認5の二段構成):
+//   ・Top Service = スキル「名前」を一覧で見せる(採用担当者の流し読み用)
+//   ・About スキル節 = 各スキルの詳細を岩本さん型アコーディオンで掘り下げる
+// ============================================================
+.p-service-section__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-top: var(--space-64);
+
+  @include mq(sp) {
+    margin-top: var(--space-40);
+  }
+}

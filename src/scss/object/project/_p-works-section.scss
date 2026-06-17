@@ -2,6 +2,32 @@
 @use "../../global/_mixins.scss" as *;
 
 // ============================================================
+// ローカル Sass 変数(このファイル全体で使用)
+// ============================================================
+// ここに置くのはコンパイル時に値が確定する定数のみ。
+// ランタイムでメディアクエリ等により値が変わるものは、
+// CSS カスタムプロパティとして .p-works-section の中で定義する
+// (例: --card-height)。
+// ============================================================
+
+// --- セクション padding ---
+$section-padding-top: 20rem;                  // .p-works-section の padding-top(PC)
+$section-padding-top-sp: var(--space-128);    // .p-works-section の padding-top(SP)
+$section-padding-bottom: 0;
+
+// --- カードラッパーの高さ計算用 ---
+$card-count: 3;
+$card-wrapper-height: 80svh;
+$card-wrapper-height-sp: clamp(50svh, calc(50svh + 20svh * (100vw - 390px) / 377px), 70svh); // SP時のカードのwrapperの高さ,767~390で可変(50svh
+$works-contents-margin-top: var(--space-40);
+
+// --- グリッドレイアウト用 ---
+$p-works__title-height: 61px; // 検証ツールから実際の高さを目視で取得
+$p-works__button-size: 192px; // 円形ボタンの直径。SP時の title margin-bottom 計算にも使用
+$p-works__contents-row-gap: var(--space-24);
+
+
+// ============================================================
 // .p-works-section
 // ============================================================
 // overflow について:
@@ -14,80 +40,246 @@
 //
 // position: relative は、このセクション内に装飾(c-numeral / c-arc)を
 // position: absolute で重ねるための基準として残す。
+//
+// セクション内ローカル CSS カスタムプロパティ:
+//   --card-height: .p-works__title と .p-works__button-wrapper の高さを
+//                  カードに合わせるための値。メディアクエリで切り替える
+//                  必要があるため Sass 変数ではなく CSS 変数で定義。
+//                  グローバル tokens には載せず、このセクション内に閉じる。
 // ============================================================
 
 .p-works-section {
+  --sticky-top: calc(var(--header-height) + (100vh - var(--header-height) - var(--card-height)) / 2);
+  --card-height: clamp(31.44688rem, 14.23919rem + 26.887vw, 38.4375rem); //1024pxの時503px、1440pxの時615pxの間で可変 , 
+                                                                        //検証ツールから実際の高さを目視で取得
   position: relative;
-}
+  padding-top: $section-padding-top; // l-sectionとぶつかるけど、floccsの読み込み順により問題なく動作する
+  padding-bottom: $section-padding-bottom; // l-sectionとぶつかるけど、floccsの読み込み順により問題なく動作する
 
-.p-works-section__title {
+  @include mq(tab) {
+    --card-height: clamp(24.44313rem, 3.34948rem + 43.9451vw, 31.44688rem);
+  }
+
+  @include mq(sp) {
+    // --card-height: clamp(24.44313rem, 3.34948rem + 43.9451vw, 31.44688rem);//ここが必要
+    padding-top: $section-padding-top-sp;
+    // works-sticky(数値は実装時に調整)
+    --sticky-top: calc(var(--header-height) + ((#{$card-wrapper-height-sp}) - var(--header-height) - var(--card-height)) / 2);
+  }
 }
 
 // --- 装飾: 巨大ナンバー(右上)。c-numeral は見た目のみ、位置をここで指定 ---
-// .l-section の overflow: clip により、セクション端から少しはみ出して見切れる。
-// 下記は初期値。実画面を見て微調整すること。
-.p-works-section__numeral {
-  top: var(--space-48);
-  right: var(--space-40);
+.p-works-section .p-works-section__numeral {
+  // コンポーネントのクラスと詳細度でぶつかるので
+  position: sticky;
+  top: 10%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-// --- 装飾: 円弧(左から・中)。c-arc は見た目のみ、サイズ・位置をここで指定 ---
-// 設計(Phase 1-4):トップWorksの円弧は「左から・中」。
-// 円を左へ寄せ、右端のカーブだけをセクション内に覗かせる。
-// translate の % は要素自身(=円)基準なので、見え方が安定する。
-// 下記は初期値。実画面を見て width と translate を微調整すること。
-.p-works-section__arc {
-  width: min(70vw, 640px);   // 直径(「中」サイズ)
-  aspect-ratio: 1;           // 正円
+.p-works-section__arc-wrapper {
+  position: absolute;
+  // top: var(--space-96); //padding分下げておく。スクロールの邪魔にならないように
+  top: 0;
   left: 0;
-  top: 50%;
-  translate: -72% -50%;      // X:円の幅の72%ぶん左へ沈め右端の弧を見せる / Y:縦中央
+  width: 100%;
+  /* ラッパー上端 ──┐
+              │ padding-top
+              │
+   カード1上端 ──┤
+              │
+              │ contents margin-top
+   カード1 開始 ─┤
+              │ 80svh
+              │
+   カード2 開始 ─┤
+              │ 80svh
+              │
+   カード3 開始 ─┤ ← ここでラッパー下端を一致させたい 
+
+  [保守性]
+  ・カード枚数が変わっても $card-count だけ変える
+  ・カード高さが変わっても $card-wrapper-height だけ変える
+  ・セクションの padding が変わっても、その変数(var(--space-96))から自動追従する
+  ・ヘッダー高さ(--sticky-top)が変わっても、式に登場しないので影響を受けない
+   */
+  height: calc(#{$card-wrapper-height} * #{$card-count - 1}  + #{$works-contents-margin-top} + #{$section-padding-top});
+
+  @include mq(sp) {
+    height: calc( #{$card-wrapper-height-sp} * #{$card-count - 1}  + #{$works-contents-margin-top});
+    top: calc(#{$section-padding-top-sp} + 0.8%); // 同じpaddingを指定すると、font-familyの影響により少し高さが合わないので負の値を指定するが、
+                                                  // 大きすぎると数字だけ先にスクロールされてしまうので検証ツールを確認しながら調整した
+  }
 }
+
+// ============================================================
+// [変更点 / 旧構造との差分]
+// ----------------------------------------------------------
+// 旧構造: .p-works__contents は Flex(横並び)で、左カラム
+//        (.p-works__left: タイトル + ボタン)と右カラム
+//        (.p-works__right: カード)の2カラム。
+//        .p-works__left に sticky / 固定高さ。
+//
+// 新構造: .p-works__contents を Grid に変更。タイトル / カード / ボタンの
+//        3つを独立した grid アイテムにし、grid-template-areas で
+//        PC=2カラム配置 / SP=1カラム配置を切り替える。
+//        ・PC: 左列に title(上)・button(下)、右列に right
+//        ・SP: title → right → button の縦並び
+//        sticky はタイトルだけ。SP時もタイトルは画面に留まる。
+//
+// なぜ Grid か:
+//   Flex は一次元。「左列に2要素縦・右列に1要素」の2x2構造は中間ラッパー
+//   (旧 .p-works__left)が必須。Grid なら template-areas で直接記述でき、
+//   中間ラッパーが不要になる。
+//
+// JS への影響:
+//   旧 syncLeftHeight() が参照していた .p-works__left は消える。
+//   Grid が左右カラムの高さを自動で揃えるため syncLeftHeight 自体が
+//   不要になる(scroll-card.js 側で関数まるごと削除)。
+// ============================================================
+// .p-works__contents {
+//   display: flex;
+//   align-items: flex-start;
+//   margin-top: var(--space-40); // 40px
+//   gap: var(--space-24); // 24px
+
+//   @include mq(sp) {
+//     flex-direction: column;
+//     align-items: center;
+//   }
+// }
 
 .p-works__contents {
-  display: flex;
-  align-items: flex-start;
-  margin-top: var(--space-40);  // 40px
-  gap: var(--space-24);          // 24px
+  display: grid;
+  grid-column-gap: var(--space-24);
+  margin-top: $works-contents-margin-top;
+  align-items: start;
+
+  // PC: 2カラム(左 1fr / 右 2fr)
+  // 左列1行目=title、左列2行目=button、右列は両行をまたいで right
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: $p-works__title-height 1fr;
+  grid-row-gap: $p-works__contents-row-gap;
+  grid-template-areas:
+    "title  right"
+    "button right";
+
+  @include mq(sp) {
+    // SP: 1カラム、HTML順に縦並び
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "right"
+      "button";
+    grid-row-gap: 0;
+    margin-top: 0;
+  }
 }
 
-.p-works__left {
-  flex: 1;
+.p-works__title {
+  grid-area: title;
   position: sticky;
   top: var(--sticky-top);
-  height: 574px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+  align-items: start;
+  justify-content: start;
+  height: var(--card-height); // カードの高さを合わせることでスクロールの連れ去りをカードと合わせる
+  
+  // wrapper の余白分を margin-bottom で確保
+  // (旧 syncLeftHeight() を CSS calc() に移植)
+  margin-bottom: calc(#{$card-wrapper-height} - var(--card-height));
 
-.p-works__button {
-  // c-button が padding / border / font などボタンの見た目を持つ。
-  // ここは Works セクション固有の配置(左カラム内での余白)のみ。
-  margin-top: var(--space-24);
-  width: fit-content;
+  @include mq(sp) {
+    // SP: button-wrapper が height:auto になり title の後ろに来るので
+    // title のスクロール距離に button 分も加算する。sp時にはauto指定なので、コンテンツの高さの192が使える
+    height: calc(var(--card-height) + #{$p-works__contents-row-gap} + #{$p-works__title-height});
+    margin-bottom: calc(#{$card-wrapper-height-sp} - var(--card-height) + #{$p-works__button-size});
+  }
 }
-
 .p-works__right {
+  grid-area: right;
   width: clamp(43.75rem, 12.981rem + 48.077vw, 56.25rem);
 
   @include mq(tab) {
     width: clamp(31.25rem, -6.201rem + 78.125vw, 43.75rem);
   }
+  @include mq(sp) {
+    width: 100%;
+    margin-top: var(--space-32);
+  }
+}
+
+// .p-works__button-wrapper {
+//   grid-area: button;
+//   position: sticky;
+//   top: calc(var(--sticky-top) + #{$p-works__title-height} + var(--space-24)); // titleの高さ + 余白
+//   display: flex;
+//   justify-content: center;
+//   height: calc(var(--card-height) - #{$p-works__title-height} - var(--space-24));
+
+//   @include mq(sp) {
+//     top: var(--sticky-top--left);
+//     height: auto; //sp時にカードの下に来て、連れ去りを合わせる必要がないので、autoにする。。つまり高さ＝コンテンツの高さになる
+//   }
+// }
+.p-works__button-wrapper {
+  grid-area: button;
+  position: sticky;
+  top: calc(var(--sticky-top) + #{$p-works__title-height} + #{$p-works__contents-row-gap});  // sticky-top + titleの高さ + 余白
+  display: flex;
+  justify-content: center;
+  height: calc(var(--card-height) - #{$p-works__title-height} - #{$p-works__contents-row-gap}); // カードの高さ - titleの高さ - 余白
+  margin-bottom: calc(#{$card-wrapper-height} - var(--card-height));
+
+  @include mq(sp) {
+    top: var(--sticky-top);
+    height: auto; //sp時にカードの下に来て、連れ去りを合わせる必要がないので、autoにする。。つまり高さ＝コンテンツの高さになる
+    margin-bottom: 0;
+  }
+}
+
+.p-works__contents .p-works__button {
+  font-weight: bold;
+  width: $p-works__button-size;
+  height: $p-works__button-size; // aspect-ratio: 1ではwrapperのサイズに合わせて1:1に拡大してしまうので固定
+  border-radius: 50%;
+  padding: 0; // 円形に余白は意味がないので、c-buttonのpaddingを0にする。詳細度をあげて上書き。
+
+  &:hover {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+  }
 }
 
 .p-works__card-link {
-  height: 100svh;
+  height: $card-wrapper-height;
   position: sticky;
-  top: var(--sticky-top);
+  top: calc(var(--sticky-top) + #{$p-works__contents-row-gap} + #{$p-works__title-height});
   display: block;
+  width: 100%;
+
+  @include mq(sp) {
+    height: $card-wrapper-height-sp;
+  }
 }
+// ----------------------------------------------------------------
+// .p-works__card の高さ統一について
+// ----------------------------------------------------------------
+// aspect-ratio: 900 / 615 で高さを固定していたが、タイトル行数増などで
+// コンテンツがその高さを超えると、カード白領域からはみ出していた。
+// → aspect-ratio を削除し、コンテンツ高さで自然に伸びる構造に変更。
+//
+// その上で、カードごとに高さが異なると「手前カードの下端の透明領域から
+// 後ろのカード下端が透けて見える」現象が起きるため、
+// JS が全カードの実高さを観測し、その最大値を --card-height に書き込む。
+// min-height で全カードがその値に揃うので、透けて見える問題が解消する。
+// ----------------------------------------------------------------
 
 .p-works__card {
   background-color: var(--color-bg-main);
   box-shadow: var(--box-shadow-works-card);
   border-radius: var(--radius-lg);
   transform-origin: top center;
+  min-height: var(--card-height); // 全カードを最大高さに揃える(JS が最大値を --card-height に同期)
 }
 
 .p-works__card-image {
@@ -110,7 +302,7 @@
 }
 
 .p-works__card-title {
-  font-size: var(--fs-h4);
+  font-size: var(--fs-h2);
   color: var(--color-text);
 }
 
@@ -128,5 +320,4 @@
   border: var(--border-width-md) solid var(--color-text);
   width: fit-content;
   padding: 0.125rem var(--space-8);
-  text-transform: capitalize;
 }
