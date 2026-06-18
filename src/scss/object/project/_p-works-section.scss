@@ -304,6 +304,7 @@ $p-works__contents-row-gap: var(--space-24);
 .p-works__card-title {
   font-size: var(--fs-h2);
   color: var(--color-text);
+  text-wrap: wrap;
 }
 
 .p-works__card-tags {

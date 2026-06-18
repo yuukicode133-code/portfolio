@@ -29,11 +29,11 @@ $item-gap-sp: var(--space-16);
 
 .p-service-section {
   position: relative;
-  padding-block: $section-padding-block;
+  // padding-block: $section-padding-block;
 
-  @include mq(sp) {
-    padding-block: $section-padding-block-sp;
-  }
+  // @include mq(sp) {
+  //   padding-block: $section-padding-block-sp;
+  // }
 }
 
 // ----------------------------------------------------------------
