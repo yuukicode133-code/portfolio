@@ -63,16 +63,16 @@ $item-gap-sp: var(--space-16);
 // 実装後に「円弧を全ページで貫徹するか / 一部に絞るか」を再判断する
 // (引き継ぎ資料 5章「円弧モチーフ」)。ここでは仕様通り入れておく。
 // ----------------------------------------------------------------
-.p-service-section__arc {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(50%, -50%);
-  width: clamp(36rem, 90vw, 72rem); // FV と同じ流儀。最終値は実機で調整
-  aspect-ratio: 1;
-  z-index: var(--z-arc);
-  pointer-events: none;
-}
+// .p-service-section__arc {
+//   position: absolute;
+//   top: 50%;
+//   right: 0;
+//   transform: translate(50%, -50%);
+//   width: clamp(36rem, 90vw, 72rem); // FV と同じ流儀。最終値は実機で調整
+//   aspect-ratio: 1;
+//   z-index: var(--z-arc);
+//   pointer-events: none;
+// }
 
 // ----------------------------------------------------------------
 // セクションタイトル(c-section-title の配置オフセットだけ P 層で持つ)
