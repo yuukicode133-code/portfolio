@@ -148,14 +148,12 @@ $item-gap-sp: var(--space-16);
   font-family: var(--font-jp);
   font-size: var(--fs-h3);
   font-weight: bold;
-  line-height: var(--lh-heading);
   color: var(--color-text);
 }
 
 .p-service-section__item-text {
   margin-top: var(--space-16);
   font-size: var(--fs-body);
-  line-height: var(--lh-body);
   color: var(--color-text);
 }
 

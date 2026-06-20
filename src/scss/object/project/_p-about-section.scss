@@ -1,0 +1,109 @@
+@use "../../global/_variables.scss" as *;
+@use "../../global/_mixins.scss" as *;
+
+
+.p-about-section {
+    position: relative;
+    padding-block: var(--space-128) var(--space-96); // 他セクションと要リズム確認
+  
+    &__numeral {
+      position: absolute;
+      top: var(--space-24);
+      right: var(--space-24);
+    }
+  
+    &__arc {
+      // Service の実値に合わせる。全セクション実装後に Phase 7 で再判断
+      width: clamp(36rem, 90vw, 72rem);
+    }
+  
+    &__contents {
+      display: grid;
+      gap: var(--space-48);
+      max-width: 48rem; // l-inner と二重なら調整
+    }
+  
+    // --- リード ---
+    // body 継承で font-jp / lh-body(1.8) が当たる → 再指定しない
+    &__lead {
+      white-space: pre-line; // HTMLの段落内改行を見た目の段落に反映したい場合のみ。不要なら削除
+    }
+  
+    // --- スタッツ ---
+    &__stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-24);
+  
+      @include mq(sp) {
+        grid-template-columns: 1fr; // SPは縦積み(横3列は数字が潰れるため)
+        gap: var(--space-16);
+      }
+    }
+  
+    &__stat {
+      display: grid;
+      gap: var(--space-8);
+      padding-block: var(--space-24);
+      border-top: var(--border-width) solid var(--color-border);
+    }
+  
+    &__stat-value {
+      font-family: var(--font-en);
+      font-size: var(--fs-numeral-stat, 2.5rem); // トークンに無ければ既存見出し系に合わせる
+      line-height: var(--lh-numeral);
+      color: var(--color-text);
+    }
+  
+    &__stat-unit {
+      font-size: var(--fs-body);
+      margin-inline-start: var(--space-4);
+      color: var(--color-text-muted);
+    }
+  
+    &__stat-label {
+      font-size: var(--fs-14, var(--fs-body));
+      color: var(--color-text-muted);
+    }
+  
+    // --- AIブロック ---
+    &__ai {
+      display: grid;
+      gap: var(--space-16);
+    }
+  
+    &__ai-heading {
+      // h3 は font-en 既定 → 和文見出しなので font-jp に明示打ち消し
+      font-family: var(--font-jp);
+      font-size: var(--fs-h3, var(--fs-h2));
+      line-height: var(--lh-heading);
+    }
+  
+    // --- ボタン ---
+    &__more {
+      justify-self: start; // 横いっぱいに伸ばさない
+    }
+  
+    // --- スタッツの出現演出(初期状態)。JSで解除 ---
+    &__stat {
+      opacity: 0;
+      transform: translateY(var(--space-16));
+    }
+  
+    // reduced-motion / JS無効への防御:演出を待たず表示
+    @media (prefers-reduced-motion: reduce) {
+      &__stat {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+  
+  // JS が走らない環境でスタッツが透明なまま残らないための保険。
+  // no-js クラスを html に付けない運用なら、JS側で is-ready を付与する設計にする(下記JS参照)
+//   .p-about-section:not(.is-ready) {
+//     // 何もしない(初期非表示のまま)— JSが is-ready を付けたら下が効く
+//   }
+//   .p-about-section.is-ready &__stat {
+//     // ※ ネスト外なので実際は下のJS制御 or GSAPで直接操作。ここはコメントのみ
+//   }
