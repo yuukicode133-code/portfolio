@@ -101,7 +101,7 @@
 .p-header__nav-list {
   display: flex;
   align-items: center;
-  gap: var(--space-24);
+  gap: var(--space-16);
 
   @include mq(sp) {
     display: flex;
@@ -116,7 +116,7 @@
   display: grid;
   place-items: center;
   transition: background-color 0.5s ease, color 0.5s ease;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   padding: var(--space-8) var(--space-16);
 
   @media (any-hover: hover) {

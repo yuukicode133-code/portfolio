@@ -4,7 +4,14 @@
   <!-- FV -->
   <section class="p-fv">
     <!-- 装飾レイヤー: 円弧。c-arc は見た目のみ、配置は p-fv 側で指定 -->
-    <div class="c-arc p-fv__arc" aria-hidden="true"></div>
+    <div class="c-arc p-fv__arc" aria-hidden="true">
+      <div class="p-fv-arc__contents">
+        <span class="p-fv__scroll" aria-hidden="true">
+          <span class="p-fv__scroll-text">scroll</span>
+          <span class="p-fv__scroll-line"></span>
+        </span>
+      </div>
+    </div>
 
     <div class="l-inner p-fv__inner">
       <!-- 見出し: トップの主題はサイト名(ロゴ=h1)が担うため、ここは h2。
@@ -16,10 +23,10 @@
       <p class="p-fv__lead">Webコーダーとして正社員を志望しています。<br />HTML/CSS・jQuery・WordPress・GSAPを使ったサイト制作が得意です。</p>
 
       <!-- scroll 誘導: 「scroll」+ 縦線(ハイライトが流れる)。CSSのみ -->
-      <span class="p-fv__scroll" aria-hidden="true">
+      <!-- <span class="p-fv__scroll" aria-hidden="true">
         <span class="p-fv__scroll-text">scroll</span>
         <span class="p-fv__scroll-line"></span>
-      </span>
+      </span> -->
     </div>
   </section>
 
@@ -28,7 +35,7 @@
     <!-- 装飾レイヤー: セクション全幅基準で配置。.l-section の overflow:clip で
          セクション端を見切れる。c-numeral / c-arc は見た目のみ、配置は p 層 -->
     <div class="p-works-section__arc-wrapper">
-      <span class="c-numeral c-numeral--md c-numeral--top-right p-works-section__numeral" aria-hidden="true">01</span>
+      <span class="c-numeral c-numeral--md p-works-section__numeral" aria-hidden="true">01</span>
     </div>
 
     <div class="l-inner">
@@ -198,15 +205,15 @@
         </p>
   
         <ul class="p-about-section__stats">
-          <li class="p-about-section__stat">
+          <li class="p-about-section__stat u-fade-up js-fade">
             <span class="p-about-section__stat-value">350<span class="p-about-section__stat-unit">日+</span></span>
             <span class="p-about-section__stat-label">学習ログ連続投稿</span>
           </li>
-          <li class="p-about-section__stat">
+          <li class="p-about-section__stat u-fade-up js-fade">
             <span class="p-about-section__stat-value">8<span class="p-about-section__stat-unit">サイト</span></span>
             <span class="p-about-section__stat-label">制作サイト数</span>
           </li>
-          <li class="p-about-section__stat">
+          <li class="p-about-section__stat u-fade-up js-fade">
             <span class="p-about-section__stat-value">29<span class="p-about-section__stat-unit">本</span></span>
             <span class="p-about-section__stat-label">動画編集納品</span>
           </li>
@@ -215,7 +222,7 @@
         <div class="p-about-section__ai">
           <h3 class="p-about-section__ai-heading">AIとの向き合い方</h3>
           <p class="p-about-section__ai-text">
-            AIは制作の各工程で積極的に使っています。ただ、出てきたものをそのまま採用することはしません。自分の実感と合わなければ書き直し、理解できないコードは使わず、最終的な判断は自分で持つ——この線だけは崩さないようにしています。基礎を自分の手に残すために、jQueryなどはAIを使わずに取り組む時間も意識して作っています。
+            AIは制作の各工程で積極的に使っています。ただ、出てきたものをそのまま採用することはしません。自分の実感と合わなければ書き直し、理解できないコードは使わず、最終的な判断は自分で持つ姿勢だけは崩さないようにしています。基礎を自分の手に残すために、jQueryなどはAIを使わずに取り組む時間も意識して作っています。
           </p>
         </div>
   
@@ -225,21 +232,27 @@
   </section>
 
   <!-- Contact -->
-  <section class="l-inner p-contact-section l-section">
-    <div class="p-contact-section__wrapper">
-      <h2 class="c-section-title p-contact-section__title">
-        <span class="c-section-title__en">contact</span>
-        <span class="c-section-title__ja">お問い合わせ</span>
-      </h2>
+  <section class="l-section p-contact">
+    <div class="l-inner">
+      <span class="c-numeral c-numeral--md c-numeral--top-right" aria-hidden="true">04</span>
+  
+      <div class="p-contact__content u-fade-up js-fade">
+        <h2 class="c-section-title">
+          <span class="c-section-title__en">contact</span>
+          <span class="c-section-title__ja">お問い合わせ</span>
+        </h2>
+  
+        <div class="p-contact__lead">
+          <p>ポートフォリオをご覧いただき、ありがとうございます。</p>
+          <p>面談のご依頼やご相談などございましたら、お問い合わせフォームよりご連絡ください。2営業日以内にご返信いたします。</p>
+        </div>
+  
+        <a class="c-button c-button--secondary p-contact__button" href="/contact/">
+          お問い合わせ
+        </a>
+      </div>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer class="l-footer">
-    <div class="l-inner p-footer">
-      <p class="p-footer__copyright">&copy; 2026 Portfolio. All rights reserved.</p>
-    </div>
-  </footer>
 </main>
 
 {{> footer}}

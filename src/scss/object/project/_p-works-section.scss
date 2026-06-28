@@ -22,7 +22,7 @@ $card-wrapper-height-sp: clamp(50svh, calc(50svh + 20svh * (100vw - 390px) / 377
 $works-contents-margin-top: var(--space-40);
 
 // --- グリッドレイアウト用 ---
-$p-works__title-height: 61px; // 検証ツールから実際の高さを目視で取得
+$p-works__title-height:106px; // 検証ツールから実際の高さを目視で取得
 $p-works__button-size: 192px; // 円形ボタンの直径。SP時の title margin-bottom 計算にも使用
 $p-works__contents-row-gap: var(--space-24);
 
@@ -50,8 +50,7 @@ $p-works__contents-row-gap: var(--space-24);
 
 .p-works-section {
   --sticky-top: calc(var(--header-height) + (100vh - var(--header-height) - var(--card-height)) / 2);
-  --card-height: clamp(31.44688rem, 14.23919rem + 26.887vw, 38.4375rem); //1024pxの時503px、1440pxの時615pxの間で可変 , 
-                                                                        //検証ツールから実際の高さを目視で取得
+
   position: relative;
   padding-top: $section-padding-top; // l-sectionとぶつかるけど、floccsの読み込み順により問題なく動作する
   padding-bottom: $section-padding-bottom; // l-sectionとぶつかるけど、floccsの読み込み順により問題なく動作する
@@ -61,7 +60,6 @@ $p-works__contents-row-gap: var(--space-24);
   }
 
   @include mq(sp) {
-    // --card-height: clamp(24.44313rem, 3.34948rem + 43.9451vw, 31.44688rem);//ここが必要
     padding-top: $section-padding-top-sp;
     // works-sticky(数値は実装時に調整)
     --sticky-top: calc(var(--header-height) + ((#{$card-wrapper-height-sp}) - var(--header-height) - var(--card-height)) / 2);
@@ -208,19 +206,6 @@ $p-works__contents-row-gap: var(--space-24);
   }
 }
 
-// .p-works__button-wrapper {
-//   grid-area: button;
-//   position: sticky;
-//   top: calc(var(--sticky-top) + #{$p-works__title-height} + var(--space-24)); // titleの高さ + 余白
-//   display: flex;
-//   justify-content: center;
-//   height: calc(var(--card-height) - #{$p-works__title-height} - var(--space-24));
-
-//   @include mq(sp) {
-//     top: var(--sticky-top--left);
-//     height: auto; //sp時にカードの下に来て、連れ去りを合わせる必要がないので、autoにする。。つまり高さ＝コンテンツの高さになる
-//   }
-// }
 .p-works__button-wrapper {
   grid-area: button;
   position: sticky;
@@ -255,7 +240,8 @@ $p-works__contents-row-gap: var(--space-24);
 .p-works__card-link {
   height: $card-wrapper-height;
   position: sticky;
-  top: calc(var(--sticky-top) + #{$p-works__contents-row-gap} + #{$p-works__title-height});
+  // top: calc(var(--sticky-top) + #{$p-works__contents-row-gap} + #{$p-works__title-height});
+  top: var(--sticky-top);
   display: block;
   width: 100%;
 
@@ -304,7 +290,7 @@ $p-works__contents-row-gap: var(--space-24);
 }
 
 .p-works__card-title {
-  font-size: var(--fs-h2);
+  font-size: var(--fs-h3);
   color: var(--color-text);
   text-wrap: wrap;
 }

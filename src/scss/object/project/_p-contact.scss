@@ -1,0 +1,45 @@
+@use "../../global/mixins" as *;
+
+// ============================================================
+// .p-contact: トップの Contact セクション
+// ============================================================
+//
+// 役割: 中央寄せのテキスト + フォームへの導線ボタンのみ。
+//       フォーム実体は別ページ /contact/(Phase 4-6)に持つ。
+// 設計: 「世界観の誇示を避ける」— 大見出しを置かず静かに。
+//       色・transition・hover は typography.scss / c-button が持つ。
+//       ここはレイアウト(中央寄せ・余白・重なり)だけ記述する。
+// ============================================================
+
+.p-contact__content {
+  // テキスト・ボタンを縦に積んで中央寄せ。
+  // align-items: center で <a>(inline-block)も水平中央に来る。
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-40); // タイトル / リード / ボタン 間の余白
+}
+
+.p-contact__lead {
+  // リード2文(挨拶 → 行動)の間隔。本文サイズ・行間は body 継承。
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+// ----- 数字装飾(04)のアンカー -----
+// ⚠ ここだけ既存セクション(About / Service)の流儀に合わせること。
+// c-numeral--top-right は position:absolute で「直近の positioned 親」に張り付く。
+// その親が l-section(画面端基準)か、各 p-* の __inner(コンテンツ基準)か、
+// プロジェクトで統一されているはず。Contact だけ基準が変わると挙動がバラつくので、
+// About の _p-about*.scss と同じ書き方を踏襲する。
+//
+// 既に l-section 側で relative を持っているなら、ここは何も書かなくてよい。
+// 各セクションの __inner で relative を張る流儀なら、下を有効化:
+//
+// .p-contact__inner {
+//   position: relative;
+// }
+//
+// ※「数字をコンテンツ基準に統一」は Phase 7 で全セクション横断で行う(持ち越し済み)。

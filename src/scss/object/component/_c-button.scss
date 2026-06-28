@@ -48,13 +48,19 @@
       color: var(--color-bg-main);          // 濃い地に対する白文字
       background-color: var(--color-text);
       border-color: var(--color-text);
+      
+      @media (any-hover: hover) {
+        &:hover {
+          cursor: pointer;
+        }
+      }
   
       // ホバー/フォーカスで差し色(枠線と背景をアクセントへ)。
-      &:hover,
-      &:focus-visible {
-        background-color: var(--color-accent);
-        border-color: var(--color-accent);
-      }
+      // &:hover,
+      // &:focus-visible {
+      //   background-color: var(--color-accent);
+      //   border-color: var(--color-accent);
+      // }
     }
   
     // ----------------------------------------------------------
@@ -64,12 +70,14 @@
       color: var(--color-text);
       background-color: var(--color-bg-main);
       border-color: var(--color-text);
-  
-      // ホバー/フォーカスで差し色(文字と枠線をアクセントへ)。
-      &:hover,
-      &:focus-visible {
-        color: var(--color-accent);
-        border-color: var(--color-accent);
+
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: var(--color-accent);
+          color: var(--color-white);
+          border-color: var(--color-accent);
+          cursor: pointer;
+        }
       }
     }
   

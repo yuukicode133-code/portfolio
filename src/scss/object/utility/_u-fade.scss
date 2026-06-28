@@ -1,0 +1,40 @@
+// =====================================
+// フワッと表示(IntersectionObserver連動)
+// JSが生きている時だけ初期非表示。is-in-view 付与で表示
+// =====================================
+
+// JS実行環境でのみ初期状態を隠す(JS非実行時は最初から見える=事故防止)
+.js {
+    .u-fade-up {
+      opacity: 0;
+      transform: translateY(var(--space-24));
+      transition: opacity 0.8s ease, transform 0.8s ease;
+  
+      &.is-in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    // 上下移動なしの単純フェード
+    .u-fade {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+  
+      &.is-in-view {
+        opacity: 1;
+      }
+    }
+  }
+  
+  // 動きが苦手なユーザーには即表示(アクセシビリティ最低担保)
+  @media (prefers-reduced-motion: reduce) {
+    .js {
+      .u-fade-up,
+      .u-fade {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  }
