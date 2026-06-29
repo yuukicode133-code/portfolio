@@ -52,6 +52,9 @@
       @media (any-hover: hover) {
         &:hover {
           cursor: pointer;
+          background-color: var(--color-white);
+          border-color: var(--color-accent);
+          color: var(--color-accent);
         }
       }
   

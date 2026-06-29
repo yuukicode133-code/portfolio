@@ -1,0 +1,115 @@
+{{> header}}
+<main class="l-main">
+
+  <nav class="c-breadcrumb" aria-label="パンくず">
+    <div class="l-inner">
+      <ol class="c-breadcrumb__list">
+        <li class="c-breadcrumb__item">
+          <a class="c-breadcrumb__link" href="/">ホーム</a>
+        </li>
+        <li class="c-breadcrumb__item" aria-current="page">
+          <span class="c-breadcrumb__current">お問い合わせ</span>
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <div class="p-page-header">
+    <div class="l-inner p-page-header__inner">
+      <h1 class="c-section-title">
+        <span class="c-section-title__en">confirm</span>
+        <span class="c-section-title__ja">入力内容のご確認</span>
+      </h1>
+      <p class="p-page-header__lead">
+        送信前の最終確認です。内容をご確認のうえ、よろしければ送信してください。<br>修正が必要な場合は「修正する」から入力画面に戻れます。
+      </p>
+    </div>
+  </div>
+
+  <!-- 進行表示: STEP01=完了 / STEP02=現在地 / STEP03=未到達 -->
+  <div class="l-inner">
+    <ol class="p-contact-steps" aria-label="お問い合わせの進行状況">
+      <li class="p-contact-steps__item is-done">
+        <span class="p-contact-steps__num">STEP 01</span>
+        <!-- <span class="p-contact-steps__label"><span aria-hidden="true">✓ </span>入力</span> -->
+      </li>
+      <li class="p-contact-steps__item is-current" aria-current="step">
+        <span class="p-contact-steps__num">STEP 02</span>
+        <span class="p-contact-steps__label">確認</span>
+      </li>
+      <li class="p-contact-steps__item">
+        <span class="p-contact-steps__num">STEP 03</span>
+        <span class="p-contact-steps__label">完了</span>
+      </li>
+    </ol>
+  </div>
+
+  <section class="l-section">
+    <div class="l-inner">
+      <div class="p-contact-confirm">
+        <h2 class="p-contact-confirm__title">ご入力いただいた内容</h2>
+        <p class="p-contact-confirm__note">
+          内容をご確認のうえ、ページ下部の「送信する」ボタンからお進みください。
+        </p>
+
+        <!-- 確認フローも <form>。送信=submit、修正=入力ページへ戻る遷移。
+             静的の値はサンプル。CF7 + Multi-Step Forms 移行時、
+             各 dd の値はプラグインが前ステップの入力値を出力する仕組みに差し替え -->
+        <form class="p-contact-confirm__form" action="#">
+
+          <!-- 確認内容 = 説明リスト(dt:項目名 / dd:入力値)。意味的に正しい要素 -->
+          <dl class="p-contact-confirm__list">
+            <div class="p-contact-confirm__row">
+              <dt class="p-contact-confirm__term">会社名・組織名</dt>
+              <dd class="p-contact-confirm__desc">株式会社○○</dd>
+            </div>
+            <div class="p-contact-confirm__row">
+              <dt class="p-contact-confirm__term">お名前</dt>
+              <dd class="p-contact-confirm__desc">山田 太郎</dd>
+            </div>
+            <div class="p-contact-confirm__row">
+              <dt class="p-contact-confirm__term">メールアドレス</dt>
+              <dd class="p-contact-confirm__desc">example@email.com</dd>
+            </div>
+            <div class="p-contact-confirm__row">
+              <dt class="p-contact-confirm__term">電話番号</dt>
+              <dd class="p-contact-confirm__desc">
+                <span class="p-contact-confirm__empty">未入力</span>
+              </dd>
+            </div>
+            <div class="p-contact-confirm__row">
+              <dt class="p-contact-confirm__term">件名</dt>
+              <dd class="p-contact-confirm__desc">面談のご相談</dd>
+            </div>
+            <div class="p-contact-confirm__row">
+              <dt class="p-contact-confirm__term">お問い合わせ内容</dt>
+              <dd class="p-contact-confirm__desc p-contact-confirm__desc--message">入力された本文がここに表示されます。
+改行も含めて、入力内容がそのまま表示される想定です。</dd>
+            </div>
+          </dl>
+
+          <p class="p-contact-confirm__notice" role="note">
+            「送信する」を押すと、入力内容が送信されます。送信後の修正はできませんので、内容をご確認のうえお進みください。
+          </p>
+
+          <div class="p-contact-confirm__actions">
+            <!-- 修正する: 入力ページへ戻る遷移 = secondary -->
+            <a class="c-button c-button--secondary p-contact-confirm__back" href="contact.html">
+              修正する
+            </a>
+            <!-- 送信する: 後戻りできないターミナルなアクション = primary(塗りの初登場) -->
+            <!-- <button class="c-button c-button--primary p-contact-confirm__submit" type="submit">
+              送信する →
+            </button> -->
+            <a class="c-button c-button--primary p-contact-confirm__submit" href="contact-thanks.html">
+                送信する
+            </a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+{{> footer}}

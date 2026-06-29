@@ -4,8 +4,8 @@
 // = これが relative を置く「今その行が必要な理由」(数字廃止後は arc が担う)。
 // 数字は無いが arc がはみ出すので overflow:clip でヘッダー内にクリップ。
 .p-page-header {
-  position: relative;
-  overflow: clip;
+  // position: relative;
+  // overflow: clip;
   padding-block: var(--space-64);     // ★ 値は実機調整
 }
 .p-page-header__inner {

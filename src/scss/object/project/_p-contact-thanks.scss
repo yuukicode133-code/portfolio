@@ -1,0 +1,151 @@
+@use "../../global/mixins" as *;
+
+// /contact/ 完了ページ。送信完了の確認 + 「次のアクション」のハブ。
+
+// --- 送信完了ボックス ---
+.p-contact-thanks__completed {
+  text-align: center;
+  padding: var(--space-40);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.p-contact-thanks__completed-head {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+}
+.p-contact-thanks__completed-icon { color: var(--color-accent); }
+.p-contact-thanks__completed-text {
+  margin-top: var(--space-16);
+  line-height: 1.9;
+}
+
+// --- 自動返信の案内。confirm の notice と同形(accent左罫の注意ボックス)。
+//     ※3つ目の同型が出たら c-notice 抽出を検討(今はProject完結で重複許容) ---
+.p-contact-thanks__notice {
+  margin-top: var(--space-24);
+  padding: var(--space-16);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+}
+
+// --- 次のアクション ---
+.p-contact-thanks__next-title { font-size: var(--fs-h3); }
+.p-contact-thanks__next-lead {
+  margin-top: var(--space-8);
+  color: var(--color-text-muted);
+}
+
+// 実績カード3枚。auto-fit で SP→PC を媒体問わず1〜3列に
+.p-contact-thanks__cards {
+  margin-top: var(--space-32);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-24);
+}
+.p-contact-thanks__card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-16);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  // a の hover 規約(typography側)に乗る。ここではカード枠の反応だけ足す
+  transition: border-color 0.2s ease;
+}
+@media (any-hover: hover) {
+  .p-contact-thanks__card-link:hover { border-color: var(--color-accent); }
+}
+.p-contact-thanks__card-thumb {
+  aspect-ratio: 16 / 10;
+  margin-bottom: var(--space-16);
+  background-color: var(--color-border);   // 実画像差し替えまでの仮プレースホルダ
+  border-radius: var(--radius-sm);
+}
+.p-contact-thanks__card-label {
+  font-size: var(--fs-small);              // ★ fs-sm/fs-small の統一に合わせる
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+.p-contact-thanks__card-title {
+  margin-top: var(--space-4);
+  font-weight: var(--fw-bold);
+}
+.p-contact-thanks__card-more {
+  margin-top: var(--space-16);
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--fs-small);              // ★
+  color: var(--color-text-muted);
+}
+
+// --- より深く知りたい方へ ---
+.p-contact-thanks__deeper {
+  margin-top: var(--space-40);
+  padding: var(--space-32);
+  border: 1px dashed var(--color-border);  // 主要カードと差をつけ「補助」を示す
+  border-radius: var(--radius-md);
+}
+.p-contact-thanks__deeper-title { font-weight: var(--fw-bold); }
+.p-contact-thanks__deeper-links {
+  margin-top: var(--space-24);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-16);
+}
+.p-contact-thanks__link-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  height: 100%;
+  padding: var(--space-16);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s ease;
+}
+@media (any-hover: hover) {
+  .p-contact-thanks__link-card:hover { border-color: var(--color-accent); }
+}
+.p-contact-thanks__link-card-label {
+  font-size: var(--fs-small);              // ★
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+.p-contact-thanks__link-card-title { font-weight: var(--fw-bold); }
+.p-contact-thanks__link-card-desc {
+  font-size: var(--fs-small);              // ★
+  color: var(--color-text-muted);
+}
+.p-contact-thanks__link-card-more {
+  margin-top: var(--space-8);
+  font-size: var(--fs-small);              // ★
+}
+
+// --- SNS ---
+.p-contact-thanks__social {
+  margin-top: var(--space-40);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-16);
+}
+.p-contact-thanks__social-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-24);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s ease;
+}
+@media (any-hover: hover) {
+  .p-contact-thanks__social-link:hover { border-color: var(--color-accent); }
+}
+.p-contact-thanks__social-note {
+  font-size: var(--fs-small);              // ★
+  color: var(--color-text-muted);
+}
