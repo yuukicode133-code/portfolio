@@ -1,0 +1,22 @@
+@use "../../global/mixins" as *;
+
+// arc が position:absolute の子 → 親に relative が必要。
+// = これが relative を置く「今その行が必要な理由」(数字廃止後は arc が担う)。
+// 数字は無いが arc がはみ出すので overflow:clip でヘッダー内にクリップ。
+.p-page-header {
+  position: relative;
+  overflow: clip;
+  padding-block: var(--space-64);     // ★ 値は実機調整
+}
+.p-page-header__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+.p-page-header__lead {
+  max-width: 40rem;
+  line-height: 1.9;
+  color: var(--color-text-muted);     // ★
+}
+// __arc の具体配置は Phase 7 の円弧モチーフ全体判断と合わせて確定。
+// 今は c-arc 既定 + 必要なら位置上書きのみ。

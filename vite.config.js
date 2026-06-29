@@ -8,6 +8,14 @@ export default defineConfig({
   build: {
     outDir: '../dist',
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        index:   resolve(__dirname, "index.html"),
+        contact: resolve(__dirname, "contact/index.html"),   // ← (1)で移した場合
+        // confirm: resolve(__dirname, "contact/confirm/index.html"),
+        // thanks:  resolve(__dirname, "contact/thanks/index.html"),
+      },
+    },
   },
   server: {
     open: true,

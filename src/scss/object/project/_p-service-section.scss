@@ -149,6 +149,7 @@ $item-gap-sp: var(--space-16);
   font-size: var(--fs-h3);
   font-weight: bold;
   color: var(--color-text);
+  text-wrap: wrap;
 }
 
 .p-service-section__item-text {

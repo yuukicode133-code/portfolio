@@ -1,0 +1,127 @@
+@use "../../global/mixins" as *;
+
+.p-contact-form-section__title { 
+  font-size: var(--fs-h3); 
+}   // ★ 確認
+.p-contact-form-section__note {
+  margin-block: var(--space-16) var(--space-40);
+  color: var(--color-text-muted);          // ★
+}
+
+.p-contact-form { 
+  display: flex; flex-direction: column; gap: var(--space-32);
+}
+
+// PC: ラベル列 / 入力列の2カラム。SP: 縦積み
+.p-contact-form__field { 
+  display: grid; gap: var(--space-8); 
+}
+@media (min-width: 768px) {                 // ★ ブレークポイント変数があれば差し替え
+  .p-contact-form__field {
+    grid-template-columns: 14rem 1fr;
+    gap: var(--space-24);
+    align-items: start;
+  }
+}
+
+.p-contact-form__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-8);
+}
+.p-contact-form__label { 
+  font-weight: var(--fw-bold); 
+}
+
+// バッジ = 必須/任意を「文言」で示す(色のみ依存にしない)
+.p-contact-form__badge {
+  padding: 0.1em 0.5em;
+  font-size: var(--fs-small);                  // ★
+  line-height: var(--lh-heading);
+  border-radius: var(--radius-md);
+  display: inline-block;
+}
+.p-contact-form__badge--required {
+  color: var(--color-white);
+  background-color: var(--color-accent);  
+}
+.p-contact-form__badge--optional {
+  color: var(--color-text-muted);                  // ★
+  background-color: transparent; 
+  border: 1px solid var(--color-border);
+}
+
+.p-contact-form__hint {
+  margin-top: var(--space-8);
+  font-size: var(--fs-small);                  // ★
+  color: var(--color-text-muted);           // ★
+}
+
+.p-contact-form__input,
+.p-contact-form__textarea {
+  width: 100%;
+  min-height: 2.75rem;                      // 44px タッチターゲット
+  padding: 0.625rem 0.875rem;
+  background-color: transparent;  
+  border: 1px solid var(--color-border);   
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s ease;
+}
+.p-contact-form__textarea { 
+  resize: vertical; 
+}
+.p-contact-form__input::placeholder,
+.p-contact-form__textarea::placeholder {
+  color: rgba(20, 20, 23, 0.6);  
+}
+
+// フォーカスリング = アクセシビリティの主張点。輪郭の出るリング
+.p-contact-form__input:focus-visible,
+.p-contact-form__textarea:focus-visible,
+.p-contact-form__checkbox:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-color: var(--color-accent);
+}
+
+
+.p-contact-form__consent { 
+  display: flex; 
+  align-items: flex-start; 
+  gap: var(--space-16); 
+  justify-content: center;
+}
+.p-contact-form__checkbox {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.2em;
+  accent-color: var(--color-accent);
+}
+.p-contact-form__privacy-link {
+  text-decoration: underline;
+}
+
+.p-contact-form__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+}
+.p-contact-form__note { 
+  font-size: var(--fs-small); color: var(--color-text-muted); 
+}   
+
+.p-contact-form__input,
+.p-contact-form__textarea,
+.p-contact-form__checkbox {
+ @media (any-hover: hover) {
+  &:hover {
+    border-color: var(--color-accent);
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-color: var(--color-accent);
+  }
+ }
+}

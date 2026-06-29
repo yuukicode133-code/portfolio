@@ -1,0 +1,28 @@
+@use "../../global/mixins" as *;
+
+// Component化しない(Service4ブロックと同方針、Project完結)。
+// <ol> + aria-current="step"。完了は is-done。
+.p-contact-steps { display: flex; gap: var(--space-8); }
+.p-contact-steps__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-16);
+  text-align: center;
+  border: 1px solid var(--color-border);   // ★
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);          // ★ 既定は控えめ
+}
+.p-contact-steps__num { font-size: var(--fs-sm); letter-spacing: 0.08em; }   // ★ fs-sm
+.p-contact-steps__label { font-weight: 700; }
+
+// 現在のステップ = 反転(塗り)
+.p-contact-steps__item.is-current {
+  background-color: var(--color-accent);     // ★ 本文濃色トークン名を確認
+  color: var(--color-white);           // ★ 白/反転テキスト
+  border: none;
+}
+// 完了済み = 枠線のまま色だけ戻す(confirm/thanks で使用)
+.p-contact-steps__item.is-done { color: var(--color-text); }   // ★

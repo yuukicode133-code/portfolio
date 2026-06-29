@@ -1,0 +1,20 @@
+.c-breadcrumb {
+    padding-top: var(--space-16);
+}
+.c-breadcrumb__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-8);
+    font-size: var(--fs-sm);          // ★ 小さめテキスト用トークン名を確認
+    color: var(--color-text-muted);   // ★ 控えめテキスト用トークン名を確認
+  }
+  .c-breadcrumb__item { display: flex; align-items: center; gap: var(--space-8); }
+  
+  // 2つ目以降の前に区切り。装飾なので意味は持たせない
+  .c-breadcrumb__item + .c-breadcrumb__item::before {
+    content: "/";
+    color: var(--color-border);       // ★ 罫線/淡色トークン名を確認
+  }
+  // リンクは typography.scss の a 規約(hoverでaccent)に乗る → 打ち消し不要
+  // 現在地はリンクにせず淡色のまま(__current)

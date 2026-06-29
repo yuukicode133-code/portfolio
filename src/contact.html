@@ -1,0 +1,166 @@
+{{> header}}
+<main class="l-main">
+
+    <!-- 下層共通パンくず。site階層のみ示す(フォーム進行は p-contact-steps が別途持つ) -->
+    <nav class="c-breadcrumb" aria-label="パンくず">
+      <div class="l-inner">
+        <ol class="c-breadcrumb__list">
+          <li class="c-breadcrumb__item">
+            <a class="c-breadcrumb__link" href="/">ホーム</a>
+          </li>
+          <li class="c-breadcrumb__item" aria-current="page">
+            <span class="c-breadcrumb__current">お問い合わせ</span>
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ページヘッダー(下層共通)。装飾数字は廃止、装飾は円弧モチーフに一本化 -->
+    <div class="p-page-header">
+      <!-- <span class="c-arc p-page-header__arc" aria-hidden="true"></span> -->
+      <div class="l-inner p-page-header__inner">
+        <h1 class="c-section-title">
+          <span class="c-section-title__en">contact</span>
+          <span class="c-section-title__ja">お問い合わせ</span>
+        </h1>
+        <p class="p-page-header__lead">
+          ポートフォリオをご覧いただき、ありがとうございます。面談のご依頼やご相談などございましたら、以下のフォームよりご連絡ください。2営業日以内にご返信いたします。
+        </p>
+      </div>
+    </div>
+  
+    <!-- 進行表示(機能的・数字は現在地を指すので残す)。入力ページ = STEP 01 が現在地 -->
+    <div class="l-inner">
+      <ol class="p-contact-steps" aria-label="お問い合わせの進行状況">
+        <li class="p-contact-steps__item is-current" aria-current="step">
+          <span class="p-contact-steps__num">STEP 01</span>
+          <span class="p-contact-steps__label">入力</span>
+        </li>
+        <li class="p-contact-steps__item">
+          <span class="p-contact-steps__num">STEP 02</span>
+          <span class="p-contact-steps__label">確認</span>
+        </li>
+        <li class="p-contact-steps__item">
+          <span class="p-contact-steps__num">STEP 03</span>
+          <span class="p-contact-steps__label">完了</span>
+        </li>
+      </ol>
+    </div>
+  
+    <!-- フォーム本体(単一セクションなので装飾数字なし) -->
+    <section class="l-section">
+      <div class="l-inner">
+        <div class="p-contact-form-section">
+          <h2 class="p-contact-form-section__title">必要事項のご入力</h2>
+          <p class="p-contact-form-section__note">
+            「必須」の項目をすべてご入力のうえ、確認画面へお進みください。
+          </p>
+  
+          <!-- 静的段階は非機能。CF7 + Multi-Step Forms 移行時に
+               ステップ遷移はプラグインが処理(action/ショートコードへ差し替え) -->
+          <form class="p-contact-form" action="#">
+  
+            <div class="p-contact-form__field">
+              <div class="p-contact-form__head">
+                <label class="p-contact-form__label" for="contact-company">会社名・組織名</label>
+                <span class="p-contact-form__badge p-contact-form__badge--optional">任意</span>
+              </div>
+              <div class="p-contact-form__body">
+                <!-- CF7: [text your-company autocomplete:organization id:contact-company class:p-contact-form__input] -->
+                <input class="p-contact-form__input" type="text" id="contact-company"
+                       name="your-company" autocomplete="organization" placeholder="例: 株式会社○○">
+              </div>
+            </div>
+  
+            <div class="p-contact-form__field">
+              <div class="p-contact-form__head">
+                <label class="p-contact-form__label" for="contact-name">お名前</label>
+                <span class="p-contact-form__badge p-contact-form__badge--required">必須</span>
+              </div>
+              <div class="p-contact-form__body">
+                <!-- CF7: [text* your-name autocomplete:name id:contact-name class:p-contact-form__input] -->
+                <input class="p-contact-form__input" type="text" id="contact-name"
+                       name="your-name" autocomplete="name" placeholder="例: 山田 太郎"
+                       required aria-required="true">
+              </div>
+            </div>
+  
+            <div class="p-contact-form__field">
+              <div class="p-contact-form__head">
+                <label class="p-contact-form__label" for="contact-email">メールアドレス</label>
+                <span class="p-contact-form__badge p-contact-form__badge--required">必須</span>
+              </div>
+              <div class="p-contact-form__body">
+                <!-- CF7: [email* your-email autocomplete:email id:contact-email class:p-contact-form__input] -->
+                <input class="p-contact-form__input" type="email" id="contact-email"
+                       name="your-email" autocomplete="email" placeholder="例: example@email.com"
+                       required aria-required="true" aria-describedby="contact-email-hint">
+                <p class="p-contact-form__hint" id="contact-email-hint">
+                  ※返信先となります。お間違いのないようご入力ください。
+                </p>
+              </div>
+            </div>
+  
+            <div class="p-contact-form__field">
+              <div class="p-contact-form__head">
+                <label class="p-contact-form__label" for="contact-tel">電話番号</label>
+                <span class="p-contact-form__badge p-contact-form__badge--optional">任意</span>
+              </div>
+              <div class="p-contact-form__body">
+                <!-- CF7: [tel your-tel autocomplete:tel id:contact-tel class:p-contact-form__input] -->
+                <input class="p-contact-form__input" type="tel" id="contact-tel"
+                       name="your-tel" autocomplete="tel" placeholder="例: 090-XXXX-XXXX">
+              </div>
+            </div>
+  
+            <div class="p-contact-form__field">
+              <div class="p-contact-form__head">
+                <label class="p-contact-form__label" for="contact-subject">件名</label>
+                <span class="p-contact-form__badge p-contact-form__badge--required">必須</span>
+              </div>
+              <div class="p-contact-form__body">
+                <!-- CF7: [text* your-subject id:contact-subject class:p-contact-form__input] -->
+                <input class="p-contact-form__input" type="text" id="contact-subject"
+                       name="your-subject" placeholder="例: 面談のご相談"
+                       required aria-required="true">
+              </div>
+            </div>
+  
+            <div class="p-contact-form__field">
+              <div class="p-contact-form__head">
+                <label class="p-contact-form__label" for="contact-message">お問い合わせ内容</label>
+                <span class="p-contact-form__badge p-contact-form__badge--required">必須</span>
+              </div>
+              <div class="p-contact-form__body">
+                <!-- CF7: [textarea* your-message id:contact-message class:p-contact-form__textarea] -->
+                <textarea class="p-contact-form__textarea" id="contact-message"
+                          name="your-message" rows="6" placeholder="本文をご入力ください"
+                          required aria-required="true"></textarea>
+              </div>
+            </div>
+  
+            <!-- Turnstile はここに後付け(CF7 + プラグインのウィジェット/ショートコード) -->
+  
+            <div class="p-contact-form__consent">
+              <input class="p-contact-form__checkbox" type="checkbox" id="contact-privacy"
+                     name="privacy-agree" required aria-required="true">
+              <label class="p-contact-form__consent-label" for="contact-privacy">
+                <a class="p-contact-form__privacy-link" href="/privacy/">プライバシーポリシー</a>に同意の上、送信します
+              </label>
+            </div>
+  
+            <div class="p-contact-form__actions">
+              <!-- このページの主要アクション = 確認へ進む(送信は確認ページ側) -->
+              <button class="c-button p-contact-form__submit c-button--secondary" type="submit">
+                確認画面へ進む
+              </button>
+              <p class="p-contact-form__note">※入力内容を確認後、送信できます。</p>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </section>
+  
+  </main>
+  {{> footer}}

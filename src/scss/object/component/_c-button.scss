@@ -38,8 +38,8 @@
     border: var(--border-width-md) solid var(--color-text);
     border-radius: var(--radius-md);
     // 色の変化を滑らかに(ホバー/フォーカスの差し色遷移用)。
-    transition: color 0.2s ease, background-color 0.2s ease,
-                border-color 0.2s ease;
+    transition: color 0.4s ease, background-color 0.4s ease,
+                border-color 0.4s ease;
   
     // ----------------------------------------------------------
     // --primary : 主たる行動。塗りつぶし。

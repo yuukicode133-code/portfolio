@@ -1,0 +1,5 @@
+@use "../global/mixins" as *;
+
+.l-main {
+    margin-top: var(--header-height);
+}

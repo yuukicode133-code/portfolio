@@ -90,7 +90,7 @@
   --color-bg-sub: var(--color-gray-50);
   --color-text: var(--color-gray-900);
   --color-fv-bg: rgba(255, 255, 255, 0.45);
-  --color-text-muted: rgba(20, 20, 23, 0.6);
+  --color-text-muted: rgba(20, 20, 23, 0.7);
   --color-border: rgba(20, 20, 23, 0.08);
   --color-border-strong: rgba(20, 20, 23, 0.15);
 
@@ -112,7 +112,9 @@
 
   // 流動サイズ(レスポンシブの clamp は Semantic 段階で組む)
   --fs-h2 : clamp(2.5rem, 1.357rem + 2.381vw, 3.5rem); //40 ~ 56px
+  --fs-section-title : clamp(2.5rem, 1.357rem + 2.381vw, 3.5rem); //40 ~ 56px
   --fs-h1: clamp(1.5rem, 1.324rem + 0.751vw, 2rem); // 24〜32px
+  --fs-top-h1: clamp(1.5rem, 1.324rem + 0.751vw, 2rem); // 24〜32px
   --fs-numeral: clamp(6rem, 15vw, 12.5rem); // 巨大ナンバー
 
   // ============================================================
@@ -144,6 +146,11 @@
   --font-en: "Source Serif 4", Georgia, serif;
   --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
 
+  // ----- Font Weight -----
+  --fw-bold: 700;
+  --fw-normal: 400;
+  --fw-medium: 500;
+
   // ----- Z-index -----
   --z-header: 100;
   --z-header-nav: 90;
@@ -152,7 +159,7 @@
   --z-content: 20; // 通常コンテンツ
 
   // ----header-height-----
-  --header-height: 72px;// SP/PC共通(必要なら後で調整)
+  --header-height: 4.5rem;// SP/PC共通(必要なら後で調整)
 }
 // @include mq(sp) {
 //   :root {

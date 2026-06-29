@@ -18,7 +18,7 @@ body {
   // 見出しは英字フォント基準(和文が混ざるケースはComponent層で個別指定)
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-en);
-    font-weight: 400;
+    font-weight: var(--fw-normal);
     line-height: var(--lh-heading);
     letter-spacing: var(--ls-heading-en);
     // text-transform: capitalize は廃止

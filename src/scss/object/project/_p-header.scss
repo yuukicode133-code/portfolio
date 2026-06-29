@@ -25,14 +25,12 @@
 
 .p-header__logo-heading {
   // トップの <h1>。文書構造のためだけの薄い器。
-  // 見た目は下の p-header__logo-link(<a>)が持つので、
-  // ここでは <h1> のデフォルトマージンを打ち消すだけ。
-  margin: 0;
-  font-size: var(--fs-h1);
+  // 見た目は下の p-header__logo-link(<a>)が持つ
 }
 
 .p-header__logo-link {
   display: inline-block;
+  font-size: var(--fs-h1);
 
   // --- 英字タイポグラフィの明示(重要) ---
   // この <a> は親要素タイプが環境で変わる：
