@@ -49,10 +49,40 @@
   border-radius: var(--radius-sm);
   color: var(--color-text-muted);
 }
+// 失敗表示。accentで縁取るが、塗りつぶさず控えめに(誠実なトーン維持)。
+// confirm/thanks の __notice と同系の見た目だが、role=alert で性質が違う。
+.p-contact-confirm__error {
+  margin-block: var(--space-24);
+  padding: var(--space-16);
+  border: 1px solid var(--color-accent);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+}
 
 .p-contact-confirm__actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-16);
+}
+.p-contact-confirm__back , 
+.p-contact-confirm__submit {
+  gap: var(--space-8);
+}
+.p-contact-confirm__submit::after {
+  content: "";
+  width: 0.45em;
+  height: 0.45em;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+.p-contact-confirm__back::after {
+  content: "";
+  width: 0.45em;
+  height: 0.45em;
+  border-bottom: 1.5px solid currentColor;
+  border-left: 1.5px solid currentColor;
+  transform: rotate(45deg);
 }

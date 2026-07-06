@@ -113,14 +113,35 @@
 .p-header__nav-item {
   display: grid;
   place-items: center;
-  transition: background-color 0.5s ease, color 0.5s ease;
-  border-radius: var(--radius-md);
+  transition: background-color 0.5s ease-out, color 0.5s ease-out;
+  border-radius: var(--radius-button);
   padding: var(--space-8) var(--space-16);
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;              // テキストを ::before の上に保つ(z-index不要)
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    aspect-ratio: 1;
+    width: 150%;                     // 角まで覆う大きさ。余剰は overflow で切れる
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease-out;
+  }
 
   @media (any-hover: hover) {
     &:hover {
-      background-color: var(--color-accent);
       cursor: pointer;
+
+      &::before {
+        transform: translate(-50%, -50%) scale(1);
+      }
 
       .p-header__nav-link {
         color: var(--color-white);
@@ -131,6 +152,7 @@
 // ----- ナビリンク(サイズの出し分けのみ。color/transition/hover は a タグから継承)-----
 .p-header__nav-link {
   font-weight: bold;
+  
 
   @include mq(sp) {
     font-size: var(--fs-h4);

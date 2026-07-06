@@ -1,0 +1,159 @@
+@use "../../global/mixins" as *;
+
+// About ページ(下層)。ページ全体を p-about の1ブロックで持つ。
+// ※トップの about セクションは about-section 側なので衝突しない。
+// スキルは案A(縦積みチェックリスト・箱を作らず罫と余白で束ねる)。
+// 飾り数字はセクション見出しの 01 / 02 のみ。項目には振らない(トップ Service の署名との衝突回避)。
+
+// ---- セクション見出し枠(01/02 共通)----
+.p-about__head {
+  position: relative;
+  margin-bottom: var(--space-64);
+}
+// 背面の装飾数字。HTML側で aria-hidden 済み。配置はPhase7「数字をコンテンツ基準に統一」で微調整予定。
+.p-about__num {
+  position: absolute;
+  top: 0;
+  left: -0.08em;
+  z-index: var(--z-numeral);
+  font-family: var(--font-en);
+  font-size: var(--fs-numeral);
+  line-height: var(--lh-numeral);
+  color: var(--color-decorative-numeral);
+  pointer-events: none;
+  user-select: none;
+}
+.p-about__head > .c-section-title,
+.p-about__lead {
+  position: relative;
+  z-index: var(--z-content);
+}
+.p-about__lead {
+  margin-top: var(--space-24);
+  max-width: 40em;
+  color: var(--color-text-muted);
+  line-height: var(--lh-body);
+}
+
+// ---- SUB(対応可能な内容 / AIとの向き合い方)----
+.p-about__sub {
+  margin-top: var(--space-64);
+}
+.p-about__sub-en {
+  display: block;
+  font-family: var(--font-en);
+  font-size: var(--fs-tag);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.p-about__sub-title {
+  margin-top: var(--space-8);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-heading);
+}
+.p-about__declare {
+  margin-top: var(--space-16);
+  max-width: 40em;
+  color: var(--color-text-muted);
+  line-height: var(--lh-body);
+}
+
+// ---- スキル(案A:縦積み・罫と余白で束ねる)----
+.p-about__skills {
+  margin-top: var(--space-24);
+}
+.p-about__skill {
+  padding-block: var(--space-32);
+}
+.p-about__skill + .p-about__skill {
+  border-top: var(--border-width) solid var(--color-border);
+}
+.p-about__skill-en {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-en);
+  font-size: var(--fs-tag);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+// 英ラベル頭の短い横線 = 差し色の道標
+.p-about__skill-en::before {
+  content: "";
+  width: 1.4em;
+  height: 1px;
+  margin-right: 0.65em;
+  background-color: var(--color-accent);
+}
+.p-about__skill-name {
+  margin-top: var(--space-8);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-heading);
+}
+.p-about__skill-list {
+  margin-top: var(--space-16);
+  list-style: none;
+}
+.p-about__skill-list li {
+  position: relative;
+  padding-left: 1.7em;
+  color: var(--color-text);
+  line-height: var(--lh-body);
+}
+.p-about__skill-list li + li {
+  margin-top: var(--space-8);
+}
+// チェックマーク(擬似要素・border+rotate)。accent 直指定。
+.p-about__skill-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.2em;
+  top: 0.7em;
+  width: 0.5em;
+  height: 0.26em;
+  border-left: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  transform: rotate(-45deg);
+}
+
+// ---- AIとの向き合い方(3ブロック)----
+.p-about__ai {
+  margin-top: var(--space-24);
+}
+.p-about__ai-block {
+  padding-block: var(--space-24);
+}
+.p-about__ai-block + .p-about__ai-block {
+  border-top: var(--border-width) solid var(--color-border);
+}
+.p-about__ai-name {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-heading);
+}
+.p-about__ai-list {
+  margin-top: var(--space-16);
+  list-style: none;
+}
+.p-about__ai-list li {
+  position: relative;
+  padding-left: 1.4em;
+  color: var(--color-text);
+  line-height: var(--lh-body);
+}
+.p-about__ai-list li + li {
+  margin-top: var(--space-8);
+}
+// 「取り組み」は capability ではないので、チェックでなく accent の短い横棒で区別。
+.p-about__ai-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 0.8em;
+  height: 1px;
+  background-color: var(--color-accent);
+}

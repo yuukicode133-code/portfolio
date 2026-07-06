@@ -287,6 +287,9 @@ $p-works__contents-row-gap: var(--space-24);
   margin-top: var(--space-16);
   padding-inline: var(--space-16);
   padding-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .p-works__card-title {

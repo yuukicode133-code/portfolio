@@ -40,5 +40,6 @@
       font-family: var(--font-jp);          // ベース(英字)を和文へ打ち消し
       font-size: var(--fs-small);
       color: var(--color-text-muted);       // 英字より一段控えめなトーン
+      font-weight: var(--fw-bold);
     }
   }

@@ -35,4 +35,17 @@
 // 完了済み = 枠線のまま色だけ戻す(confirm/thanks で使用)
 .p-contact-steps__item.is-done {
    color: var(--color-text); 
-  }   // ★
+}
+.p-contact-steps__item.is-done .p-contact-steps__label {
+  display: inline-flex;
+  align-items: center;
+}
+.p-contact-steps__item.is-done .p-contact-steps__label::before {
+  content: "";
+  width: 0.3em;
+  height: 0.6em;
+  margin-right: 0.4em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}

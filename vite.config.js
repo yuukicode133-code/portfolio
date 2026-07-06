@@ -14,6 +14,7 @@ export default defineConfig({
         contact: resolve(__dirname, "contact/index.html"),   // ← (1)で移した場合
         confirm: resolve(__dirname, "contact/confirm/index.html"),
         thanks:  resolve(__dirname, "contact/thanks/index.html"),
+        about: resolve(__dirname, "about/index.html"),
       },
     },
   },

@@ -98,7 +98,7 @@
   --color-accent: var(--color-orange-700);
 
   // 装飾色(差し色とは独立。意味として独立しているのでここに置く)
-  --color-decorative-numeral: rgba(20, 20, 23, 0.07);
+  --color-decorative-numeral: rgba(20, 20, 23, 0.065);
   --color-decorative-arc: rgba(20, 20, 23, 0.04);
 
   // ----- Font Size Semantic -----
@@ -108,9 +108,9 @@
   --fs-small: var(--fs-14);
   --fs-tag: var(--fs-13);
   --fs-h4: var(--fs-20);
-  --fs-h3: clamp(1.5rem, 1.412rem + 0.376vw, 1.75rem); // 24〜28px
 
   // 流動サイズ(レスポンシブの clamp は Semantic 段階で組む)
+  --fs-h3: clamp(1.5rem, 1.412rem + 0.376vw, 1.75rem); // 24〜28px
   --fs-h2 : clamp(2.5rem, 1.357rem + 2.381vw, 3.5rem); //40 ~ 56px
   --fs-section-title : clamp(2.5rem, 1.357rem + 2.381vw, 3.5rem); //40 ~ 56px
   --fs-h1: clamp(1.5rem, 1.324rem + 0.751vw, 2rem); // 24〜32px
@@ -128,6 +128,7 @@
   --radius-sm: 4px; // ボタン、フォームフィールド
   --radius-md: 8px; // カード
   --radius-lg: 24px; // 大きなコンテナ
+  --radius-button: 48px; // ボタン
 
   // ----- Border Width(罫線の太さ) -----
   --border-width: 0.5px; // 標準

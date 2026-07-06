@@ -7,6 +7,7 @@
   // position: relative;
   // overflow: clip;
   padding-block: var(--space-64);     // ★ 値は実機調整
+  background-color: var(--color-bg-sub);
 }
 .p-page-header__inner {
   display: flex;
@@ -15,8 +16,9 @@
 }
 .p-page-header__lead {
   max-width: 40rem;
-  line-height: 1.9;
-  color: var(--color-text-muted);     // ★
+  line-height: var(--lh-body);
+  color: var(--color-text-muted); 
+  margin-top: var(--space-48);
 }
 // __arc の具体配置は Phase 7 の円弧モチーフ全体判断と合わせて確定。
 // 今は c-arc 既定 + 必要なら位置上書きのみ。

@@ -31,11 +31,11 @@
     <ol class="p-contact-steps" aria-label="お問い合わせの進行状況">
       <li class="p-contact-steps__item is-done">
         <span class="p-contact-steps__num">STEP 01</span>
-        <!-- <span class="p-contact-steps__label"><span aria-hidden="true">✓ </span>入力</span> -->
+        <span class="p-contact-steps__label">入力<span class="u-hidden-visually"> 済</span></span>
       </li>
       <li class="p-contact-steps__item is-done">
         <span class="p-contact-steps__num">STEP 02</span>
-        <!-- <span class="p-contact-steps__label"><span aria-hidden="true">✓ </span>確認</span> -->
+        <span class="p-contact-steps__label">確認<span class="u-hidden-visually"> 済</span></span>
       </li>
       <li class="p-contact-steps__item is-current" aria-current="step">
         <span class="p-contact-steps__num">STEP 03</span>
@@ -49,7 +49,7 @@
     <div class="l-inner">
       <div class="p-contact-thanks__completed">
         <p class="p-contact-thanks__completed-head">
-          <span class="p-contact-thanks__completed-icon" aria-hidden="true">✓</span>
+          <span class="p-contact-thanks__completed-icon" aria-hidden="true"></span>
           お問い合わせを送信しました
         </p>
         <p class="p-contact-thanks__completed-text">
@@ -76,56 +76,58 @@
         <ul class="p-contact-thanks__cards">
           <li class="p-contact-thanks__card">
             <a class="p-contact-thanks__card-link" href="works-corporate.html">
-              <span class="p-contact-thanks__card-thumb" aria-hidden="true"></span>
+              <img class="p-contact-thanks__card-thumb" src="/assets/img/works-corporate.jpg"
+                   alt="" width="480" height="300" loading="lazy">
               <span class="p-contact-thanks__card-label">CORPORATE</span>
-              <span class="p-contact-thanks__card-title">代表実績①</span>
-              <span class="p-contact-thanks__card-more">詳細を見る<span aria-hidden="true"> →</span></span>
+              <h3 class="p-contact-thanks__card-title">代表実績①</h3>
+              <span class="p-contact-thanks__card-more">詳細を見る</span>
             </a>
           </li>
           <li class="p-contact-thanks__card">
-            <a class="p-contact-thanks__card-link" href="works-wordpress.html">
-              <span class="p-contact-thanks__card-thumb" aria-hidden="true"></span>
+            <a class="p-contact-thanks__card-link" href="works-corporate.html">
+              <img class="p-contact-thanks__card-thumb" src="/assets/img/works-corporate.jpg"
+                   alt="" width="480" height="300" loading="lazy">
               <span class="p-contact-thanks__card-label">WORDPRESS</span>
-              <span class="p-contact-thanks__card-title">代表実績②</span>
-              <span class="p-contact-thanks__card-more">詳細を見る<span aria-hidden="true"> →</span></span>
+              <h3 class="p-contact-thanks__card-title">代表実績②</h3>
+              <span class="p-contact-thanks__card-more">詳細を見る</span>
             </a>
           </li>
           <li class="p-contact-thanks__card">
-            <a class="p-contact-thanks__card-link" href="works-portfolio.html">
-              <span class="p-contact-thanks__card-thumb" aria-hidden="true"></span>
+            <a class="p-contact-thanks__card-link" href="works-corporate.html">
+              <img class="p-contact-thanks__card-thumb" src="/assets/img/works-corporate.jpg"
+                   alt="" width="480" height="300" loading="lazy">
               <span class="p-contact-thanks__card-label">PORTFOLIO</span>
-              <span class="p-contact-thanks__card-title">代表実績③</span>
-              <span class="p-contact-thanks__card-more">詳細を見る<span aria-hidden="true"> →</span></span>
+              <h3 class="p-contact-thanks__card-title">代表実績③</h3>
+              <span class="p-contact-thanks__card-more">詳細を見る</span>
             </a>
           </li>
         </ul>
 
         <!-- 補助アクション: より深く知りたい人向け(About + AI) -->
         <div class="p-contact-thanks__deeper">
-          <p class="p-contact-thanks__deeper-title">より深く知りたい方へ</p>
+          <h3 class="p-contact-thanks__deeper-title">より深く知りたい方へ</h3>
           <ul class="p-contact-thanks__deeper-links">
             <li>
               <a class="p-contact-thanks__link-card" href="about.html">
                 <span class="p-contact-thanks__link-card-label">ABOUT</span>
-                <span class="p-contact-thanks__link-card-title">私について</span>
-                <span class="p-contact-thanks__link-card-desc">経歴・スキル・姿勢など、詳しい自己紹介</span>
-                <span class="p-contact-thanks__link-card-more">Aboutページへ<span aria-hidden="true"> →</span></span>
+                <h4 class="p-contact-thanks__link-card-title">私について</h4>
+                <p class="p-contact-thanks__link-card-desc">経歴・スキル・姿勢など、詳しい自己紹介</p>
+                <span class="p-contact-thanks__link-card-more">Aboutページへ</span>
               </a>
             </li>
             <li>
-              <!-- About内のAI節アンカーへ。実装時にid付与で繋ぐ -->
               <a class="p-contact-thanks__link-card" href="about.html#ai">
                 <span class="p-contact-thanks__link-card-label">AI USAGE</span>
-                <span class="p-contact-thanks__link-card-title">AIへの取り組み</span>
-                <span class="p-contact-thanks__link-card-desc">AIをコーディングや学習にどう活用しているか</span>
-                <span class="p-contact-thanks__link-card-more">該当セクションへ<span aria-hidden="true"> →</span></span>
+                <h4 class="p-contact-thanks__link-card-title">AIへの取り組み</h4>
+                <p class="p-contact-thanks__link-card-desc">AIをコーディングや学習にどう活用しているか</p>
+                <span class="p-contact-thanks__link-card-more">該当セクションへ</span>
               </a>
             </li>
           </ul>
         </div>
 
         <!-- SNS -->
-        <ul class="p-contact-thanks__social">
+        <!-- <ul class="p-contact-thanks__social">
           <li>
             <a class="p-contact-thanks__social-link" href="https://x.com/"
                target="_blank" rel="noopener noreferrer">
@@ -138,7 +140,7 @@
               GitHub
             </a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </section>

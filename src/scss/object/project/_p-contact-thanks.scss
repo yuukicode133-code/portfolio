@@ -12,14 +12,24 @@
 .p-contact-thanks__completed-head {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-8);
+  gap: var(--space-24);
   font-size: var(--fs-h3);
   font-weight: var(--fw-bold);
 }
-.p-contact-thanks__completed-icon { color: var(--color-accent); }
+.p-contact-thanks__completed-icon {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  // 線幅はチェックのサイズに合わせて調整。ステップの✓より主役なので気持ち太め
+  border-right: 2.5px solid var(--color-accent);
+  border-bottom: 2.5px solid var(--color-accent);
+  transform: rotate(45deg);
+  // rotateで中心がずれるので、視覚的な縦位置を微調整
+  transform-origin: center;
+}
 .p-contact-thanks__completed-text {
   margin-top: var(--space-16);
-  line-height: 1.9;
+  line-height: var(--lh-body);
 }
 
 // --- 自動返信の案内。confirm の notice と同形(accent左罫の注意ボックス)。
@@ -44,7 +54,7 @@
 .p-contact-thanks__cards {
   margin-top: var(--space-32);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: var(--space-24);
 }
 .p-contact-thanks__card-link {
@@ -58,12 +68,16 @@
   transition: border-color 0.2s ease;
 }
 @media (any-hover: hover) {
-  .p-contact-thanks__card-link:hover { border-color: var(--color-accent); }
+  .p-contact-thanks__card-link:hover {
+     border-color: var(--color-accent); 
+  }
 }
 .p-contact-thanks__card-thumb {
   aspect-ratio: 16 / 10;
+  width: 100%;
   margin-bottom: var(--space-16);
-  background-color: var(--color-border);   // 実画像差し替えまでの仮プレースホルダ
+  object-fit: cover;                    // 画像比がズレても枠に収める
+  background-color: var(--color-border);// 読み込み前/失敗時のプレースホルダ
   border-radius: var(--radius-sm);
 }
 .p-contact-thanks__card-label {
@@ -81,6 +95,18 @@
   border-top: 1px solid var(--color-border);
   font-size: var(--fs-small);              // ★
   color: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+
+  &::after {
+    content: "";
+  width: 0.45em;
+  height: 0.45em;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  }
 }
 
 // --- より深く知りたい方へ ---
@@ -100,15 +126,18 @@
 .p-contact-thanks__link-card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-8);
   height: 100%;
   padding: var(--space-16);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   transition: border-color 0.2s ease;
 }
+
 @media (any-hover: hover) {
-  .p-contact-thanks__link-card:hover { border-color: var(--color-accent); }
+  .p-contact-thanks__link-card:hover {
+     border-color: var(--color-accent); 
+   }
 }
 .p-contact-thanks__link-card-label {
   font-size: var(--fs-small);              // ★
@@ -126,26 +155,26 @@
 }
 
 // --- SNS ---
-.p-contact-thanks__social {
-  margin-top: var(--space-40);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-16);
-}
-.p-contact-thanks__social-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.75rem;
-  padding: 0 var(--space-24);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  transition: border-color 0.2s ease;
-}
-@media (any-hover: hover) {
-  .p-contact-thanks__social-link:hover { border-color: var(--color-accent); }
-}
-.p-contact-thanks__social-note {
-  font-size: var(--fs-small);              // ★
-  color: var(--color-text-muted);
-}
+// .p-contact-thanks__social {
+//   margin-top: var(--space-40);
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   gap: var(--space-16);
+// }
+// .p-contact-thanks__social-link {
+//   display: inline-flex;
+//   align-items: center;
+//   min-height: 2.75rem;
+//   padding: 0 var(--space-24);
+//   border: 1px solid var(--color-border);
+//   border-radius: var(--radius-sm);
+//   transition: border-color 0.2s ease;
+// }
+// @media (any-hover: hover) {
+//   .p-contact-thanks__social-link:hover { border-color: var(--color-accent); }
+// }
+// .p-contact-thanks__social-note {
+//   font-size: var(--fs-small);              // ★
+//   color: var(--color-text-muted);
+// }
