@@ -1,5 +1,9 @@
 @use "../../global/mixins" as *;
 
+.p-contact-form-section {
+  padding-top: var(--space-40);
+}
+
 .p-contact-form-section__title { 
   font-size: var(--fs-h3); 
 }   // ★ 確認

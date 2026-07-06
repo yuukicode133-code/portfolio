@@ -3,7 +3,6 @@
 .l-section {
   padding-top: var(--space-144);   // PC: 144px
   padding-bottom: var(--space-144);
-  position: relative;
   overflow: clip;  // 巨大ナンバー・円弧モチーフの見切れを実現。
                    // hidden ではなく clip:
                    //  ・clip も hidden 同様「はみ出しを切り取る」

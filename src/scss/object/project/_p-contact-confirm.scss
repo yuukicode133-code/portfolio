@@ -3,7 +3,13 @@
 // /contact/ 確認ページ。入力値のエコー表示 + 送信/修正。
 // 入力フォームと視覚リズムを揃える(同じ 14rem / 1fr の2カラム)。
 
-.p-contact-confirm__title { font-size: var(--fs-h3); }
+.p-contact-confirm {
+  padding-top: var(--space-40);
+}
+
+.p-contact-confirm__title { 
+  font-size: var(--fs-h3); 
+}
 .p-contact-confirm__note {
   margin-block: var(--space-16) var(--space-40);
   color: var(--color-text-muted);

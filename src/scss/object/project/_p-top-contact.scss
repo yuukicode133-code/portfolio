@@ -11,6 +11,10 @@
 //       ここはレイアウト(中央寄せ・余白・重なり)だけ記述する。
 // ============================================================
 
+.p-contact{
+  padding-bottom: 13.75rem;
+  position: relative;
+}
 .p-contact__content {
   // テキスト・ボタンを縦に積んで中央寄せ。
   // align-items: center で <a>(inline-block)も水平中央に来る。
@@ -21,6 +25,12 @@
   gap: var(--space-40); // タイトル / リード / ボタン 間の余白
 }
 
+.p-contact__numeral {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .p-contact__lead {
   // リード2文(挨拶 → 行動)の間隔。本文サイズ・行間は body 継承。
   display: flex;

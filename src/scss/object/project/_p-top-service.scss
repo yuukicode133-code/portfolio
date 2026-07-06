@@ -29,6 +29,7 @@ $item-gap-sp: var(--space-16);
 
 .p-service-section {
   position: relative;
+  background-color: var(--color-bg-sub);
   // padding-block: $section-padding-block;
 
   // @include mq(sp) {

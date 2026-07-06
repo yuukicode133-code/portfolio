@@ -8,11 +8,15 @@
   // overflow: clip;
   padding-block: var(--space-64);     // ★ 値は実機調整
   background-color: var(--color-bg-sub);
+  border-bottom: var(--border-width-md) solid var(--color-border);
 }
 .p-page-header__inner {
   display: flex;
   flex-direction: column;
   gap: var(--space-24);
+}
+.p-page-header__title {
+  font-size: var(--fs-h1);
 }
 .p-page-header__lead {
   max-width: 40rem;

@@ -5,6 +5,7 @@
 .p-contact-steps { 
   display: flex;
   gap: var(--space-8); 
+  margin-top: var(--space-64);
 }
 .p-contact-steps__item {
   flex: 1;

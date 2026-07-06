@@ -13,7 +13,7 @@
 // 背面の装飾数字。HTML側で aria-hidden 済み。配置はPhase7「数字をコンテンツ基準に統一」で微調整予定。
 .p-about__num {
   position: absolute;
-  top: 0;
+  top: -60%;
   left: -0.08em;
   z-index: var(--z-numeral);
   font-family: var(--font-en);
