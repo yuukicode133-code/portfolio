@@ -20,7 +20,7 @@ body {
     font-family: var(--font-en);
     font-weight: var(--fw-normal);
     line-height: var(--lh-heading);
-    letter-spacing: var(--ls-heading-en);
+    letter-spacing: var(--ls-heading-sm);
     // text-transform: capitalize は廃止
     //   理由: 英字の固有名詞(WordPress等)の大文字運用を阻害するため
     //         capitalize はComponent層で個別に指定する

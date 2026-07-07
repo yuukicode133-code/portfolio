@@ -1,0 +1,51 @@
+// =====================================
+// c-point : 画像+説明のペア(ジグザグ)
+// about POINTS / single こだわりポイントで共用。ACF繰り返しフィールドから出力。
+// ページ固有の事情(見出しレベル・番号・セクション余白)は持たない。
+// position: relative は、器側で乗せる装飾数字(絶対配置)の基準としてのみ許可。
+// =====================================
+
+.c-point {
+  padding-top: calc(var(--fs-h2) + var(--space-8)); //数字の装飾と同じサイズを当てることで余白を確保 +任意の余白サイズ
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-40);
+  align-items: center;
+}
+
+.c-point__figure {
+  margin: 0;
+}
+.c-point__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  background-color: var(--color-bg-sub); // 画像未挿入プレースホルダ
+}
+
+.c-point__title {
+  font-size: var(--fs-h4);
+}
+.c-point__desc {
+  margin-top: var(--space-16);
+  color: var(--color-text-muted);
+}
+
+// 偶数だけ見た目を反転。HTML順(画像→テキスト)は固定=読み上げ順は常に一定。
+.c-point:nth-child(even) .c-point__figure {
+  order: 1;
+}
+
+// 狭幅:縦積み・反転解除(常に画像→テキスト)。
+@media (max-width: 767px) {
+  .c-point {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+  }
+  .c-point:nth-child(even) .c-point__figure {
+    order: 0;
+  }
+}

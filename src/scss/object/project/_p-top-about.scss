@@ -83,15 +83,6 @@
     &__more {
       justify-self: start; // 横いっぱいに伸ばさない
       margin-top: var(--space-32);
-
-      @media (any-hover: hover) {
-        &:hover {
-          background-color: var(--color-accent);
-          color: var(--color-white);
-          border-color: var(--color-accent);
-          cursor: pointer;
-        }
-      }
     }
   
     // --- スタッツの出現演出(初期状態)。JSで解除 ---

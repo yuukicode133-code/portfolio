@@ -8,7 +8,7 @@
 // ---- セクション見出し枠(01/02 共通)----
 .p-about__head {
   position: relative;
-  margin-bottom: var(--space-64);
+  z-index: var(--z-content);
 }
 // 背面の装飾数字。HTML側で aria-hidden 済み。配置はPhase7「数字をコンテンツ基準に統一」で微調整予定。
 .p-about__num {
@@ -23,16 +23,11 @@
   pointer-events: none;
   user-select: none;
 }
-.p-about__head > .c-section-title,
-.p-about__lead {
-  position: relative;
-  z-index: var(--z-content);
-}
+
 .p-about__lead {
   margin-top: var(--space-24);
   max-width: 40em;
   color: var(--color-text-muted);
-  line-height: var(--lh-body);
 }
 
 // ---- SUB(対応可能な内容 / AIとの向き合い方)----
@@ -43,21 +38,18 @@
   display: block;
   font-family: var(--font-en);
   font-size: var(--fs-tag);
-  letter-spacing: 0.18em;
+  letter-spacing: var(--ls-heading-lg);
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
 .p-about__sub-title {
   margin-top: var(--space-8);
   font-size: var(--fs-h3);
-  font-weight: var(--fw-bold);
-  line-height: var(--lh-heading);
 }
 .p-about__declare {
   margin-top: var(--space-16);
   max-width: 40em;
   color: var(--color-text-muted);
-  line-height: var(--lh-body);
 }
 
 // ---- スキル(案A:縦積み・罫と余白で束ねる)----
@@ -75,7 +67,7 @@
   align-items: center;
   font-family: var(--font-en);
   font-size: var(--fs-tag);
-  letter-spacing: 0.18em;
+  letter-spacing: var(--ls-heading-lg);
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
@@ -90,35 +82,29 @@
 .p-about__skill-name {
   margin-top: var(--space-8);
   font-size: var(--fs-h4);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-heading);
 }
 .p-about__skill-list {
   margin-top: var(--space-16);
-  list-style: none;
 }
-.p-about__skill-list li {
+.p-about__skill-item {
   position: relative;
   padding-left: 1.7em;
-  color: var(--color-text);
-  line-height: var(--lh-body);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0.2em;
+    top: 50%;
+    width: 0.5em;
+    height: 0.26em;
+    border-left: 2px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+    transform: translateY(-50%) rotate(-45deg);
+  }
 }
-.p-about__skill-list li + li {
+.p-about__skill-item + .p-about__skill-item {
   margin-top: var(--space-8);
 }
-// チェックマーク(擬似要素・border+rotate)。accent 直指定。
-.p-about__skill-list li::before {
-  content: "";
-  position: absolute;
-  left: 0.2em;
-  top: 0.7em;
-  width: 0.5em;
-  height: 0.26em;
-  border-left: 2px solid var(--color-accent);
-  border-bottom: 2px solid var(--color-accent);
-  transform: rotate(-45deg);
-}
-
 // ---- AIとの向き合い方(3ブロック)----
 .p-about__ai {
   margin-top: var(--space-24);
@@ -131,29 +117,98 @@
 }
 .p-about__ai-name {
   font-size: var(--fs-h4);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-heading);
 }
 .p-about__ai-list {
   margin-top: var(--space-16);
-  list-style: none;
 }
-.p-about__ai-list li {
+.p-about__ai-item {
   position: relative;
   padding-left: 1.4em;
-  color: var(--color-text);
-  line-height: var(--lh-body);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.8em;
+    height: 1px;
+    background-color: var(--color-accent);
+  }
 }
-.p-about__ai-list li + li {
+.p-about__ai-item + .p-about__ai-item {
   margin-top: var(--space-8);
 }
-// 「取り組み」は capability ではないので、チェックでなく accent の短い横棒で区別。
-.p-about__ai-list li::before {
-  content: "";
+
+// =====================================
+// 02 このサイトについて
+// =====================================
+
+// ---- メタ情報(dl:項目名↔値の左右対応。confirm と同じ作法)----
+.p-about__meta {
+  margin-top: var(--space-64);
+}
+.p-about__meta-row {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  align-items: center;
+  gap: var(--space-24);
+  padding-block: var(--space-24);
+}
+.p-about__meta-row + .p-about__meta-row {
+  border-top: var(--border-width) solid var(--color-border);
+}
+.p-about__meta-term {
+  font-family: var(--font-en);
+  font-size: var(--fs-tag);
+  letter-spacing: var(--ls-heading-lg);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: var(--lh-heading);
+}
+.p-about__meta-desc {
+  color: var(--color-text);
+}
+
+// STACK タグ(c-tag が既存 Component なら流用。無ければ single 実装時に Component 化を判断)
+.p-about__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  list-style: none;
+}
+.p-about__stack-tag {
+  font-family: var(--font-en);
+  color: var(--color-text-muted);
+}
+// ---- POINTS(工夫したポイント)器 ----
+// 中身のペアは c-point(Component)。ここはリスト・番号・余白だけ持つ。
+.p-about__points {
+  margin-top: var(--space-96);
+}
+.p-about__point-list {
+  display: grid;      // gap を効かせるため
+  gap: var(--space-64);
+  margin-top: var(--space-40);
+}
+
+// 装飾数字。順序の意味は <ol> が持つので HTML 側で aria-hidden 済み。
+// 基準は c-point の position: relative。
+.p-about__point-num {
   position: absolute;
+  top: 0;
   left: 0;
-  top: 0.85em;
-  width: 0.8em;
-  height: 1px;
-  background-color: var(--color-accent);
+  z-index: var(--z-numeral);
+  font-family: var(--font-en);
+  font-size: var(--fs-h2);
+  line-height: 1;
+  color: var(--color-decorative-numeral);
+  pointer-events: none;
+  user-select: none;
+}
+
+.p-about__point-num--right {
+  left: auto;
+  right: 0;
+
 }

@@ -1,0 +1,277 @@
+@use "../../global/mixins" as *;
+
+/* =============================================================
+   p-works  ―― 実績一覧ページ本体(Project完結・works専用)
+   - カードはコンポーネント化せず本ブロック内に閉じる(single では使わない)
+   - 装飾数字/円弧は無し(Phase 7 で全体判断)
+   - 幅は既存 .l-inner が担う想定(このファイルでは幅を持たない)
+   ============================================================= */
+
+.p-works {
+  padding-block: var(--space-96);
+
+  @include mq(sp) {
+    padding-block: var(--space-64);
+  }
+}
+
+/* -------------------------------------------------------------
+   カテゴリー(WP カテゴリーアーカイブへのリンク)
+   ------------------------------------------------------------- */
+.p-works__categories {
+  margin-bottom: var(--space-48);
+}
+
+.p-works__category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8) var(--space-16);
+}
+
+.p-works__category {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-8);
+  padding-block: var(--space-8);
+  padding-inline: var(--space-16);
+  border: var(--border-width-md) solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  line-height: 1;
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+// リンク版のホバー/フォーカス:静かな方言(accent の輪郭が立つ)
+a.p-works__category {
+  &:hover,
+  &:focus-visible {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
+// 現在アーカイブ(すべて 等):塗りで現在地を示す
+.p-works__category.is-current,
+.p-works__category[aria-current="page"] {
+  background-color: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg-main);
+}
+
+.p-works__category-count {
+  font-size: var(--fs-tag);
+  color: var(--color-text-muted);
+}
+
+.p-works__category.is-current .p-works__category-count,
+.p-works__category[aria-current="page"] .p-works__category-count {
+  color: rgba(255, 255, 255, 0.7); // 反転面での淡色
+}
+
+/* -------------------------------------------------------------
+   グリッド
+   ・横は最大 2 列。SP で 1 列へ
+   ・幅の上限は .l-inner が担うので、ここでは列数だけ制御
+   ------------------------------------------------------------- */
+.p-works__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-40) var(--space-32);
+
+  @include mq(sp) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------------------------------------------------
+   カード(works 専用・非コンポーネント)
+   ・毛髪罫 0.5px + 微かな影 + サムネ tint で「均一 1px 枠」を回避
+   ・<article> + 伸縮リンク(__link::after)でカード全体をクリック可能に
+   ------------------------------------------------------------- */
+.p-works__card {
+  position: relative; // 伸縮リンクの基準
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-bg-main);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: clip; // サムネのはみ出しを角丸でクリップ
+  box-shadow:
+    0 1px 2px rgba(20, 20, 23, 0.04),
+    0 12px 28px -18px rgba(20, 20, 23, 0.22);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+// ホバー:輪郭が accent に立ち上がり、ごく控えめに浮く(触れば必ず返る確実さ)
+.p-works__card:hover {
+  border-color: var(--color-accent);
+  box-shadow:
+    0 2px 4px rgba(20, 20, 23, 0.05),
+    0 18px 36px -18px rgba(192, 80, 31, 0.28); // accent 寄りの影
+  transform: translateY(-2px);
+}
+
+// キーボード/フォーカス:カード自身に outline(overflow:clip に切られない)
+.p-works__card:focus-within {
+  outline: var(--border-width-md) solid var(--color-accent);
+  outline-offset: 2px;
+  box-shadow:
+    0 2px 4px rgba(20, 20, 23, 0.05),
+    0 18px 36px -18px rgba(20, 20, 23, 0.24);
+}
+
+/* サムネイル(画像=内容。未挿入時は tint プレースホルダ) */
+.p-works__thumb {
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-bg-sub);
+  overflow: clip;
+}
+
+.p-works__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.p-works__card:hover .p-works__img {
+  transform: scale(1.03); // ごく控えめなズーム
+}
+
+/* カード本文 */
+.p-works__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-24);
+}
+
+.p-works__category-label {
+  font-family: var(--font-en);
+  font-size: var(--fs-tag);
+  letter-spacing: var(--ls-heading-lg);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.p-works__title {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-heading);
+  font-weight: var(--fw-bold);
+}
+
+.p-works__link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  // カード全体をクリック領域にする伸縮リンク
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-content);
+  }
+
+  // フォーカスリングはカード側(focus-within)で表現するため個別リングは消す
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.p-works__card:hover .p-works__link,
+.p-works__card:focus-within .p-works__link {
+  color: var(--color-accent);
+}
+
+/* 使用技術タグ(既存 c-tag を流用。ここは配置と区切りのみ) */
+.p-works__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-top: var(--space-16);
+  padding-top: var(--space-16);
+  border-top: var(--border-width) solid var(--color-border); // タイトルとの毛髪罫
+}
+
+/* -------------------------------------------------------------
+   モーション低減:transform 系を停止(fade は u-fade-up 側で即表示)
+   ------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .p-works__card,
+  .p-works__img {
+    transition:
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      color 0.2s ease;
+  }
+
+  .p-works__card:hover {
+    transform: none;
+  }
+
+  .p-works__card:hover .p-works__img {
+    transform: none;
+  }
+}
+
+/* -------------------------------------------------------------
+   ページ送り(1 ページでも "1" を表示)
+   ・現状は works 専用。他アーカイブでも再利用するようになったら
+     c-pagination へ昇格を検討(いまは過剰抽象を避ける)
+   ------------------------------------------------------------- */
+.p-works__pagination {
+  margin-top: var(--space-64);
+}
+
+.p-works__pagination-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+.p-works__page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem; // 44px:タップ/クリックターゲット確保
+  min-height: 2.75rem;
+  padding-inline: var(--space-8);
+  border: var(--border-width-md) solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-en);
+  font-size: var(--fs-body);
+  line-height: 1;
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+a.p-works__page {
+  &:hover,
+  &:focus-visible {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
+.p-works__page.is-current,
+.p-works__page[aria-current="page"] {
+  background-color: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg-main);
+}

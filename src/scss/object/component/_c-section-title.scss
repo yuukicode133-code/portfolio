@@ -32,7 +32,7 @@
       font-family: var(--font-en);          // <h2> 継承と同じだが役割明示
       font-size: var(--fs-section-title);
       text-transform: uppercase;            // 表示のみ大文字化(安全な変換)
-      letter-spacing: var(--ls-heading-en);
+      letter-spacing: var(--ls-heading-sm);
       color: var(--color-text);
     }
   

@@ -15,7 +15,7 @@ export default defineConfig({
         confirm: resolve(__dirname, "contact/confirm/index.html"),
         thanks:  resolve(__dirname, "contact/thanks/index.html"),
         about: resolve(__dirname, "about/index.html"),
-      },
+        works: resolve(__dirname, "works/index.html"),
     },
   },
   server: {
