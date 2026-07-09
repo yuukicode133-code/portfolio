@@ -4,15 +4,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 // ============================================================
-// .p-works__card のスクロール連動アニメーション
+// .p-top-works__card のスクロール連動アニメーション
 // ============================================================
 (function () {
   "use strict";
 
-  const cardWrappers = gsap.utils.toArray(".p-works__card-link");
+  const cardWrappers = gsap.utils.toArray(".p-top-works__card-link");
 
   cardWrappers.forEach((wrapper, i) => {
-    const card = wrapper.querySelector(".p-works__card");
+    const card = wrapper.querySelector(".p-top-works__card");
 
     // ============================
     // ① カードの出現アニメーション
@@ -54,7 +54,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 // ============================================================
-// .p-works-section の --card-height を「全カードの最大自然高さ」に同期
+// .p-top-works-section の --card-height を「全カードの最大自然高さ」に同期
 // ============================================================
 // 目的:
 //   全カードの高さを揃えて、手前カードの下端の透明領域から
@@ -63,7 +63,7 @@ gsap.registerPlugin(ScrollTrigger);
 //   多数の計算式から参照されているため、これを一括同期する。
 //
 // フィードバックループ対策(重要):
-//   .p-works__card には min-height: var(--card-height) を指定しているため、
+//   .p-top-works__card には min-height: var(--card-height) を指定しているため、
 //   JS が単純に高さを測定すると「min-height で押し広げられた値」を
 //   読んでしまい、一度大きな値が入ると下がれなくなる。
 //   → 測定の直前に min-height を一時的に "0" で打ち消し、
@@ -77,10 +77,10 @@ gsap.registerPlugin(ScrollTrigger);
 //   こちらを使う。
 //
 // 仕組み:
-//   1) 全 .p-works__card の min-height を一時的に "0" にする
+//   1) 全 .p-top-works__card の min-height を一時的に "0" にする
 //   2) 各カードの offsetHeight(自然高さ)を測り、最大値を算出
 //   3) min-height のインライン指定をクリア(CSS の指定に戻す)
-//   4) .p-works-section の --card-height をその最大値で更新
+//   4) .p-top-works-section の --card-height をその最大値で更新
 //   5) CSS のカスケードにより参照先(min-height 含む)が再計算
 //   6) ScrollTrigger は高さ変化を自動検知しないので明示的に refresh
 //
@@ -90,8 +90,8 @@ gsap.registerPlugin(ScrollTrigger);
 //   SCSS のメディアクエリ定義は上書きされる。
 // ============================================================
 (function syncCardHeight() {
-  const section = document.querySelector(".p-works-section");
-  const cards = document.querySelectorAll(".p-works__card");
+  const section = document.querySelector(".p-top-works-section");
+  const cards = document.querySelectorAll(".p-top-works__card");
   if (!section || cards.length === 0) return;
 
   // ResizeObserver のコールバック内で min-height を変更すると

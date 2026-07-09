@@ -31,85 +31,85 @@
   </section>
 
   <!-- Works -->
-  <section class="p-works-section l-section">
+  <section class="p-top-works-section l-section">
     <!-- 装飾レイヤー: セクション全幅基準で配置。.l-section の overflow:clip で
          セクション端を見切れる。c-numeral / c-arc は見た目のみ、配置は p 層 -->
-    <div class="p-works-section__arc-wrapper">
-      <span class="c-numeral c-numeral--md p-works-section__numeral" aria-hidden="true">01</span>
+    <div class="p-top-works-section__arc-wrapper">
+      <span class="c-numeral c-numeral--md p-top-works-section__numeral" aria-hidden="true">01</span>
     </div>
 
     <div class="l-inner">
       <!--
         [変更]
-        旧構造: .p-works__contents > [.p-works__left(タイトル+ボタン) , .p-works__right(カード)]
-        新構造: .p-works__contents > [.p-works__title , .p-works__right , .p-works__button] の3兄弟
+        旧構造: .p-top-works__contents > [.p-top-works__left(タイトル+ボタン) , .p-top-works__right(カード)]
+        新構造: .p-top-works__contents > [.p-top-works__title , .p-top-works__right , .p-top-works__button] の3兄弟
         理由: タイトルとボタンを「左カラム」という運命共同体から解放するため。
               SP時に縦並び(タイトル→カード→ボタン)、PC時にGridで2カラム再構築できる。
               タイトルだけ sticky、ボタンはsticky不要(left廃止)。
       -->
-      <div class="p-works__contents">
-        <h2 class="c-section-title p-works__title">
+      <div class="p-top-works__contents">
+        <h2 class="c-section-title p-top-works__title">
           <span class="c-section-title__en">works</span>
           <span class="c-section-title__ja">制作実績</span>
         </h2>
-        <div class="p-works__right">
+        <div class="p-top-works__right">
           <!-- wordpress -->
-          <a href="/works/" class="p-works__card-link">
-            <div class="p-works__card">
-              <div class="p-works__card-image">
+          <a href="/works/" class="p-top-works__card-link">
+            <div class="p-top-works__card">
+              <div class="p-top-works__card-image">
                 <picture>
                   <source srcset="/images/test-wp.webp" type="image/webp" />
                   <img src="/images/test-wp.png" alt="ポートフォリオサイトのサムネイル画像" width="1978" height="1930" />
                 </picture>
               </div>
-              <div class="p-works__card-content">
-                <h3 class="p-works__card-title">ポートフォリオサイト</h3>
-                <ul class="p-works__card-tags">
-                  <li class="p-works__card-tag">WordPress</li>
-                  <li class="p-works__card-tag">ポートフォリオサイト</li>
+              <div class="p-top-works__card-content">
+                <h3 class="p-top-works__card-title">ポートフォリオサイト</h3>
+                <ul class="p-top-works__card-tags">
+                  <li class="p-top-works__card-tag">WordPress</li>
+                  <li class="p-top-works__card-tag">ポートフォリオサイト</li>
                 </ul>
               </div>
             </div>
           </a>
 
           <!-- green -->
-          <a href="/works/" class="p-works__card-link">
-            <div class="p-works__card">
-              <div class="p-works__card-image">
+          <a href="/works/" class="p-top-works__card-link">
+            <div class="p-top-works__card">
+              <div class="p-top-works__card-image">
                 <picture>
                   <source srcset="/images/green.webp" type="image/webp" />
                   <img src="/images/green.png" alt="ポートフォリオサイトのサムネイル画像" width="375" height="250" />
                 </picture>
               </div>
-              <div class="p-works__card-content">
-                <h3 class="p-works__card-title">[架空] green デザイナーのポートフォリオ</h3>
-                <ul class="p-works__card-tags">
-                  <li class="p-works__card-tag">ポートフォリオサイト</li>
+              <div class="p-top-works__card-content">
+                <h3 class="p-top-works__card-title">[架空] green デザイナーのポートフォリオ</h3>
+                <ul class="p-top-works__card-tags">
+                  <li class="p-top-works__card-tag">ポートフォリオサイト</li>
                 </ul>
               </div>
             </div>
           </a>
 
           <!-- oha -->
-          <a href="/works/" class="p-works__card-link">
-            <div class="p-works__card">
-              <div class="p-works__card-image">
+          <a href="/works/" class="p-top-works__card-link">
+            <div class="p-top-works__card">
+              <div class="p-top-works__card-image">
                 <picture>
                   <source srcset="/images/oha.webp" type="image/webp" />
                   <img src="/images/oha.png" alt="LPサイトのサムネイル画像" width="375" height="250" />
                 </picture>
               </div>
-              <div class="p-works__card-content">
-                <h3 class="p-works__card-title">oha!</h3>
-                <ul class="p-works__card-tags">
-                  <li class="p-works__card-tag">LP</li>
+              <div class="p-top-works__card-content">
+                <h3 class="p-top-works__card-title">oha!</h3>
+                <ul class="p-top-works__card-tags">
+                  <li class="p-top-works__card-tag">LP</li>
                 </ul>
               </div>
             </div>
           </a>
         </div>
-        <div class="p-works__button-wrapper">
-          <a href="/works/" class="c-button c-button--secondary p-works__button">全ての実績を見る</a>
+        <div class="p-top-works__button-wrapper">
+          <a href="/works/" class="c-button c-button--secondary p-top-works__button">全ての実績を見る</a>
         </div>
       </div>
     </div>

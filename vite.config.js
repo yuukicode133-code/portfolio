@@ -16,6 +16,8 @@ export default defineConfig({
         thanks:  resolve(__dirname, "contact/thanks/index.html"),
         about: resolve(__dirname, "about/index.html"),
         works: resolve(__dirname, "works/index.html"),
+        single: resolve(__dirname, "single/index.html"),
+      },
     },
   },
   server: {

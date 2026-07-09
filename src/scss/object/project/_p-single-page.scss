@@ -1,0 +1,193 @@
+@use "../../global/mixins" as *;
+
+// ============================================================
+// p-single  --  実績詳細ページ(single)
+// ============================================================
+// ページ全体を p-single の1ブロックで持つ。共有部品(c-breadcrumb /
+// p-page-header / c-section-title / c-point / c-arrow-link / c-button)は流用し、
+// ここは single 固有のレイアウト・余白・装飾番号・ページャだけを持つ。
+//
+// 動的化の前提(WordPress / ACF):
+//   固定フィールド … カテゴリー / 案件名 / 短い概要 / 詳細概要 /
+//                    Client・Scope・Term・Target / 公開URL / モックアップ画像
+//   繰り返しフィールド … Stack(使用技術タグ)/ こだわりポイント(画像+見出し+本文)
+//   HTML の「固定 vs 繰り返し」の境界をそのまま ACF フィールドへ写せるよう組む。
+//
+// 番号方針: 下層のページ番号・№ は付けない(引き継ぎ §2-1)。
+//           ただし「こだわりポイント」の 01/02/03 は About POINTS と粒度を揃えて残す。
+// ------------------------------------------------------------
+
+// ===== ヘッダー(案件名主体)=====
+
+// カテゴリー(ACF:サイトの種類)。About のラベル群と同じ「英ラベル + accent の道標」。
+.p-single__category {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-en);
+  font-size: var(--fs-tag);
+  letter-spacing: var(--ls-heading-lg);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+
+  &::before {
+    content: "";
+    width: 1.4em;
+    height: 1px;
+    margin-right: 0.65em;
+    background-color: var(--color-accent);
+  }
+}
+
+// 案件名。page-header の見出しサイズ(--fs-h1)を流用しつつ、日本語主体で組む。
+.p-single__title {
+  margin-top: var(--space-16);
+  line-height: var(--lh-heading);
+}
+
+// ヘッダーのアクション(サイトを見る=矢印リンク / GitHub=枠線ボタン)。
+.p-single__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-24);
+  margin-top: var(--space-40);
+}
+
+// ===== メインビジュアル(まず惹きつける=モックアップを大きく先頭に)=====
+.p-single__mockup {
+  margin: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: var(--color-bg-sub);   // c-point__img と同じ扱い(枠なし・角丸なし・プレースホルダ)
+  }
+}
+.p-single__mockup-sub {
+  display: grid;
+  gap: var(--space-24);
+  margin-top: var(--space-24);
+}
+@media (min-width: 768px) {
+  .p-single__mockup-sub {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-32);
+  }
+}
+.p-single__mockup-item {
+  margin: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: var(--color-bg-sub);   // 同上。single 全体で画像の質感を c-point に揃える
+  }
+}
+
+// ===== セクション見出し(番号なし。c-section-title を流用)=====
+.p-single__head {
+  margin-bottom: var(--space-40);
+}
+
+// ===== 概要(物語)=====
+.p-single__overview {
+  max-width: 42em;
+  line-height: var(--lh-body);
+}
+
+// ===== メタ情報(事実。dl:項目↔値。about / confirm と同じ作法)=====
+.p-single__meta {
+  margin-top: var(--space-48);
+}
+.p-single__meta-row {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: var(--space-24);
+}
+.p-single__meta-row + .p-single__meta-row {
+  border-top: var(--border-width) solid var(--color-border);
+}
+@media (min-width: 768px) {
+  .p-single__meta-row {
+    grid-template-columns: 10rem 1fr;
+    gap: var(--space-24);
+    align-items: start;
+  }
+}
+.p-single__meta-term {
+  font-family: var(--font-en);
+  font-size: var(--fs-tag);
+  letter-spacing: var(--ls-heading-lg);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: var(--lh-heading);
+}
+.p-single__meta-desc {
+  color: var(--color-text);
+}
+
+// 使用技術タグ(ACF:繰り返し)。About STACK と見た目を揃える(素のテキストタグ)。
+.p-single__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8) var(--space-16);
+  list-style: none;
+}
+.p-single__stack-tag {
+  font-family: var(--font-en);
+  color: var(--color-text-muted);
+}
+
+// ===== こだわりポイント(ACF:繰り返し。中身のペアは c-point)=====
+.p-single__point-list {
+  display: grid;                  // gap を効かせるため
+  gap: var(--space-64);           // About POINTS と同じ間隔。c-point 側が上に番号ぶんの padding を持つ
+  margin-top: var(--space-40);
+}
+// 装飾番号。順序の意味は <ol> が持つので HTML 側で aria-hidden 済み。
+// 基準は c-point の position: relative。About POINTS と粒度をそろえる。
+.p-single__point-num {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--z-numeral);
+  font-family: var(--font-en);
+  font-size: var(--fs-h2);
+  line-height: 1;
+  color: var(--color-decorative-numeral);
+  pointer-events: none;
+  user-select: none;
+}
+.p-single__point-num--right {
+  left: auto;
+  right: 0;
+}
+
+// ===== ページ内ナビ(single専用・project層。中身は c-arrow-link)=====
+.p-single__pager {
+  margin-top: var(--space-128);
+  padding-top: var(--space-48);
+  border-top: var(--border-width) solid var(--color-border);
+}
+.p-single__pager-grid {
+  display: grid;
+  gap: var(--space-24);
+  justify-items: center;
+}
+@media (min-width: 768px) {
+  .p-single__pager-grid {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  .p-single__pager-prev  { justify-self: start; }
+  .p-single__pager-index { justify-self: center; }
+  .p-single__pager-next  { justify-self: end; }
+}
+// 中央「一覧へ戻る」は戻り先として少し強める(常時下線 + 中太)。
+// ※箱にはしない。強めたいなら c-button--primary へ差し替えも可(下の解説参照)。
+.p-single__pager-index {
+  font-weight: var(--fw-medium);
+  background-size: 100% 1.5px;      // 常に下線を出しておく(hover では色だけ変わる)
+}

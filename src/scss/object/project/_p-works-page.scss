@@ -27,19 +27,21 @@
   flex-wrap: wrap;
   gap: var(--space-8) var(--space-16);
 }
+.p-works__category-item {
+
+}
 
 .p-works__category {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: var(--space-8);
   padding-block: var(--space-8);
   padding-inline: var(--space-16);
   border: var(--border-width-md) solid var(--color-border-strong);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-button);
   font-size: var(--fs-small);
   line-height: 1;
   color: var(--color-text);
-  text-decoration: none;
   transition:
     border-color 0.2s ease,
     color 0.2s ease,
@@ -47,12 +49,17 @@
 }
 
 // リンク版のホバー/フォーカス:静かな方言(accent の輪郭が立つ)
-a.p-works__category {
-  &:hover,
-  &:focus-visible {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
+// a.p-works__category {
+//   &:hover,
+//   &:focus-visible {
+//     border-color: var(--color-accent);
+//     color: var(--color-accent);
+//   }
+// }
+.p-works__category:not([aria-current="page"]):hover,
+.p-works__category:not([aria-current="page"]):focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 // 現在アーカイブ(すべて 等):塗りで現在地を示す
@@ -171,9 +178,6 @@ a.p-works__category {
 }
 
 .p-works__link {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s ease;
 
   // カード全体をクリック領域にする伸縮リンク
   &::after {
@@ -247,14 +251,13 @@ a.p-works__category {
   justify-content: center;
   min-width: 2.75rem; // 44px:タップ/クリックターゲット確保
   min-height: 2.75rem;
-  padding-inline: var(--space-8);
   border: var(--border-width-md) solid var(--color-border-strong);
-  border-radius: var(--radius-sm);
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
   font-family: var(--font-en);
-  font-size: var(--fs-body);
+  font-size: 1.5em;
   line-height: 1;
   color: var(--color-text);
-  text-decoration: none;
   transition:
     border-color 0.2s ease,
     color 0.2s ease,

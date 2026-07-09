@@ -1,0 +1,78 @@
+// ============================================================
+// c-arrow-link  --  矢印つきテキストリンク(箱なし)
+// ============================================================
+// 役割: 遷移をうながす「静かな」リンク。下線が引かれ、矢印がわずかに動く。
+//       円形拡大の c-button とは別系統。矢印つきは今後こちらへ一本化する。
+//
+// 方針:
+//   ・箱を持たない(border / padding / 背景なし)。本文にも並びにも溶ける。
+//   ・矢印は HTML に直書きせず擬似要素で作る。currentColor で文字色に追従。
+//   ・向きは modifier で分ける。先頭矢印は ::before、末尾矢印は ::after。
+//     別要素なので c-button--secondary の円(::before)とはそもそも競合しない。
+//
+// マークアップ:
+//   <a class="c-arrow-link c-arrow-link--next" href="...">サイトを見る</a>
+//   <a class="c-arrow-link c-arrow-link--prev" href="...">前の実績</a>
+//   <a class="c-arrow-link c-arrow-link--up"   href="...">一覧へ戻る</a>
+// ------------------------------------------------------------
+
+.c-arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+    font-size: var(--fs-body);
+    color: var(--color-text);
+    text-decoration: none;
+  
+    // 下線を「引く」表現。text-decoration ではなく背景の幅をアニメーションする。
+    background-image: linear-gradient(var(--color-accent), var(--color-accent));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1.5px;          // 通常時は幅ゼロ = 下線は見えない
+    padding-bottom: 2px;
+    transition: background-size 0.35s ease, color 0.35s ease;
+  
+    @media (any-hover: hover) {
+      &:hover {
+        background-size: 100% 1.5px;    // 左から下線が伸びる
+        color: var(--color-accent);
+      }
+    }
+  
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+    }
+  }
+  
+  // ---- 矢印(擬似要素シェブロン)----
+  // border-top + border-right の「角」を rotate して向きを作る。太さ・大きさは共通。
+  .c-arrow-link--next::after,
+  .c-arrow-link--prev::before,
+  .c-arrow-link--up::before {
+    content: "";
+    width: 0.5em;
+    height: 0.5em;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    transition: transform 0.35s ease;
+  }
+  .c-arrow-link--next::after  { transform: rotate(45deg); }    // →
+  .c-arrow-link--prev::before { transform: rotate(-135deg); }  // ←
+  .c-arrow-link--up::before   { transform: rotate(-45deg); }   // ↑
+  
+  // hover で矢印が「向きの方向」へ少し動く(② のふるまいを踏襲)
+  @media (any-hover: hover) {
+    .c-arrow-link--next:hover::after  { transform: rotate(45deg)   translate(2px, -2px); }
+    .c-arrow-link--prev:hover::before { transform: rotate(-135deg) translate(2px, -2px); }
+    .c-arrow-link--up:hover::before   { transform: rotate(-45deg)  translate(2px, -2px); }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .c-arrow-link,
+    .c-arrow-link--next::after,
+    .c-arrow-link--prev::before,
+    .c-arrow-link--up::before {
+      transition: none;
+    }
+  }

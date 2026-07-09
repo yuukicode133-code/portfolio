@@ -6,13 +6,13 @@
 // ============================================================
 // ここに置くのはコンパイル時に値が確定する定数のみ。
 // ランタイムでメディアクエリ等により値が変わるものは、
-// CSS カスタムプロパティとして .p-works-section の中で定義する
+// CSS カスタムプロパティとして .p-top-works-section の中で定義する
 // (例: --card-height)。
 // ============================================================
 
 // --- セクション padding ---
-$section-padding-top: 20rem;                  // .p-works-section の padding-top(PC)
-$section-padding-top-sp: var(--space-128);    // .p-works-section の padding-top(SP)
+$section-padding-top: 20rem;                  // .p-top-works-section の padding-top(PC)
+$section-padding-top-sp: var(--space-128);    // .p-top-works-section の padding-top(SP)
 $section-padding-bottom: 0;
 
 // --- カードラッパーの高さ計算用 ---
@@ -22,17 +22,17 @@ $card-wrapper-height-sp: clamp(50svh, calc(50svh + 20svh * (100vw - 390px) / 377
 $works-contents-margin-top: var(--space-40);
 
 // --- グリッドレイアウト用 ---
-$p-works__title-height:106px; // 検証ツールから実際の高さを目視で取得
-$p-works__button-size: 192px; // 円形ボタンの直径。SP時の title margin-bottom 計算にも使用
-$p-works__contents-row-gap: var(--space-24);
+$p-top-works__title-height:106px; // 検証ツールから実際の高さを目視で取得
+$p-top-works__button-size: 192px; // 円形ボタンの直径。SP時の title margin-bottom 計算にも使用
+$p-top-works__contents-row-gap: var(--space-24);
 
 
 // ============================================================
-// .p-works-section
+// .p-top-works-section
 // ============================================================
 // overflow について:
 //   .l-section は overflow: clip(hidden ではない)。clip はスクロール
-//   コンテナを生成しないため、子孫の .p-works__card-link(position:
+//   コンテナを生成しないため、子孫の .p-top-works__card-link(position:
 //   sticky)を壊さない。よって以前あった overflow: visible での打ち消しは
 //   不要になり、削除した。
 //   巨大ナンバー・円弧の見切れは .l-section の clip がそのまま担うため、
@@ -42,13 +42,13 @@ $p-works__contents-row-gap: var(--space-24);
 // position: absolute で重ねるための基準として残す。
 //
 // セクション内ローカル CSS カスタムプロパティ:
-//   --card-height: .p-works__title と .p-works__button-wrapper の高さを
+//   --card-height: .p-top-works__title と .p-top-works__button-wrapper の高さを
 //                  カードに合わせるための値。メディアクエリで切り替える
 //                  必要があるため Sass 変数ではなく CSS 変数で定義。
 //                  グローバル tokens には載せず、このセクション内に閉じる。
 // ============================================================
 
-.p-works-section {
+.p-top-works-section {
   --sticky-top: calc(var(--header-height) + (100vh - var(--header-height) - var(--card-height)) / 2);
 
   position: relative;
@@ -67,7 +67,7 @@ $p-works__contents-row-gap: var(--space-24);
 }
 
 // --- 装飾: 巨大ナンバー(右上)。c-numeral は見た目のみ、位置をここで指定 ---
-.p-works-section .p-works-section__numeral {
+.p-top-works-section .p-top-works-section__numeral {
   // コンポーネントのクラスと詳細度でぶつかるので
   position: sticky;
   top: 10%;
@@ -75,7 +75,7 @@ $p-works__contents-row-gap: var(--space-24);
   justify-content: flex-end;
 }
 
-.p-works-section__arc-wrapper {
+.p-top-works-section__arc-wrapper {
   position: absolute;
   // top: var(--space-96); //padding分下げておく。スクロールの邪魔にならないように
   top: 0;
@@ -147,7 +147,7 @@ $p-works__contents-row-gap: var(--space-24);
 //   }
 // }
 
-.p-works__contents {
+.p-top-works__contents {
   display: grid;
   grid-column-gap: var(--space-24);
   margin-top: $works-contents-margin-top;
@@ -156,8 +156,8 @@ $p-works__contents-row-gap: var(--space-24);
   // PC: 2カラム(左 1fr / 右 2fr)
   // 左列1行目=title、左列2行目=button、右列は両行をまたいで right
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: $p-works__title-height 1fr;
-  grid-row-gap: $p-works__contents-row-gap;
+  grid-template-rows: $p-top-works__title-height 1fr;
+  grid-row-gap: $p-top-works__contents-row-gap;
   grid-template-areas:
     "title  right"
     "button right";
@@ -174,7 +174,7 @@ $p-works__contents-row-gap: var(--space-24);
   }
 }
 
-.p-works__title {
+.p-top-works__title {
   grid-area: title;
   position: sticky;
   top: var(--sticky-top);
@@ -189,11 +189,11 @@ $p-works__contents-row-gap: var(--space-24);
   @include mq(sp) {
     // SP: button-wrapper が height:auto になり title の後ろに来るので
     // title のスクロール距離に button 分も加算する。sp時にはauto指定なので、コンテンツの高さの192が使える
-    height: calc(var(--card-height) + #{$p-works__contents-row-gap} + #{$p-works__title-height});
-    margin-bottom: calc(#{$card-wrapper-height-sp} - var(--card-height) + #{$p-works__button-size});
+    height: calc(var(--card-height) + #{$p-top-works__contents-row-gap} + #{$p-top-works__title-height});
+    margin-bottom: calc(#{$card-wrapper-height-sp} - var(--card-height) + #{$p-top-works__button-size});
   }
 }
-.p-works__right {
+.p-top-works__right {
   grid-area: right;
   width: clamp(43.75rem, 12.981rem + 48.077vw, 56.25rem);
 
@@ -206,13 +206,13 @@ $p-works__contents-row-gap: var(--space-24);
   }
 }
 
-.p-works__button-wrapper {
+.p-top-works__button-wrapper {
   grid-area: button;
   position: sticky;
-  top: calc(var(--sticky-top) + #{$p-works__title-height} + #{$p-works__contents-row-gap});  // sticky-top + titleの高さ + 余白
+  top: calc(var(--sticky-top) + #{$p-top-works__title-height} + #{$p-top-works__contents-row-gap});  // sticky-top + titleの高さ + 余白
   display: flex;
   justify-content: center;
-  height: calc(var(--card-height) - #{$p-works__title-height} - #{$p-works__contents-row-gap}); // カードの高さ - titleの高さ - 余白
+  height: calc(var(--card-height) - #{$p-top-works__title-height} - #{$p-top-works__contents-row-gap}); // カードの高さ - titleの高さ - 余白
   margin-bottom: calc(#{$card-wrapper-height} - var(--card-height));
 
   @include mq(sp) {
@@ -222,19 +222,19 @@ $p-works__contents-row-gap: var(--space-24);
   }
 }
 
-.p-works__contents .p-works__button {
+.p-top-works__contents .p-top-works__button {
   font-weight: bold;
-  width: $p-works__button-size;
-  height: $p-works__button-size; // aspect-ratio: 1ではwrapperのサイズに合わせて1:1に拡大してしまうので固定
+  width: $p-top-works__button-size;
+  height: $p-top-works__button-size; // aspect-ratio: 1ではwrapperのサイズに合わせて1:1に拡大してしまうので固定
   border-radius: 50%;
   padding: 0; // 円形に余白は意味がないので、c-buttonのpaddingを0にする。詳細度をあげて上書き。
 
 }
 
-.p-works__card-link {
+.p-top-works__card-link {
   height: $card-wrapper-height;
   position: sticky;
-  // top: calc(var(--sticky-top) + #{$p-works__contents-row-gap} + #{$p-works__title-height});
+  // top: calc(var(--sticky-top) + #{$p-top-works__contents-row-gap} + #{$p-top-works__title-height});
   top: var(--sticky-top);
   display: block;
   width: 100%;
@@ -244,7 +244,7 @@ $p-works__contents-row-gap: var(--space-24);
   }
 }
 // ----------------------------------------------------------------
-// .p-works__card の高さ統一について
+// .p-top-works__card の高さ統一について
 // ----------------------------------------------------------------
 // aspect-ratio: 900 / 615 で高さを固定していたが、タイトル行数増などで
 // コンテンツがその高さを超えると、カード白領域からはみ出していた。
@@ -256,7 +256,7 @@ $p-works__contents-row-gap: var(--space-24);
 // min-height で全カードがその値に揃うので、透けて見える問題が解消する。
 // ----------------------------------------------------------------
 
-.p-works__card {
+.p-top-works__card {
   background-color: var(--color-bg-main);
   box-shadow: var(--box-shadow-works-card);
   border-radius: var(--radius-lg);
@@ -264,7 +264,7 @@ $p-works__contents-row-gap: var(--space-24);
   min-height: var(--card-height); // 全カードを最大高さに揃える(JS が最大値を --card-height に同期)
 }
 
-.p-works__card-image {
+.p-top-works__card-image {
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   aspect-ratio: 16/9;
   overflow: hidden;
@@ -277,7 +277,7 @@ $p-works__contents-row-gap: var(--space-24);
   }
 }
 
-.p-works__card-content {
+.p-top-works__card-content {
   margin-top: var(--space-16);
   padding-inline: var(--space-16);
   padding-bottom: 1.25rem;
@@ -286,20 +286,20 @@ $p-works__contents-row-gap: var(--space-24);
   justify-content: center;
 }
 
-.p-works__card-title {
+.p-top-works__card-title {
   font-size: var(--fs-h3);
   color: var(--color-text);
   text-wrap: wrap;
 }
 
-.p-works__card-tags {
+.p-top-works__card-tags {
   margin-top: var(--space-16);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-8);
 }
 
-.p-works__card-tag {
+.p-top-works__card-tag {
   font-size: var(--fs-tag);
   font-weight: bold;
   border-radius: var(--radius-sm);
