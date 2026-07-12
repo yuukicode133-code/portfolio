@@ -27,13 +27,10 @@
   flex-wrap: wrap;
   gap: var(--space-8) var(--space-16);
 }
-.p-works__category-item {
-
-}
 
 .p-works__category {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--space-8);
   padding-block: var(--space-8);
   padding-inline: var(--space-16);
@@ -42,6 +39,7 @@
   font-size: var(--fs-small);
   line-height: 1;
   color: var(--color-text);
+  text-decoration: none;
   transition:
     border-color 0.2s ease,
     color 0.2s ease,
@@ -49,13 +47,6 @@
 }
 
 // リンク版のホバー/フォーカス:静かな方言(accent の輪郭が立つ)
-// a.p-works__category {
-//   &:hover,
-//   &:focus-visible {
-//     border-color: var(--color-accent);
-//     color: var(--color-accent);
-//   }
-// }
 .p-works__category:not([aria-current="page"]):hover,
 .p-works__category:not([aria-current="page"]):focus-visible {
   border-color: var(--color-accent);
@@ -125,6 +116,11 @@
     0 2px 4px rgba(20, 20, 23, 0.05),
     0 18px 36px -18px rgba(192, 80, 31, 0.28); // accent 寄りの影
   transform: translateY(-2px);
+
+  .p-works__tags > li >.c-skill {
+        color: var(--color-bg-main);
+        border-color: var(--color-bg-main);
+      }
 }
 
 // キーボード/フォーカス:カード自身に outline(overflow:clip に切られない)
@@ -161,6 +157,7 @@
   flex-direction: column;
   gap: var(--space-8);
   padding: var(--space-24);
+  transition: background-color 0.25s ease;
 }
 
 .p-works__category-label {
@@ -169,6 +166,7 @@
   letter-spacing: var(--ls-heading-lg);
   text-transform: uppercase;
   color: var(--color-text-muted);
+  transition: color 0.2s ease;
 }
 
 .p-works__title {
@@ -178,6 +176,9 @@
 }
 
 .p-works__link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
 
   // カード全体をクリック領域にする伸縮リンク
   &::after {
@@ -193,9 +194,18 @@
   }
 }
 
+/* ホバー/フォーカス:本文を accent で塗り、テキストは白に
+   (accent #c0501f × 白は AA コントラスト比 約 4.7:1 を満たす) */
+.p-works__card:hover .p-works__body,
+.p-works__card:focus-within .p-works__body {
+  background-color: var(--color-accent);
+}
+
+.p-works__card:hover .p-works__category-label,
+.p-works__card:focus-within .p-works__category-label,
 .p-works__card:hover .p-works__link,
 .p-works__card:focus-within .p-works__link {
-  color: var(--color-accent);
+  color: var(--color-bg-main);
 }
 
 /* 使用技術タグ(既存 c-tag を流用。ここは配置と区切りのみ) */
@@ -206,6 +216,31 @@
   margin-top: var(--space-16);
   padding-top: var(--space-16);
   border-top: var(--border-width) solid var(--color-border); // タイトルとの毛髪罫
+  transition: border-top-color 0.25s ease;
+}
+
+// accent 面上での c-tag の見え方をなめらかに切り替えるための下地
+.p-works__tags .c-tag {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* ホバー/フォーカス:accent 面で毛髪罫とタグを白系へ読み替える
+   ※ c-tag 本体は書き換えず、works 内のこの状況だけ上書き。
+     下記は c-tag が border-color / color / background-color を
+     持つ前提。実際の c-tag のプロパティに合わせて要確認。 */
+.p-works__card:hover .p-works__tags,
+.p-works__card:focus-within .p-works__tags {
+  border-top-color: rgba(255, 255, 255, 0.4);
+}
+
+.p-works__card:hover .p-works__tags .c-tag,
+.p-works__card:focus-within .p-works__tags .c-tag {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-bg-main);
 }
 
 /* -------------------------------------------------------------
@@ -229,11 +264,11 @@
   }
 }
 
-/* -------------------------------------------------------------
-   ページ送り(1 ページでも "1" を表示)
-   ・現状は works 専用。他アーカイブでも再利用するようになったら
-     c-pagination へ昇格を検討(いまは過剰抽象を避ける)
-   ------------------------------------------------------------- */
+// /* -------------------------------------------------------------
+//    ページ送り(1 ページでも "1" を表示)
+//    ・現状は works 専用。他アーカイブでも再利用するようになったら
+//      c-pagination へ昇格を検討(いまは過剰抽象を避ける)
+//    ------------------------------------------------------------- */
 .p-works__pagination {
   margin-top: var(--space-64);
 }

@@ -163,10 +163,12 @@
     &::before {
       content: "";
       position: absolute;
-      inset: 50% auto auto 50%;
+      top: 50%;
+      left: 50%;
+      // inset: 50% auto auto 50%;
       z-index: -1;
       aspect-ratio: 1;
-      width: 100%;
+      width: 105%;
       border-radius: 50%;
       background-color: var(--color-accent);
       transform: translate(-50%, -50%) scale(0);
@@ -178,7 +180,7 @@
         color: var(--color-white);
         border-color: var(--color-accent);
       }
-      &:hover::before { transform: translate(-50%, -50%) scale(1); }
+      &:hover::before { transform: translate(-50%,-50%) scale(1); }
     }
   }
 }
