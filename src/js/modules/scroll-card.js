@@ -9,10 +9,10 @@ gsap.registerPlugin(ScrollTrigger);
 (function () {
   "use strict";
 
-  const cardWrappers = gsap.utils.toArray(".p-top-works__card-link");
+  const cardWrappers = gsap.utils.toArray(".p-top-works__card");
 
   cardWrappers.forEach((wrapper, i) => {
-    const card = wrapper.querySelector(".p-top-works__card");
+    const card = wrapper.querySelector(".p-top-works__card-wrapper");
 
     // ============================
     // ① カードの出現アニメーション
@@ -91,7 +91,7 @@ gsap.registerPlugin(ScrollTrigger);
 // ============================================================
 (function syncCardHeight() {
   const section = document.querySelector(".p-top-works-section");
-  const cards = document.querySelectorAll(".p-top-works__card");
+  const cards = document.querySelectorAll(".p-top-works__card-wrapper");
   if (!section || cards.length === 0) return;
 
   // ResizeObserver のコールバック内で min-height を変更すると

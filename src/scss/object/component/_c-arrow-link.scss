@@ -1,14 +1,19 @@
 // ============================================================
-// c-arrow-link  --  矢印つきテキストリンク(箱なし)
+// c-arrow-link  --  矢印つきリンク(停止時は箱なし / ホバーで輪郭が出現)
 // ============================================================
-// 役割: 遷移をうながす「静かな」リンク。下線が引かれ、矢印がわずかに動く。
-//       円形拡大の c-button とは別系統。矢印つきは今後こちらへ一本化する。
+// 役割: 遷移をうながすリンク。矢印つきは今後こちらへ一本化する。
 //
-// 方針:
-//   ・箱を持たない(border / padding / 背景なし)。本文にも並びにも溶ける。
-//   ・矢印は HTML に直書きせず擬似要素で作る。currentColor で文字色に追従。
-//   ・向きは modifier で分ける。先頭矢印は ::before、末尾矢印は ::after。
-//     別要素なので c-button--secondary の円(::before)とはそもそも競合しない。
+// ホバーの方言(サイト共通「差し色は hover / focus のときだけ出す」):
+//   ・停止時は外枠を透明にして「箱なし」に見せる(場所は確保=レイアウトシフト無し)。
+//   ・矢印は「円(::after)+ その中心の矢印(::before)」。停止時は中立色。
+//   ・ホバーで ①外枠 ②円 ③矢印 がまとめて accent 化し、④矢印が少し動く。
+//   ・背景色は塗らない。文字色も据え置き(accent は枠・円・矢印だけ)。
+//     ※ _typography.scss の a:hover { color: accent } を打ち消すため hover で color を明示。
+//
+// 作り(シンプル版):
+//   ・::before = 矢印。border-top + border-right を rotate して「〉」を作る。
+//   ・::after  = 円。border + border-radius:50%。
+//   ・向きは modifier で rotate 角度を変えるだけ。矢印は擬似要素のみ(HTML 直書きなし)。
 //
 // マークアップ:
 //   <a class="c-arrow-link c-arrow-link--next" href="...">サイトを見る</a>
@@ -17,62 +22,116 @@
 // ------------------------------------------------------------
 
 .c-arrow-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-8);
-    font-size: var(--fs-body);
-    color: var(--color-text);
-    text-decoration: none;
-  
-    // 下線を「引く」表現。text-decoration ではなく背景の幅をアニメーションする。
-    background-image: linear-gradient(var(--color-accent), var(--color-accent));
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    background-size: 0% 1.5px;          // 通常時は幅ゼロ = 下線は見えない
-    padding-bottom: 2px;
-    transition: background-size 0.35s ease, color 0.35s ease;
-  
-    @media (any-hover: hover) {
-      &:hover {
-        background-size: 100% 1.5px;    // 左から下線が伸びる
-        color: var(--color-accent);
-      }
-    }
-  
-    &:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 3px;
-    }
-  }
-  
-  // ---- 矢印(擬似要素シェブロン)----
-  // border-top + border-right の「角」を rotate して向きを作る。太さ・大きさは共通。
-  .c-arrow-link--next::after,
-  .c-arrow-link--prev::before,
-  .c-arrow-link--up::before {
-    content: "";
-    width: 0.5em;
-    height: 0.5em;
-    border-top: 1.5px solid currentColor;
-    border-right: 1.5px solid currentColor;
-    transition: transform 0.35s ease;
-  }
-  .c-arrow-link--next::after  { transform: rotate(45deg); }    // →
-  .c-arrow-link--prev::before { transform: rotate(-135deg); }  // ←
-  .c-arrow-link--up::before   { transform: rotate(-45deg); }   // ↑
-  
-  // hover で矢印が「向きの方向」へ少し動く(② のふるまいを踏襲)
+  position: relative;                                 // 矢印(円)の絶対配置の基準
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;                                   // タップターゲット(WCAG)
+  padding-block: var(--space-8);
+  padding-inline: var(--space-32);
+  color: var(--color-text);
+  text-decoration: none;
+  background-color: transparent;                      // 背景は塗らない(ホバーでも据え置き)
+  border: var(--border-width-md) solid transparent;   // 停止時は透明 = 箱なしに見える
+  border-radius: var(--radius-button);                // c-button と同じピル
+  transition: color 0.6s cubic-bezier(0.4, 0.4, 0, 1), border-color 0.6s cubic-bezier(0.4, 0.4, 0, 1);
+
   @media (any-hover: hover) {
-    .c-arrow-link--next:hover::after  { transform: rotate(45deg)   translate(2px, -2px); }
-    .c-arrow-link--prev:hover::before { transform: rotate(-135deg) translate(2px, -2px); }
-    .c-arrow-link--up:hover::before   { transform: rotate(-45deg)  translate(2px, -2px); }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .c-arrow-link,
-    .c-arrow-link--next::after,
-    .c-arrow-link--prev::before,
-    .c-arrow-link--up::before {
-      transition: none;
+    &:hover {
+      color: var(--color-accent);          // 文字色は据え置き(global a:hover の accent を打ち消す)
+      border-color: var(--color-accent);  // ①外枠に accent の輪郭が出現
+      cursor: pointer;
     }
   }
+
+}
+
+// ---- 矢印の側(next=右 / prev・up=左)。円のぶん余白を確保 ----
+.c-arrow-link--next { 
+  padding-right: calc(var(--space-32) + 2.6em); 
+}
+.c-arrow-link--prev,
+.c-arrow-link--up   { 
+  padding-left:  calc(var(--space-32) + 2.6em); 
+}
+
+// ---- ②円(::after)----
+.c-arrow-link--next::after,
+.c-arrow-link--prev::after,
+.c-arrow-link--up::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-block: auto;                                 // 縦中央
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 50%;
+  border: var(--border-width-md) solid var(--color-border-strong); // 停止時は中立
+  transition: border-color 0.6s cubic-bezier(0.4, 0.4, 0, 1);
+}
+.c-arrow-link--next::after { 
+  right: var(--space-16); 
+}
+
+.c-arrow-link--prev::after,
+.c-arrow-link--up::after  { 
+  left:  var(--space-16); 
+}
+
+// ---- ③矢印(::before)= border + rotate。円の中心に載せる ----
+// 円の中心 = 端から (var(--space-16) + 円の半径 1.1em)。translate(±50%,-50%) で箱を中心合わせ。
+.c-arrow-link--next::before,
+.c-arrow-link--prev::before,
+.c-arrow-link--up::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0.45em;
+  height: 0.45em;
+  border-top: 1.5px solid var(--color-text);          // 停止時は文字色
+  border-right: 1.5px solid var(--color-text);
+  transition: border-color 0.6s cubic-bezier(0.4, 0.4, 0, 1),
+              transform 0.6s cubic-bezier(0.4, 0.4, 0, 1);
+}
+.c-arrow-link--next::before {
+  right: calc(var(--space-16) + 1.1em);
+  transform: translate(50%, -50%) rotate(45deg);      // 〉右向き
+}
+.c-arrow-link--prev::before {
+  left: calc(var(--space-16) + 1.1em);
+  transform: translate(-50%, -50%) rotate(-135deg);   // 〈左向き
+}
+.c-arrow-link--up::before {
+  left: calc(var(--space-16) + 1.1em);
+  transform: translate(-50%, -50%) rotate(-45deg);    // ∧上向き
+}
+
+// ---- ホバー:円・矢印を accent に。矢印は親フレームで少しナッジ ----
+@media (any-hover: hover) {
+  .c-arrow-link:hover::after {                          // ②円 accent
+    border-color: var(--color-accent);
+  }
+  .c-arrow-link:hover::before {                         // ③矢印 accent
+    border-top-color: var(--color-accent);
+    border-right-color: var(--color-accent);
+  }
+  // ④ナッジ(先頭の translate が親フレーム=画面軸で効く)
+  .c-arrow-link--next:hover::before {
+    transform: translateX(0.18em) translate(50%, -50%) rotate(45deg);
+  }
+  .c-arrow-link--prev:hover::before {
+    transform: translateX(-0.18em) translate(-50%, -50%) rotate(-135deg);
+  }
+  .c-arrow-link--up:hover::before {
+    transform: translateY(-0.18em) translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-arrow-link,
+  .c-arrow-link--next::after,  .c-arrow-link--prev::after,  .c-arrow-link--up::after,
+  .c-arrow-link--next::before, .c-arrow-link--prev::before, .c-arrow-link--up::before {
+    transition: none;
+  }
+}

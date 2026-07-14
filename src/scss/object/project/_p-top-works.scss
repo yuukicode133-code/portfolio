@@ -11,8 +11,8 @@
 // ============================================================
 
 // --- セクション padding ---
-$section-padding-top: 20rem;                  // .p-top-works-section の padding-top(PC)
-$section-padding-top-sp: var(--space-128);    // .p-top-works-section の padding-top(SP)
+$section-padding-top: 20rem; // .p-top-works-section の padding-top(PC)
+$section-padding-top-sp: var(--space-128); // .p-top-works-section の padding-top(SP)
 $section-padding-bottom: 0;
 
 // --- カードラッパーの高さ計算用 ---
@@ -22,10 +22,10 @@ $card-wrapper-height-sp: clamp(50svh, calc(50svh + 20svh * (100vw - 390px) / 377
 $works-contents-margin-top: var(--space-40);
 
 // --- グリッドレイアウト用 ---
-$p-top-works__title-height:106px; // 検証ツールから実際の高さを目視で取得
-$p-top-works__button-size: 192px; // 円形ボタンの直径。SP時の title margin-bottom 計算にも使用
+$p-top-works__title-height: 106px; // 検証ツールから実際の高さを目視で取得
+// $p-top-works__button-size: 192px; // 円形ボタンの直径。SP時の title margin-bottom 計算にも使用
+$p-top-works__button-size: 32px; // 円形ボタンの直径。SP時の title margin-bottom 計算にも使用
 $p-top-works__contents-row-gap: var(--space-24);
-
 
 // ============================================================
 // .p-top-works-section
@@ -61,6 +61,7 @@ $p-top-works__contents-row-gap: var(--space-24);
 
   @include mq(sp) {
     padding-top: $section-padding-top-sp;
+    padding-bottom: var(--space-96); //sp時には余白を作る。ボタンが下に来るので。
     // works-sticky(数値は実装時に調整)
     --sticky-top: calc(var(--header-height) + ((#{$card-wrapper-height-sp}) - var(--header-height) - var(--card-height)) / 2);
   }
@@ -73,6 +74,10 @@ $p-top-works__contents-row-gap: var(--space-24);
   top: 10%;
   display: flex;
   justify-content: flex-end;
+
+  @include mq(sp) {
+    top: var(--sticky-top);
+  }
 }
 
 .p-top-works-section__arc-wrapper {
@@ -101,12 +106,12 @@ $p-top-works__contents-row-gap: var(--space-24);
   ・セクションの padding が変わっても、その変数(var(--space-96))から自動追従する
   ・ヘッダー高さ(--sticky-top)が変わっても、式に登場しないので影響を受けない
    */
-  height: calc(#{$card-wrapper-height} * #{$card-count - 1}  + #{$works-contents-margin-top} + #{$section-padding-top});
+  height: calc(#{$card-wrapper-height} * #{$card-count - 1} + #{$works-contents-margin-top} + #{$section-padding-top});
 
   @include mq(sp) {
-    height: calc( #{$card-wrapper-height-sp} * #{$card-count - 1}  + #{$works-contents-margin-top});
+    height: calc(#{$card-wrapper-height-sp} * #{$card-count - 1} + #{$works-contents-margin-top});
     top: calc(#{$section-padding-top-sp} + 0.8%); // 同じpaddingを指定すると、font-familyの影響により少し高さが合わないので負の値を指定するが、
-                                                  // 大きすぎると数字だけ先にスクロールされてしまうので検証ツールを確認しながら調整した
+    // 大きすぎると数字だけ先にスクロールされてしまうので検証ツールを確認しながら調整した
   }
 }
 
@@ -181,7 +186,7 @@ $p-top-works__contents-row-gap: var(--space-24);
   align-items: start;
   justify-content: start;
   height: var(--card-height); // カードの高さを合わせることでスクロールの連れ去りをカードと合わせる
-  
+
   // wrapper の余白分を margin-bottom で確保
   // (旧 syncLeftHeight() を CSS calc() に移植)
   margin-bottom: calc(#{$card-wrapper-height} - var(--card-height));
@@ -209,38 +214,37 @@ $p-top-works__contents-row-gap: var(--space-24);
 .p-top-works__button-wrapper {
   grid-area: button;
   position: sticky;
-  top: calc(var(--sticky-top) + #{$p-top-works__title-height} + #{$p-top-works__contents-row-gap});  // sticky-top + titleの高さ + 余白
+  top: calc(var(--sticky-top) + #{$p-top-works__title-height} + #{$p-top-works__contents-row-gap}); // sticky-top + titleの高さ + 余白
   display: flex;
   justify-content: center;
   height: calc(var(--card-height) - #{$p-top-works__title-height} - #{$p-top-works__contents-row-gap}); // カードの高さ - titleの高さ - 余白
   margin-bottom: calc(#{$card-wrapper-height} - var(--card-height));
 
   @include mq(sp) {
-    top: var(--sticky-top);
-    height: auto; //sp時にカードの下に来て、連れ去りを合わせる必要がないので、autoにする。。つまり高さ＝コンテンツの高さになる
+    position: static;   // または sticky 指定ごと打ち消す意図を明示
+    height: auto;//sp時にカードの下に来て、連れ去りを合わせる必要がないので、autoにする。。つまり高さ＝コンテンツの高さになる
     margin-bottom: 0;
   }
 }
 
-.p-top-works__contents .p-top-works__button {
+.p-top-works__button {
   font-weight: bold;
-  width: $p-top-works__button-size;
+  width: fit-content;
   height: $p-top-works__button-size; // aspect-ratio: 1ではwrapperのサイズに合わせて1:1に拡大してしまうので固定
-  border-radius: 50%;
-  padding: 0; // 円形に余白は意味がないので、c-buttonのpaddingを0にする。詳細度をあげて上書き。
-
+  // border-radius: 50%;
+  // padding: 0; // 円形に余白は意味がないので、c-buttonのpaddingを0にする。詳細度をあげて上書き。
 }
 
-.p-top-works__card-link {
+.p-top-works__card {
   height: $card-wrapper-height;
   position: sticky;
-  // top: calc(var(--sticky-top) + #{$p-top-works__contents-row-gap} + #{$p-top-works__title-height});
   top: var(--sticky-top);
   display: block;
   width: 100%;
 
   @include mq(sp) {
     height: $card-wrapper-height-sp;
+    top: calc(var(--sticky-top) + #{$p-top-works__contents-row-gap} + #{$p-top-works__title-height});
   }
 }
 // ----------------------------------------------------------------
@@ -256,12 +260,41 @@ $p-top-works__contents-row-gap: var(--space-24);
 // min-height で全カードがその値に揃うので、透けて見える問題が解消する。
 // ----------------------------------------------------------------
 
-.p-top-works__card {
+.p-top-works__card-wrapper {
   background-color: var(--color-bg-main);
   box-shadow: var(--box-shadow-works-card);
   border-radius: var(--radius-lg);
   transform-origin: top center;
   min-height: var(--card-height); // 全カードを最大高さに揃える(JS が最大値を --card-height に同期)
+  transition: background-color 0.25s ease;
+  position: relative;
+
+    // ホバー効果はここに集約する(対象がすべて card の子孫だから)
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--color-accent);
+
+        .p-top-works__card-image img {
+          transform: scale(1.03);
+        }
+        .p-top-works__card-title {
+          color: var(--color-bg-main);
+        }
+        .p-top-works__card-tag {
+          border-color: var(--color-bg-main);
+          color: var(--color-bg-main);
+        }
+        // リンク自身の効果も一貫性のためここへ移す
+        .p-top-works__card-link {
+          color: var(--color-bg-main);
+  
+          &::after {
+            border-color: var(--color-bg-main);
+            transform: translateX(0.5em) rotate(45deg);
+          }
+        }
+      }
+    }
 }
 
 .p-top-works__card-image {
@@ -274,22 +307,58 @@ $p-top-works__contents-row-gap: var(--space-24);
     height: 100%;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     object-fit: cover;
+    transition: transform 0.3s ease;
   }
 }
 
 .p-top-works__card-content {
-  margin-top: var(--space-16);
+  padding-top: var(--space-16);
   padding-inline: var(--space-16);
   padding-bottom: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  grid-template-areas:
+    "card-title 0 "
+    "card-tags card-link";
+  grid-template-columns: 1fr 100px;
+  border-radius: 0  0 var(--radius-lg)  var(--radius-lg);
+  transition: background-color 0.25s ease;
+}
+
+.p-top-works__card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--fs-body);
+  color: var(--color-text);
+  text-decoration: none;
+  grid-area: card-link;
+
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-content);
+  }
+
+  &::after {
+    content: "";
+    width: 0.5em;
+    height: 0.5em;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.35s ease;
+  }
 }
 
 .p-top-works__card-title {
   font-size: var(--fs-h3);
   color: var(--color-text);
   text-wrap: wrap;
+  grid-area: card-title;
 }
 
 .p-top-works__card-tags {
@@ -297,6 +366,7 @@ $p-top-works__contents-row-gap: var(--space-24);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-8);
+  grid-area: card-tags;
 }
 
 .p-top-works__card-tag {

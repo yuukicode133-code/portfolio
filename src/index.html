@@ -17,7 +17,7 @@
       <!-- 見出し: トップの主題はサイト名(ロゴ=h1)が担うため、ここは h2。
            視覚的には最も大きく最初に置き、人にとっての主役にする。
            FV はセクション番号体系の外に置くため、タグ・巨大ナンバーは持たない -->
-      <h2 class="p-fv__title">デザインの意図をくみ取り、<br>丁寧にかたちにします。</h2>
+      <h2 class="p-fv__title">デザインの意図をくみ取り、<br />丁寧にかたちにします。</h2>
 
       <!-- サブテキスト -->
       <p class="p-fv__lead">Webコーダーとして正社員を志望しています。<br />HTML/CSS・jQuery・WordPress・GSAPを使ったサイト制作が得意です。</p>
@@ -54,8 +54,8 @@
         </h2>
         <div class="p-top-works__right">
           <!-- wordpress -->
-          <a href="/works/" class="p-top-works__card-link">
-            <div class="p-top-works__card">
+          <article class="p-top-works__card">
+            <div class="p-top-works__card-wrapper">
               <div class="p-top-works__card-image">
                 <picture>
                   <source srcset="/images/test-wp.webp" type="image/webp" />
@@ -68,13 +68,14 @@
                   <li class="p-top-works__card-tag">WordPress</li>
                   <li class="p-top-works__card-tag">ポートフォリオサイト</li>
                 </ul>
+                <a class="p-top-works__card-link" href="single.html">詳細を見る</a>
               </div>
             </div>
-          </a>
+          </article>
 
           <!-- green -->
-          <a href="/works/" class="p-top-works__card-link">
-            <div class="p-top-works__card">
+          <article   class="p-top-works__card">
+            <div class="p-top-works__card-wrapper">
               <div class="p-top-works__card-image">
                 <picture>
                   <source srcset="/images/green.webp" type="image/webp" />
@@ -86,13 +87,14 @@
                 <ul class="p-top-works__card-tags">
                   <li class="p-top-works__card-tag">ポートフォリオサイト</li>
                 </ul>
+                <a class="p-top-works__card-link" href="single.html">詳細を見る</a>
               </div>
             </div>
-          </a>
+          </article>
 
           <!-- oha -->
-          <a href="/works/" class="p-top-works__card-link">
-            <div class="p-top-works__card">
+          <article class="p-top-works__card">
+            <div class="p-top-works__card-wrapper">
               <div class="p-top-works__card-image">
                 <picture>
                   <source srcset="/images/oha.webp" type="image/webp" />
@@ -104,12 +106,13 @@
                 <ul class="p-top-works__card-tags">
                   <li class="p-top-works__card-tag">LP</li>
                 </ul>
+                <a class="p-top-works__card-link" href="single.html">詳細を見る</a>
               </div>
             </div>
-          </a>
+          </article>
         </div>
         <div class="p-top-works__button-wrapper">
-          <a href="/works/" class="c-button c-button--secondary p-top-works__button">全ての実績を見る</a>
+          <a href="/works/" class="c-arrow-link c-arrow-link--next p-top-works__button">全ての実績を見る</a>
         </div>
       </div>
     </div>
@@ -191,19 +194,16 @@
   <section class="p-about-section l-section">
     <span class="c-numeral c-numeral--md c-numeral--top-right p-about-section__numeral" aria-hidden="true">03</span>
     <!-- <div class="c-arc p-about-section__arc" aria-hidden="true"></div> -->
-  
+
     <div class="l-inner">
       <h2 class="c-section-title p-about-section__title">
         <span class="c-section-title__en">about</span>
         <span class="c-section-title__ja">私について</span>
       </h2>
-  
+
       <div class="p-about-section__contents">
-        <p class="p-about-section__lead">
-          前職の動画編集では、台本に指定のない場面でも「見る人がこの施設で働きたいと思えるか」を基準に、素材を取捨選択していました。受け手の立場に立って必要な情報を見極めるこの姿勢を、これからは制作会社の一員として、クライアントとの対話やチームでの進行のなかで活かしていきたいと考えています。
-          業務委託先の選考では、WordPressのテスト課題を3週間で納品して一発で合格し、その後LPの実案件を受注・納品しました。関連スクールから講師のオファーもいただきましたが、当時の自分の技術力では受講生のコードをその場で読み解いて直しきれないと判断し、辞退しています。できること・できないことを自分で見極めることが、現場で信頼を得る前提だと考えているためです。
-        </p>
-  
+        <p class="p-about-section__lead">前職の動画編集では、台本に指定のない場面でも「見る人がこの施設で働きたいと思えるか」を基準に、素材を取捨選択していました。受け手の立場に立って必要な情報を見極めるこの姿勢を、これからは制作会社の一員として、クライアントとの対話やチームでの進行のなかで活かしていきたいと考えています。 業務委託先の選考では、WordPressのテスト課題を3週間で納品して一発で合格し、その後LPの実案件を受注・納品しました。関連スクールから講師のオファーもいただきましたが、当時の自分の技術力では受講生のコードをその場で読み解いて直しきれないと判断し、辞退しています。できること・できないことを自分で見極めることが、現場で信頼を得る前提だと考えているためです。</p>
+
         <ul class="p-about-section__stats">
           <li class="p-about-section__stat u-fade-up js-fade">
             <span class="p-about-section__stat-value">350<span class="p-about-section__stat-unit">日+</span></span>
@@ -218,15 +218,13 @@
             <span class="p-about-section__stat-label">動画編集納品</span>
           </li>
         </ul>
-  
+
         <div class="p-about-section__ai">
           <h3 class="p-about-section__ai-heading">AIとの向き合い方</h3>
-          <p class="p-about-section__ai-text">
-            AIは制作の各工程で積極的に使っています。ただ、出てきたものをそのまま採用することはしません。自分の実感と合わなければ書き直し、理解できないコードは使わず、最終的な判断は自分で持つ姿勢だけは崩さないようにしています。基礎を自分の手に残すために、jQueryなどはAIを使わずに取り組む時間も意識して作っています。
-          </p>
+          <p class="p-about-section__ai-text">AIは制作の各工程で積極的に使っています。ただ、出てきたものをそのまま採用することはしません。自分の実感と合わなければ書き直し、理解できないコードは使わず、最終的な判断は自分で持つ姿勢だけは崩さないようにしています。基礎を自分の手に残すために、jQueryなどはAIを使わずに取り組む時間も意識して作っています。</p>
         </div>
-  
-        <a href="/about/" class="c-button c-button--secondary p-about-section__more">私についてもっと知る</a>
+
+        <a href="/about/" class="c-arrow-link c-arrow-link--next p-about-section__more">私についてもっと知る</a>
       </div>
     </div>
   </section>
@@ -235,21 +233,19 @@
   <section class="l-section p-contact">
     <div class="l-inner">
       <span class="c-numeral c-numeral--md p-contact__numeral" aria-hidden="true">04</span>
-  
+
       <div class="p-contact__content u-fade-up js-fade">
         <h2 class="c-section-title">
           <span class="c-section-title__en">contact</span>
           <span class="c-section-title__ja">お問い合わせ</span>
         </h2>
-  
+
         <div class="p-contact__lead">
           <p>ポートフォリオをご覧いただき、ありがとうございます。</p>
           <p>面談のご依頼やご相談などございましたら、お問い合わせフォームよりご連絡ください。2営業日以内にご返信いたします。</p>
         </div>
-  
-        <a class="c-button c-button--secondary p-contact__button" href="/contact/">
-          お問い合わせ
-        </a>
+
+        <a class="c-button c-button--secondary p-contact__button" href="/contact/"> お問い合わせ </a>
       </div>
     </div>
   </section>
