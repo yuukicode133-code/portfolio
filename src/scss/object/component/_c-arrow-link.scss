@@ -31,6 +31,7 @@
   padding-inline: var(--space-32);
   color: var(--color-text);
   text-decoration: none;
+  font-weight: var(--fw-bold);
   background-color: transparent;                      // 背景は塗らない(ホバーでも据え置き)
   border: var(--border-width-md) solid transparent;   // 停止時は透明 = 箱なしに見える
   border-radius: var(--radius-button);                // c-button と同じピル
@@ -48,11 +49,11 @@
 
 // ---- 矢印の側(next=右 / prev・up=左)。円のぶん余白を確保 ----
 .c-arrow-link--next { 
-  padding-right: calc(var(--space-32) + 2.6em); 
+  padding-right: calc(var(--space-32)  + var(--space-40)); 
 }
 .c-arrow-link--prev,
 .c-arrow-link--up   { 
-  padding-left:  calc(var(--space-32) + 2.6em); 
+  padding-left:  calc(var(--space-32) + var(--space-40)); 
 }
 
 // ---- ②円(::after)----
@@ -61,9 +62,8 @@
 .c-arrow-link--up::after {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  margin-block: auto;                                 // 縦中央
+  top: 50%;
+  transform: translateY(-50%);                        // 縦中央(矢印側と方式を統一)
   width: 2.2em;
   height: 2.2em;
   border-radius: 50%;
@@ -95,15 +95,15 @@
               transform 0.6s cubic-bezier(0.4, 0.4, 0, 1);
 }
 .c-arrow-link--next::before {
-  right: calc(var(--space-16) + 1.1em);
+  right: calc(var(--space-16) + var(--space-20));
   transform: translate(50%, -50%) rotate(45deg);      // 〉右向き
 }
 .c-arrow-link--prev::before {
-  left: calc(var(--space-16) + 1.1em);
+  left: calc(var(--space-16) + var(--space-20));
   transform: translate(-50%, -50%) rotate(-135deg);   // 〈左向き
 }
 .c-arrow-link--up::before {
-  left: calc(var(--space-16) + 1.1em);
+  left: calc(var(--space-16) + var(--space-20));
   transform: translate(-50%, -50%) rotate(-45deg);    // ∧上向き
 }
 

@@ -40,7 +40,7 @@ gsap.registerPlugin(ScrollTrigger);
 
       gsap.to(card, {
         scale: 0.95,
-        opacity: 0.6,
+        opacity: 0.7,
         scrollTrigger: {
           trigger: nextWrapper,
           start: "top bottom",   // 次のwrapperの上端が画面下端に来たら開始
