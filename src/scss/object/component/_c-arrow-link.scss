@@ -22,6 +22,7 @@
 // ------------------------------------------------------------
 
 .c-arrow-link {
+  width: fit-content;
   position: relative;                                 // 矢印(円)の絶対配置の基準
   display: inline-flex;
   align-items: center;
@@ -103,8 +104,8 @@
   transform: translate(-50%, -50%) rotate(-135deg);   // 〈左向き
 }
 .c-arrow-link--up::before {
-  left: calc(var(--space-16) + var(--space-20));
-  transform: translate(-50%, -50%) rotate(-45deg);    // ∧上向き
+  left: calc(var(--space-16) + 1.125rem);
+  transform: translate(-50%, -50%) rotate(135deg);    // ∧上向き
 }
 
 // ---- ホバー:円・矢印を accent に。矢印は親フレームで少しナッジ ----
@@ -124,7 +125,7 @@
     transform: translateX(-0.18em) translate(-50%, -50%) rotate(-135deg);
   }
   .c-arrow-link--up:hover::before {
-    transform: translateY(-0.18em) translate(-50%, -50%) rotate(-45deg);
+    transform: translateY(0.18em) translate(-50%, -50%) rotate(135deg);
   }
 }
 

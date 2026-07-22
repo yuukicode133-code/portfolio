@@ -13,7 +13,7 @@
 // 背面の装飾数字。HTML側で aria-hidden 済み。配置はPhase7「数字をコンテンツ基準に統一」で微調整予定。
 .p-about__num {
   position: absolute;
-  top: -60%;
+  top: -8.438rem;
   left: -0.08em;
   z-index: var(--z-numeral);
   font-family: var(--font-en);
@@ -22,6 +22,11 @@
   color: var(--color-decorative-numeral);
   pointer-events: none;
   user-select: none;
+
+
+  @include mq(sp) {
+    top: -4.688rem; 
+  }
 }
 
 .p-about__lead {
@@ -190,6 +195,7 @@
   display: grid;      // gap を効かせるため
   gap: var(--space-64);
   margin-top: var(--space-40);
+  counter-reset: point; // カウンターリセット
 }
 
 // 装飾数字。順序の意味は <ol> が持つので HTML 側で aria-hidden 済み。
@@ -205,10 +211,18 @@
   color: var(--color-decorative-numeral);
   pointer-events: none;
   user-select: none;
+
+  &::before {
+    content: counter(point, decimal-leading-zero);  // 01, 02, 03…
+  }
 }
 
 .p-about__point-num--right {
   left: auto;
   right: 0;
+}
 
+.p-about__point-button {
+  margin-top: var(--space-64);
+  text-align: center;
 }

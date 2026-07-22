@@ -72,23 +72,3 @@
   justify-content: center;
   gap: var(--space-16);
 }
-.p-contact-confirm__back , 
-.p-contact-confirm__submit {
-  gap: var(--space-8);
-}
-.p-contact-confirm__submit::after {
-  content: "";
-  width: 0.45em;
-  height: 0.45em;
-  border-top: 1.5px solid currentColor;
-  border-right: 1.5px solid currentColor;
-  transform: rotate(45deg);
-}
-.p-contact-confirm__back::after {
-  content: "";
-  width: 0.45em;
-  height: 0.45em;
-  border-bottom: 1.5px solid currentColor;
-  border-left: 1.5px solid currentColor;
-  transform: rotate(45deg);
-}

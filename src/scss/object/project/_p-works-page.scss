@@ -43,7 +43,16 @@
   transition:
     border-color 0.2s ease,
     color 0.2s ease,
-    background-color 0.2s ease;
+    background-color 0.2s ease,
+    transform 0.2s ease;
+  
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-2px);
+      cursor: pointer;
+    }
+  }
 }
 
 // リンク版のホバー/フォーカス:静かな方言(accent の輪郭が立つ)
@@ -299,17 +308,18 @@
     background-color 0.2s ease;
 }
 
-a.p-works__page {
-  &:hover,
-  &:focus-visible {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
-}
 
 .p-works__page.is-current,
 .p-works__page[aria-current="page"] {
   background-color: var(--color-text);
   border-color: var(--color-text);
+  color: var(--color-bg-main);
+}
+/* リンク(=現在地以外)のホバー/フォーカス。
+   現在地(aria-current)は静的マーカーなので反応させない */
+.p-works__page:not([aria-current="page"]):hover,
+.p-works__page:not([aria-current="page"]):focus-visible {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
   color: var(--color-bg-main);
 }

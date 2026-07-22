@@ -18,7 +18,8 @@ $section-padding-bottom: 0;
 // --- カードラッパーの高さ計算用 ---
 $card-count: 3;
 $card-wrapper-height: 80svh;
-$card-wrapper-height-sp: clamp(50svh, calc(50svh + 20svh * (100vw - 390px) / 377px), 70svh); // SP時のカードのwrapperの高さ,767~390で可変(50svh
+$card-wrapper-height-sp: clamp(65svh, calc(65svh + 10svh * (100vw - 390px) / 377px), 75svh); // SP時のカードのwrapperの高さ,767~390で可変(50svh
+// $card-wrapper-height-sp: 70svh; // SP時のカードのwrapperの高さ,767~390で可変(50svh
 $works-contents-margin-top: var(--space-40);
 
 // --- グリッドレイアウト用 ---
@@ -55,9 +56,9 @@ $p-top-works__contents-row-gap: var(--space-24);
   padding-top: $section-padding-top; // l-sectionとぶつかるけど、floccsの読み込み順により問題なく動作する
   padding-bottom: $section-padding-bottom; // l-sectionとぶつかるけど、floccsの読み込み順により問題なく動作する
 
-  @include mq(tab) {
-    --card-height: clamp(24.44313rem, 3.34948rem + 43.9451vw, 31.44688rem);
-  }
+  // @include mq(tab) {
+  //   --card-height: clamp(24.44313rem, 3.34948rem + 43.9451vw, 31.44688rem);
+  // }
 
   @include mq(sp) {
     padding-top: $section-padding-top-sp;
@@ -268,6 +269,7 @@ $p-top-works__contents-row-gap: var(--space-24);
   min-height: var(--card-height); // 全カードを最大高さに揃える(JS が最大値を --card-height に同期)
   transition: background-color 0.25s ease;
   position: relative;
+  display: grid;
 
     // ホバー効果はここに集約する(対象がすべて card の子孫だから)
     @media (any-hover: hover) {
@@ -318,12 +320,20 @@ $p-top-works__contents-row-gap: var(--space-24);
   display: grid;
   justify-content: start;
   align-items: center;
+  align-self: center;
   grid-template-areas:
     "card-title 0 "
     "card-tags card-link";
   grid-template-columns: 1fr 100px;
+  row-gap: var(--space-16);
   border-radius: 0  0 var(--radius-lg)  var(--radius-lg);
   transition: background-color 0.25s ease;
+
+  @include mq(sp) {
+    grid-template-areas:
+    "card-title card-title"
+    "card-link card-link";
+  }
 }
 
 .p-top-works__card-link {
@@ -362,11 +372,14 @@ $p-top-works__contents-row-gap: var(--space-24);
 }
 
 .p-top-works__card-tags {
-  margin-top: var(--space-16);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-8);
   grid-area: card-tags;
+
+  @include mq(sp) {
+    display: none; 
+  }
 }
 
 .p-top-works__card-tag {
