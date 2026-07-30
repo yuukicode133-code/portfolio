@@ -17,20 +17,21 @@ gsap.registerPlugin(ScrollTrigger);
     // ============================
     // ① カードの出現アニメーション
     // ============================
-    gsap.fromTo(
-      card,
-      { y: 40 },
-      {
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: wrapper,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    // gsap.fromTo(
+    //   card,
+    //   { y: 40 },
+    //   {
+    //     y: 0,
+    //     duration: 1,
+    //     ease: "power2.out",
+    //     scrollTrigger: {
+    //       trigger: wrapper,
+    //       start: "top 80%",
+    //       toggleActions: "play none none none",
+    //     },
+    //   }
+    // );
+    //fade.js作ったんで削除
 
     // ============================
     // ② 最後のカード以外:次のカードが来たら縮む

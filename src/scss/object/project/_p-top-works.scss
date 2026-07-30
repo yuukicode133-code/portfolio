@@ -17,7 +17,7 @@ $section-padding-bottom: 0;
 
 // --- カードラッパーの高さ計算用 ---
 $card-count: 3;
-$card-wrapper-height: 80svh;
+$card-wrapper-height: 100svh;
 $card-wrapper-height-sp: clamp(65svh, calc(65svh + 10svh * (100vw - 390px) / 377px), 75svh); // SP時のカードのwrapperの高さ,767~390で可変(50svh
 // $card-wrapper-height-sp: 70svh; // SP時のカードのwrapperの高さ,767~390で可変(50svh
 $works-contents-margin-top: var(--space-40);
@@ -201,11 +201,6 @@ $p-top-works__contents-row-gap: var(--space-24);
 }
 .p-top-works__right {
   grid-area: right;
-  width: clamp(43.75rem, 12.981rem + 48.077vw, 56.25rem);
-
-  @include mq(tab) {
-    width: clamp(31.25rem, -6.201rem + 78.125vw, 43.75rem);
-  }
   @include mq(sp) {
     width: 100%;
     margin-top: var(--space-32);
@@ -234,6 +229,8 @@ $p-top-works__contents-row-gap: var(--space-24);
   height: $p-top-works__button-size; // aspect-ratio: 1ではwrapperのサイズに合わせて1:1に拡大してしまうので固定
   // border-radius: 50%;
   // padding: 0; // 円形に余白は意味がないので、c-buttonのpaddingを0にする。詳細度をあげて上書き。
+  scroll-margin-top: clamp(3.125rem, -14.732rem + 37.202vw, 18.75rem);
+  
 }
 
 .p-top-works__card {
@@ -243,10 +240,26 @@ $p-top-works__contents-row-gap: var(--space-24);
   display: block;
   width: 100%;
 
+  &:focus-within {
+    z-index: var(--z-works-card);
+
+    .p-top-works__card-wrapper {
+      transform: none !important; // GSAPのscaleを打ち消す
+      opacity: 1 !important;      // GSAPのopacityを打ち消す
+    }
+  }
+
+  &:last-child {
+    .p-top-works__card-link{
+      scroll-margin-top: clamp(15.625rem, -2.232rem + 37.202vw, 31.25rem);
+    }
+  }
+
   @include mq(sp) {
     height: $card-wrapper-height-sp;
     top: calc(var(--sticky-top) + #{$p-top-works__contents-row-gap} + #{$p-top-works__title-height});
   }
+
 }
 // ----------------------------------------------------------------
 // .p-top-works__card の高さ統一について

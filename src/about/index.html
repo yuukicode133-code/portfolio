@@ -65,8 +65,10 @@
             <h4 class="p-about__skill-name">マークアップ・スタイリング</h4>
             <ul class="p-about__skill-list">
               <li class="p-about__skill-item">Figmaのデザインカンプを読み取り、PC・スマホでHTML/SCSS実装ができます</li>
-              <li class="p-about__skill-item">FLOCSSによるCSS設計で、長期メンテナンスを意識した構造で書けます</li>
-              <li class="p-about__skill-item">WAI-ARIA・WCAGに準拠したアクセシビリティ実装ができます</li>
+              <li class="p-about__skill-item">セマンティックなHTMLの選択と、見出し階層の設計ができます</li>
+              <li class="p-about__skill-item">FLOCSSによるCSS設計で、レイヤーの振り分けを判断しながら実装できます（今回が初めての本格導入）</li>
+              <li class="p-about__skill-item">代替テキストやフォームのラベル関連付けは、基準を確認しながら実装しています</li>
+              <li class="p-about__skill-item">WAI-ARIA・キーボード対応・コントラスト比は学習中です</li>
             </ul>
           </div>
 
@@ -74,14 +76,14 @@
             <span class="p-about__skill-en">Interaction</span>
             <h4 class="p-about__skill-name">JavaScript・アニメーション</h4>
             <ul class="p-about__skill-list">
-              <li class="p-about__skill-item">JavaScript / jQueryによる動的な挙動の実装ができます</li>
-              <li class="p-about__skill-item">GSAP・ScrollTriggerによるスクロール連動アニメーションが実装できます</li>
-              <li class="p-about__skill-item">複雑な要素間の同期やレスポンシブ対応のアニメーション制御ができます</li>
+              <li class="p-about__skill-item">jQueryのコードを読み、意図を理解した上で修正できます</li>
+              <li class="p-about__skill-item">GSAP・ScrollTriggerによるスクロール連動アニメーションを、このサイトのWorksで実装しました</li>
+              <li class="p-about__skill-item">JavaScriptは学習中です</li>
             </ul>
           </div>
 
           <div class="p-about__skill">
-            <span class="p-about__skill-en">CMS</span>
+            <span class="p-about__skill-en">CMS -修正前-</span>
             <h4 class="p-about__skill-name">WordPress・CMS</h4>
             <ul class="p-about__skill-list">
               <li class="p-about__skill-item">PHPによるオリジナルテーマの作成ができます</li>
@@ -94,8 +96,8 @@
             <span class="p-about__skill-en">Tooling</span>
             <h4 class="p-about__skill-name">開発環境・ツール</h4>
             <ul class="p-about__skill-list">
-              <li class="p-about__skill-item">Viteによるモダンなフロントエンド開発環境の構築ができます</li>
-              <li class="p-about__skill-item">Gitによるバージョン管理とGitHubでのコード共有ができます</li>
+              <li class="p-about__skill-item">手順に沿ってVite環境を構築し、開発からビルドまで進められます（エラー対応は学習中です）</li>
+              <li class="p-about__skill-item">Gitによるバージョン管理とGitHubでのコード共有ができます（個人利用のみで、ブランチ運用やコンフリクト解消は未経験です）</li>
               <li class="p-about__skill-item">Figmaでのデザインカンプ確認と、必要に応じた簡易な調整ができます</li>
             </ul>
           </div>
@@ -113,26 +115,25 @@
           <div class="p-about__ai-block">
             <h4 class="p-about__ai-name">AIでのコード生成時の取り組み</h4>
             <ul class="p-about__ai-list">
-              <li class="p-about__ai-item">実装したい挙動と理由を文章化してから依頼する</li>
               <li class="p-about__ai-item">生成されたコードの根拠を必ず質問する</li>
-              <li class="p-about__ai-item">理解できないコードは採用しない</li>
+              <li class="p-about__ai-item">理解できないまま採用することはしない</li>
+              <li class="p-about__ai-item">理解した内容を、意図ごとNotionに記録する</li>
             </ul>
           </div>
 
           <div class="p-about__ai-block">
             <h4 class="p-about__ai-name">AIとの対話で意識していること</h4>
             <ul class="p-about__ai-list">
-              <li class="p-about__ai-item">前提条件を明確にしてから相談する</li>
-              <li class="p-about__ai-item">複数の選択肢を引き出してから自分で判断する</li>
-              <li class="p-about__ai-item">回答を鵜呑みにせず、根拠を確認する</li>
+              <li class="p-about__ai-item">抽象的な相談は避け、具体的な条件を示してから聞く</li>
+              <li class="p-about__ai-item">AIの回答や提案を、自分で確かめてから受け入れる</li>
+              <li class="p-about__ai-item">同意ではなく、率直な指摘を求める</li>
             </ul>
           </div>
 
           <div class="p-about__ai-block">
             <h4 class="p-about__ai-name">AIに任せないこと</h4>
             <ul class="p-about__ai-list">
-              <li class="p-about__ai-item">コードの最終的な理解は自分で行う</li>
-              <li class="p-about__ai-item">設計判断は自分で行う</li>
+              <li class="p-about__ai-item">何を採用するかの最終判断は、自分で行う</li>
               <li class="p-about__ai-item">相手起点のコピーライティングは自分で書く</li>
             </ul>
           </div>
@@ -150,19 +151,16 @@
           <span class="c-section-title__en">About this site</span>
           <span id="site-title" class="c-section-title__ja">このサイトについて</span>
         </h2>
-        <p class="p-about__lead">
-        詳細な概要文(4〜6行)。サイトの目的、ターゲット、コンセプト、なぜこのデザインにしたのか、何を意識して作ったのかなど、プロジェクトの背景情報をここに記載します。
-        </p>
       </div>
 
       <dl class="p-about__meta u-fade-up js-fade">
         <div class="p-about__meta-row">
           <dt class="p-about__meta-term">Concept</dt>
-          <dd class="p-about__meta-desc">サイトの設計思想をここに記載します。</dd>
+          <dd class="p-about__meta-desc">このサイトでは、伝えたいことを言葉で正直に届けることを軸にしました。<br>飾りで語るのではなく、テキストを主役に置き、デザインはそれを読みやすく支える役に徹しています。</dd>
         </div>
         <div class="p-about__meta-row">
           <dt class="p-about__meta-term">Design</dt>
-          <dd class="p-about__meta-desc">配色・構成の選定理由をここに記載します。</dd>
+          <dd class="p-about__meta-desc">主役はテキストなので、それを邪魔しないよう画面はできるだけシンプルにしました。<br>ただ、シンプルすぎると質素で頼りない印象にもなります。そこで、操作したときに"活きる"ような手応えを持たせ、アクセントのオレンジをアクションのスポットライトとして使い、ホバーの動きと余白で印象を支えています。</dd>
         </div>
         <div class="p-about__meta-row">
           <dt class="p-about__meta-term">Stack</dt>
@@ -194,8 +192,8 @@
               <img class="c-point__img" src="" alt="" width="800" height="500">
             </figure>
             <div class="c-point__body">
-              <h4 class="c-point__title">サブ見出し</h4>
-              <p class="c-point__desc">説明文(3〜5行)をここに記載します。</p>
+              <h4 class="c-point__title">操作に、応える手応えを。</h4>
+              <p class="c-point__desc">ホバー表示には単純な色替えではなく円が広がる動きを重ねました。反転だけではアクションの手応えが弱いと考え、「いま自分がどこを触っているか」が体感で伝わる表現を選んでいます。ただし主役はあくまでテキストなので、動きは主張しすぎない範囲に抑えました。</p>
             </div>
           </li>
         
@@ -205,8 +203,8 @@
               <img class="c-point__img" src="" alt="" width="800" height="500">
             </figure>
             <div class="c-point__body">
-              <h4 class="c-point__title">サブ見出し</h4>
-              <p class="c-point__desc">説明文(3〜5行)をここに記載します。</p>
+              <h4 class="c-point__title">スクロールに、実装で応える。</h4>
+              <p class="c-point__desc">制作実績を、スクロールに連動してカードが切り替わる構成で見せています。左の見出しブロックと右のカードの高さを揃え、同じスクロール量で自然に送られるよう、GSAPで組み立てました。表示位置やテキスト量の変化にも崩れないよう調整しています。</p>
             </div>
           </li>
         
@@ -216,8 +214,8 @@
               <img class="c-point__img" src="" alt="" width="800" height="500">
             </figure>
             <div class="c-point__body">
-              <h4 class="c-point__title">サブ見出し</h4>
-              <p class="c-point__desc">説明文(3〜5行)をここに記載します。</p>
+              <h4 class="c-point__title">送信のあとにも、次の一歩を。</h4>
+              <p class="c-point__desc">お問い合わせを送信した直後の完了画面にも手をかけました。「ありがとうございました」で終わらせず、実績や各セクションへの導線を置いています。送信直後は最も関心が高い瞬間なので、その熱量を次の行動につなげたいと考えたためです。</p>
             </div>
           </li>
         </ol>
