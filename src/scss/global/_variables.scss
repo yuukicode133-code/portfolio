@@ -1,25 +1,6 @@
-/* Color */
-$main-color: linear-gradient(to right, #24a19c 0%, #00c194 100%);
-$green-color: #019c6a;
-$accent-color: #f7a849;
-$white-color: #f3f1ef;
-$pure-white-color: #fff;
-$green-light-color: #1da89a;
-$mint-color: #cceae2;
-$black-color: #000;
-$gray-color: #5e6a62;
-
 /* breakpoint */
 $breakpoints: (
   sp: "screen and (max-width: 767px)",
   tab: "screen and (min-width: 768px) and (max-width: 1023px)",
   pc: "screen and (min-width: 1024px)",
 ) !default;
-
-/* font-size */
-$font-size-14: 0.875rem;
-$font-size-16: 1rem;
-$font-size-18: 1.125rem;
-$font-size-20: 1.25rem;
-$font-size-24: 1.5rem;
-$font-size-32: 2rem;

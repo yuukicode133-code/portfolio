@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
+
+  <!-- <link rel="stylesheet" href="/scss/style.scss"> -->
+  <script type="module" src="/js/main.js"></script>
+  <?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+  <header class="l-header">
+    <div class="l-inner p-header">
+
+      <!--
+      ロゴ: トップと下層でマークアップを出し分ける。
+      ・トップ(isTop: true)  … ページ主題をサイト名とみなし <h1> を被せる
+      ・下層(isTop: false)   … ロゴは主題でないため <h1> なし。<a> 単体。
+                                 各ページの見出し(Works 等)が <h1> を担う
+
+      3 クラスの役割:
+       ・p-header__logo          … 器の <div>。常に存在。レイアウト(flex 配置等)
+                                    はここに書く。中身が h1+a / a 単体 どちらでも
+                                    崩れないようにする。
+       ・p-header__logo-heading  … トップの <h1>。文書構造のためだけの薄い器。
+       ・p-header__logo-link     … 実体の <a>。ロゴの見た目・リンク・ホバーは
+                                    すべてここに集約。トップ・下層で共通。
+
+      トップでもロゴはリンクにする(ホームへ戻れる一般的な期待に応える)。
+      <h1> は href を持てないため、<h1> の中に <a> を入れる入れ子で実現する。
+
+      ※ if と else でロゴ中身(span 3つ)が重複。Handlebars はタグ名だけの
+        動的化ができないための妥協。span 構成を変えるときは両方を同期させること。
+    -->
+      <?php if (is_front_page()): ?>
+        <h1 class="p-header__logo-heading">
+          <a href="/" class="p-header__logo-link" aria-label="Yuuki Oozora — ホームへ">
+            <span>Yuuk</span><span class="p-header__logo-accent">i</span><span>&nbsp;Oozora</span>
+          </a>
+        </h1>
+      <?php else: ?>
+        <a href="/" class="p-header__logo-link" aria-label="Yuuki Oozora — ホームへ">
+          <span>Yuuk</span><span class="p-header__logo-accent">i</span><span>&nbsp;Oozora</span>
+        </a>
+      <?php endif; ?>
+      <nav
+        id="global-nav"
+        class="p-header__nav"
+        aria-label="グローバルナビゲーション">
+        <?php
+        wp_nav_menu(array(
+          'theme_location'    => 'global',
+          'menu_class'        => 'p-header__nav-list',
+          'container'         => false,
+          'fallback_cb'       => false,
+          // 'walker'            => new Lightweight_Walker_Nav_Menu(),
+          // 'items_wrap'        => '<ul class="%2$s" role="menubar">%3$s</ul>'
+        ));
+        ?>
+        <!-- <ul class="p-header__nav-list">
+        <li class="p-header__nav-item"><a href="/portfolio/works/index.html" class="p-header__nav-link">制作実績</a></li>
+        <li class="p-header__nav-item"><a href="/#service" class="p-header__nav-link">できること</a></li>
+        <li class="p-header__nav-item"><a href="/portfolio/about/index.html" class="p-header__nav-link">私について</a></li>
+        <li class="p-header__nav-item"><a href="/portfolio/contact/index.html" class="p-header__nav-link">お問い合わせ</a></li>
+      </ul> -->
+      </nav>
+
+      <button
+        type="button"
+        class="p-header__hamburger"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="global-nav">
+        <span class="p-header__hamburger-bar"></span>
+        <span class="p-header__hamburger-bar"></span>
+        <span class="p-header__hamburger-bar"></span>
+      </button>
+    </div>
+  </header>

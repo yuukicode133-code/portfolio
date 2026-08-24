@@ -3,107 +3,92 @@
 
 
 .p-about-section {
-    position: relative;
-    padding-block: var(--space-128); // 他セクションと要リズム確認
+  position: relative;
+  padding-block: var(--space-128); // 他セクションと要リズム確認
+}
 
-    &__numeral {
-      position: absolute;
-      top: var(--space-24);
-      right: var(--space-24);
-    }
-  
-    &__arc {
-      // Service の実値に合わせる。全セクション実装後に Phase 7 で再判断
-      width: clamp(36rem, 90vw, 72rem);
-    }
-  
-    &__contents {
-      margin-top: var(--space-24);
-    }
-  
-    // --- リード ---
-    // body 継承で font-jp / lh-body(1.8) が当たる → 再指定しない
-    &__lead {
-      
-    }
-  
-    // --- スタッツ ---
-    &__stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-24);
-      place-items: center;
-      margin-block: var(--space-48);
-  
-      @include mq(sp) {
-        grid-template-columns: 1fr; // SPは縦積み(横3列は数字が潰れるため)
-        gap: var(--space-16);
-      }
-    }
-  
-    &__stat {
-      display: grid;
-      gap: var(--space-8);
-      padding-block: var(--space-24);
-      border-top: var(--border-width) solid var(--color-border);
-    }
-  
-    &__stat-value {
-      font-family: var(--font-en);
-      font-size: var(--fs-numeral-stat, 2.5rem); // トークンに無ければ既存見出し系に合わせる
-      line-height: var(--lh-numeral);
-      color: var(--color-text);
-    }
-  
-    &__stat-unit {
-      font-size: var(--fs-body);
-      margin-inline-start: var(--space-4);
-      color: var(--color-text-muted);
-    }
-  
-    &__stat-label {
-      font-size: var(--fs-14, var(--fs-body));
-      color: var(--color-text-muted);
-    }
-  
-    // --- AIブロック ---
-    &__ai {
-      display: grid;
-      gap: var(--space-16);
-    }
-  
-    &__ai-heading {
-      // h3 は font-en 既定 → 和文見出しなので font-jp に明示打ち消し
-      font-family: var(--font-jp);
-      font-size: var(--fs-h3, var(--fs-h2));
-      line-height: var(--lh-heading);
-    }
-  
-    // --- ボタン ---
-    &__more {
-      margin-top: var(--space-40);
-    }
-  
-    // --- スタッツの出現演出(初期状態)。JSで解除 ---
-    &__stat {
-      opacity: 0;
-      transform: translateY(var(--space-16));
-    }
-  
-    // reduced-motion / JS無効への防御:演出を待たず表示
-    @media (prefers-reduced-motion: reduce) {
-      &__stat {
-        opacity: 1;
-        transform: none;
-      }
-    }
+.p-about-section__numeral {
+  position: absolute;
+  top: var(--space-24);
+  right: var(--space-24);
+}
+
+.p-about-section__arc {
+  // Service の実値に合わせる。全セクション実装後に Phase 7 で再判断
+  width: clamp(36rem, 90vw, 72rem);
+}
+
+.p-about-section__contents {
+  margin-top: var(--space-24);
+}
+
+// --- リード ---
+// body 継承で font-jp / lh-body(1.8) が当たる → 再指定しない
+
+// --- スタッツ ---
+.p-about-section__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-24);
+  place-items: center;
+  margin-block: var(--space-48);
+
+  @include mq(sp) {
+    grid-template-columns: 1fr; // SPは縦積み(横3列は数字が潰れるため)
+    gap: var(--space-16);
   }
-  
-  // JS が走らない環境でスタッツが透明なまま残らないための保険。
-  // no-js クラスを html に付けない運用なら、JS側で is-ready を付与する設計にする(下記JS参照)
-//   .p-about-section:not(.is-ready) {
-//     // 何もしない(初期非表示のまま)— JSが is-ready を付けたら下が効く
-//   }
-//   .p-about-section.is-ready &__stat {
-//     // ※ ネスト外なので実際は下のJS制御 or GSAPで直接操作。ここはコメントのみ
-//   }
+}
+
+// スタッツの出現演出(初期状態)。JSで解除
+.p-about-section__stat {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: var(--space-24);
+  border-top: var(--border-width) solid var(--color-border);
+  opacity: 0;
+  transform: translateY(var(--space-16));
+}
+
+.p-about-section__stat-value {
+  font-family: var(--font-en);
+  font-size: var(--fs-numeral-stat, 2.5rem); // トークンに無ければ既存見出し系に合わせる
+  line-height: var(--lh-numeral);
+  color: var(--color-text);
+}
+
+.p-about-section__stat-unit {
+  font-size: var(--fs-body);
+  margin-inline-start: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.p-about-section__stat-label {
+  font-size: var(--fs-14, var(--fs-body));
+  color: var(--color-text-muted);
+}
+
+// --- AIブロック ---
+.p-about-section__ai {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.p-about-section__ai-heading {
+  // h3 は font-en 既定 → 和文見出しなので font-jp に明示打ち消し
+  font-family: var(--font-jp);
+  font-size: var(--fs-h3, var(--fs-h2));
+  line-height: var(--lh-heading);
+}
+
+// --- ボタン ---
+.p-about-section__more {
+  margin-top: var(--space-40);
+}
+
+// reduced-motion / JS無効への防御:演出を待たず表示
+@media (prefers-reduced-motion: reduce) {
+  .p-about-section__stat {
+    opacity: 1;
+    transform: none;
+  }
+}

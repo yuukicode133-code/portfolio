@@ -24,98 +24,94 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
 
-  // --- 装飾レイヤー:円弧(下から) ---
-  // c-arc は見た目のみ。サイズと見切れ位置をここで指定する。
-  //
-  // 設計意図(Phase 1-4):「画面を区画する建築的なライン」
-  //   = アーチ。テキストはアーチの内側に納まる。
-  // よって「弧のカーブが画面に見える」ことが重要。円を大きくし過ぎると
-  // 弧が直線化して意図が消えるため、直径は画面幅基準で抑えめにし、
-  // 画面下部に沈めて上端のカーブだけを覗かせる。
-  //
-  // 位置の指定方針:
-  //   円を画面下部に沈め、上端のカーブだけを覗かせる。沈める量は
-  //   「円の直径基準」で決める。translate の % は要素自身(=円)の
-  //   サイズ基準なので、画面の高さが変わっても弧の見える量が一定に保たれる。
-  //   (bottom: % は .p-fv の高さ基準になり、画面高で見え方がブレるため使わない)
-  //
-  //   bottom: 0 で円の下端を .p-fv 下端に合わせ、translate Y を正方向に
-  //   かけて円を下へ沈める。translate Y: 72% なら円の高さの 72% ぶん沈み、
-  //   画面に覗く弧は直径の約 28% の高さになる。
-  //
-  // 下記は初期値。実画面を見て、テキストに被らず弧のカーブが
-  // 気持ちよく見える着地点に微調整すること(width と translate Y を動かす)。
-  &__arc {
-    width: clamp(650px, 120vw, 1125px); // 直径。大きすぎると弧が直線化する。500pxから変更
-    aspect-ratio: 1; // 正円
-    top: calc(50%);
-    left: 50%;
-    translate: -50% -50%; // X:中央寄せ / Y:円の高さの72%ぶん下へ沈める
-  }
+// --- 装飾レイヤー:円弧(下から) ---
+// c-arc は見た目のみ。サイズと見切れ位置をここで指定する。
+//
+// 設計意図(Phase 1-4):「画面を区画する建築的なライン」
+//   = アーチ。テキストはアーチの内側に納まる。
+// よって「弧のカーブが画面に見える」ことが重要。円を大きくし過ぎると
+// 弧が直線化して意図が消えるため、直径は画面幅基準で抑えめにし、
+// 画面下部に沈めて上端のカーブだけを覗かせる。
+//
+// 位置の指定方針:
+//   円を画面下部に沈め、上端のカーブだけを覗かせる。沈める量は
+//   「円の直径基準」で決める。translate の % は要素自身(=円)の
+//   サイズ基準なので、画面の高さが変わっても弧の見える量が一定に保たれる。
+//   (bottom: % は .p-fv の高さ基準になり、画面高で見え方がブレるため使わない)
+//
+//   bottom: 0 で円の下端を .p-fv 下端に合わせ、translate Y を正方向に
+//   かけて円を下へ沈める。translate Y: 72% なら円の高さの 72% ぶん沈み、
+//   画面に覗く弧は直径の約 28% の高さになる。
+//
+// 下記は初期値。実画面を見て、テキストに被らず弧のカーブが
+// 気持ちよく見える着地点に微調整すること(width と translate Y を動かす)。
+.p-fv__arc {
+  width: clamp(650px, 120vw, 1125px); // 直径。大きすぎると弧が直線化する。500pxから変更
+  aspect-ratio: 1; // 正円
+  top: calc(50%);
+  left: 50%;
+  translate: -50% -50%; // X:中央寄せ / Y:円の高さの72%ぶん下へ沈める
+}
 
+// --- コンテンツ領域 ---
+// ヘッダー(72px)に隠れないよう、内側を押し下げる。
+.p-fv__inner {
+  isolation: isolate;
+  z-index: var(--z-content); // 装飾より前面
+  padding-block-start: 72px; // ヘッダー高ぶん
+  padding-block-end: var(--space-96);
+}
 
-  // --- コンテンツ領域 ---
-  // ヘッダー(72px)に隠れないよう、内側を押し下げる。
-  &__inner {
-    isolation: isolate;
-    z-index: var(--z-content); // 装飾より前面
-    padding-block-start: 72px; // ヘッダー高ぶん
-    padding-block-end: var(--space-96);
-  }
+// --- 見出し ---
+.p-fv__title {
+  font-size: var(--fs-h2);
+}
 
-  // --- 見出し ---
-  &__title {
-    font-size: var(--fs-h2);
-  }
+// --- サブテキスト ---
+.p-fv__lead {
+  margin-block-start: var(--space-24);
+  max-width: 38em; // 1行が長くなりすぎないように
+  color: var(--color-text);
+}
 
-  // --- サブテキスト ---
-  &__lead {
-    margin-block-start: var(--space-24);
-    max-width: 38em; // 1行が長くなりすぎないように
-    color: var(--color-text);
-  }
+// --- scroll 誘導 ---
+// 「scroll」の英字 + 縦線。CSSのみ(設計思想6)。
+.p-fv__scroll {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  translate: -50% 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  font-family: var(--font-en);
+  font-size: var(--fs-small);
+  letter-spacing: var(--ls-heading-en);
+  color: var(--color-text-muted);
+}
 
-  // --- scroll 誘導 ---
-  // 「scroll」の英字 + 縦線。CSSのみ(設計思想6)。
-  &__scroll {
+// 縦線:静的な下地の線。その上を短いハイライト線分が流れる。
+.p-fv__scroll-line {
+  position: relative;
+  width: var(--border-width-fv);
+  height: var(--space-48);
+  background-color: var(--color-border); // 薄い下地の線
+  overflow: hidden;
+
+  // 流れるハイライト線分(上→下のループ)
+  &::after {
+    content: "";
     position: absolute;
-    bottom: 10%;
-    left: 50%;
-    translate: -50% 0;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-8);
-    font-family: var(--font-en);
-    font-size: var(--fs-small);
-    letter-spacing: var(--ls-heading-en);
-    color: var(--color-text-muted);
-  }
-
-  // 縦線:静的な下地の線。その上を短いハイライト線分が流れる。
-  &__scroll-line {
-    position: relative;
-    width: var(--border-width);
-    height: var(--space-48);
-    background-color: var(--color-border); // 薄い下地の線
-    overflow: hidden;
-
-    // 流れるハイライト線分(上→下のループ)
-    &::after {
-      content: "";
-      position: absolute;
-      inset-inline: 0;
-      top: 0;
-      height: 40%; // 線の4割の長さの明るい線分
-      background-color: var(--color-border-strong);
-      animation: p-fv-scroll-line 1.8s ease-in-out infinite;
-    }
+    inset-inline: 0;
+    top: 0;
+    height: 40%; // 線の4割の長さの明るい線分
+    background-color: var(--color-border-strong);
+    animation: p-fv-scroll-line 1.8s ease-in-out infinite;
   }
 }
-// .p-fv-arc__contents {
-//   position: relative;
-// }
 
 // ハイライト線分が上から下へ通り抜けるループ。
 // translateY のみで動かすため transform-origin の問題は起きない。

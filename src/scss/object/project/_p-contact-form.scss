@@ -6,10 +6,10 @@
 
 .p-contact-form-section__title { 
   font-size: var(--fs-h3); 
-}   // ★ 確認
+}  
 .p-contact-form-section__note {
   margin-block: var(--space-16) var(--space-40);
-  color: var(--color-text-muted);          // ★
+  color: var(--color-text-muted);       
 }
 
 .p-contact-form { 
@@ -18,13 +18,13 @@
 
 // PC: ラベル列 / 入力列の2カラム。SP: 縦積み
 .p-contact-form__field { 
-  display: grid; gap: var(--space-8); 
-}
-@media (min-width: 768px) {                 // ★ ブレークポイント変数があれば差し替え
-  .p-contact-form__field {
-    grid-template-columns: 14rem 1fr;
-    gap: var(--space-24);
-    align-items: start;
+  grid-template-columns: 14rem 1fr;
+  gap: var(--space-24);
+  align-items: start;
+  display: grid; 
+
+  @include mq(sp) {
+    gap: var(--space-8);  
   }
 }
 
@@ -41,7 +41,7 @@
 // バッジ = 必須/任意を「文言」で示す(色のみ依存にしない)
 .p-contact-form__badge {
   padding: 0.1em 0.5em;
-  font-size: var(--fs-small);                  // ★
+  font-size: var(--fs-small);                  
   line-height: var(--lh-heading);
   border-radius: var(--radius-md);
   display: inline-block;
@@ -51,21 +51,21 @@
   background-color: var(--color-accent);  
 }
 .p-contact-form__badge--optional {
-  color: var(--color-text-muted);                  // ★
+  color: var(--color-text-muted);                
   background-color: transparent; 
   border: 1px solid var(--color-border);
 }
 
 .p-contact-form__hint {
   margin-top: var(--space-8);
-  font-size: var(--fs-small);                  // ★
-  color: var(--color-text-muted);           // ★
+  font-size: var(--fs-small);                
+  color: var(--color-text-muted);      
 }
 
 .p-contact-form__input,
 .p-contact-form__textarea {
   width: 100%;
-  min-height: 2.75rem;                      // 44px タッチターゲット
+  min-height: 2.75rem;                 
   padding: 0.625rem 0.875rem;
   background-color: transparent;  
   border: 1px solid var(--color-border);   
@@ -114,7 +114,8 @@
   gap: var(--space-16);
 }
 .p-contact-form__note { 
-  font-size: var(--fs-small); color: var(--color-text-muted); 
+  font-size: var(--fs-small); 
+  color: var(--color-text-muted); 
 }   
 
 .p-contact-form__input,

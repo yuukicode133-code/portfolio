@@ -1,19 +1,12 @@
 @use "../global/mixins" as *;
 
 .l-section {
-  padding-top: var(--space-144);   // PC: 144px
+  padding-top: var(--space-144);  
   padding-bottom: var(--space-144);
-  overflow: clip;  // 巨大ナンバー・円弧モチーフの見切れを実現。
-                   // hidden ではなく clip:
-                   //  ・clip も hidden 同様「はみ出しを切り取る」
-                   //  ・ただし clip はスクロールコンテナを生成しないため、
-                   //    子孫の position: sticky を壊さない
-                   //    (hidden はスクロールコンテナになり sticky を壊す)
-                   //  ・このセクションにスクロール機能の意図は無く、
-                   //    見切れだけが目的なので clip が正しい
+  overflow: clip;  
 
   @include mq(sp) {
-    padding-top: var(--space-96);     // SP: 96px
+    padding-top: var(--space-96);  
     padding-bottom: var(--space-96);
   }
 }

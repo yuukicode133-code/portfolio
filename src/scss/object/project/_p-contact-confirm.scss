@@ -7,8 +7,8 @@
   padding-top: var(--space-40);
 }
 
-.p-contact-confirm__title { 
-  font-size: var(--fs-h3); 
+.p-contact-confirm__title {
+  font-size: var(--fs-h3);
 }
 .p-contact-confirm__note {
   margin-block: var(--space-16) var(--space-40);
@@ -21,24 +21,25 @@
   gap: var(--space-24);
 }
 
-// dt/dd を div で1組に包む(HTML仕様で許容)。これで行ごとに grid を効かせる
 .p-contact-confirm__row {
   display: grid;
-  gap: var(--space-8);
+  grid-template-columns: 14rem 1fr;
+  gap: var(--space-24);
+  align-items: start;
   padding-bottom: var(--space-24);
   border-bottom: 1px solid var(--color-border);
-}
-@media (min-width: 768px) {            // ★ (1)と同様、bp変数があれば差し替え
-  .p-contact-confirm__row {
-    grid-template-columns: 14rem 1fr;
-    gap: var(--space-24);
-    align-items: start;
+
+  @include mq(sp) {
+    gap: var(--space-8);
   }
 }
 
-.p-contact-confirm__term { font-weight: var(--fw-bold); }
-.p-contact-confirm__desc { margin: 0; }   // dd の既定インデントを打ち消し
-.p-contact-confirm__empty { color: var(--color-text-muted); }
+.p-contact-confirm__term {
+  font-weight: var(--fw-bold);
+}
+.p-contact-confirm__empty {
+  color: var(--color-text-muted);
+}
 
 // 本文だけ改行を保持(textareaの入力をそのまま見せる)
 .p-contact-confirm__desc--message {

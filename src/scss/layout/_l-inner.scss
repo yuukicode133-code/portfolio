@@ -3,9 +3,9 @@
 .l-inner {
   max-width: 1330px;
   margin-inline: auto;
-  padding-inline: var(--space-40);  // PC: 40px
+  padding-inline: var(--space-40); 
 
   @include mq(sp) {
-    padding-inline: var(--space-16);  // SP: 16px
+    padding-inline: var(--space-16); 
   }
 }

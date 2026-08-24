@@ -1,0 +1,257 @@
+<?php get_header(); ?>
+
+<main>
+  <!-- FV -->
+  <section class="p-fv">
+    <!-- 装飾レイヤー: 円弧。c-arc は見た目のみ、配置は p-fv 側で指定 -->
+    <div class="c-arc p-fv__arc" aria-hidden="true">
+      <div class="p-fv-arc__contents">
+        <span class="p-fv__scroll" aria-hidden="true">
+          <span class="p-fv__scroll-text">scroll</span>
+          <span class="p-fv__scroll-line"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="l-inner p-fv__inner">
+      <!-- 見出し: トップの主題はサイト名(ロゴ=h1)が担うため、ここは h2。
+           視覚的には最も大きく最初に置き、人にとっての主役にする。
+           FV はセクション番号体系の外に置くため、タグ・巨大ナンバーは持たない -->
+      <h2 class="p-fv__title">デザインの意図をくみ取り、<br />丁寧にかたちにします。</h2>
+
+      <!-- サブテキスト -->
+      <p class="p-fv__lead">Webコーダーとして正社員を志望しています。<br />HTML/CSS・jQuery・WordPress・GSAPを使ったサイト制作が得意です。</p>
+
+      <!-- scroll 誘導: 「scroll」+ 縦線(ハイライトが流れる)。CSSのみ -->
+      <!-- <span class="p-fv__scroll" aria-hidden="true">
+        <span class="p-fv__scroll-text">scroll</span>
+        <span class="p-fv__scroll-line"></span>
+      </span> -->
+    </div>
+  </section>
+
+  <!-- Works -->
+  <section class="p-top-works-section l-section">
+    <!-- 装飾レイヤー: セクション全幅基準で配置。.l-section の overflow:clip で
+         セクション端を見切れる。c-numeral / c-arc は見た目のみ、配置は p 層 -->
+    <div class="p-top-works-section__arc-wrapper">
+      <span class="c-numeral c-numeral--md p-top-works-section__numeral" aria-hidden="true">01</span>
+    </div>
+
+    <div class="l-inner">
+      <!--
+        [変更]
+        旧構造: .p-top-works__contents > [.p-top-works__left(タイトル+ボタン) , .p-top-works__right(カード)]
+        新構造: .p-top-works__contents > [.p-top-works__title , .p-top-works__right , .p-top-works__button] の3兄弟
+        理由: タイトルとボタンを「左カラム」という運命共同体から解放するため。
+              SP時に縦並び(タイトル→カード→ボタン)、PC時にGridで2カラム再構築できる。
+              タイトルだけ sticky、ボタンはsticky不要(left廃止)。
+      -->
+      <div class="p-top-works__contents">
+        <h2 class="c-section-title p-top-works__title">
+          <span class="c-section-title__en">works</span>
+          <span class="c-section-title__ja">制作実績</span>
+        </h2>
+        <div class="p-top-works__right">
+          <!-- wordpress -->
+          <article class="p-top-works__card">
+            <div class="p-top-works__card-wrapper">
+              <div class="p-top-works__card-image">
+                <picture>
+                  <source srcset="/images/test-wp.webp" type="image/webp" />
+                  <img src="/images/test-wp.png" alt="ポートフォリオサイトのサムネイル画像" width="1978" height="1930" />
+                </picture>
+              </div>
+              <div class="p-top-works__card-content">
+                <h3 class="p-top-works__card-title">ポートフォリオサイト</h3>
+                <ul class="p-top-works__card-tags">
+                  <li class="p-top-works__card-tag">WordPress</li>
+                  <li class="p-top-works__card-tag">ポートフォリオサイト</li>
+                </ul>
+                <a class="p-top-works__card-link" href="/single/">詳細を見る</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- green -->
+          <article   class="p-top-works__card">
+            <div class="p-top-works__card-wrapper">
+              <div class="p-top-works__card-image">
+                <picture>
+                  <source srcset="/images/green.webp" type="image/webp" />
+                  <img src="/images/green.png" alt="ポートフォリオサイトのサムネイル画像" width="375" height="250" />
+                </picture>
+              </div>
+              <div class="p-top-works__card-content">
+                <h3 class="p-top-works__card-title">【架空】green デザイナーのポートフォリオ</h3>
+                <ul class="p-top-works__card-tags">
+                  <li class="p-top-works__card-tag">ポートフォリオサイト</li>
+                </ul>
+                <a class="p-top-works__card-link" href="/single/">詳細を見る</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- oha -->
+          <article class="p-top-works__card">
+            <div class="p-top-works__card-wrapper">
+              <div class="p-top-works__card-image">
+                <picture>
+                  <source srcset="/images/oha.webp" type="image/webp" />
+                  <img src="/images/oha.png" alt="LPサイトのサムネイル画像" width="375" height="250" />
+                </picture>
+              </div>
+              <div class="p-top-works__card-content">
+                <h3 class="p-top-works__card-title">oha!</h3>
+                <ul class="p-top-works__card-tags">
+                  <li class="p-top-works__card-tag">LP</li>
+                </ul>
+                
+                <a class="p-top-works__card-link" href="/single/">詳細を見る</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="p-top-works__button-wrapper">
+          <?php $works_id = get_page_by_path('works')->ID; ?>
+          <a href="<?php echo get_permalink($works_id); ?>" class="c-arrow-link c-arrow-link--next p-top-works__button">全ての実績を見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service -->
+  <!--
+    Phase 4-3:
+      ・旧アコーディオン構造(<dl>/<dt>/<dd> + <button>)を全廃
+      ・4ブロックは <ol> + CSS counter で「番号は見た目、HTMLには書かない」
+      ・スキル一覧は <ul> + c-skill チップ。Top では名前のみ列挙
+        (詳細掘り下げは About スキル節に持たせる、確認5 α案の二段構成)
+      ・セクション直に l-inner を付ける旧パターンをやめ、Works と同じく
+        全幅セクション + 内側 .l-inner の入れ子構造に整える
+  -->
+  <section id="service" class="p-service-section l-section">
+    <!-- 装飾: 巨大ナンバー(左上 MD・番号 02) -->
+    <span class="c-numeral c-numeral--md c-numeral--top-left p-service-section__numeral" aria-hidden="true">02</span>
+
+    <!-- 装飾: 円弧(右から・中) -->
+    <!-- <div class="c-arc p-service-section__arc" aria-hidden="true"></div> -->
+
+    <div class="l-inner">
+      <h2 class="c-section-title p-service-section__title">
+        <span class="c-section-title__en">service</span>
+        <span class="c-section-title__ja">できること</span>
+      </h2>
+
+      <div class="p-service-section__contents">
+        <!-- 4ブロック(価値提案):「何を提供できるか」 -->
+        <ol class="p-service-section__list">
+          <li class="p-service-section__item">
+            <div class="p-service-section__item-body">
+              <h3 class="p-service-section__item-heading">デザインカンプから、忠実に組みます。</h3>
+              <p class="p-service-section__item-text">Figmaのカンプを読み取り、HTML/CSSで白紙の状態から実装できます。SCSS(FLOCSS設計)によるファイル分割と命名の一貫性を意識し、保守しやすいコードを心がけています。</p>
+            </div>
+          </li>
+          <li class="p-service-section__item">
+            <div class="p-service-section__item-body">
+              <h3 class="p-service-section__item-heading">動きのある表現で、印象をつくります。</h3>
+              <p class="p-service-section__item-text">GSAP・ScrollTriggerを使ったスクロール連動アニメーションの実装経験があります。派手な3D系の表現はまだこれからですが、タイムライン制御やスクロール駆動のアニメーションは、都度学習しながら実装しています。</p>
+            </div>
+          </li>
+          <li class="p-service-section__item">
+            <div class="p-service-section__item-body">
+              <h3 class="p-service-section__item-heading">WordPressで、更新しやすいサイトを構築します。</h3>
+              <p class="p-service-section__item-text">PHPによるオリジナルテーマの作成、カスタム投稿タイプやACF(カスタムフィールド)の導入、お問い合わせフォームやパンくずリストの実装経験があります。運用する方が更新しやすい設計を目指しています。</p>
+            </div>
+          </li>
+          <li class="p-service-section__item">
+            <div class="p-service-section__item-body">
+              <h3 class="p-service-section__item-heading">品質チェックの仕組みを持っています。</h3>
+              <p class="p-service-section__item-text">SEOやアクセシビリティの品質チェックの観点を整理し、公開前の確認に使っています。WAI-ARIAやキーボード対応、構造化データの実装は、このサイトで学びながら取り組んでいる最中です。</p>
+            </div>
+          </li>
+        </ol>
+
+        <!-- スキル一覧:「何を使えるか」(名前のみ。詳細は About スキル節へ) -->
+        <ul class="p-service-section__skills">
+          <li class="c-skill">HTML</li>
+          <li class="c-skill">CSS</li>
+          <li class="c-skill">SCSS(FLOCSS)</li>
+          <li class="c-skill">jQuery</li>
+          <li class="c-skill">JavaScript</li>
+          <li class="c-skill">GSAP</li>
+          <li class="c-skill">ScrollTrigger</li>
+          <li class="c-skill">WordPress</li>
+          <li class="c-skill">PHP</li>
+          <li class="c-skill">Vite</li>
+          <li class="c-skill">Git</li>
+          <li class="c-skill">GitHub</li>
+          <li class="c-skill">Figma</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="p-about-section l-section">
+    <span class="c-numeral c-numeral--md c-numeral--top-right p-about-section__numeral" aria-hidden="true">03</span>
+    <!-- <div class="c-arc p-about-section__arc" aria-hidden="true"></div> -->
+
+    <div class="l-inner">
+      <h2 class="c-section-title p-about-section__title">
+        <span class="c-section-title__en">about</span>
+        <span class="c-section-title__ja">私について</span>
+      </h2>
+
+      <div class="p-about-section__contents">
+        <p class="p-about-section__lead">奈良在住のコーダー。いち使い手として「こうだったら面白い」「これがあれば助かる」と感じたことを、実際に形にしてきました。前職の動画編集では、当時自分も求職者だったからこそ、「見る人がこの施設で働きたいと思えるか」を基準に素材を選んでいました。動画編集を入り口に、今はWeb制作でその感覚を形にしています。</p>
+
+        <!-- <ul class="p-about-section__stats">
+          <li class="p-about-section__stat u-fade-up js-fade">
+            <span class="p-about-section__stat-value">350<span class="p-about-section__stat-unit">日+</span></span>
+            <span class="p-about-section__stat-label">学習ログ連続投稿</span>
+          </li>
+          <li class="p-about-section__stat u-fade-up js-fade">
+            <span class="p-about-section__stat-value">8<span class="p-about-section__stat-unit">サイト</span></span>
+            <span class="p-about-section__stat-label">制作サイト数</span>
+          </li>
+          <li class="p-about-section__stat u-fade-up js-fade">
+            <span class="p-about-section__stat-value">29<span class="p-about-section__stat-unit">本</span></span>
+            <span class="p-about-section__stat-label">動画編集納品</span>
+          </li>
+        </ul> -->
+
+        <div class="p-about-section__ai">
+          <!-- <h3 class="p-about-section__ai-heading">AIとの向き合い方</h3> -->
+          <p class="p-about-section__ai-text">制作にはAIも使いますが、最終的な判断は自分で持つ——その線だけは崩さないようにしています。</p>
+        </div>
+        <?php $about_id = get_page_by_path('about')->ID; ?>
+        <a href="<?php echo get_permalink($about_id); ?>"  class="c-arrow-link c-arrow-link--next p-about-section__more">私についてもっと知る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="l-section p-contact">
+    <div class="l-inner">
+      <span class="c-numeral c-numeral--md p-contact__numeral" aria-hidden="true">04</span>
+
+      <div class="p-contact__content u-fade-up js-fade">
+        <h2 class="c-section-title">
+          <span class="c-section-title__en">contact</span>
+          <span class="c-section-title__ja">お問い合わせ</span>
+        </h2>
+
+        <div class="p-contact__lead">
+          <p>ポートフォリオをご覧いただき、ありがとうございます。</p>
+          <p>面談のご依頼やご相談などございましたら、お問い合わせフォームよりご連絡ください。2営業日以内にご返信いたします。</p>
+        </div>
+
+        <?php $contact_id = get_page_by_path('contact')->ID; ?>
+        <a class="c-arrow-link c-arrow-link--next p-contact__button" href="<?php echo get_permalink($contact_id); ?>">お問い合わせ</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<?php get_footer(); ?>

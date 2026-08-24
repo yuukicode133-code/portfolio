@@ -1,3 +1,7 @@
 node_modules/
 dist/
+# Vite ビルド結果（使い捨て。ソースから再生成できる） - githubには載せたくないので。
+/theme/build/
+
+# macOS が作るゴミ
 .DS_Store

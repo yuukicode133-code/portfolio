@@ -45,17 +45,21 @@
 
   // typography.scss の a:hover { color: var(--color-accent); } を打ち消す。
   // ロゴ全体は色変化させず、子要素の .p-header__logo-accent だけが accent 化する設計。
-  &:hover {
-    color: var(--color-text);
-    opacity: 0.7;
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--color-text);
+      opacity: 0.7;
+    }
   }
 }
 
 .p-header__logo-accent {
   // .p-header__logo-link:hover の時だけ accent 化(打ち消しを更に上書き)
-  .p-header__logo-link:hover & {
-    color: var(--color-accent);
-    transition: color 0.35s ease;
+  @media (any-hover: hover) {
+    .p-header__logo-link:hover & {
+      color: var(--color-accent);
+      transition: color 0.35s ease;
+    }
   }
 }
 

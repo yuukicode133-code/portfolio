@@ -1,0 +1,180 @@
+<?php get_header(); ?>
+
+<main class="l-main p-single">
+
+  <nav class="c-breadcrumb" aria-label="現在地">
+    <div class="l-inner">
+      <ol class="c-breadcrumb__list">
+        <li class="c-breadcrumb__item"><a href="/">ホーム</a></li>
+        <li class="c-breadcrumb__item"><a href="/works/">Works</a></li>
+        <!-- 現在地=案件名。リンクにせず淡色 + aria-current(ACF: 案件名) -->
+        <li class="c-breadcrumb__item" aria-current="page">案件名がここに入ります</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- ===== ヘッダー(案件名主体。番号・№ は無し)===== -->
+  <header class="p-page-header">
+    <div class="l-inner">
+      <!-- カテゴリー(ACF: サイトの種類)。動的化時はここに出力 -->
+      <p class="p-single__category">Corporate</p>
+      <!-- 案件名(ACF)。page-header の見出しサイズを流用 -->
+      <h1 class="p-page-header__title p-single__title">案件名がここに入ります</h1>
+      <!-- 短い概要(ACF: 1〜2行の肩書き的短文)。詳細は下のセクションで語る -->
+      <p class="p-page-header__lead">短い概要文(1〜2行)。サイトの目的を端的に表現します。</p>
+
+      <div class="p-single__actions">
+        <!-- サイトを見る=枠線ボタン(c-button--secondary)。外部リンクは別タブ + a11y 明示 -->
+        <a class="c-button c-button--secondary" href="#" target="_blank" rel="noopener">
+          サイトを見る<span class="u-hidden-visually">(新しいタブで開く)</span>
+        </a>
+        <!-- GitHub=矢印なし → 既存の枠線ボタン(c-button--secondary) -->
+        <a class="c-button c-button--secondary" href="#" target="_blank" rel="noopener">
+          GitHub<span class="u-hidden-visually">(新しいタブで開く)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== メインビジュアル(まず惹きつける=モックアップを大きく先頭に)===== -->
+  <section class="p-single__visual" aria-labelledby="visual-title">
+    <div class="l-inner">
+      <h2 id="visual-title" class="u-hidden-visually">メインビジュアル</h2>
+
+      <!-- PCメイン(ACF: 画像)。大きく1枚 -->
+      <figure class="p-single__mockup u-fade-up js-fade">
+        <img src="" alt="案件名 のトップページ(PC表示)" width="1600" height="1000">
+      </figure>
+
+      <!-- PC別画面 + SP(ACF: 画像 ×2)。2カラム -->
+      <div class="p-single__mockup-sub">
+        <figure class="p-single__mockup-item u-fade-up js-fade">
+          <img src="" alt="案件名 の下層ページ(PC表示)" width="800" height="600">
+        </figure>
+        <figure class="p-single__mockup-item u-fade-up js-fade">
+          <img src="" alt="案件名 のスマートフォン表示" width="600" height="900">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== プロジェクトについて(概要=物語 + メタ=事実 を1セクションに統合)===== -->
+  <section class="l-section" aria-labelledby="about-project-title">
+    <div class="l-inner">
+      <div class="p-single__head u-fade-up js-fade">
+        <h2 class="c-section-title">
+          <span class="c-section-title__en">About this project</span>
+          <span id="about-project-title" class="c-section-title__ja">プロジェクトについて</span>
+        </h2>
+      </div>
+
+      <!-- 詳細概要(ACF: 4〜6行)。目的・ターゲット・コンセプト・意図など -->
+      <p class="p-single__overview u-fade-up js-fade">
+        詳細な概要文(4〜6行)。サイトの目的、ターゲット、コンセプト、なぜこのデザインにしたのか、何を意識して作ったのかなど、プロジェクトの背景情報をここに記載します。
+      </p>
+
+      <!-- メタ情報(dl:項目↔値)。各値は ACF の固定フィールドから出力 -->
+      <dl class="p-single__meta u-fade-up js-fade">
+        <div class="p-single__meta-row">
+          <dt class="p-single__meta-term">Client</dt>
+          <dd class="p-single__meta-desc">架空クライアント / デイトラ課題 など</dd>
+        </div>
+        <div class="p-single__meta-row">
+          <dt class="p-single__meta-term">Scope</dt>
+          <dd class="p-single__meta-desc">コーディングのみ / デザインカンプ作成+コーディング など</dd>
+        </div>
+        <div class="p-single__meta-row">
+          <dt class="p-single__meta-term">Stack</dt>
+          <dd class="p-single__meta-desc">
+            <!-- 使用技術タグ(ACF: 繰り返し = タグ)。About STACK と見た目を揃える -->
+            <ul class="p-single__stack">
+              <li class="p-single__stack-tag">HTML</li>
+              <li class="p-single__stack-tag">SCSS</li>
+              <li class="p-single__stack-tag">JavaScript</li>
+              <li class="p-single__stack-tag">jQuery</li>
+              <li class="p-single__stack-tag">GSAP</li>
+              <li class="p-single__stack-tag">WordPress</li>
+            </ul>
+          </dd>
+        </div>
+        <div class="p-single__meta-row">
+          <dt class="p-single__meta-term">Term</dt>
+          <dd class="p-single__meta-desc">2024.10 — 2024.11(約3週間)</dd>
+        </div>
+        <div class="p-single__meta-row">
+          <dt class="p-single__meta-term">Target</dt>
+          <dd class="p-single__meta-desc">20〜30代女性、ナチュラル系志向 など</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===== こだわりポイント(ACF: 画像+説明文の繰り返し。中身は c-point)===== -->
+  <section class="l-section" aria-labelledby="details-title">
+    <div class="l-inner">
+      <div class="p-single__head u-fade-up js-fade">
+        <h2 class="c-section-title">
+          <span class="c-section-title__en">Details</span>
+          <span id="details-title" class="c-section-title__ja">こだわりポイント</span>
+        </h2>
+      </div>
+
+      <!--
+        ここが ACF 繰り返しフィールド。<li class="c-point"> の1つ = 1ペア。
+        番号(01/02…)は装飾なので aria-hidden。順序の意味は <ol> が持つ。
+        番号は左右交互(--right)で c-point のジグザグと呼吸を合わせる。
+        画像の alt: 隣の見出し+本文が内容を担うので既定は空(装飾扱い)。
+                    説明が要る図なら ACF の alt を出力して内容 alt にしてよい。
+      -->
+      <ol class="p-single__point-list">
+        <li class="c-point u-fade-up js-fade">
+          <span class="p-single__point-num p-single__point-num--right" aria-hidden="true"></span>
+          <figure class="c-point__figure">
+            <img class="c-point__img" src="" alt="" width="800" height="500">
+          </figure>
+          <div class="c-point__body">
+            <h3 class="c-point__title">サブ見出し</h3>
+            <p class="c-point__desc">説明文(3〜5行):実装上の工夫、デザイン意図、技術的なこだわりなどをここに記載します。</p>
+          </div>
+        </li>
+
+        <li class="c-point u-fade-up js-fade">
+          <span class="p-single__point-num" aria-hidden="true"></span>
+          <figure class="c-point__figure">
+            <img class="c-point__img" src="" alt="" width="800" height="500">
+          </figure>
+          <div class="c-point__body">
+            <h3 class="c-point__title">サブ見出し</h3>
+            <p class="c-point__desc">説明文(3〜5行):実装上の工夫、デザイン意図、技術的なこだわりなどをここに記載します。</p>
+          </div>
+        </li>
+
+        <li class="c-point u-fade-up js-fade">
+          <span class="p-single__point-num p-single__point-num--right" aria-hidden="true"></span>
+          <figure class="c-point__figure">
+            <img class="c-point__img" src="" alt="" width="800" height="500">
+          </figure>
+          <div class="c-point__body">
+            <h3 class="c-point__title">サブ見出し</h3>
+            <p class="c-point__desc">説明文(3〜5行):実装上の工夫、デザイン意図、技術的なこだわりなどをここに記載します。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== ページ内ナビ(single専用・project層。中身は矢印リンク)===== -->
+  <nav class="p-single__pager" aria-label="実績ナビゲーション">
+    <div class="l-inner">
+      <div class="p-single__pager-grid">
+        <!-- 前後は WP の previous/next_post_link に対応する枠 -->
+        <a class="c-arrow-link c-arrow-link--prev p-single__pager-prev" href="#">前の実績タイトル</a>
+        <a class="c-arrow-link c-arrow-link--up p-single__pager-index" href="/works/">実績一覧へ戻る</a>
+        <a class="c-arrow-link c-arrow-link--next p-single__pager-next" href="#">次の実績タイトル</a>
+      </div>
+    </div>
+  </nav>
+
+</main>
+
+<?php get_footer(); ?>

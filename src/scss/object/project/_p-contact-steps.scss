@@ -15,9 +15,9 @@
   gap: var(--space-8);
   padding: var(--space-16);
   text-align: center;
-  border: 1px solid var(--color-border);   // ★
+  border: 1px solid var(--color-border);   
   border-radius: var(--radius-sm);
-  color: var(--color-text-muted);          // ★ 既定は控えめ
+  color: var(--color-text-muted);         
 }
 .p-contact-steps__num { 
   font-size: var(--fs-small); 
@@ -29,8 +29,8 @@
 
 // 現在のステップ = 反転(塗り)
 .p-contact-steps__item.is-current {
-  background-color: var(--color-accent);     // ★ 本文濃色トークン名を確認
-  color: var(--color-white);           // ★ 白/反転テキスト
+  background-color: var(--color-accent);     
+  color: var(--color-white);        
   border: none;
 }
 // 完了済み = 枠線のまま色だけ戻す(confirm/thanks で使用)

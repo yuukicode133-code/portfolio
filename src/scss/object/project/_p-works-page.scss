@@ -46,17 +46,27 @@
     background-color 0.2s ease,
     transform 0.2s ease;
   
-  @media (hover: hover) {
-    &:hover,
-    &:focus-visible {
+  @media (any-hover: hover) {
+    &:hover {
       transform: translateY(-2px);
       cursor: pointer;
     }
   }
+
+  &:focus-visible {
+    transform: translateY(-2px);
+    cursor: pointer;
+  }
 }
 
 // リンク版のホバー/フォーカス:静かな方言(accent の輪郭が立つ)
-.p-works__category:not([aria-current="page"]):hover,
+@media (any-hover: hover) {
+  .p-works__category:not([aria-current="page"]):hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
 .p-works__category:not([aria-current="page"]):focus-visible {
   border-color: var(--color-accent);
   color: var(--color-accent);
@@ -119,17 +129,19 @@
 }
 
 // ホバー:輪郭が accent に立ち上がり、ごく控えめに浮く(触れば必ず返る確実さ)
-.p-works__card:hover {
-  border-color: var(--color-accent);
-  box-shadow:
-    0 2px 4px rgba(20, 20, 23, 0.05),
-    0 18px 36px -18px rgba(192, 80, 31, 0.28); // accent 寄りの影
-  transform: translateY(-2px);
+@media (any-hover: hover) {
+  .p-works__card:hover {
+    border-color: var(--color-accent);
+    box-shadow:
+      0 2px 4px rgba(20, 20, 23, 0.05),
+      0 18px 36px -18px rgba(192, 80, 31, 0.28); // accent 寄りの影
+    transform: translateY(-2px);
 
-  .p-works__tags > li >.c-skill {
-        color: var(--color-bg-main);
-        border-color: var(--color-bg-main);
-      }
+    .p-works__tags > li >.c-skill {
+      color: var(--color-bg-main);
+      border-color: var(--color-bg-main);
+    }
+  }
 }
 
 // キーボード/フォーカス:カード自身に outline(overflow:clip に切られない)
@@ -156,8 +168,10 @@
   transition: transform 0.4s ease;
 }
 
-.p-works__card:hover .p-works__img {
-  transform: scale(1.03); // ごく控えめなズーム
+@media (any-hover: hover) {
+  .p-works__card:hover .p-works__img {
+    transform: scale(1.03); // ごく控えめなズーム
+  }
 }
 
 /* カード本文 */
@@ -205,14 +219,22 @@
 
 /* ホバー/フォーカス:本文を accent で塗り、テキストは白に
    (accent #c0501f × 白は AA コントラスト比 約 4.7:1 を満たす) */
-.p-works__card:hover .p-works__body,
+@media (any-hover: hover) {
+  .p-works__card:hover .p-works__body {
+    background-color: var(--color-accent);
+  }
+
+  .p-works__card:hover .p-works__category-label,
+  .p-works__card:hover .p-works__link {
+    color: var(--color-bg-main);
+  }
+}
+
 .p-works__card:focus-within .p-works__body {
   background-color: var(--color-accent);
 }
 
-.p-works__card:hover .p-works__category-label,
 .p-works__card:focus-within .p-works__category-label,
-.p-works__card:hover .p-works__link,
 .p-works__card:focus-within .p-works__link {
   color: var(--color-bg-main);
 }
@@ -240,12 +262,22 @@
    ※ c-tag 本体は書き換えず、works 内のこの状況だけ上書き。
      下記は c-tag が border-color / color / background-color を
      持つ前提。実際の c-tag のプロパティに合わせて要確認。 */
-.p-works__card:hover .p-works__tags,
+@media (any-hover: hover) {
+  .p-works__card:hover .p-works__tags {
+    border-top-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .p-works__card:hover .p-works__tags .c-tag {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.6);
+    color: var(--color-bg-main);
+  }
+}
+
 .p-works__card:focus-within .p-works__tags {
   border-top-color: rgba(255, 255, 255, 0.4);
 }
 
-.p-works__card:hover .p-works__tags .c-tag,
 .p-works__card:focus-within .p-works__tags .c-tag {
   background-color: transparent;
   border-color: rgba(255, 255, 255, 0.6);
@@ -264,12 +296,14 @@
       color 0.2s ease;
   }
 
-  .p-works__card:hover {
-    transform: none;
-  }
+  @media (any-hover: hover) {
+    .p-works__card:hover {
+      transform: none;
+    }
 
-  .p-works__card:hover .p-works__img {
-    transform: none;
+    .p-works__card:hover .p-works__img {
+      transform: none;
+    }
   }
 }
 
@@ -317,7 +351,14 @@
 }
 /* リンク(=現在地以外)のホバー/フォーカス。
    現在地(aria-current)は静的マーカーなので反応させない */
-.p-works__page:not([aria-current="page"]):hover,
+@media (any-hover: hover) {
+  .p-works__page:not([aria-current="page"]):hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-main);
+  }
+}
+
 .p-works__page:not([aria-current="page"]):focus-visible {
   background-color: var(--color-accent);
   border-color: var(--color-accent);

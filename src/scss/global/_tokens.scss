@@ -3,49 +3,6 @@
 
 :root {
   // ============================================================
-  // 旧トークン(段階的廃止予定、Phase 7で削除)
-  // ============================================================
-  // colors
-  --color-main: #{$main-color};
-  --color-green: #{$green-color};
-  --color-accent-old: #{$accent-color}; // 旧accent(オレンジ #f7a849)、新accentと区別
-  --color-white-old: #{$white-color}; // 旧white(#f3f1ef)、新と区別
-  --color-green-light: #{$green-light-color};
-  --color-mint: #{$mint-color};
-  --color-black: #{$black-color};
-  --color-pure-white: #{$pure-white-color};
-  --color-gray: #{$gray-color};
-
-  // color-works(後で新トークン参照に置換予定)
-  --color-works-card: #{$pure-white-color};
-
-  // z-index(削除予定の旧名)
-  --z-index-header: 500;
-  --z-index-section: 300;
-
-  // 旧 box-shadow(WorksカードはPhase 7で再評価)
-  --box-shadow-works-card: 5px 5px 23px -15px var(--color-black);
-
-  // works-sticky(数値は実装時に調整)
-  // --header-height: 72px;
-  // --card-height: 615px;
-  // --sticky-top: calc(var(--header-height) + (100vh - var(--header-height) - var(--card-height)) / 2);
-
-  // 旧Spacing(T-shirt記法)— 既存ファイルで使用中、段階的廃止予定
-  // 各 .scss を新名(--space-NN)に書き換え次第、削除
-  --space-xs: var(--space-8);
-  --space-sm: var(--space-16);
-  --space-md: var(--space-24);
-  --space-lg: var(--space-40);
-  --space-xl: var(--space-64);
-  --space-2xl: var(--space-96);
-  --space-3xl: var(--space-128);
-
-  // ============================================================
-  // ▼ 新トークン体系 ▼
-  // ============================================================
-
-  // ============================================================
   // [1] Primitive Tokens  --  値の語彙
   // ============================================================
 
@@ -134,6 +91,7 @@
   // ----- Border Width(罫線の太さ) -----
   --border-width: 0.5px; // 標準
   --border-width-md: 1px; // 強調・非Retina対応
+  --border-width-fv: 2px; // FVのスクロールライン
 
   // ----- Line Height(行間) -----
   --lh-body: 1.8;
@@ -164,12 +122,8 @@
 
   // ----header-height-----
   --header-height: 4.5rem;// SP/PC共通(必要なら後で調整)
+
+  // ----- Box Shadow -----
+  --box-shadow-works-card: 5px 5px 23px -15px var(--color-gray-900);
+
 }
-// @include mq(sp) {
-//   :root {
-//     --card-height: clamp(24.44313rem, 3.34948rem + 43.9451vw, 31.44688rem);
-//     --card-wrapper-height-sp: clamp(50svh, calc(50svh + 20svh * (100vw - 390px) / 377px), 70svh); //SP時のカードの高さは767~390で可変
-//     // works-sticky(数値は実装時に調整)
-//     --sticky-top--left: calc(var(--header-height) + (var(--card-wrapper-height-sp) - var(--header-height) - var(--card-height)) / 2);
-//   }
-// }

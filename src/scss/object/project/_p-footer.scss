@@ -22,16 +22,12 @@
   gap: var(--space-24);
   padding-bottom: var(--space-24);
 
-  @media (-webkit-min-device-pixel-ratio: 2) {
-    border-bottom-width: 0.5px;
-  }
 }
 
 .p-footer__logo {
-  margin: 0;                  // p のデフォルトmargin打消
-  font-family: var(--font-en); // p は <p> 要素なので英字フォントを明示指定
+  font-family: var(--font-en); 
   font-size: var(--fs-h4);
-  font-weight: 400;
+  font-weight: var(--fw-normal);
   letter-spacing: var(--ls-heading-en);
 }
 
@@ -39,14 +35,19 @@
   display: inline-block;
 
   // typography.scss の a:hover { color: var(--color-accent); } を打ち消す。
-  &:hover {
-    color: var(--color-text);
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--color-text);
+      opacity: 0.7;
+    }
   }
 }
 
 .p-footer__logo-accent {
-  .p-footer__logo-link:hover & {
-    color: var(--color-accent);
+  @media (any-hover: hover) {
+    .p-footer__logo-link:hover & {
+      color: var(--color-accent);
+    }
   }
 }
 
@@ -58,7 +59,6 @@
 }
 
 .p-footer__links-link {
-  // a 要素なので color/transition/hover は typography.scss から継承される
   display: inline-flex;
   align-items: center;
   justify-content: center;
