@@ -5,8 +5,7 @@
   <nav class="c-breadcrumb" aria-label="現在地">
     <div class="l-inner">
         <ol class="c-breadcrumb__list">
-          <li class="c-breadcrumb__item"><a href="/">ホーム</a></li>
-          <li class="c-breadcrumb__item" aria-current="page">About</li>
+          <?php bcn_display(); ?>
         </ol>
     </div>
   </nav>
@@ -104,7 +103,7 @@
         </div>
       </div>
 
-      <div class="p-about__sub u-fade-up js-fade">
+      <div class="p-about__sub u-fade-up js-fade" id="ai">
         <span class="p-about__sub-en">Working with AI</span>
         <h3 class="p-about__sub-title">AIとの向き合い方</h3>
         <p class="p-about__declare">
@@ -143,7 +142,7 @@
     </div>
   </section>
 
-  <section class="l-section p-about__section" aria-labelledby="site-title">
+  <section class="l-section p-about__section" aria-labelledby="site-title" id="about-this-site">
     <div class="l-inner">
       <div class="p-about__head u-fade-up js-fade">
         <span class="p-about__num" aria-hidden="true">03</span>
@@ -186,41 +185,11 @@
         </div>
 
         <ol class="p-about__point-list">
-          <li class="c-point u-fade-up js-fade">
-            <span class="p-about__point-num p-about__point-num--right" aria-hidden="true"></span>
-            <figure class="c-point__figure">
-              <img class="c-point__img" src="" alt="" width="800" height="500">
-            </figure>
-            <div class="c-point__body">
-              <h4 class="c-point__title">操作に、応える手応えを。</h4>
-              <p class="c-point__desc">ホバー表示には単純な色替えではなく円が広がる動きを重ねました。反転だけではアクションの手応えが弱いと考え、「いま自分がどこを触っているか」が体感で伝わる表現を選んでいます。ただし主役はあくまでテキストなので、動きは主張しすぎない範囲に抑えました。</p>
-            </div>
-          </li>
-        
-          <li class="c-point u-fade-up js-fade">
-            <span class="p-about__point-num" aria-hidden="true"></span>
-            <figure class="c-point__figure">
-              <img class="c-point__img" src="" alt="" width="800" height="500">
-            </figure>
-            <div class="c-point__body">
-              <h4 class="c-point__title">スクロールに、実装で応える。</h4>
-              <p class="c-point__desc">制作実績を、スクロールに連動してカードが切り替わる構成で見せています。左の見出しブロックと右のカードの高さを揃え、同じスクロール量で自然に送られるよう、GSAPで組み立てました。表示位置やテキスト量の変化にも崩れないよう調整しています。</p>
-            </div>
-          </li>
-        
-          <li class="c-point u-fade-up js-fade">
-            <span class="p-about__point-num p-about__point-num--right" aria-hidden="true"></span>
-            <figure class="c-point__figure">
-              <img class="c-point__img" src="" alt="" width="800" height="500">
-            </figure>
-            <div class="c-point__body">
-              <h4 class="c-point__title">送信のあとにも、次の一歩を。</h4>
-              <p class="c-point__desc">お問い合わせを送信した直後の完了画面にも手をかけました。「ありがとうございました」で終わらせず、実績や各セクションへの導線を置いています。送信直後は最も関心が高い瞬間なので、その熱量を次の行動につなげたいと考えたためです。</p>
-            </div>
-          </li>
+        <?php get_template_part('template-parts/point'); ?>
         </ol>
+
         <div class="p-about__point-button">
-          <a href="#" class="c-arrow-link c-arrow-link--next">その他の実績を見る</a>
+          <a href="<?php echo esc_url( home_url( '/works/' ) ); ?>" class="c-arrow-link c-arrow-link--next">その他の実績を見る</a>
         </div>
       </div>
 

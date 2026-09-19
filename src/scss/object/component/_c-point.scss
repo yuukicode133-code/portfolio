@@ -12,18 +12,38 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--space-40);
   align-items: center;
-  counter-increment: point;  // 各ペアで+1
+  counter-increment: point; // 各ペアで+1
+}
+.c-point__num {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--z-numeral);
+  font-family: var(--font-en);
+  font-size: var(--fs-h2);
+  line-height: 1;
+  color: var(--color-decorative-numeral);
+  pointer-events: none;
+  user-select: none;
+
+  &::before {
+    content: counter(point, decimal-leading-zero);  // 01, 02, 03…
+  }
+}
+.c-point__num--right {
+  left: auto;
+  right: 0;
 }
 
 .c-point__figure {
-  margin: 0;
+  video {
+    height: auto;
+  }
 }
 .c-point__img {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 8 / 5;
-  object-fit: cover;
+  object-fit: contain;
   background-color: var(--color-bg-sub); // 画像未挿入プレースホルダ
 }
 

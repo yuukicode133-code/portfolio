@@ -58,7 +58,7 @@
 }
 // 失敗表示。accentで縁取るが、塗りつぶさず控えめに(誠実なトーン維持)。
 // confirm/thanks の __notice と同系の見た目だが、role=alert で性質が違う。
-.p-contact-confirm__error {
+.p-contact-confirm__error .wpcf7-response-output {
   margin-block: var(--space-24);
   padding: var(--space-16);
   border: 1px solid var(--color-accent);

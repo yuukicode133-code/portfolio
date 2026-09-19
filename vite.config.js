@@ -1,31 +1,3 @@
-// import { defineConfig } from "vite";
-// import { resolve } from "path";
-
-// export default defineConfig({
-//   root: "src",
-//   base: "/portfolio/",
-//   build: {
-//     // outDir: '../dist',
-//     outDir: "../theme/build", // 変更：テーマフォルダ内へ出力
-//     manifest: true, // 追加：manifest.json を生成
-//     emptyOutDir: true,
-//     rollupOptions: {
-//       input: {
-//         main: resolve(__dirname, "src/js/main.js"),
-//         style: resolve(__dirname, "src/scss/style.scss"),
-//       },
-//     },
-//   },
-//   server: {
-//     open: true,
-//     host: 'localhost',
-//     port: 5173,
-//     strictPort: true,          // 5173が埋まってたら別ポートに逃げず、エラーで止める（アドレス固定のため）
-//     cors: true,                // WordPress(8888)からアセットを読み込む許可
-//     origin: 'http://localhost:5173',  // Viteが生成するURLの土台を固定
-//   },
-//   publicDir: "../public",
-// });
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import fs from 'fs';

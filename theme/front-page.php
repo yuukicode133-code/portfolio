@@ -57,64 +57,77 @@
           <article class="p-top-works__card">
             <div class="p-top-works__card-wrapper">
               <div class="p-top-works__card-image">
-                <picture>
-                  <source srcset="/images/test-wp.webp" type="image/webp" />
-                  <img src="/images/test-wp.png" alt="ポートフォリオサイトのサムネイル画像" width="1978" height="1930" />
-                </picture>
+                <img src="<?php echo get_template_directory_uri() ?>/img/portfolio.webp" alt="ポートフォリオサイトのサムネイル画像" width="1978" height="1930" />
               </div>
               <div class="p-top-works__card-content">
                 <h3 class="p-top-works__card-title">ポートフォリオサイト</h3>
                 <ul class="p-top-works__card-tags">
                   <li class="p-top-works__card-tag">WordPress</li>
-                  <li class="p-top-works__card-tag">ポートフォリオサイト</li>
+                  <li class="p-top-works__card-tag">Portfolio</li>
                 </ul>
-                <a class="p-top-works__card-link" href="/single/">詳細を見る</a>
+                <a class="p-top-works__card-link" href="<?php echo esc_url( home_url( '/about/' ) ); ?>#about-this-site">詳細を見る</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- wp -->
+          <?php 
+           $green_img = get_the_post_thumbnail_url(46, 'full');
+           $green_title = get_the_title(46);
+           $green_url = get_the_permalink(46);
+          ?>
+          <article  class="p-top-works__card">
+            <div class="p-top-works__card-wrapper">
+              <div class="p-top-works__card-image">
+                  <img src="<?php echo esc_url($green_img); ?>" alt="ポートフォリオサイトのサムネイル画像" width="1892" height="1076">
+              </div>
+              <div class="p-top-works__card-content">
+                <h3 class="p-top-works__card-title"><?php echo esc_html($green_title); ?></h3>
+                <?php 
+                  $green_categories = get_the_category(46);
+                  if ($green_categories):
+                ?>
+                <ul class="p-top-works__card-tags">
+                  <?php foreach ($green_categories as $category): ?>
+                  <li class="p-top-works__card-tag"><?php echo esc_html($category->name); ?></li>
+                  <?php endforeach; ?>
+                </ul>
+                <?php endif; ?>
+                <a class="p-top-works__card-link" href="<?php echo esc_url($green_url); ?>">詳細を見る</a>
               </div>
             </div>
           </article>
 
           <!-- green -->
+          <?php 
+           $green_img = get_the_post_thumbnail_url(32, 'full');
+           $green_title = get_the_title(32);
+           $green_url = get_the_permalink(32);
+          ?>
           <article   class="p-top-works__card">
             <div class="p-top-works__card-wrapper">
               <div class="p-top-works__card-image">
-                <picture>
-                  <source srcset="/images/green.webp" type="image/webp" />
-                  <img src="/images/green.png" alt="ポートフォリオサイトのサムネイル画像" width="375" height="250" />
-                </picture>
+                  <img src="<?php echo esc_url($green_img); ?>" alt="ポートフォリオサイトのサムネイル画像" width="1892" height="1076">
               </div>
               <div class="p-top-works__card-content">
-                <h3 class="p-top-works__card-title">【架空】green デザイナーのポートフォリオ</h3>
+                <h3 class="p-top-works__card-title"><?php echo esc_html($green_title); ?></h3>
+                <?php 
+                  $green_categories = get_the_category(32);
+                  if ($green_categories):
+                ?>
                 <ul class="p-top-works__card-tags">
-                  <li class="p-top-works__card-tag">ポートフォリオサイト</li>
+                  <?php foreach ($green_categories as $category): ?>
+                  <li class="p-top-works__card-tag"><?php echo esc_html($category->name); ?></li>
+                  <?php endforeach; ?>
                 </ul>
-                <a class="p-top-works__card-link" href="/single/">詳細を見る</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- oha -->
-          <article class="p-top-works__card">
-            <div class="p-top-works__card-wrapper">
-              <div class="p-top-works__card-image">
-                <picture>
-                  <source srcset="/images/oha.webp" type="image/webp" />
-                  <img src="/images/oha.png" alt="LPサイトのサムネイル画像" width="375" height="250" />
-                </picture>
-              </div>
-              <div class="p-top-works__card-content">
-                <h3 class="p-top-works__card-title">oha!</h3>
-                <ul class="p-top-works__card-tags">
-                  <li class="p-top-works__card-tag">LP</li>
-                </ul>
-                
-                <a class="p-top-works__card-link" href="/single/">詳細を見る</a>
+                <?php endif; ?>
+                <a class="p-top-works__card-link" href="<?php echo esc_url($green_url); ?>">詳細を見る</a>
               </div>
             </div>
           </article>
         </div>
         <div class="p-top-works__button-wrapper">
-          <?php $works_id = get_page_by_path('works')->ID; ?>
-          <a href="<?php echo get_permalink($works_id); ?>" class="c-arrow-link c-arrow-link--next p-top-works__button">全ての実績を見る</a>
+          <a href="<?php echo esc_url( home_url( '/works/' ) ); ?>" class="c-arrow-link c-arrow-link--next p-top-works__button">全ての実績を見る</a>
         </div>
       </div>
     </div>
@@ -225,8 +238,7 @@
           <!-- <h3 class="p-about-section__ai-heading">AIとの向き合い方</h3> -->
           <p class="p-about-section__ai-text">制作にはAIも使いますが、最終的な判断は自分で持つ——その線だけは崩さないようにしています。</p>
         </div>
-        <?php $about_id = get_page_by_path('about')->ID; ?>
-        <a href="<?php echo get_permalink($about_id); ?>"  class="c-arrow-link c-arrow-link--next p-about-section__more">私についてもっと知る</a>
+        <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"  class="c-arrow-link c-arrow-link--next p-about-section__more">私についてもっと知る</a>
       </div>
     </div>
   </section>
@@ -247,8 +259,7 @@
           <p>面談のご依頼やご相談などございましたら、お問い合わせフォームよりご連絡ください。2営業日以内にご返信いたします。</p>
         </div>
 
-        <?php $contact_id = get_page_by_path('contact')->ID; ?>
-        <a class="c-arrow-link c-arrow-link--next p-contact__button" href="<?php echo get_permalink($contact_id); ?>">お問い合わせ</a>
+        <a class="c-arrow-link c-arrow-link--next p-contact__button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">お問い合わせ</a>
       </div>
     </div>
   </section>

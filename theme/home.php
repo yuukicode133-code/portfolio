@@ -8,16 +8,7 @@
 
 <?php get_header(); ?>
 <main class="l-main">
-
-  <!-- パンくず(Component層・下層共通) -->
-  <nav class="c-breadcrumb" aria-label="パンくずリスト">
-    <div class="l-inner">
-        <ol class="c-breadcrumb__list">
-          <li class="c-breadcrumb__item"><a href="/">Home</a></li>
-          <li class="c-breadcrumb__item" aria-current="page">Works</li>
-        </ol>
-    </div>
-  </nav>
+  <?php get_template_part('template-parts/breadcrumb'); ?>
 
   <!-- ページヘッダー(Project層・下層共通・装飾なし) -->
   <div class="p-page-header">
@@ -36,34 +27,50 @@
 
       <!-- カテゴリー(WP カテゴリーアーカイブへのリンク。JS フィルタではない) -->
       <!-- WP: get_categories() でループ生成。現在アーカイブは is_category() 判定で span 化 -->
+      <?php
+      // 現在表示しているカテゴリーを取
+      $current_category = null;
+      $current_category_slug = '';
+
+      if (is_category()) {
+        $current_category = get_queried_object();
+        $current_category_slug = $current_category->slug;
+      } elseif (is_home()) {
+        $current_category_slug = 'all';
+      }
+      ?>
       <nav class="p-works__categories" aria-label="カテゴリーで絞り込み">
+
         <ul class="p-works__category-list">
+          <?php 
+          $home_count=wp_count_posts();
+          $home_num=$home_count->publish;
+ 
+          ?>
           <li class="p-works__category-item">
             <!-- 現在地(/works/)はリンクにしない -->
-            <span class="p-works__category is-current" aria-current="page">
-              すべて<span class="p-works__category-count">6</span>
-            </span>
-          </li>
-          <li class="p-works__category-item">
-            <a class="p-works__category" href="/works/category/corporate/">
-              Corporate<span class="p-works__category-count">2</span>
+            <a class="p-works__category <?php echo ($current_category_slug === 'all' || !$current_category_slug) ? 'is-current' : ''; ?>" 
+               aria-current="<?php echo ($current_category_slug === 'all' || !$current_category_slug) ? 'page' : 'false'; ?>"
+               href="<?php echo esc_url( home_url( '/works/' ) ); ?>" 
+               aria-label="すべてのカテゴリーを表示"
+            >
+              すべて<span class="p-works__category-count"><?php echo $home_num; ?>件</span>
             </a>
           </li>
+
+          <?php
+             $nav_categories = get_categories();
+             foreach ($nav_categories as $nav_category) :
+            $is_current = ($current_category_slug === $nav_category->slug);
+          ?>
           <li class="p-works__category-item">
-            <a class="p-works__category" href="/works/category/lp/">
-              LP<span class="p-works__category-count">1</span>
+            <a class="p-works__category" href="<?php echo get_category_link($nav_category->term_id); ?>"
+               aria-current="<?php echo $is_current ? 'page' : 'false'; ?>"
+               aria-label="<?php echo esc_attr($nav_category->name); ?>カテゴリーの記事を表示">
+              <?php echo $nav_category->name; ?><span class="p-works__category-count"><?php echo $nav_category->count; ?>件</span>
             </a>
           </li>
-          <li class="p-works__category-item">
-            <a class="p-works__category" href="/works/category/portfolio/">
-              Portfolio<span class="p-works__category-count">2</span>
-            </a>
-          </li>
-          <li class="p-works__category-item">
-            <a class="p-works__category" href="/works/category/wordpress/">
-              WordPress<span class="p-works__category-count">1</span>
-            </a>
-          </li>
+          <?php endforeach; ?>
         </ul>
       </nav>
 
@@ -71,150 +78,59 @@
       <ul class="p-works__grid">
 
         <!-- WP: while ( have_posts() ) : the_post(); ここから 1 カード -->
+        <?php if(have_posts()): ?>
+         <?php while(have_posts()):?>
+          <?php the_post(); ?>
         <li class="p-works__item u-fade-up js-fade">
           <article class="p-works__card">
             <div class="p-works__thumb">
               <!-- WP: the_post_thumbnail('works-thumb', ['class'=>'p-works__img','alt'=>'']) -->
-              <img class="p-works__img" src="/assets/img/works/cafe-01.jpg" alt=""
-                   width="800" height="600" loading="lazy" decoding="async">
+              <!-- <img class="p-works__img" src="/assets/img/works/cafe-01.jpg" alt=""
+                width="800" height="600" loading="lazy" decoding="async"> -->
+              <?php the_post_thumbnail('works-thumb', ['class'=>'p-works__img','alt'=>'']); ?>
             </div>
             <div class="p-works__body">
               <!-- WP: 主カテゴリー名。category → サイト種別 -->
-              <p class="p-works__category-label">Corporate</p>
+              <?php
+                  $categories = get_the_category();
+                  if ($categories):
+              ?>
+              <?php foreach($categories as $category): ?>
+              <p class="p-works__category-label"><?php echo $category->name; ?></p>
+              <?php endforeach; ?>
+              <?php endif; ?>
               <h2 class="p-works__title">
-                <!-- WP: <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> -->
-                <a class="p-works__link" href="/portfolio/single/index.html">カフェサイト①</a>
+                <a class="p-works__link" 
+                   href="<?php the_permalink(); ?>"
+                   aria-label="<?php echo esc_attr(get_the_title()); ?>の記事を読む"
+                >
+                   <?php the_title(); ?>
+                </a>
               </h2>
               <!-- WP: get_the_tags() でループ。tag → 使用技術。c-tag を流用 -->
               <ul class="p-works__tags">
-                <li><span class="c-skill">HTML</span></li>
-                <li><span class="c-skill">SCSS</span></li>
-                <li><span class="c-skill">JS</span></li>
-                <li><span class="c-skill">jQuery</span></li>
+                <?php
+                  $tags = get_the_tags();
+                  if ($tags):
+                ?>
+                <?php foreach($tags as $tag): ?>
+                <li><span class="c-skill"><?php echo $tag->name; ?></span></li>
+                <?php endforeach; ?>
+                <?php endif; ?>
               </ul>
             </div>
           </article>
         </li>
-
-        <li class="p-works__item u-fade-up js-fade">
-          <article class="p-works__card">
-            <div class="p-works__thumb">
-              <img class="p-works__img" src="/assets/img/works/cafe-02.jpg" alt=""
-                   width="800" height="600" loading="lazy" decoding="async">
-            </div>
-            <div class="p-works__body">
-              <p class="p-works__category-label">Corporate</p>
-              <h2 class="p-works__title">
-                <a class="p-works__link" href="/works/cafe-02/">カフェサイト②</a>
-              </h2>
-              <ul class="p-works__tags">
-                <li><span class="c-skill">HTML</span></li>
-                <li><span class="c-skill">SCSS</span></li>
-                <li><span class="c-skill">JS</span></li>
-              </ul>
-            </div>
-          </article>
-        </li>
-
-        <li class="p-works__item u-fade-up js-fade">
-          <article class="p-works__card">
-            <div class="p-works__thumb">
-              <img class="p-works__img" src="/assets/img/works/app-lp.jpg" alt=""
-                   width="800" height="600" loading="lazy" decoding="async">
-            </div>
-            <div class="p-works__body">
-              <p class="p-works__category-label">LP</p>
-              <h2 class="p-works__title">
-                <a class="p-works__link" href="/works/app-lp/">スマホアプリLP</a>
-              </h2>
-              <ul class="p-works__tags">
-                <li><span class="c-skill">HTML</span></li>
-                <li><span class="c-skill">CSS</span></li>
-                <li><span class="c-skill">JS</span></li>
-              </ul>
-            </div>
-          </article>
-        </li>
-
-        <li class="p-works__item u-fade-up js-fade">
-          <article class="p-works__card">
-            <div class="p-works__thumb">
-              <img class="p-works__img" src="/assets/img/works/portfolio-gsap.jpg" alt=""
-                   width="800" height="600" loading="lazy" decoding="async">
-            </div>
-            <div class="p-works__body">
-              <p class="p-works__category-label">Portfolio</p>
-              <h2 class="p-works__title">
-                <a class="p-works__link" href="/works/portfolio-gsap/">GSAP版ポートフォリオ</a>
-              </h2>
-              <ul class="p-works__tags">
-                <li><span class="c-skill">HTML</span></li>
-                <li><span class="c-skill">SCSS</span></li>
-                <li><span class="c-skill">JS</span></li>
-                <li><span class="c-skill">GSAP</span></li>
-              </ul>
-            </div>
-          </article>
-        </li>
-
-        <li class="p-works__item u-fade-up js-fade">
-          <article class="p-works__card">
-            <div class="p-works__thumb">
-              <img class="p-works__img" src="/assets/img/works/portfolio-jquery.jpg" alt=""
-                   width="800" height="600" loading="lazy" decoding="async">
-            </div>
-            <div class="p-works__body">
-              <p class="p-works__category-label">Portfolio</p>
-              <h2 class="p-works__title">
-                <a class="p-works__link" href="/works/portfolio-jquery/">jQuery版ポートフォリオ</a>
-              </h2>
-              <ul class="p-works__tags">
-                <li><span class="c-skill">HTML</span></li>
-                <li><span class="c-skill">SCSS</span></li>
-                <li><span class="c-skill">JS</span></li>
-                <li><span class="c-skill">jQuery</span></li>
-              </ul>
-            </div>
-          </article>
-        </li>
-
-        <li class="p-works__item u-fade-up js-fade">
-          <article class="p-works__card">
-            <div class="p-works__thumb">
-              <img class="p-works__img" src="/assets/img/works/wp-company.jpg" alt=""
-                   width="800" height="600" loading="lazy" decoding="async">
-            </div>
-            <div class="p-works__body">
-              <p class="p-works__category-label">WordPress</p>
-              <h2 class="p-works__title">
-                <a class="p-works__link" href="/works/wp-company/">架空企業WPサイト</a>
-              </h2>
-              <ul class="p-works__tags">
-                <li><span class="c-skill">WordPress</span></li>
-                <li><span class="c-skill">PHP</span></li>
-                <li><span class="c-skill">SCSS</span></li>
-                <li><span class="c-skill">ACF</span></li>
-              </ul>
-            </div>
-          </article>
-        </li>
-        <!-- WP: endwhile; -->
+        <?php endwhile; ?>
+        <?php else: ?>
+        <p role="status">実績がありません。</p>
+        <?php endif; ?>
 
       </ul>
 
       <!-- ページ送り(1ページでも "1" を表示) -->
       <!-- WP: paginate_links(['type'=>'list','prev_next'=>true]) の出力に置換 -->
-      <nav class="p-works__pagination" aria-label="ページ送り">
-        <ul class="p-works__pagination-list">
-          <li>
-            <span class="p-works__page is-current" aria-current="page">1</span>
-          </li>
-          <!-- 実績が増えたら(例):
-          <li><a class="p-works__page" href="/works/page/2/">2</a></li>
-          <li><a class="p-works__page p-works__page--nav" href="/works/page/2/" aria-label="次のページへ">&rsaquo;</a></li>
-          -->
-        </ul>
-      </nav>
+       <?php get_template_part('template-parts/pagenation'); ?>
 
     </div>
   </section>

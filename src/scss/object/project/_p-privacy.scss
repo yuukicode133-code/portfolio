@@ -1,0 +1,54 @@
+@use "../../global/mixins" as *;
+
+
+.p-privacy {
+    padding-top: var(--space-40);
+    padding-bottom: var(--space-40);
+
+}
+
+.p-privacy__wrapper {
+    max-width: 60rem;
+    margin-inline: auto;
+}
+
+.p-privacy__lead {
+    font-size: var(--fs-lead);
+
+}
+
+.p-privacy__item {
+    margin-top: var(--space-48);
+
+}
+
+.p-privacy__title {
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-bold);
+}
+
+.p-privacy__text {
+    margin-top: var(--space-20);
+}
+
+.p-privacy__link {
+    margin-top: var(--space-20);
+    list-style: disc;
+    text-decoration: underline;
+    list-style-position: inside;
+}
+
+.p-privacy__link-item {
+    margin-top: var(--space-8);
+}
+
+.p-privacy__link-contact {
+    text-decoration: underline;
+}
+
+.p-privacy__date-wrapper {
+    margin-top: var(--space-48);
+
+}
+
+

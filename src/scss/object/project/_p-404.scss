@@ -1,0 +1,41 @@
+@use "../../global/mixins" as *;
+
+
+.p-404__title {
+    font-size: var(--fs-h1);
+}
+
+.p-404__title-accent {
+    text-transform: capitalize;
+    font-size: var(--fs-h3);
+    padding-left: var(--space-40);
+    display: inline-block;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: var(--space-8);
+        transform: translateY(-50%);
+        width: 16px;
+        height: 4px;
+        background-color: var(--color-text);
+    }
+}
+.p-404__lead {
+    font-size: var(--fs-h4);
+    margin-top: var(--space-16);
+}
+
+.p-404__content {
+    margin-top: var(--space-40);
+    padding: var(--space-20);
+    background-color: var(--color-bg-sub);
+}
+.p-404__content-list {
+    margin-top: var(--space-40);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+}

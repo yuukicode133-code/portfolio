@@ -7,17 +7,32 @@
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-8);
-    font-size: var(--fs-small);          // ★ 小さめテキスト用トークン名を確認
-    color: var(--color-text-muted);   // ★ 控えめテキスト用トークン名を確認
+    font-size: var(--fs-small);        
+    color: var(--color-text-muted);  
   }
   .c-breadcrumb__item {
-    display: flex; align-items: center; gap: var(--space-8);
+    // display: block;
+    display: flex;
+    align-items: center;
+    gap: var(--space-8); //擬似要素用の余白
+
+    a {
+      transition: transform 0.3s ease;
+    }
+
+
    }
   
   // 2つ目以降の前に区切り。装飾なので意味は持たせない
   .c-breadcrumb__item + .c-breadcrumb__item::before {
     content: "/";
-    color: var(--color-border);       // ★ 罫線/淡色トークン名を確認
+    color: var(--color-gray-900);
+    cursor: default;
+  }
+  @media (any-hover: hover) {
+    .c-breadcrumb__item a:hover {
+      transform: translateY(-2px);
+    }
   }
   // リンクは typography.scss の a 規約(hoverでaccent)に乗る → 打ち消し不要
   // 現在地はリンクにせず淡色のまま(__current)

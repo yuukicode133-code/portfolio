@@ -324,14 +324,12 @@
 }
 
 .p-works__page {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   min-width: 2.75rem; // 44px:タップ/クリックターゲット確保
   min-height: 2.75rem;
   border: var(--border-width-md) solid var(--color-border-strong);
   border-radius: 50%;
-  aspect-ratio: 1 / 1;
   font-family: var(--font-en);
   font-size: 1.5em;
   line-height: 1;

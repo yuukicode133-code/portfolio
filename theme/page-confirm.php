@@ -50,51 +50,7 @@
         <!-- 確認フローも <form>。送信=submit、修正=入力ページへ戻る遷移。
              静的の値はサンプル。CF7 + Multi-Step Forms 移行時、
              各 dd の値はプラグインが前ステップの入力値を出力する仕組みに差し替え -->
-        <form class="p-contact-confirm__form" action="#">
-          <!-- 確認内容 = 説明リスト(dt:項目名 / dd:入力値)。意味的に正しい要素 -->
-          <dl class="p-contact-confirm__list">
-            <div class="p-contact-confirm__row">
-              <dt class="p-contact-confirm__term">会社名・組織名</dt>
-              <dd class="p-contact-confirm__desc">株式会社○○</dd>
-            </div>
-            <div class="p-contact-confirm__row">
-              <dt class="p-contact-confirm__term">お名前</dt>
-              <dd class="p-contact-confirm__desc">山田 太郎</dd>
-            </div>
-            <div class="p-contact-confirm__row">
-              <dt class="p-contact-confirm__term">メールアドレス</dt>
-              <dd class="p-contact-confirm__desc">example@email.com</dd>
-            </div>
-            <div class="p-contact-confirm__row">
-              <dt class="p-contact-confirm__term">電話番号</dt>
-              <dd class="p-contact-confirm__desc">
-                <span class="p-contact-confirm__empty">未入力</span>
-              </dd>
-            </div>
-            <div class="p-contact-confirm__row">
-              <dt class="p-contact-confirm__term">件名</dt>
-              <dd class="p-contact-confirm__desc">面談のご相談</dd>
-            </div>
-            <div class="p-contact-confirm__row">
-              <dt class="p-contact-confirm__term">お問い合わせ内容</dt>
-              <dd class="p-contact-confirm__desc p-contact-confirm__desc--message">入力された本文がここに表示されます。 改行も含めて、入力内容がそのまま表示される想定です。</dd>
-            </div>
-          </dl>
-
-          <p class="p-contact-confirm__notice" role="note">「送信する」を押すと、入力内容が送信されます。送信後の修正はできませんので、内容をご確認のうえお進みください。</p>
-          <!-- 失敗時表示(静的プレビュー用)。WordPress化では CF7 の.wpcf7-response-output に置換し、自前のlive領域は二重に作らない。静的で見た目を確認する間だけ role="alert" で機能を再現 -->
-          <p class="p-contact-confirm__error" role="alert">送信に失敗しました。お手数ですが、しばらく経ってから再度お試しください。</p>
-
-          <div class="p-contact-confirm__actions">
-            <!-- 修正する: 入力ページへ戻る遷移 = secondary -->
-            <a class="c-arrow-link c-arrow-link--prev p-contact-confirm__back" href="/contact/"> 修正する </a>
-            <!-- 送信する: 後戻りできないターミナルなアクション = primary(塗りの初登場) -->
-            <!-- <button class="c-button c-button--primary p-contact-confirm__submit" type="submit">
-              送信する →
-            </button> -->
-            <a class="c-arrow-link c-arrow-link--next p-contact-confirm__submit" href="/portfolio/contact/thanks/index.html"> 送信する </a>
-          </div>
-        </form>
+        <?php echo do_shortcode('[contact-form-7 id="06833be" html_class="p-contact-confirm__form" title="確認用"]'); ?>
       </div>
     </div>
   </section>

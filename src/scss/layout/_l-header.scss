@@ -1,6 +1,6 @@
 .l-header {
   position: fixed;
-  top: 0;
+  top: 0px; // 開発用 本番は0
   left: 0;
   width: 100%;
   height: var(--header-height); 

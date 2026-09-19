@@ -10,3 +10,13 @@
     padding-bottom: var(--space-96);
   }
 }
+.l-section--sm {
+  padding-top: var(--space-136);  
+  padding-bottom: var(--space-136);
+  overflow: clip;  
+
+  @include mq(sp) {
+    padding-top: var(--space-80);  
+    padding-bottom: var(--space-80);
+  }
+}

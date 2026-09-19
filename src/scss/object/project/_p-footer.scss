@@ -33,6 +33,7 @@
 
 .p-footer__logo-link {
   display: inline-block;
+  text-transform: capitalize;
 
   // typography.scss の a:hover { color: var(--color-accent); } を打ち消す。
   @media (any-hover: hover) {
@@ -79,4 +80,5 @@
   font-size: var(--fs-small);
   color: var(--color-text-muted);
   text-align: left;
+  text-transform: capitalize;
 }

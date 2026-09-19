@@ -198,31 +198,10 @@
   counter-reset: point; // カウンターリセット
 }
 
-// 装飾数字。順序の意味は <ol> が持つので HTML 側で aria-hidden 済み。
-// 基準は c-point の position: relative。
-.p-about__point-num {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: var(--z-numeral);
-  font-family: var(--font-en);
-  font-size: var(--fs-h2);
-  line-height: 1;
-  color: var(--color-decorative-numeral);
-  pointer-events: none;
-  user-select: none;
-
-  &::before {
-    content: counter(point, decimal-leading-zero);  // 01, 02, 03…
-  }
-}
-
-.p-about__point-num--right {
-  left: auto;
-  right: 0;
-}
-
 .p-about__point-button {
   margin-top: var(--space-64);
   text-align: center;
+}
+#ai {
+  scroll-margin-top: var(--header-height);
 }

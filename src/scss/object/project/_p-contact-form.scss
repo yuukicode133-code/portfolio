@@ -92,16 +92,26 @@
 
 .p-contact-form__consent { 
   display: flex; 
-  align-items: flex-start; 
+  align-items: center; 
   gap: var(--space-16); 
   justify-content: center;
 }
+.p-contact-form__consent-label {
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
 .p-contact-form__checkbox {
   flex-shrink: 0;
+  margin-top: 0.5em;
   width: 1.25rem;
   height: 1.25rem;
-  margin-top: 0.2em;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   accent-color: var(--color-accent);
+
 }
 .p-contact-form__privacy-link {
   text-decoration: underline;
@@ -126,4 +136,16 @@
     border-color: var(--color-accent);
   }
  }
+}
+
+//----
+.wpcf7-list-item {
+  margin: 0;
+}
+.p-contact-form__checkbox,
+.p-contact-form__consent-label {
+  cursor: pointer;
+}
+.p-contact-form__turnstile {
+  text-align: center;
 }

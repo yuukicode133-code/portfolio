@@ -54,7 +54,7 @@
         </p>
         <p class="p-contact-thanks__completed-text">
           このたびはお問い合わせいただき、誠にありがとうございます。<br>
-          内容を確認のうえ、2営業日以内にご返信いたします。
+          内容を確認のうえ、3営業日以内にご返信いたします。
         </p>
       </div>
 
@@ -75,40 +75,51 @@
              実装時に <img alt="..."> と実URLへ -->
         <ul class="p-contact-thanks__cards">
           <li class="p-contact-thanks__card">
-            <a class="p-contact-thanks__card-link" href="works-corporate.html">
-              <img class="p-contact-thanks__card-thumb" src="/assets/img/works-corporate.jpg"
-                   alt="" width="480" height="300" loading="lazy">
-              <span class="p-contact-thanks__card-label">CORPORATE</span>
-              <h3 class="p-contact-thanks__card-title">代表実績①</h3>
+            <a class="p-contact-thanks__card-link" href="<?php echo esc_url( home_url( '/about/' ) ); ?>#about-this-site">
+              <img class="p-contact-thanks__card-thumb" src="<?php echo get_template_directory_uri() ?>/img/portfolio.webp"
+                   alt="ポートフォリオサイトのサムネイル画像" width="480" height="300" loading="lazy">
+              <span class="p-contact-thanks__card-label">WordPress</span>
+              <h3 class="p-contact-thanks__card-title">ポートフォリオサイト</h3>
               <span class="p-contact-thanks__card-more">詳細を見る</span>
             </a>
           </li>
+
+          <?php 
+           $green_img = get_the_post_thumbnail_url(46, 'full');
+           $green_title = get_the_title(46);
+           $green_url = get_the_permalink(46);
+          ?>
           <li class="p-contact-thanks__card">
-            <a class="p-contact-thanks__card-link" href="works-corporate.html">
-              <img class="p-contact-thanks__card-thumb" src="/assets/img/works-corporate.jpg"
-                   alt="" width="480" height="300" loading="lazy">
-              <span class="p-contact-thanks__card-label">WORDPRESS</span>
-              <h3 class="p-contact-thanks__card-title">代表実績②</h3>
+            <a class="p-contact-thanks__card-link" href="<?php echo esc_url($green_url); ?>">
+              <img class="p-contact-thanks__card-thumb" src="<?php echo esc_url($green_img); ?>"
+                   alt="<?php echo esc_html($green_title); ?>のサムネイル画像" width="480" height="300" loading="lazy">
+              <span class="p-contact-thanks__card-label">WordPress</span>
+              <h3 class="p-contact-thanks__card-title"><?php echo esc_html($green_title); ?></h3>
               <span class="p-contact-thanks__card-more">詳細を見る</span>
             </a>
           </li>
+
+          <?php 
+           $green_img = get_the_post_thumbnail_url(32, 'full');
+           $green_title = get_the_title(32);
+           $green_url = get_the_permalink(32);
+          ?>
           <li class="p-contact-thanks__card">
-            <a class="p-contact-thanks__card-link" href="works-corporate.html">
-              <img class="p-contact-thanks__card-thumb" src="/assets/img/works-corporate.jpg"
-                   alt="" width="480" height="300" loading="lazy">
-              <span class="p-contact-thanks__card-label">PORTFOLIO</span>
-              <h3 class="p-contact-thanks__card-title">代表実績③</h3>
+            <a class="p-contact-thanks__card-link" href="<?php echo esc_url($green_url); ?>">
+              <img class="p-contact-thanks__card-thumb" src="<?php echo esc_url($green_img); ?>"
+                   alt="<?php echo esc_html($green_title); ?>のサムネイル画像" width="480" height="300" loading="lazy">
+              <span class="p-contact-thanks__card-label">LP</span>
+              <h3 class="p-contact-thanks__card-title"><?php echo esc_html($green_title); ?></h3>
               <span class="p-contact-thanks__card-more">詳細を見る</span>
             </a>
           </li>
         </ul>
 
-        <!-- 補助アクション: より深く知りたい人向け(About + AI) -->
         <div class="p-contact-thanks__deeper">
           <h3 class="p-contact-thanks__deeper-title">より深く知りたい方へ</h3>
           <ul class="p-contact-thanks__deeper-links">
             <li>
-              <a class="p-contact-thanks__link-card" href="/about/">
+              <a class="p-contact-thanks__link-card" href="<?php echo esc_url( home_url( '/about/' ) ); ?>">
                 <span class="p-contact-thanks__link-card-label">ABOUT</span>
                 <h4 class="p-contact-thanks__link-card-title">私について</h4>
                 <p class="p-contact-thanks__link-card-desc">経歴・スキル・姿勢など、詳しい自己紹介</p>
@@ -116,7 +127,7 @@
               </a>
             </li>
             <li>
-              <a class="p-contact-thanks__link-card" href="/about/#ai">
+              <a class="p-contact-thanks__link-card" href="<?php echo esc_url( home_url( '/about/' ) ); ?>#ai">
                 <span class="p-contact-thanks__link-card-label">AI USAGE</span>
                 <h4 class="p-contact-thanks__link-card-title">AIへの取り組み</h4>
                 <p class="p-contact-thanks__link-card-desc">AIをコーディングや学習にどう活用しているか</p>
@@ -126,21 +137,6 @@
           </ul>
         </div>
 
-        <!-- SNS -->
-        <!-- <ul class="p-contact-thanks__social">
-          <li>
-            <a class="p-contact-thanks__social-link" href="https://x.com/"
-               target="_blank" rel="noopener noreferrer">
-              X<span class="p-contact-thanks__social-note">（旧Twitter）</span>
-            </a>
-          </li>
-          <li>
-            <a class="p-contact-thanks__social-link" href="https://github.com/yuukicode133-code"
-               target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-          </li>
-        </ul> -->
       </div>
     </div>
   </section>

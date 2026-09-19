@@ -93,15 +93,31 @@ add_action("after_setup_theme", "my_setup");
 
 //------------------------------------------------------------------------
 /**
- * メニューの登録
+ * Contact Form 7 の調整
  */
-function my_menu_init()
-{
-    register_nav_menus(
-        array(
-            'global' => 'ヘッダーメニュー',
-            'footer' => 'フッターメニュー'
-        )
-    );
+
+// フォーム編集画面の HTML に wpautop（自動 <p> / <br> 挿入）をかけない
+add_filter('wpcf7_autop_or_not', '__return_false');
+
+
+// ショートコードを有効にする
+add_filter('wpcf7_form_elements', 'do_shortcode');
+
+// CF7 のフォームタグでは書けない属性を、出力 HTML に後付けする
+function portfolio_cf7_add_aria($html) {
+  $html = str_replace(
+    'id="contact-email"',
+    'id="contact-email" aria-describedby="contact-email-hint"',
+    $html
+  );
+  return $html;
 }
-add_action('init', 'my_menu_init');
+add_filter('wpcf7_form_elements', 'portfolio_cf7_add_aria');
+
+// プライバシーポリシーのショートコード
+add_action('init',function(){
+  add_shortcode('my_privacy_policy',function(){
+    return esc_url( home_url( '/privacy/' ) );
+  });
+});
+
