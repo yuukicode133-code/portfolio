@@ -148,10 +148,12 @@
 // =====================================
 // 02 このサイトについて
 // =====================================
-
+.p-about__github {
+  margin-top: var(--space-20);
+}
 // ---- メタ情報(dl:項目名↔値の左右対応。confirm と同じ作法)----
 .p-about__meta {
-  margin-top: var(--space-64);
+  margin-top: var(--space-32);
 }
 .p-about__meta-row {
   display: grid;
@@ -184,7 +186,6 @@
 }
 .p-about__stack-tag {
   font-family: var(--font-en);
-  color: var(--color-text-muted);
 }
 // ---- POINTS(工夫したポイント)器 ----
 // 中身のペアは c-point(Component)。ここはリスト・番号・余白だけ持つ。

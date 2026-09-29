@@ -72,28 +72,28 @@
 
           <!-- wp -->
           <?php 
-           $green_img = get_the_post_thumbnail_url(46, 'full');
-           $green_title = get_the_title(46);
-           $green_url = get_the_permalink(46);
+           $wp_img = get_the_post_thumbnail_url(46, 'full');
+           $wp_title = get_the_title(46);
+           $wp_url = get_the_permalink(46);
           ?>
           <article  class="p-top-works__card">
             <div class="p-top-works__card-wrapper">
               <div class="p-top-works__card-image">
-                  <img src="<?php echo esc_url($green_img); ?>" alt="ポートフォリオサイトのサムネイル画像" width="1892" height="1076">
+                  <img src="<?php echo esc_url($wp_img); ?>" alt="ポートフォリオサイトのサムネイル画像" width="1892" height="1076">
               </div>
               <div class="p-top-works__card-content">
-                <h3 class="p-top-works__card-title"><?php echo esc_html($green_title); ?></h3>
+                <h3 class="p-top-works__card-title"><?php echo esc_html($wp_title); ?></h3>
                 <?php 
-                  $green_categories = get_the_category(46);
-                  if ($green_categories):
+                  $wp_categories = get_the_category(46);
+                  if ($wp_categories):
                 ?>
                 <ul class="p-top-works__card-tags">
-                  <?php foreach ($green_categories as $category): ?>
+                  <?php foreach ($wp_categories as $category): ?>
                   <li class="p-top-works__card-tag"><?php echo esc_html($category->name); ?></li>
                   <?php endforeach; ?>
                 </ul>
                 <?php endif; ?>
-                <a class="p-top-works__card-link" href="<?php echo esc_url($green_url); ?>">詳細を見る</a>
+                <a class="p-top-works__card-link" href="<?php echo esc_url($wp_url); ?>">詳細を見る</a>
               </div>
             </div>
           </article>

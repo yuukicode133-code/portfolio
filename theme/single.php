@@ -183,13 +183,13 @@
         <!-- 前後は WP の previous/next_post_link に対応する枠 -->
         <?php $previous_post = get_previous_post(); ?>
         <?php if ($previous_post) : ?>
-        <a class="c-arrow-link c-arrow-link--prev p-single__pager-prev" href="<?php echo get_permalink($previous_post->ID); ?>">前の実績へ</a>
+        <a class="c-arrow-link c-arrow-link--prev p-single__pager-prev" href="<?php echo esc_url(get_permalink($previous_post->ID)); ?>">前の実績へ</a>
         <?php endif; ?>
         <a class="c-arrow-link c-arrow-link--up p-single__pager-index" href="<?php echo esc_url( home_url( '/works/' ) ); ?>">実績一覧へ戻る</a>
 
         <?php $next_post = get_next_post(); ?>
         <?php if ($next_post) : ?>
-        <a class="c-arrow-link c-arrow-link--next p-single__pager-next" href="<?php echo get_permalink($next_post->ID); ?>">次の実績へ</a>
+        <a class="c-arrow-link c-arrow-link--next p-single__pager-next" href="<?php echo esc_url(get_permalink($next_post->ID)); ?>">次の実績へ</a>
         <?php endif; ?>
       </div>
     </div>

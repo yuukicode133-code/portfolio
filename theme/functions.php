@@ -121,3 +121,230 @@ add_action('init',function(){
   });
 });
 
+// 実績一覧(/works/)とカテゴリーアーカイブを公開日の古い順にする
+add_action('pre_get_posts', function ($query) {
+  // 管理画面とサブクエリには影響させない
+  if (is_admin() || !$query->is_main_query()) {
+    return;
+  }
+
+  if ($query->is_home() || $query->is_category()) {
+    $query->set('orderby', 'date');
+    $query->set('order', 'ASC');
+  }
+});
+// SEO関連の設定 ---------------------------------------------------------------
+// カスタムタイトルの設定
+add_filter('document_title_parts', 'custom_document_title_parts');
+function custom_document_title_parts($title)
+{
+
+    // フロントページの場合
+    if (is_front_page() && !is_home()) {
+        $title['title'] = get_bloginfo('name');
+        $title['tagline'] = get_bloginfo('description');
+        unset($title['site']); // サイト名の重複を防ぐ
+
+        // 投稿一覧ページ（home.php）の場合
+    } elseif (is_home() && !is_front_page()) {
+        $posts_page_id = get_option('page_for_posts');
+        if ($posts_page_id) {
+            $title['title'] = get_the_title($posts_page_id);
+            $title['site'] = get_bloginfo('name');
+        }
+        
+        // 個別投稿・固定ページの場合
+    } elseif (is_single() || is_page()) {
+        $title['title'] = get_the_title();
+        $title['site'] = get_bloginfo('name');
+
+        // カテゴリーページの場合
+    } elseif (is_category()) {
+        $title['title'] = single_cat_title('', false) . 'の記事一覧';
+        $title['site'] = get_bloginfo('name');
+
+        // それ以外（404ページ、検索結果、タグページなど）
+    } else {
+        // デフォルトのタイトルをそのまま使用
+        if (!isset($title['site'])) {
+            $title['site'] = get_bloginfo('name');
+        }
+    }
+
+    return $title;
+}
+
+// フォーム送信後のページをnoindexにする　→ metaタグをスッキリさせるため
+add_filter('wp_robots', function ($robots) {
+  if (is_page(array('confirm', 'thanks')) || is_404()) {
+    $robots['noindex'] = true;
+  }
+  return $robots;
+});
+
+//ogp --------------------------------------------
+/**
+ * ページ種別ごとのSEO/OGPデータを取得
+ */
+function mytheme_get_seo_meta_data()
+{
+    global $wp;
+
+    $default_image = get_template_directory_uri() . '/img/portfolio.webp';
+    $site_desc     = get_bloginfo('description');
+    $data          = array();
+
+    if (is_front_page()) {
+        $front_id = get_option('page_on_front');
+
+        $meta_desc = get_field('meta_description', $front_id);
+        $data['meta_description'] = wp_trim_words($meta_desc ?: $site_desc, 120, '...');
+
+        $data['ogp_title'] = get_field('og_title', $front_id) ?: get_bloginfo('name');
+
+        $ogp_desc = get_field('ogp_description', $front_id);
+        $data['ogp_description'] = wp_trim_words($ogp_desc ?: $site_desc, 120, '...');
+
+        $data['ogp_image'] = get_field('ogp_image', $front_id) ?: $default_image;
+        $data['ogp_type']  = 'website';
+        $data['ogp_url']   = home_url('/');
+    } elseif (is_single() || is_page()) {
+        $excerpt  = get_the_excerpt();
+        $fallback = '"' . get_the_title() . '"の記事です';
+
+        $meta_desc = get_field('meta_description');
+        $data['meta_description'] = $meta_desc || $excerpt
+            ? wp_trim_words($meta_desc ?: $excerpt, 120, '...')
+            : $fallback;
+
+        $data['ogp_title'] = get_field('ogp_title') ?: get_the_title();
+
+        $ogp_desc = get_field('ogp_description');
+        $data['ogp_description'] = $ogp_desc || $excerpt
+            ? wp_trim_words($ogp_desc ?: $excerpt, 120, '...')
+            : $fallback;
+
+        $data['ogp_image'] = get_field('ogp_image') ?: (has_post_thumbnail() ? get_the_post_thumbnail_url(null, 'large') : $default_image);
+        $data['ogp_type']  = 'article';
+        $data['ogp_url']   = get_permalink();
+    } elseif (is_home()) {
+        $posts_id = get_option('page_for_posts');
+
+        $meta_desc = get_field('meta_description', $posts_id);
+        $data['meta_description'] = wp_trim_words($meta_desc ?: $site_desc, 120, '...');
+
+        $data['ogp_title'] = get_field('ogp_title', $posts_id) ?: get_bloginfo('name');
+
+        $ogp_desc = get_field('ogp_description', $posts_id);
+        $data['ogp_description'] = wp_trim_words($ogp_desc ?: $site_desc, 120, '...');
+
+        $data['ogp_image'] = get_field('ogp_image', $posts_id) ?: $default_image;
+        $data['ogp_type']  = 'website';
+        $data['ogp_url']   = get_permalink($posts_id);
+    } elseif (is_category()) {
+        $cat_desc = category_description() ?: $site_desc;
+
+        $data['meta_description'] = wp_trim_words($cat_desc, 120, '...');
+        $data['ogp_title']         = single_cat_title('', false) . ' | ' . get_bloginfo('name');
+        $data['ogp_description']   = wp_trim_words($cat_desc, 120, '...');
+        $data['ogp_image']         = $default_image;
+        $data['ogp_type']          = 'website';
+        $data['ogp_url']           = get_category_link(get_queried_object_id());
+    } else {
+        $data['meta_description'] = wp_trim_words($site_desc, 120, '...');
+        $data['ogp_title']         = wp_get_document_title();
+        $data['ogp_description']   = wp_trim_words($site_desc, 120, '...');
+        $data['ogp_image']         = $default_image;
+        $data['ogp_type']          = 'website';
+        $data['ogp_url']           = home_url('/' . $wp->request);
+    }
+
+    return $data;
+}
+
+/**
+ * wp_head にSEO/OGPタグを出力
+ */
+function mytheme_output_seo_meta()
+{
+    $seo = mytheme_get_seo_meta_data();
+    ?>
+    <?php if (!empty($seo['meta_description'])) : ?>
+        <meta name="description" content="<?php echo esc_attr($seo['meta_description']); ?>" />
+    <?php endif; ?>
+
+    <meta property="og:title" content="<?php echo esc_attr($seo['ogp_title']); ?>" />
+    <meta property="og:description" content="<?php echo esc_attr($seo['ogp_description']); ?>" />
+    <meta property="og:image" content="<?php echo esc_url($seo['ogp_image']); ?>" />
+    <meta property="og:url" content="<?php echo esc_url($seo['ogp_url']); ?>" />
+    <meta property="og:type" content="<?php echo esc_attr($seo['ogp_type']); ?>" />
+    <meta property="og:site_name" content="<?php echo esc_attr(get_bloginfo('name')); ?>" />
+    <meta property="og:locale" content="ja_JP" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<?php echo esc_attr($seo['ogp_title']); ?>" />
+    <meta name="twitter:description" content="<?php echo esc_attr($seo['ogp_description']); ?>" />
+    <meta name="twitter:image" content="<?php echo esc_url($seo['ogp_image']); ?>" />
+    <?php
+}
+add_action('wp_head', 'mytheme_output_seo_meta', 5);
+
+// 管理画面でのプレビュー表示
+function add_ogp_preview_meta_box()
+{
+    add_meta_box(
+        'ogp_preview',
+        'SNSシェアプレビュー',
+        'render_ogp_preview',
+        array('page', 'post'),  // ← 表示したい投稿タイプを列挙
+        'side',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'add_ogp_preview_meta_box');
+
+function render_ogp_preview($post)
+{
+    $default_image = get_template_directory_uri() . '/img/portfolio.webp';
+    $post_id       = $post->ID;
+
+    // フロントページはサイト名にフォールバックするので、その挙動に合わせる
+    $is_front = ((int) get_option('page_on_front') === (int) $post_id);
+
+    // タイトル
+    $title = get_field('ogp_title', $post_id);
+    if (!$title) {
+        $title = $is_front ? get_bloginfo('name') : get_the_title($post_id);
+    }
+
+    // 説明文（og_description → meta_description → 抜粋 の順）
+    $desc = get_field('ogp_description', $post_id);
+    if (!$desc) {
+        $desc = get_field('meta_description', $post_id);
+    }
+    if (!$desc) {
+        $desc = $is_front ? get_bloginfo('description') : get_the_excerpt($post_id);
+    }
+    $desc = wp_trim_words($desc, 120, '...');
+
+    // 画像
+    $image = get_field('ogp_image', $post_id);
+    if (!$image) {
+        $image = get_the_post_thumbnail_url($post_id, 'large') ?: $default_image;
+    }
+    ?>
+    <div class="ogp-preview" style="border: 1px solid #ddd; padding: 10px;">
+        <p><strong>タイトル:</strong><br><?php echo esc_html($title); ?></p>
+        <p><strong>説明文:</strong><br><?php echo esc_html($desc); ?></p>
+        <?php if ($image) : ?>
+            <img src="<?php echo esc_url($image); ?>" style="max-width: 100%; height: auto;" alt="">
+        <?php endif; ?>
+    </div>
+    <?php
+}
+
+//------------------------------------------------------------------------
+/**
+ * 構造化データの出力
+ */
+require_once get_theme_file_path( '/structured-data/schema-manager.php' );

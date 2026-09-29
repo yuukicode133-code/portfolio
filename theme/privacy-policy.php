@@ -17,7 +17,7 @@
         <div class="p-privacy__item">
           <h2 class="p-privacy__title">1.取得する情報</h2>
           <p class="p-privacy__text">
-            本サイトのお問い合わせフォームから、氏名、メールアドレス、お問い合わせ内容を取得します。
+            本サイトのお問い合わせフォームから、会社名、氏名、メールアドレス、電話番号、件名、お問い合わせ内容を取得します。
           </p>
         </div>
         <div class="p-privacy__item">
@@ -65,7 +65,7 @@
           </p>
         </div>
         <div class="p-privacy__date-wrapper">
-          <p class="p-privacy__date">制定日：<time datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y年m月d日'); ?></time></p>
+          <p class="p-privacy__date">制定日：<time datetime="<?php echo get_the_date('Y-n-d'); ?>"><?php echo get_the_date('Y年n月d日'); ?></time></p>
         </div>
       </div>
     </div>

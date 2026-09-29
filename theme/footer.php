@@ -19,7 +19,7 @@
             </a>
           </li>
           <li class="p-footer__links-item">
-            <a href="https://x.com/" class="p-footer__links-link" target="_blank" rel="noopener noreferrer" aria-label="X(別タブで開きます)">
+            <a href="https://x.com/yuuki__main_ac" class="p-footer__links-link" target="_blank" rel="noopener noreferrer" aria-label="X(別タブで開きます)">
               <?php get_template_part('template-parts/icons/x'); ?>
             </a>
           </li>

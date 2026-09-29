@@ -4,9 +4,9 @@
 
   <nav class="c-breadcrumb" aria-label="現在地">
     <div class="l-inner">
-        <ol class="c-breadcrumb__list">
-          <?php bcn_display(); ?>
-        </ol>
+      <ol class="c-breadcrumb__list">
+        <?php bcn_display(); ?>
+      </ol>
     </div>
   </nav>
 
@@ -18,7 +18,6 @@
       </h1>
       <p class="p-page-header__lead">
         奈良在住のコーダー。動画編集を入り口にWeb制作へ。いち当事者として「こうだったら面白い」「これがあれば助かる」と感じたことを、実際に形にしてきました。<br>しかし自分が当事者になれない"相手"については、これから挑戦していく領域になります。当事者の声や基準を一つずつ学びながら、想像の精度を上げていきたいと思っています。学習の記録はXに毎日残しています。ゲーム・音楽・小説が好きです。
-        <!-- <span class="p-page-header__note">※詳しい経歴は職務経歴書・Wantedlyプロフィールに記載しています。</span> -->
       </p>
     </div>
   </header>
@@ -34,7 +33,7 @@
         </h2>
         <p class="p-about__lead">
           前職の動画編集では、介護施設や保育園の紹介動画を6ヶ月で29本納品しました。台本に指定のない場面でも、「見る人がこの施設で働きたいと思えるか」を基準に素材を取捨選択していました。当時、自分自身も仕事を探している立場でした。求職者として、固いインタビューだけでなく、スタッフ同士の自然なやり取りや笑顔の場面があれば、働く場所の雰囲気がつかめて助かる——そう感じたから、自分の判断でカットを選んでいました。
-業務委託先の選考では、WordPressのテスト課題を3週間で納品して一発で合格し、その後LPの実案件を受注・納品しました。関連スクールから講師のオファーもいただきましたが、当時の自分の技術力では受講生のコードをその場で読み解いて直しきれないと判断し、辞退しています。できること・できないことを自分で見極めることが、現場で信頼を得る前提だと考えているためです。
+          業務委託先の選考では、WordPressのテスト課題を3週間で納品して一発で合格し、その後LPの実案件を受注・納品しました。関連スクールから講師のオファーもいただきましたが、当時の自分の技術力では受講生のコードをその場で読み解いて直しきれないと判断し、辞退しています。できること・できないことを自分で見極めることが、現場で信頼を得る前提だと考えているためです。
         </p>
       </div>
     </div>
@@ -148,21 +147,26 @@
         <span class="p-about__num" aria-hidden="true">03</span>
         <h2 class="c-section-title">
           <span class="c-section-title__en">About this site</span>
-          <span id="site-title" class="c-section-title__ja">このサイトについて</span>
+          <span id="site-title" class="c-section-title__ja">
+            このサイトについて
+          </span>
         </h2>
       </div>
-
       <dl class="p-about__meta u-fade-up js-fade">
         <div class="p-about__meta-row">
-          <dt class="p-about__meta-term">Concept</dt>
+          <dt class="p-about__meta-term">concept</dt>
           <dd class="p-about__meta-desc">このサイトでは、伝えたいことを言葉で正直に届けることを軸にしました。<br>飾りで語るのではなく、テキストを主役に置き、デザインはそれを読みやすく支える役に徹しています。</dd>
         </div>
         <div class="p-about__meta-row">
-          <dt class="p-about__meta-term">Design</dt>
+          <dt class="p-about__meta-term">challenge - 修正前 - </dt>
+          <dd class="p-about__meta-desc">このサイトではwp-env, スキーマの記述,turnstile,設計,</dd>
+        </div>
+        <div class="p-about__meta-row">
+          <dt class="p-about__meta-term">design</dt>
           <dd class="p-about__meta-desc">主役はテキストなので、それを邪魔しないよう画面はできるだけシンプルにしました。<br>ただ、シンプルすぎると質素で頼りない印象にもなります。そこで、操作したときに"活きる"ような手応えを持たせ、アクセントのオレンジをアクションのスポットライトとして使い、ホバーの動きと余白で印象を支えています。</dd>
         </div>
         <div class="p-about__meta-row">
-          <dt class="p-about__meta-term">Stack</dt>
+          <dt class="p-about__meta-term">stack</dt>
           <dd class="p-about__meta-desc">
             <ul class="p-about__stack">
               <li class="p-about__stack-tag">WordPress</li>
@@ -176,7 +180,17 @@
             </ul>
           </dd>
         </div>
+        <div class="p-about__meta-row">
+          <dt class="p-about__meta-term">term</dt>
+          <dd class="p-about__meta-desc">x日間で制作しました</dd>
+        </div>
       </dl>
+      <div class="p-about__github">
+        <a class="p-about__github-link c-button c-button--secondary" href="https://github.com/yuukicode133-code/portfolio" target="_blank" rel="noopener">
+          GitHubを開く
+          <span class="u-hidden-visually">(新しいタブで開く)</span>
+        </a>
+      </div>
 
       <div class="p-about__points">
         <div class="p-about__points-head u-fade-up js-fade">
@@ -185,11 +199,11 @@
         </div>
 
         <ol class="p-about__point-list">
-        <?php get_template_part('template-parts/point'); ?>
+          <?php get_template_part('template-parts/point'); ?>
         </ol>
 
         <div class="p-about__point-button">
-          <a href="<?php echo esc_url( home_url( '/works/' ) ); ?>" class="c-arrow-link c-arrow-link--next">その他の実績を見る</a>
+          <a href="<?php echo esc_url(home_url('/works/')); ?>" class="c-arrow-link c-arrow-link--next">その他の実績を見る</a>
         </div>
       </div>
 
