@@ -1,18 +1,7 @@
 <?php get_header(); ?>
 <main class="l-main">
 
-  <nav class="c-breadcrumb" aria-label="パンくず">
-    <div class="l-inner">
-      <ol class="c-breadcrumb__list">
-        <li class="c-breadcrumb__item">
-          <a class="c-breadcrumb__link" href="/">ホーム</a>
-        </li>
-        <li class="c-breadcrumb__item" aria-current="page">
-          <span class="c-breadcrumb__current">お問い合わせ</span>
-        </li>
-      </ol>
-    </div>
-  </nav>
+  <?php get_template_part('template-parts/breadcrumb'); ?>
 
   <div class="p-page-header">
     <div class="l-inner">
@@ -20,9 +9,6 @@
         <span class="c-section-title__en p-page-header__title">thanks</span>
         <span class="c-section-title__ja">お問い合わせ完了</span>
       </h1>
-      <!-- <p class="p-page-header__lead">
-        送信が完了しました。ご入力いただき、ありがとうございました。
-      </p> -->
     </div>
   </div>
 

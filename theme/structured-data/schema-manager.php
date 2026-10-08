@@ -6,6 +6,9 @@
 require_once __DIR__ . '/schema-common.php';
 require_once __DIR__ . '/schema-front.php';
 require_once __DIR__ . '/schema-about.php';
+require_once __DIR__ . '/schema-contact.php';
+require_once __DIR__ . '/schema-works.php';
+require_once __DIR__ . '/schema-single.php';
 
 function yuuki_portfolio_output_structured_data() {
 	$graph = yuuki_portfolio_schema_common();
@@ -13,7 +16,11 @@ function yuuki_portfolio_output_structured_data() {
 	if ( is_front_page() ) {
 		$graph = array_merge( $graph, yuuki_portfolio_schema_front() );
 	} elseif ( is_page( 'about' ) ) {
-		$graph = array_merge( $graph, yuuki_portfolio_schema_about() );
+		$graph = array_merge( $graph, yuuki_portfolio_schema_about() ); 
+	} elseif ( is_home() || is_category() ) {
+		$graph = array_merge( $graph, yuuki_portfolio_schema_works_archive() );
+	} elseif ( is_singular( 'post' ) ) {
+		$graph = array_merge( $graph, yuuki_portfolio_schema_single() );
 	}
 
 	if ( empty( $graph ) ) {

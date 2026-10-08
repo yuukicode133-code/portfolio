@@ -11,12 +11,29 @@ function yuuki_portfolio_schema_website_id() {
 	return home_url( '/#website' );
 }
 function yuuki_portfolio_schema_breadcrumb_id() {
-	return home_url( '/#breadcrumb' );
+	return get_permalink() . '#breadcrumb';
 }
 
+/**
+ * 制作実績一覧（投稿ページ）の識別子
+ */
+function yuuki_portfolio_schema_works_archive_id() {
+	return get_permalink( get_option( 'page_for_posts' ) ) . '#webpage';
+}
+
+/**
+ * 現在表示しているページのURLを返す
+ * アーカイブ系で get_permalink() が最初の投稿のURLを返す問題を避けるため
+ */
+function yuuki_portfolio_schema_current_url() {
+	if ( is_category() || is_tag() || is_tax() ) {
+		return get_term_link( get_queried_object() );
+	}
+	return get_permalink( get_queried_object_id() );
+}
 
 function yuuki_portfolio_schema_breadcrumb() {
-	if ( is_front_page() || ! function_exists( 'bcn_breadcrumb_trail' ) ) {
+    if ( is_front_page() || ! class_exists( 'bcn_breadcrumb_trail' ) ) {
 		return array();
 	}
 
@@ -50,7 +67,7 @@ function yuuki_portfolio_schema_breadcrumb() {
 	return array(
 		array(
 			'@type'           => 'BreadcrumbList',
-			'@id'             => home_url( '/#breadcrumb' ),
+			'@id'             => yuuki_portfolio_schema_breadcrumb_id(),
 			'itemListElement' => $items,
 		),
 	);
@@ -89,5 +106,5 @@ function yuuki_portfolio_schema_common() {
 		'publisher'  => array( '@id' => yuuki_portfolio_schema_person_id() ),
 	);
 
-    return array_merge( array( $person, $website ), yuuki_portfolio_schema_breadcrumb() );
+	return array_merge( array( $person, $website ), yuuki_portfolio_schema_breadcrumb() );
 }

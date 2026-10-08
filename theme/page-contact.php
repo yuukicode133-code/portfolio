@@ -1,19 +1,6 @@
 <?php get_header(); ?>
 <main class="l-main">
-
-    <!-- 下層共通パンくず。site階層のみ示す(フォーム進行は p-contact-steps が別途持つ) -->
-    <nav class="c-breadcrumb" aria-label="パンくず">
-      <div class="l-inner">
-        <ol class="c-breadcrumb__list">
-          <li class="c-breadcrumb__item">
-            <a class="c-breadcrumb__link" href="/">ホーム</a>
-          </li>
-          <li class="c-breadcrumb__item" aria-current="page">
-            <span class="c-breadcrumb__current">お問い合わせ</span>
-          </li>
-        </ol>
-      </div>
-    </nav>
+    <?php get_template_part('template-parts/breadcrumb'); ?>
 
     <!-- ページヘッダー(下層共通)。装飾数字は廃止、装飾は円弧モチーフに一本化 -->
     <div class="p-page-header">
