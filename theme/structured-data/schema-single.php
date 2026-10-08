@@ -23,7 +23,6 @@ function yuuki_portfolio_schema_single() {
 		'name'       => $title,
 		'inLanguage' => 'ja',
 		'isPartOf'   => array(
-			array( '@id' => yuuki_portfolio_schema_works_archive_id() ),
 			array( '@id' => yuuki_portfolio_schema_website_id() ),
 		),
 		'mainEntity' => array( '@id' => $url . '#work' ),

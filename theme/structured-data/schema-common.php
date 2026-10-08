@@ -14,12 +14,6 @@ function yuuki_portfolio_schema_breadcrumb_id() {
 	return get_permalink() . '#breadcrumb';
 }
 
-/**
- * 制作実績一覧（投稿ページ）の識別子
- */
-function yuuki_portfolio_schema_works_archive_id() {
-	return get_permalink( get_option( 'page_for_posts' ) ) . '#webpage';
-}
 
 /**
  * 現在表示しているページのURLを返す
